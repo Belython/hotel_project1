@@ -1,6 +1,9 @@
 package by.kanarski.booking.i18n.l10n.filler;
 
 
+import by.kanarski.booking.commands.factory.CommandFactory;
+import by.kanarski.booking.commands.factory.CommandType;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +28,7 @@ public class FillerFactory {
         matcher.find();
         String pageName = matcher.group();
         pageName = pageName.substring(1, pageName.length() - 1);
-        FillerManager fillerManager = FillerManager.valueOf(pageName);
+        FillerManager fillerManager = FillerManager.valueOf(pageName.toUpperCase());
         Filler current = fillerManager.getFiller();
         return current;
     }

@@ -19,7 +19,7 @@
     <input type="text" name="country" placeholder="Страна" value="Belarus"/>
     <input type="text" name="city" placeholder="Город" value="Minsk"/>
     <input type="text" name="hotelName" placeholder="Отель" value="any"/><br/>
-    <label id="amountRooms" for="no_rooms">${roomsAmount}</label>
+    <label id="amountRooms" for="no_rooms">${rooms_amount}</label>
     <select id="no_rooms" name="totalRooms">
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>
@@ -43,7 +43,7 @@
         <option value="20">20</option>
     </select>
     <br/>
-    <label for="no_persons">${personsAmount}</label>
+    <label for="no_persons">${persons_amount}</label>
     <select id="no_persons" name="totalPersons">
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>

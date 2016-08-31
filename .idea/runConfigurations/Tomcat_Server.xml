@@ -11,7 +11,7 @@
     </deployment>
     <server-settings>
       <option name="BASE_DIRECTORY_NAME" value="Unnamed_hotel_project" />
-      <option name="HTTP_PORT" value="8085" />
+      <option name="HTTP_PORT" value="8086" />
     </server-settings>
     <predefined_log_file id="Tomcat" enabled="true" />
     <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -20,7 +20,7 @@
     <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
     <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <RunnerSettings RunnerId="Debug">
-      <option name="DEBUG_PORT" value="50175" />
+      <option name="DEBUG_PORT" value="50176" />
     </RunnerSettings>
     <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
       <option name="USE_ENV_VARIABLES" value="true" />

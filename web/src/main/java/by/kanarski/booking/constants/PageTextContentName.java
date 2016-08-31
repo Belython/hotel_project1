@@ -44,7 +44,7 @@ public class PageTextContentName {
             "header.login",
             "header.password",
             "header.sign_in",
-            "header.sing_out",
+            "header.sign_out",
             "header.register",
             "header.forgot_password"
     );

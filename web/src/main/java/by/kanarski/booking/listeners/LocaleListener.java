@@ -2,8 +2,9 @@ package by.kanarski.booking.listeners;
 
 import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.i18n.l10n.fillers.IFiller;
-import by.kanarski.booking.i18n.l10n.fillers.factory.FillerFactory;
+import by.kanarski.booking.i18n.l10n.filler.Filler;
+import by.kanarski.booking.i18n.l10n.filler.FillerFactory;
+
 
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
@@ -40,13 +41,9 @@ public class LocaleListener implements ServletRequestAttributeListener {
         switch (attributeName) {
             case Parameter.CURRENT_PAGE_PATH: {
                 String pagePath = (String) servletRequestAttributeEvent.getValue();
-                fillPage(request, pagePath);
+                Filler filler = FillerFactory.getInstance().defineFiller(pagePath);
+                filler.fill(request);
             }
         }
-    }
-
-    private static void fillPage(HttpServletRequest request, String pagePath) {
-        IFiller filler = FillerFactory.getInstance().defineFiller(pagePath);
-        filler.execute(request);
     }
 }
