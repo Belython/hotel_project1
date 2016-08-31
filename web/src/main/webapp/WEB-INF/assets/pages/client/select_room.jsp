@@ -10,7 +10,7 @@
     <title>Поиск номеров</title>
 </head>
 <body>
-<%@include file="../../../../assets/pages/inputs/top.jsp" %>
+<%@include file="../../../../assets/pages/inputs/header.jsp" %>
 
 <form name="searchForm" method="POST" action="controller">
     <input type="hidden" name="command" value="makeBill"/>
@@ -46,5 +46,7 @@
     ${errorUserExists} <br/>
     <a href="controller?command=back">Вернуться обратно</a>
 </form>
+
+
 </body>
 </html>

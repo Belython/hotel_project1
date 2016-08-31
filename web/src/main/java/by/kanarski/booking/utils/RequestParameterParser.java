@@ -1,6 +1,7 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.commands.factory.CommandType;
+import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RequestParameterParser {
     private RequestParameterParser() {
@@ -76,9 +79,29 @@ public class RequestParameterParser {
         return commandType;
     }
 
-    public static Locale parseLocale(ServletRequest request) {
+    public static Locale parseLocale(HttpServletRequest request) {
         String localeName = request.getParameter(Parameter.LOCALE);
-        Locale locale = new Locale(localeName);
+        Locale locale = null;
+        if (localeName == null) {
+            HttpSession session = request.getSession();
+            locale = (Locale) session.getAttribute(Attribute.LOCALE);
+        } else {
+            String fullLocaleRegexp = "[a-z]+_[A-Z]+";
+            String language = null;
+            String country = null;
+            if (localeName.matches(fullLocaleRegexp)) {
+                String languageOrCountryRegexp = "[a-zA-Z]+";
+                Pattern pattern = Pattern.compile(languageOrCountryRegexp);
+                Matcher matcher = pattern.matcher(localeName);
+                matcher.find();
+                language = matcher.group();
+                matcher.find();
+                country = matcher.group();
+                locale = new Locale(language, country);
+            } else {
+                locale = new Locale(localeName);
+            }
+        }
         return locale;
     }
 

@@ -1,15 +1,12 @@
 package by.kanarski.booking.constants;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Parameter {
     public static final String USER = "user";
     public static final String USER_ID = "clientId";
     public static final String USER_FIRST_NAME = "firstName";
     public static final String USER_LAST_NAME = "lastName";
     public static final String USER_EMAIL = "email";
-    public static final String USER_LOGIN = "login";
+    public static final String USER_LOGIN = "header.login";
     public static final String USER_PASSWORD = "password";
     public static final String USER_ROLE = "role";
     public static final String USER_STATUS = "userStatus";

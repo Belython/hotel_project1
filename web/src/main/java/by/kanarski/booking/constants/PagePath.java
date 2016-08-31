@@ -13,12 +13,10 @@ public class PagePath {
     public static final String CLIENT_PAYMENT_PAGE_PATH = "path.page.client.payment";
     public static final String CLIENT_ADDFUNDS_PAGE_PATH = "path.page.client.addfunds";
     public static final String CLIENT_BLOCK_PAGE_PATH = "path.page.client.block";
-    public static final String CLIENT_SELECT_HOTEL_PATH = "/WEB-INF/assets/pages/client/selectHotel.jsp";
-    public static final String CLIENT_SELECT_ROOM_PATH = "/WEB-INF/assets/pages/client/selectRoom.jsp";
+    public static final String CLIENT_SELECT_HOTEL_PATH = "/WEB-INF/assets/pages/client/select_hotel.jsp";
+    public static final String CLIENT_SELECT_ROOM_PATH = "/WEB-INF/assets/pages/client/select_room.jsp";
     public static final String ACCOUNT_PAGE_PATH = "/WEB-INF/assets/pages/client/account.jsp";
 
-    public static final String CLIENT_SEND_ORDER_PAGE_PATH = "";
-    public static final String LOGIN_PAGE_PATH = INDEX_PAGE_PATH;
 
     private PagePath() {
 

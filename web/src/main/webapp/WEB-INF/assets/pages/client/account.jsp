@@ -10,7 +10,7 @@
     <title>Результаты поиска</title>
 </head>
 <body>
-
+<%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <form name="billsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="payBill"/>
     Счета<br/>

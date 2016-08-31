@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div id="top">
+<div id="header">
     <div id="uesrForm">
         <ul class="userCenterNav">
             <li class="userCenterLanguage"></li>
@@ -35,6 +35,25 @@
                 </c:otherwise>
             </c:choose>
         </ul>
+    </div>
+    <div id="locale">
+        <form name="langForm" method="POST" action="controller">
+            <input type="hidden" name="command" value="setLocale"/>
+            <label for="locale">Локаль</label>
+            <select id="locale" name="locale">
+                <c:forEach var="localeElement" items="${applicationScope.get('localeList')}">
+                    <c:choose>
+                        <c:when test="${sessionScope.get('locale') eq localeElement}">
+                            <option value=${localeElement} selected="selected">${localeElement}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value=${localeElement}>${localeElement}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+            <input type="submit" value="Ввод">
+        </form>
     </div>
 </div>
 

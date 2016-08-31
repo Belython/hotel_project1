@@ -17,7 +17,7 @@ public class IndexPageFiller implements IFiller {
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Attribute.LOCALE);
         ResourceBundle bundle = ResourceBundle.getBundle(ResourcePath.TEXT_SOURCE, locale);
-        for (String element : PageTextContentName.INDEX_PAGE_TEXT_CONTENT) {
+        for (String element : PageTextContentName.INDEX) {
             request.setAttribute(element, bundle.getString(element));
         }
     }

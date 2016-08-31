@@ -4,6 +4,8 @@ import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Attribute;
+import by.kanarski.booking.i18n.l10n.fillers.IFiller;
+import by.kanarski.booking.i18n.l10n.fillers.factory.FillerFactory;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.RequestParameterParser;
 
@@ -22,18 +24,18 @@ public class SetLocaleCommand implements ICommand {
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
-        String page;
+        String pagePath;
         HttpSession session = request.getSession();
-        //Ищем и задаем локаль пока здесь
         Locale locale = RequestParameterParser.parseLocale(request);
         session.setAttribute(Attribute.LOCALE, locale);
-        page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
-        servletAction.setPage(page);
-        if (page == null) {
-            page = PagePath.INDEX_PAGE_PATH;
-            servletAction.setPage(page);
+        pagePath = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
+        IFiller filler = FillerFactory.getInstance().defineFiller(pagePath);
+        filler.execute(request);
+        servletAction.setPage(pagePath);
+        if (pagePath == null) {
+            pagePath = PagePath.INDEX_PAGE_PATH;
+            servletAction.setPage(pagePath);
         }
-//        fillPage("INDEX", request);
         return servletAction;
     }
 }

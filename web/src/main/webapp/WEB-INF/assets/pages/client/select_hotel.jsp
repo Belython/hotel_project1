@@ -10,7 +10,7 @@
     <title>Результаты поиска</title>
 </head>
 <body>
-<%@include file="../../../../assets/pages/inputs/top.jsp" %>
+<%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <form name="resultsForm" method="POST" action="controller">
     <c:forEach var="hotel" items="${hotelsList}">
         <a href="controller?command=selectRoom&selectedHotel=${hotel.hotelId}">
@@ -24,5 +24,7 @@
     ${errorUserExists} <br/>
     <a href="controller?command=back">Вернуться обратно</a>
 </form>
+
+
 </body>
 </html>

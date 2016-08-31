@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body onload="setLocale()">
-<%@include file="inputs/top.jsp" %>
+<%@include file="inputs/header.jsp" %>
 <form name="findForm" method="POST" action="controller">
     <input type="hidden" name="command" value="selectHotel"/>
     <br/>
@@ -67,6 +67,7 @@
         <option value="20">20</option>
     </select>
     <br/>
+
     <label for="checkInDate">Дата въезда</label>
     <input id="checkInDate" type="text" name="checkInDate" value=""/>
     <label for="checkOutDate">Дата отъезда</label>
@@ -74,25 +75,9 @@
     <input type="submit" value="Искать">
 </form>
 
-<form name="langForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="setLocale"/>
-    <label for="locale">Локаль</label>
-    <select id="locale" name="locale">
-        <c:forEach var="localeElemet" items="${localeList}">
-            <c:choose>
-                <c:when test="${locale eq localeElement}">
-                    <option value=${localeElement} selected="selected">${localeElement}</option>
-                </c:when>
-                <c:otherwise>
-                    <option value=${localeElement}>${localeElement}</option>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-    </select>
-</form>
 
 ${operationMessage}
 
 </body>
-<script type="text/javascript" src="assets/scripts/script.js"></script>
+<%--<script type="text/javascript" src="assets/scripts/script.js"></script>--%>
 </html>
