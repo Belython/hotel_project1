@@ -1,7 +1,5 @@
-package by.kanarski.booking.i18n.l10n.fillers.factory;
+package by.kanarski.booking.i18n.l10n.filler;
 
-
-import by.kanarski.booking.i18n.l10n.fillers.IFiller;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,16 +18,15 @@ public class FillerFactory {
         return instance;
     }
 
-    public IFiller defineFiller(String pagePath) {
+    public Filler defineFiller(String pagePath) {
         String pageNameRegExp = "/\\w+\\.";
         Pattern pattern = Pattern.compile(pageNameRegExp);
         Matcher matcher = pattern.matcher(pagePath);
         matcher.find();
         String pageName = matcher.group();
         pageName = pageName.substring(1, pageName.length() - 1);
-        IFiller current = null;
-        FillerType type = FillerType.valueOf(pageName.toUpperCase());
-        current = type.getCurrentFiller();
+        FillerManager fillerManager = FillerManager.valueOf(pageName);
+        Filler current = fillerManager.getFiller();
         return current;
     }
 }

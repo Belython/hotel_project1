@@ -1,4 +1,4 @@
-package by.kanarski.booking.i18n.l10n.fillers2;
+package by.kanarski.booking.i18n.l10n.filler;
 
 import by.kanarski.booking.constants.PageTextContentName;
 
@@ -15,6 +15,11 @@ public class PageDescriptor {
             PageTextContentName.HEADER
     );
 
+    public static final List<List<String>> ACCOUNT = Arrays.asList(
+            PageTextContentName.ACCOUNT,
+            PageTextContentName.HEADER
+    );
+
     public static final List<List<String>> SELECT_HOTEL = Arrays.asList(
             PageTextContentName.SELECT_HOTEL,
             PageTextContentName.HEADER
@@ -27,6 +32,11 @@ public class PageDescriptor {
 
     public static final List<List<String>> REGISTRATION = Arrays.asList(
             PageTextContentName.REGISTRATION,
+            PageTextContentName.HEADER
+    );
+
+    public static final List<List<String>> ERROR = Arrays.asList(
+            PageTextContentName.ERROR,
             PageTextContentName.HEADER
     );
 

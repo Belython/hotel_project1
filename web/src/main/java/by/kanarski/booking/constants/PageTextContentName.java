@@ -22,6 +22,14 @@ public class PageTextContentName {
             "registration.go_back"
     );
 
+    public static final List<String> ACCOUNT = Arrays.asList(
+
+    );
+
+    public static final List<String> ERROR = Arrays.asList(
+
+    );
+
     public static final List<String> SELECT_HOTEL = Arrays.asList(
             "select_hotel.hotel_name",
             "select_hotel.rooms_available",
