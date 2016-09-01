@@ -19,7 +19,7 @@
                             <fieldset id="actions">
                                 <input type="submit" id="submit" value="ВОЙТИ">
                                 <a href="">Забыли пароль?</a>
-                                <a href="controller?command=gotoregistration">Регистрация</a>
+                                <a href="controller?command=gotoregistration">${register}</a>
                             </fieldset>
                                 ${errorLoginOrPassword}<br/>
                         </form>

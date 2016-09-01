@@ -14,15 +14,15 @@
 <form name="resultsForm" method="POST" action="controller">
     <c:forEach var="hotel" items="${hotelsList}">
         <a href="controller?command=selectRoom&selectedHotel=${hotel.hotelId}">
-            Отель ${hotel.hotelName}
-            Осталось ${hotel.roomsCount}
+            ${hotel_name} ${hotel.hotelName}
+            ${rooms_available} ${hotel.roomsCount}
         </a><br/>
     </c:forEach>
 
 
     ${operationMessage}
     ${errorUserExists} <br/>
-    <a href="controller?command=back">Вернуться обратно</a>
+    <a href="controller?command=back">${go_back}</a>
 </form>
 
 

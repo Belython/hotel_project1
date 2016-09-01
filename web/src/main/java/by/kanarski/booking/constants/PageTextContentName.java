@@ -6,10 +6,10 @@ import java.util.List;
 public class PageTextContentName {
 
     public static final List<String> INDEX = Arrays.asList(
-            "index.rooms_amount",
-            "index.persons_amount",
-            "index.check_in_date",
-            "index.check_out_date"
+            "index.roomsAmount",
+            "index.personsAmount",
+            "index.checkInDate",
+            "index.checkOutDate"
     );
 
     public static final List<String> REGISTRATION = Arrays.asList(
@@ -31,9 +31,9 @@ public class PageTextContentName {
     );
 
     public static final List<String> SELECT_HOTEL = Arrays.asList(
-            "select_hotel.hotel_name",
-            "select_hotel.rooms_available",
-            "select_hotel.go_back"
+            "selectHotel.hotelName",
+            "selectHotel.roomsAvailable",
+            "selectHotel.goBack"
     );
 
     public static final List<String> SELECT_ROOM = Arrays.asList(
@@ -43,10 +43,10 @@ public class PageTextContentName {
     public static final List<String> HEADER = Arrays.asList(
             "header.login",
             "header.password",
-            "header.sign_in",
-            "header.sign_out",
+            "header.signIn",
+            "header.signOut",
             "header.register",
-            "header.forgot_password"
+            "header.forgotPassword"
     );
 
     private PageTextContentName() {
