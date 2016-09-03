@@ -44,7 +44,6 @@
     ${par}
     ${operationMessage}
     ${errorUserExists} <br/>
-    <a href="controller?command=back">Вернуться обратно</a>
 </form>
 
 

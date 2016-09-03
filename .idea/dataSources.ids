@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - BOOKING@localhost" uuid="57fe62af-57af-4acc-b5bb-3977087b3837">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+    <database-info product="MySQL" version="5.6.31-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="BOOKING"/>
       <table id="2" parent="1" name="BILLS"/>
@@ -14,6 +18,7 @@
       <column id="9" parent="2" name="BILL_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="10" parent="2" name="USER_ID">
         <mandatory>1</mandatory>
@@ -60,6 +65,7 @@
       <column id="20" parent="3" name="HOTEL_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="21" parent="3" name="LOCATION_ID">
         <mandatory>1</mandatory>
@@ -90,6 +96,7 @@
       <column id="27" parent="4" name="LOCATION_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="28" parent="4" name="COUNTRY">
         <mandatory>1</mandatory>
@@ -177,6 +184,7 @@
       <column id="47" parent="6" name="ROOM_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="48" parent="6" name="HOTEL_ID">
         <mandatory>1</mandatory>
@@ -231,6 +239,7 @@
       <column id="59" parent="7" name="ROOM_TYPE_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="60" parent="7" name="ROOM_TYPE">
         <mandatory>1</mandatory>
@@ -259,6 +268,7 @@
       <column id="66" parent="8" name="USER_ID">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
       </column>
       <column id="67" parent="8" name="FIRST_NAME">
         <mandatory>1</mandatory>

@@ -31,7 +31,6 @@ public class SelectHotelCommand implements ICommand {
         ServletAction servletAction;
         String page = null;
         HttpSession session = request.getSession();
-        session.setMaxInactiveInterval(3000);
         try {
             OrderDto order = RequestParameterParser.getOrder(request);
             session.setAttribute(Parameter.ORDER, order);

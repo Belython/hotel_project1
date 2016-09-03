@@ -24,13 +24,13 @@ public enum FillerManager {
             PageTextContentName.HEADER
         )
     ),
-    SELECT_HOTEL (
+    SELECTHOTEL (
         Arrays.asList(
             PageTextContentName.SELECT_HOTEL,
             PageTextContentName.HEADER
         )
     ),
-    SELECT_ROOM (
+    SELECTROOM (
         Arrays.asList(
             PageTextContentName.SELECT_ROOM,
             PageTextContentName.HEADER

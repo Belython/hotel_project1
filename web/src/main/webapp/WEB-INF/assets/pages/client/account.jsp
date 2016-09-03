@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>--%>
 <html>
 <head>
     <title>Результаты поиска</title>
@@ -25,7 +25,6 @@
             <input type="submit" value="Оплатить"/>
         </c:if><br/>
     </c:forEach>
-    <a href="controller?command=back">Вернуться обратно</a>
 </form>
 </body>
 </html>

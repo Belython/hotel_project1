@@ -6,7 +6,7 @@ public class Parameter {
     public static final String USER_FIRST_NAME = "firstName";
     public static final String USER_LAST_NAME = "lastName";
     public static final String USER_EMAIL = "email";
-    public static final String USER_LOGIN = "header.login";
+    public static final String USER_LOGIN = "login";
     public static final String USER_PASSWORD = "password";
     public static final String USER_ROLE = "role";
     public static final String USER_STATUS = "userStatus";
@@ -66,10 +66,12 @@ public class Parameter {
     public static final String ERROR_LOGIN_OR_PASSWORD = "errorLoginOrPassword";
     public static final String ERROR_USER_EXISTS = "errorUserExists";
     public static final String OPERATION_MESSAGE = "operationMessage";
+    public static final String PREVIOUS_PAGE_PATH = "previousPagePath";
     public static final String CURRENT_PAGE_PATH = "currentPagePath";
     public static final String LOCALE = "locale";
     public static final String ANY_HOTEL = "any";
     public static final String INDEX_PAGE = "indexpage";
+
 
     private Parameter() {
     }

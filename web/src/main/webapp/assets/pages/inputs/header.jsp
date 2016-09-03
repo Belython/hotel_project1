@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="header">
+    <a href="controller?command=goToMain">${goToMain}</a>
     <div id="uesrForm">
         <ul class="userCenterNav">
             <li class="userCenterLanguage"></li>
@@ -19,13 +20,20 @@
                             <fieldset id="actions">
                                 <input type="submit" id="submit" value="ВОЙТИ">
                                 <a href="">Забыли пароль?</a>
-                                <a href="controller?command=gotoregistration">${register}</a>
+                                <a href="controller?command=gotoregistration">${register}reg</a>
                             </fieldset>
                                 ${errorLoginOrPassword}<br/>
                         </form>
                     </li>
                 </c:when>
                 <c:otherwise>
+                    <li>Добро пожаловать ${user.firstName}</li>
+                    <li>
+                        <c:if test="${user.role eq 'admin'}">
+                            <p>Вы зашли как администратор</p>
+                            <a href="controller?command=goToAdminPage">Пошалим?</a>
+                        </c:if>
+                    </li>
                     <li class="userCenterAccount">
                         <a href="controller?command=goToAccount">Личный кабинет</a>
                     </li>
@@ -39,8 +47,8 @@
     <div id="locale">
         <form name="langForm" method="POST" action="controller">
             <input type="hidden" name="command" value="setLocale"/>
-            <label for="locale">Локаль</label>
-            <select id="locale" name="locale">
+            <label for="currentLocale">Локаль</label>
+            <select id="currentLocale" name="locale">
                 <c:forEach var="localeElement" items="${applicationScope.get('localeList')}">
                     <c:choose>
                         <c:when test="${sessionScope.get('locale') eq localeElement}">
@@ -55,5 +63,6 @@
             <input type="submit" value="Ввод">
         </form>
     </div>
+    ${operationMessage}
 </div>
 

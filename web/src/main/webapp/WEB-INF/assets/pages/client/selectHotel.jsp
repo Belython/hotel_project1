@@ -22,7 +22,6 @@
 
     ${operationMessage}
     ${errorUserExists} <br/>
-    <a href="controller?command=back">${go_back}</a>
 </form>
 
 

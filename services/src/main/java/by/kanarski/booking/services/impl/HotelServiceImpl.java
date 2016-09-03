@@ -12,6 +12,7 @@ import by.kanarski.booking.utils.ExceptionHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,7 +37,17 @@ public class HotelServiceImpl implements IHotelService {
 
     @Override
     public List<Hotel> getAll() throws ServiceException {
-        return null;
+        Connection connection = ConnectionUtil.getConnection();
+        List<Hotel> hotelList = new ArrayList<>();
+        try {
+            connection.setAutoCommit(false);
+            hotelList = HotelDao.getInstance().getAll();
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.getServiceHandler(connection, e, getClass());
+        }
+        return hotelList;
     }
 
     @Override

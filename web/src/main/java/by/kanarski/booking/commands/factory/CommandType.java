@@ -1,12 +1,17 @@
 package by.kanarski.booking.commands.factory;
 
 import by.kanarski.booking.commands.ICommand;
+import by.kanarski.booking.commands.impl.admin.GetHotelsCommand;
+import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
 import by.kanarski.booking.commands.impl.user.*;
 
 public enum CommandType {
     //user commands
-    LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, BACK, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
-    SETLOCALE, CALCUL, CANCELACTION;
+    LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, GOTOMAIN, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
+    SETLOCALE, CALCUL, CANCELACTION,
+
+    //admin commands
+    GOTOADMINPAGE, GETHOTELS;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -22,8 +27,8 @@ public enum CommandType {
             case GOTOREGISTRATION:
                 return new GoToRegistrationCommand();
 
-            case BACK:
-                return new GoBackCommand();
+            case GOTOMAIN:
+                return new GoToMainPageCommand();
 
             case SETLOCALE:
                 return new SetLocaleCommand();
@@ -48,6 +53,13 @@ public enum CommandType {
 
             case CANCELACTION:
                 return new CancelActionCommand();
+
+            case GOTOADMINPAGE:
+                return new GoToAdminPageCommand();
+
+            case GETHOTELS:
+                return new GetHotelsCommand();
+
             default:
                 return new LoginUserCommand();
             //throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

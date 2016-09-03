@@ -21,9 +21,9 @@ public class HotelDao implements IHotelDao {
     private final String GET_BY_ID_QUERY = "SELECT H.*, L.* " +
             "FROM HOTELS H " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE H.HOTEL_ID = ?";
-    //    private final String GET_ALL_QUERY = "SELECTROOM * FROM CITIES WHERE";
-//    private final String UPDATE_QUERY = "UPDATE CITIES SET COUNTRY = ?, CITY = ? WHERE ID = ?";
-//    private final String DELETE_QUERY = "UPDATE CITIES SET STATUS = 'deleted' WHERE ID = ?";
+    private final String GET_ALL_QUERY = "SELECT H.*, L.* " +
+            "FROM HOTELS H " +
+            "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID";
     private final String GET_BY_HOTEL_NAME_QUERY = "SELECT H.*, L.* " +
             "FROM HOTELS H " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE H.HOTEL_NAME = ?";
@@ -89,9 +89,22 @@ public class HotelDao implements IHotelDao {
 
     }
 
-    public List<Hotel> getAll() {
-        List<Hotel> list = new ArrayList<>();
-        return list;
+    public List<Hotel> getAll() throws DaoException{
+        List<Hotel> hotelList = new ArrayList<>();
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_ALL_QUERY)) {
+            resultSet = stm.executeQuery();
+            while (resultSet.next()) {
+                hotelList.add(EntityParser.parseHotel(resultSet));
+            }
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_HOTEL_EXCEPTION);
+            throw new DaoException(Messages.GET_HOTEL_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return hotelList;
     }
 
     public Hotel getByHotelName(String hotelName) throws DaoException {

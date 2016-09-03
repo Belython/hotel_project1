@@ -54,9 +54,9 @@
     <!--<servlet-name>Controller</servlet-name>-->
     <!--</filter-mapping>-->
 
-    <listener>
-        <listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>-->
+    <!--</listener>-->
 
 
     <welcome-file-list>
