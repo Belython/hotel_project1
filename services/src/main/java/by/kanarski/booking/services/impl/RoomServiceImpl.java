@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.ServiceMessages;
 import by.kanarski.booking.dao.impl.RoomDao;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Bill;
@@ -42,7 +42,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             rooms = RoomDao.getInstance().getAll();
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -57,7 +57,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             room = RoomDao.getInstance().getById(id);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -71,7 +71,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             RoomDao.getInstance().update(room);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -89,7 +89,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             rooms = RoomDao.getInstance().getAvailableRooms(orderDto);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -103,7 +103,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             rooms = RoomDao.getInstance().getByHotelId(hotelId);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -117,7 +117,7 @@ public class RoomServiceImpl implements IRoomService {
             connection.setAutoCommit(false);
             roomList = RoomDao.getInstance().getByIdList(bill.getRoomIdList());
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }

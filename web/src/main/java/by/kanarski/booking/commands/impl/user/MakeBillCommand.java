@@ -1,6 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.ICommand;
+import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
@@ -9,7 +10,9 @@ import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
+import by.kanarski.booking.utils.BookingSystemLogger;
 import by.kanarski.booking.utils.RequestParameterParser;
+import org.w3c.dom.Attr;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +31,11 @@ public class MakeBillCommand implements ICommand {
             page = PagePath.INDEX_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE));
+            String errorMessage = MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE);
+            request.setAttribute(Attribute.ERROR_DATABASE, errorMessage);
+            BookingSystemLogger.getInstance().logError(getClass(), errorMessage, e);
         }
-        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        session.setAttribute(Attribute.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

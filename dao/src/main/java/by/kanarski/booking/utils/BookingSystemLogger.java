@@ -22,5 +22,9 @@ public class BookingSystemLogger {
         logger.error(message);
     }
 
+    public void logError(Class sender, String message, Throwable error) {
+        logger = Logger.getLogger(sender);
+        logger.error(message, error);
+    }
 
 }

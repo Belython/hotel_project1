@@ -1,6 +1,6 @@
 package by.kanarski.booking.utils;
 
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.WebMessages;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -26,7 +26,7 @@ public class LocalizationUtil {
         try {
             date = dateFormat.parse(formattedDate).getTime();
         } catch (ParseException e) {
-            BookingSystemLogger.getInstance().logError(LocalizationUtil.class, Messages.PARSE_DATE_EXCEPTION + e);
+            BookingSystemLogger.getInstance().logError(LocalizationUtil.class, WebMessages.PARSE_DATE_EXCEPTION + e);
         }
         return date;
     }

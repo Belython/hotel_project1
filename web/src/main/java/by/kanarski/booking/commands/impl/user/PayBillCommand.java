@@ -1,10 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.MessageConstants;
-import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.constants.Statuses;
+import by.kanarski.booking.constants.*;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
@@ -32,7 +29,7 @@ public class PayBillCommand implements ICommand {
             BillServiceImpl.getInstance().update(billToPay);
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getId());
             session.setAttribute(Parameter.BILL_LIST, billList);
-            request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.SUCCESS_OPERATION));
+            request.setAttribute(Attribute.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.SUCCESS_OPERATION));
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

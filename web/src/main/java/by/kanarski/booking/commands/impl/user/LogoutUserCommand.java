@@ -1,6 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.ICommand;
+import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.requestHandler.ServletAction;
@@ -15,12 +16,12 @@ public class LogoutUserCommand implements ICommand {
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         HttpSession session = request.getSession();
-        session.removeAttribute(Parameter.USER);
-        String page = request.getParameter(Parameter.CURRENT_PAGE_PATH);
+        session.removeAttribute(Attribute.USER);
+        String page = (String) request.getAttribute(Attribute.CURRENT_PAGE_PATH);
         if (page == null) {
             page = PagePath.INDEX_PAGE_PATH;
         }
-        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        session.setAttribute(Attribute.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

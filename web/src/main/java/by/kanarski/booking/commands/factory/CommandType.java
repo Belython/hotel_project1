@@ -8,7 +8,7 @@ import by.kanarski.booking.commands.impl.user.*;
 public enum CommandType {
     //user commands
     LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, GOTOMAIN, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
-    SETLOCALE, CALCUL, CANCELACTION,
+    SETLOCALE, CANCELACTION,
 
     //admin commands
     GOTOADMINPAGE, GETHOTELS;
@@ -47,9 +47,6 @@ public enum CommandType {
 
             case PAYBILL:
                 return new PayBillCommand();
-
-            case CALCUL:
-                return new CalculCommand();
 
             case CANCELACTION:
                 return new CancelActionCommand();

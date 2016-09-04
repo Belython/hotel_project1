@@ -1,6 +1,6 @@
 package by.kanarski.booking.dao.impl;
 
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.DaoMessages;
 import by.kanarski.booking.dao.interfaces.IBillDao;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.exceptions.DaoException;
@@ -61,8 +61,8 @@ public class BillDao implements IBillDao {
             resultSet.next();
             bill.setId(resultSet.getLong(1));
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.ADD_BILL_EXCEPTION);
-            throw new DaoException(Messages.ADD_BILL_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_BILL_EXCEPTION);
+            throw new DaoException(DaoMessages.ADD_BILL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -79,8 +79,8 @@ public class BillDao implements IBillDao {
             resultSet.next();
             bill = EntityParser.parseBill(resultSet);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_BILL_EXCEPTION);
-            throw new DaoException(Messages.GET_BILL_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_BILL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_BILL_EXCEPTION, e);
         }
         return bill;
     }
@@ -101,8 +101,8 @@ public class BillDao implements IBillDao {
                 bills.add(EntityParser.parseBill(resultSet));
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_BILL_EXCEPTION);
-            throw new DaoException(Messages.GET_BILL_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_BILL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_BILL_EXCEPTION, e);
         }
         return bills;
     }
@@ -121,8 +121,8 @@ public class BillDao implements IBillDao {
             stm.setLong(8, bill.getId());
             stm.executeUpdate();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_BILL_EXCEPTION);
-            throw new DaoException(Messages.GET_BILL_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_BILL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_BILL_EXCEPTION, e);
         }
     }
 

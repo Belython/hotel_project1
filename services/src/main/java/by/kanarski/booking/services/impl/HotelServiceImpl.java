@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.ServiceMessages;
 import by.kanarski.booking.dao.impl.HotelDao;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.exceptions.DaoException;
@@ -43,7 +43,7 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getAll();
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -72,7 +72,7 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotel = HotelDao.getInstance().getByHotelName(hotelName);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }

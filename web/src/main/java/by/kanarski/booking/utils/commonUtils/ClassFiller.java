@@ -14,17 +14,17 @@ public class ClassFiller {
 
     private static String charset = "UTF-8";
 
-    public static void main(String[] args) {
-        try {
-            String classDir = "E:\\projects\\hotel_project1\\web\\src\\main\\java\\by\\kanarski\\booking\\constants\\PageParameterName.java";
-            StringBuilder classSrc = getClassSrc(classDir);
-            Map<String, String> fieldMap = getFiledMap(ResourcePath.TEXT_SOURCE);
-            String filledClassSrc = createFilledClassNew(classSrc, fieldMap);
-            writeInClassFile(classDir, filledClassSrc);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            String classDir = "E:\\projects\\hotel_project1\\web\\src\\main\\java\\by\\kanarski\\booking\\constants\\PageParameterName.java";
+//            StringBuilder classSrc = getClassSrc(classDir);
+//            Map<String, String> fieldMap = getFiledMap(ResourcePath.TEXT_SOURCE);
+//            String filledClassSrc = createFilledClassNew(classSrc, fieldMap);
+//            writeInClassFile(classDir, filledClassSrc);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private static StringBuilder getClassSrc(String classDir) throws IOException {
         File classFile = new File(classDir);

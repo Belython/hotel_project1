@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.ServiceMessages;
 import by.kanarski.booking.dao.impl.RoomTypeDao;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.DaoException;
@@ -40,7 +40,7 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
             connection.setAutoCommit(false);
             roomTypes = RoomTypeDao.getInstance().getAll();
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }
@@ -59,7 +59,7 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
             connection.setAutoCommit(false);
             RoomTypeDao.getInstance().update(roomType);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.getServiceHandler(connection, e, getClass());
         }

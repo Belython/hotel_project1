@@ -1,7 +1,7 @@
 package by.kanarski.booking.dao.impl;
 
 import by.kanarski.booking.constants.ColumnName;
-import by.kanarski.booking.constants.Messages;
+import by.kanarski.booking.constants.DaoMessages;
 import by.kanarski.booking.dao.interfaces.IUserDao;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.DaoException;
@@ -56,8 +56,8 @@ public class UserDao implements IUserDao {
             resultSet.next();
             user.setId(resultSet.getLong(1));
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.ADD_USER_EXCEPTION);
-            throw new DaoException(Messages.ADD_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.ADD_USER_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -75,8 +75,8 @@ public class UserDao implements IUserDao {
             resultSet.next();
             user = EntityParser.parseUser(resultSet);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_USER_EXCEPTION);
-            throw new DaoException(Messages.GET_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_USER_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -93,8 +93,8 @@ public class UserDao implements IUserDao {
             resultSet.next();
             user = EntityParser.parseUser(resultSet);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_USER_EXCEPTION);
-            throw new DaoException(Messages.GET_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_USER_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -115,8 +115,8 @@ public class UserDao implements IUserDao {
                 list.add(user);
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.GET_USERS_EXCEPTION);
-            throw new DaoException(Messages.GET_USERS_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USERS_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_USERS_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -136,8 +136,8 @@ public class UserDao implements IUserDao {
             stm.setString(7, user.getStatus());
             stm.executeUpdate();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.UPDATE_USER_EXCEPTION);
-            throw new DaoException(Messages.UPDATE_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.UPDATE_USER_EXCEPTION, e);
         }
     }
 
@@ -148,8 +148,8 @@ public class UserDao implements IUserDao {
             stm.setLong(1, user.getId());
             stm.executeUpdate();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.DELETE_USER_EXCEPTION);
-            throw new DaoException(Messages.DELETE_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.DELETE_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.DELETE_USER_EXCEPTION, e);
         }
     }
 
@@ -165,8 +165,8 @@ public class UserDao implements IUserDao {
                 isLogIn = true;
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.CHECK_USER_AUTHORIZATION_EXCEPTION);
-            throw new DaoException(Messages.CHECK_USER_AUTHORIZATION_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.CHECK_USER_AUTHORIZATION_EXCEPTION);
+            throw new DaoException(DaoMessages.CHECK_USER_AUTHORIZATION_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -184,8 +184,8 @@ public class UserDao implements IUserDao {
                 isNew = false;
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), Messages.CHECK_IS_NEW_USER_EXCEPTION);
-            throw new DaoException(Messages.CHECK_IS_NEW_USER_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.CHECK_IS_NEW_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.CHECK_IS_NEW_USER_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
