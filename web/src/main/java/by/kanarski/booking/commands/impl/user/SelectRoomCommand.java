@@ -1,5 +1,6 @@
 package by.kanarski.booking.commands.impl.user;
 
+import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class SelectRoomCommand implements ICommand {
+public class SelectRoomCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -41,7 +42,7 @@ public class SelectRoomCommand implements ICommand {
             page = PagePath.CLIENT_SELECT_ROOM_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE));
+            handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);

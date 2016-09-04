@@ -1,7 +1,5 @@
 package by.kanarski.booking.utils.commonUtils;
 
-import by.kanarski.booking.constants.ResourcePath;
-
 import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;

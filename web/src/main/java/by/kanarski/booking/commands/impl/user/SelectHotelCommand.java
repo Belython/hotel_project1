@@ -1,8 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
-import by.kanarski.booking.commands.ICommand;
+import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.commands.factory.CommandType;
-import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.HotelDto;
@@ -11,12 +10,11 @@ import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.RequestParameterParser;
+import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectHotelCommand implements ICommand {
+public class SelectHotelCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -32,7 +30,7 @@ public class SelectHotelCommand implements ICommand {
         String page = null;
         HttpSession session = request.getSession();
         try {
-            OrderDto order = RequestParameterParser.getOrder(request);
+            OrderDto order = RequestParser.getOrder(request);
             session.setAttribute(Parameter.ORDER, order);
             // TODO: 26.06.2016 ЭТО ВСЕ ВРЕМЕННО
             roomTypeFill();
@@ -51,7 +49,7 @@ public class SelectHotelCommand implements ICommand {
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             servletAction = ServletAction.REDIRECT_PAGE;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE));
+            handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);

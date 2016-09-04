@@ -1,7 +1,6 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.commands.factory.CommandType;
-import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
@@ -10,14 +9,12 @@ import by.kanarski.booking.entities.*;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RequestParameterParser {
-    private RequestParameterParser() {
+public class RequestParser {
+    private RequestParser() {
     }
 
     public static User parseUser(ServletRequest request) {
@@ -60,6 +57,40 @@ public class RequestParameterParser {
         return hotel;
     }
 
+    public static List<Hotel> parseHotelList(ServletRequest request) {
+        List<Hotel> hotelList = new ArrayList<>();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Set<String> parameterSet = parameterMap.keySet();
+        String[] hotelIdArray = null;
+        String[] hotelNameArray = null;
+//        String[] hotelCountryArray;
+//        String[] hotelCityArray;
+//        String[] hotelDiscountArray;
+        String[] hotelStatusArray = null;
+        for (String parameter : parameterSet) {
+            switch (parameter) {
+                case Parameter.HOTEL_ID: {
+                    hotelIdArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_NAME: {
+                    hotelNameArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_STATUS: {
+                    hotelStatusArray = parameterMap.get(parameter);
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < hotelIdArray.length; i++) {
+            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(hotelIdArray[i]), "country", "city", hotelNameArray[i], hotelStatusArray[i]);
+            hotelList.add(hotel);
+        }
+
+        return hotelList;
+    }
+
     public static String parsePagePath(ServletRequest request) {
         String page = request.getParameter(Parameter.CURRENT_PAGE_PATH);
         return page;
@@ -84,7 +115,7 @@ public class RequestParameterParser {
         Locale locale = null;
         if (localeName == null) {
             HttpSession session = request.getSession();
-            locale = (Locale) session.getAttribute(Attribute.LOCALE);
+            locale = (Locale) session.getAttribute(Parameter.LOCALE);
         } else {
             String fullLocaleRegexp = "[a-z]+_[A-Z]+";
             String language = null;

@@ -3,9 +3,10 @@
  */
 package by.kanarski.booking.controllers;
 
-import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.AttributeValue;
+import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.requestHandler.RequestHandler;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,6 +34,6 @@ public class Controller extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
-        context.setAttribute(Attribute.LOCALE_LIST, AttributeValue.LOCALE_LIST);
+        context.setAttribute(Parameter.LOCALE_LIST, AttributeValue.LOCALE_LIST);
     }
 }

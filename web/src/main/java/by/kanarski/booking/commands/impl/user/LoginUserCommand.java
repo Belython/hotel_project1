@@ -1,25 +1,21 @@
 package by.kanarski.booking.commands.impl.user;
 
-import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.Attribute;
+import by.kanarski.booking.commands.AbstractCommand;
+import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.UserServiceImpl;
-import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.RequestParameterParser;
-import org.apache.log4j.Logger;
+import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
-public class LoginUserCommand implements ICommand {
+public class LoginUserCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -27,33 +23,26 @@ public class LoginUserCommand implements ICommand {
         String page = null;
         HttpSession session = request.getSession();
         try {
-            User user = RequestParameterParser.parseUser(request);
+            User user = RequestParser.parseUser(request);
             if (UserServiceImpl.getInstance().checkUserAuthorization(user.getLogin(), user.getPassword())) {
                 user = UserServiceImpl.getInstance().getUserByLogin(user.getLogin());
-                session.setAttribute(Attribute.USER, user);
-                page = RequestParameterParser.parsePagePath(request);
+                session.setAttribute(Parameter.USER, user);
+                page = RequestParser.parsePagePath(request);
                 if (page == null) {
                     page = PagePath.INDEX_PAGE_PATH;
                 }
             } else {
                 page = PagePath.INDEX_PAGE_PATH;
-                request.setAttribute(Attribute.USER, MessageManager.getInstance().getProperty(MessageConstants.WRONG_LOGIN_OR_PASSWORD));
+                request.setAttribute(Parameter.ERROR_LOGIN_OR_PASSWORD, MessageManager.getInstance().getProperty(MessageConstants.WRONG_LOGIN_OR_PASSWORD));
             }
-            session.setAttribute(Attribute.USER, page);
+//            session.setAttribute(Parameter.USER, user);
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            String errorMessage = MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE);
-            request.setAttribute(Attribute.ERROR_DATABASE, errorMessage);
-            BookingSystemLogger.getInstance().logError(getClass(), errorMessage, e);
+            handleServiceException(request, e);
         }
-        session.setAttribute(Attribute.USER, page);
+        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
-    }
-
-    public static void main(String[] args) {
-        BookingSystemLogger.getInstance().logError(LoginUserCommand.class, "msg", new IOException());
-
     }
 
 }

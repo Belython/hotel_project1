@@ -31,6 +31,8 @@ public class DaoMessages {
 
     public static final String ADD_HOTEL_EXCEPTION = "Unable to add the hotel ";
     public static final String GET_HOTEL_EXCEPTION = "Unable to get the hotel ";
+    public static final String UPDATE_HOTEL_EXCEPTION = "Unable to update the hotel ";
+
 
 
 

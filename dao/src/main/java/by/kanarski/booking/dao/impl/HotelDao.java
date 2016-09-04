@@ -3,6 +3,7 @@ package by.kanarski.booking.dao.impl;
 import by.kanarski.booking.constants.DaoMessages;
 import by.kanarski.booking.dao.interfaces.IHotelDao;
 import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.BookingSystemLogger;
 import by.kanarski.booking.utils.ClosingUtil;
@@ -27,6 +28,8 @@ public class HotelDao implements IHotelDao {
     private final String GET_BY_HOTEL_NAME_QUERY = "SELECT H.*, L.* " +
             "FROM HOTELS H " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE H.HOTEL_NAME = ?";
+    private final String UPDATE_HOTEL_QUERY = "UPDATE HOTELS " +
+            "SET HOTEL_NAME = ?, HOTEL_STATUS = ? WHERE HOTEL_ID = ?";
 
     private HotelDao() {
     }
@@ -89,6 +92,23 @@ public class HotelDao implements IHotelDao {
 
     }
 
+    public void updateList(List<Hotel> hotelList) throws DaoException{
+        Connection connection = ConnectionUtil.getConnection();
+        try (PreparedStatement stm = connection.prepareStatement(UPDATE_HOTEL_QUERY)) {
+            for (Hotel hotel : hotelList) {
+                stm.setString(1, hotel.getName());
+                stm.setString(2, hotel.getStatus());
+                stm.setLong(3, hotel.getId());
+                stm.addBatch();
+            }
+            stm.executeBatch();
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_HOTEL_EXCEPTION);
+            throw new DaoException(DaoMessages.UPDATE_HOTEL_EXCEPTION, e);
+        }
+    }
+
+    @Override
     public List<Hotel> getAll() throws DaoException{
         List<Hotel> hotelList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();

@@ -2,7 +2,7 @@ package by.kanarski.booking.filters;
 
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.utils.RequestParameterParser;
+import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +18,10 @@ public class SecurityFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession();
-//        UserType type = RequestParameterParser.getUserType(httpRequest);
+//        UserType type = RequestParser.getUserType(httpRequest);
         String type = null;
         try {
-            CommandType commandType = RequestParameterParser.parseCommandType(httpRequest);
+            CommandType commandType = RequestParser.parseCommandType(httpRequest);
             if (type == null) {
                 if (commandType == CommandType.LOGIN) {
                     chain.doFilter(request, response);

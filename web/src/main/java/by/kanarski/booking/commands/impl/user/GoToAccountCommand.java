@@ -1,7 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
+import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class GoToAccountCommand implements ICommand {
+public class GoToAccountCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -27,17 +27,15 @@ public class GoToAccountCommand implements ICommand {
         HttpSession session = request.getSession();
         try {
 
-            User user = (User) session.getAttribute(Attribute.USER);
+            User user = (User) session.getAttribute(Parameter.USER);
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getId());
             session.setAttribute(Parameter.BILL_LIST, billList);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            String errorMessage = MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE);
-            request.setAttribute(Attribute.ERROR_DATABASE, errorMessage);
-            BookingSystemLogger.getInstance().logError(getClass(), errorMessage, e);
+            handleServiceException(request, e);
         }
-        session.setAttribute(Attribute.CURRENT_PAGE_PATH, page);
+        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

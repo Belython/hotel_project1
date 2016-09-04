@@ -2,7 +2,7 @@ package by.kanarski.booking.commands.factory;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.commands.impl.user.LoginUserCommand;
-import by.kanarski.booking.utils.RequestParameterParser;
+import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +22,7 @@ public class CommandFactory {
     public ICommand defineCommand(HttpServletRequest request) {
         ICommand current = null;
         try {
-            CommandType type = RequestParameterParser.parseCommandType(request);
+            CommandType type = RequestParser.parseCommandType(request);
             current = type.getCurrentCommand();
         } catch (IllegalArgumentException e) {
             current = new LoginUserCommand();

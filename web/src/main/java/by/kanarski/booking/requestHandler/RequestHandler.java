@@ -3,12 +3,13 @@ package by.kanarski.booking.requestHandler;
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.commands.factory.CommandFactory;
 import by.kanarski.booking.constants.Parameter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Locale;
+import java.util.Map;
 
 public class RequestHandler {
     private RequestHandler() {
@@ -19,6 +20,7 @@ public class RequestHandler {
         ICommand сommand = commandFactory.defineCommand(request);
         ServletAction servletAction = сommand.execute(request, response);
         String page = servletAction.getPage();
+        Map<String, String[]> parameterMap = request.getParameterMap();
         try {
             switch (servletAction) {
                 case FORWARD_PAGE: {

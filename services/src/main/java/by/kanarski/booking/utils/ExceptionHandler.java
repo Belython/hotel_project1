@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ExceptionHandler {
 
-    public static void getServiceHandler(Connection connection, Exception exception, Class serviceClass) throws ServiceException {
+    public static void handleSQLOrDaoException(Connection connection, Exception exception, Class serviceClass) throws ServiceException {
         try {
             connection.rollback();
             BookingSystemLogger.getInstance().logError(serviceClass, ServiceMessages.TRANSACTION_FAILED);
@@ -18,5 +18,7 @@ public class ExceptionHandler {
             throw new ServiceException(e.getMessage());
         }
     }
+
+
 
 }

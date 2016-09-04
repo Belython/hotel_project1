@@ -1,17 +1,12 @@
 package by.kanarski.booking.listeners;
 
-import by.kanarski.booking.constants.Attribute;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.i18n.l10n.filler.Filler;
 import by.kanarski.booking.i18n.l10n.filler.FillerFactory;
 
-
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionBindingEvent;
 
 /**
  * Используется для заполнения контентом jsp-страниц при изменении

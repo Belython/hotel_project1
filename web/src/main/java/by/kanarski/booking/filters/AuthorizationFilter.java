@@ -5,7 +5,7 @@ import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.managers.MessageManager;
-import by.kanarski.booking.utils.RequestParameterParser;
+import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +27,7 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         HttpSession session = httpServletRequest.getSession();
-        CommandType commandType = RequestParameterParser.parseCommandType(httpServletRequest);
+        CommandType commandType = RequestParser.parseCommandType(httpServletRequest);
         if (commandType.name().equals(commandType.MAKEBILL.toString())) {
 //        page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
 //        if ((page != null) && (page.equals(PagePath.CLIENT_SELECT_ROOM_PATH))) {

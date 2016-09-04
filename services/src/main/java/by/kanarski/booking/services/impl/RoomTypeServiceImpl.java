@@ -42,7 +42,7 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return roomTypes;
     }
@@ -61,7 +61,7 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
 

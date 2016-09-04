@@ -42,7 +42,7 @@ public class BillServiceImpl implements IBillService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
 
@@ -63,7 +63,7 @@ public class BillServiceImpl implements IBillService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return bill;
     }
@@ -77,7 +77,7 @@ public class BillServiceImpl implements IBillService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
 
@@ -101,7 +101,7 @@ public class BillServiceImpl implements IBillService {
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
-            ExceptionHandler.getServiceHandler(connection, e, getClass());
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return newBills;
     }
