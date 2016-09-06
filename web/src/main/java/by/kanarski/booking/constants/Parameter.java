@@ -36,6 +36,8 @@ public class Parameter {
 
     public static final String HOTEL = "hotel";
     public static final String HOTEL_ID = "hotelId";
+    public static final String HOTEL_COUNTRY = "hotelCountry";
+    public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_NAME = "hotelName";
     public static final String HOTEL_STATUS = "hotelStatus";
     public static final String HOTEL_HOTELS_LIST = "hotelsList";
@@ -55,6 +57,7 @@ public class Parameter {
     public static final String OPERATION_MESSAGE = "operationMessage";
     public static final String CURRENT_PAGE_PATH = "currentPagePath";
     public static final String ANY_HOTEL = "any";
+    public static final String IS_AJAX_REQUEST = "isAjaxRequest";
 
     private Parameter() {
     }

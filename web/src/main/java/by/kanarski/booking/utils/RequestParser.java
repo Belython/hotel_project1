@@ -63,10 +63,9 @@ public class RequestParser {
         Set<String> parameterSet = parameterMap.keySet();
         String[] hotelIdArray = null;
         String[] hotelNameArray = null;
-//        String[] hotelCountryArray;
-//        String[] hotelCityArray;
-//        String[] hotelDiscountArray;
         String[] hotelStatusArray = null;
+        String[] hotelCityArray = null;
+        String[] hotelCountryArray = null;
         for (String parameter : parameterSet) {
             switch (parameter) {
                 case Parameter.HOTEL_ID: {
@@ -81,10 +80,22 @@ public class RequestParser {
                     hotelStatusArray = parameterMap.get(parameter);
                     break;
                 }
+                case Parameter.HOTEL_CITY: {
+                    hotelCityArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_COUNTRY: {
+                    hotelCountryArray = parameterMap.get(parameter);
+                    break;
+                }
             }
         }
         for (int i = 0; i < hotelIdArray.length; i++) {
-            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(hotelIdArray[i]), "country", "city", hotelNameArray[i], hotelStatusArray[i]);
+            String idString = hotelIdArray[i];
+            if (idString == null || idString.equals("")) {
+                idString = "-1";
+            }
+            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(idString), hotelCountryArray[i], hotelCityArray[i], hotelNameArray[i], hotelStatusArray[i]);
             hotelList.add(hotel);
         }
 
@@ -168,6 +179,13 @@ public class RequestParser {
         }
         return payment;
     }
+
+    public static boolean isAjaxRequest(HttpServletRequest request) {
+        String stringValue = request.getParameter(Parameter.IS_AJAX_REQUEST);
+        boolean isAjaxRequest = Boolean.parseBoolean(stringValue);
+        return isAjaxRequest;
+    }
+
 
 
 }

@@ -11,6 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="c3p0-0.9.5.21" level="project" />
+    <orderEntry type="library" name="junit-4.10" level="project" />
+    <orderEntry type="library" name="c3p0-0.9.5.22" level="project" />
     <orderEntry type="module" module-name="entities" />
     <orderEntry type="module" module-name="dao" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
@@ -20,8 +23,5 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.2" level="project" />
     <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
-    <orderEntry type="library" name="c3p0-0.9.5.21" level="project" />
-    <orderEntry type="library" name="junit-4.10" level="project" />
-    <orderEntry type="library" name="c3p0-0.9.5.22" level="project" />
   </component>
 </module>

@@ -28,6 +28,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="c3p0-0.9.5.21" level="project" />
+    <orderEntry type="library" name="junit-4.10" level="project" />
+    <orderEntry type="library" name="c3p0-0.9.5.22" level="project" />
+    <orderEntry type="library" name="JQuery-3.1.0" level="application" />
     <orderEntry type="module" module-name="services" />
     <orderEntry type="module" module-name="entities" />
     <orderEntry type="module" module-name="dao" />
@@ -37,8 +41,7 @@
     <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
-    <orderEntry type="library" name="c3p0-0.9.5.21" level="project" />
-    <orderEntry type="library" name="junit-4.10" level="project" />
-    <orderEntry type="library" name="c3p0-0.9.5.22" level="project" />
+    <orderEntry type="library" name="Maven: javax.json:javax.json-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.0.4" level="project" />
   </component>
 </module>

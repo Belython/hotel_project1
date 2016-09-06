@@ -92,4 +92,16 @@ public class HotelServiceImpl implements IHotelService {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
+
+    public void addList(List<Hotel> hotelList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            HotelDao.getInstance().addList(hotelList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+    }
 }

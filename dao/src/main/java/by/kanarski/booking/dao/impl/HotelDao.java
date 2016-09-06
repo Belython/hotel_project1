@@ -17,8 +17,8 @@ import java.util.List;
 public class HotelDao implements IHotelDao {
 
     private static HotelDao instance = null;
-    private final String ADD_QUERY = "INSERT INTO HOTELS (LOCATION_ID, HOTEL_NAME) VALUES(" +
-            "(SELECT LOCATION_ID FROM LOCATIONS WHERE COUNTRY = ? AND CITY = ?), ?)";
+    private final String ADD_QUERY = "INSERT INTO HOTELS (LOCATION_ID, HOTEL_NAME, HOTEL_STATUS) VALUES(" +
+            "(SELECT LOCATION_ID FROM LOCATIONS WHERE COUNTRY = ? AND CITY = ?), ?, ?)";
     private final String GET_BY_ID_QUERY = "SELECT H.*, L.* " +
             "FROM HOTELS H " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE H.HOTEL_ID = ?";
@@ -50,6 +50,7 @@ public class HotelDao implements IHotelDao {
             stm.setString(1, hotel.getCountry());
             stm.setString(2, hotel.getCity());
             stm.setString(3, hotel.getName());
+            stm.setString(4, hotel.getStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
@@ -143,5 +144,23 @@ public class HotelDao implements IHotelDao {
             ClosingUtil.close(resultSet);
         }
         return hotel;
+    }
+
+    public void addList(List<Hotel> hotelList) throws DaoException {
+        Connection connection = ConnectionUtil.getConnection();
+        try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
+                Statement.RETURN_GENERATED_KEYS)) {
+            for (Hotel hotel: hotelList) {
+                stm.setString(1, hotel.getCountry());
+                stm.setString(2, hotel.getCity());
+                stm.setString(3, hotel.getName());
+                stm.setString(4, hotel.getStatus());
+                stm.addBatch();
+            }
+            stm.executeBatch();
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_HOTEL_EXCEPTION);
+            throw new DaoException(DaoMessages.ADD_HOTEL_EXCEPTION, e);
+        }
     }
 }
