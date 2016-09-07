@@ -176,8 +176,7 @@ public class RequestParser {
         return payment;
     }
 
-    public static boolean isAjaxRequest(HttpServletRequest request) {
-        String stringValue = request.getParameter(Parameter.IS_AJAX_REQUEST);
+    public static boolean isAjaxRequest(HttpServletRequest request) {String stringValue = request.getParameter(Parameter.IS_AJAX_REQUEST);
         boolean isAjaxRequest = Boolean.parseBoolean(stringValue);
         return isAjaxRequest;
     }
