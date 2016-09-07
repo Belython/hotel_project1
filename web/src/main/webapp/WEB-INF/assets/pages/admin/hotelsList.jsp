@@ -13,9 +13,24 @@
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <%@include file="sideBar/sideBar.jsp"%>
+<form name="sortForm" method="POST" action="controller">
+    <input type="hidden" name="command" value="sortHotelsTable"/>
+    <select name="sortingOption">
+        <option value="hotelName">Название отеля</option>
+        <option value="hotelCountry">Страна</option>
+        <option value="hotelCity">Город</option>
+    </select>
+    <select name="sortingDirection">
+        <option value="ascending">По возрастанию</option>
+        <option value="descending">По убыванию</option>
+    </select>
+    <input type="submit" value="sort">
+</form>
+
 <form name="hotelForm" method="POST" action="controller">
     <input type="hidden" name="command" value="alterHotels"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
+
     <table>
         <tr>
             <th>country</th>

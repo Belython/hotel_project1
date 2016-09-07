@@ -42,7 +42,7 @@ public class SelectHotelCommand extends AbstractCommand {
                 servletAction.setCommandName(CommandType.SELECTROOM.name());
             } else {
                 List<Room> availableRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
-                session.setAttribute(Parameter.HOTEL_HOTELS_LIST, getHotels(availableRooms));
+                session.setAttribute(Parameter.HOTEL_LIST, getHotels(availableRooms));
                 page = PagePath.CLIENT_SELECT_HOTEL_PATH;
                 servletAction = ServletAction.FORWARD_PAGE;
             }

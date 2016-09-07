@@ -1,10 +1,7 @@
 package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
 
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.MessageConstants;
-import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.constants.Role;
+import by.kanarski.booking.constants.*;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
@@ -31,30 +28,25 @@ public class GetHotelsCommand implements ICommand {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(Role.ADMINISTRATOR)) {
                 servletAction = ServletAction.FORWARD_PAGE;
-                List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
-                request.setAttribute(Parameter.HOTEL_HOTELS_LIST, hotelList);
+                List<Hotel> hotelList = null;
                 page = PagePath.HOTEL_LIST_PAGE_PATH;
-
-
-
-
                 String searchParameter = request.getParameter(Parameter.SEARCH_PARAMETER);
                 String searchParameterValue = request.getParameter(Parameter.SEARCH_PARAMETER_VALUE);
-                switch (searchParameterValue) {
-                    case Parameter.HOTEL_COUNTRY: {
-
+                switch (searchParameter) {
+                    case Value.HOTEL_COUNTRY: {
+                        hotelList = HotelServiceImpl.getInstance().getByCountry(searchParameterValue);
                         break;
                     }
-                    case Parameter.HOTEL_CITY: {
-
+                    case Value.HOTEL_CITY: {
+                        hotelList = HotelServiceImpl.getInstance().getByCity(searchParameterValue);
                         break;
                     }
-                    case Parameter.ALL_HOTELS: {
-
+                    case Value.ALL_HOTELS: {
+                        hotelList = HotelServiceImpl.getInstance().getAll();
                         break;
                     }
                 }
-
+                session.setAttribute(Parameter.HOTEL_LIST, hotelList);
 
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");

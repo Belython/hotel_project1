@@ -4,6 +4,7 @@ import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.AlterHotelsCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.GetHotelsCommand;
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.SortHotelsTableCommand;
 import by.kanarski.booking.commands.impl.user.*;
 
 public enum CommandType {
@@ -12,7 +13,7 @@ public enum CommandType {
     SETLOCALE, CANCELACTION,
 
     //admin commands
-    GOTOADMINPAGE, GETHOTELS, ALTERHOTELS;
+    GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -60,6 +61,8 @@ public enum CommandType {
 
             case ALTERHOTELS:
                 return new AlterHotelsCommand();
+            case SORTHOTELSTABLE:
+                return new SortHotelsTableCommand();
             default:
                 return new LoginUserCommand();
             //throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

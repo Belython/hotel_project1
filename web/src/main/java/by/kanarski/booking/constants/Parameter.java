@@ -40,9 +40,8 @@ public class Parameter {
     public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_NAME = "hotelName";
     public static final String HOTEL_STATUS = "hotelStatus";
-    public static final String HOTEL_HOTELS_LIST = "hotelsList";
+    public static final String HOTEL_LIST = "hotelsList";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
-    public static final String ALL_HOTELS = "allHotels";
 
     //Locale parameters
 
@@ -61,6 +60,12 @@ public class Parameter {
     public static final String IS_AJAX_REQUEST = "isAjaxRequest";
     public static final String SEARCH_PARAMETER = "searchParameter";
     public static final String SEARCH_PARAMETER_VALUE = "searchParameterValue";
+
+    //Sort parameters
+    public static final String SORTING_DIRECTION = "sortingDirection";
+    public static final String SORTING_OPTION = "sortingOption";
+
+
 
     private Parameter() {
     }

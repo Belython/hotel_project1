@@ -1,0 +1,101 @@
+package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
+
+import by.kanarski.booking.commands.AbstractCommand;
+import by.kanarski.booking.constants.PagePath;
+import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.constants.Value;
+import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.requestHandler.ServletAction;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class SortHotelsTableCommand extends AbstractCommand {
+
+    @Override
+    public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
+        ServletAction servletAction = ServletAction.FORWARD_PAGE;
+        HttpSession session = request.getSession();
+        String sortingOption = request.getParameter(Parameter.SORTING_OPTION);
+        String sortingDirection = request.getParameter(Parameter.SORTING_DIRECTION);
+        List<Hotel> hotelList = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
+        Comparator<Hotel> sortBy = new SortBy(sortingOption, sortingDirection);
+        hotelList.sort(sortBy);
+        session.setAttribute(Parameter.HOTEL_LIST, hotelList);
+        String page = PagePath.HOTEL_LIST_PAGE_PATH;
+        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        servletAction.setPage(page);
+        return servletAction;
+    }
+
+    private void sortHotelsTable(HttpSession session, String sortingOption, String sortingDirection) {
+        List<Hotel> hotelList = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
+        Comparator<Hotel> sortBy = new SortBy(sortingOption, sortingDirection);
+        hotelList.sort(sortBy);
+        session.setAttribute(Parameter.HOTEL_LIST, hotelList);
+    }
+
+    private class SortBy implements Comparator<Hotel> {
+
+        boolean ascending;
+        String sortingOption;
+
+        SortBy(String sortingOption, String sortingDirection) {
+            ascending = sortingDirection.equals(Value.ACENDING);
+            this.sortingOption = sortingOption;
+        }
+
+        @Override
+        public int compare(Hotel hotel1, Hotel hotel2) {
+            int result;
+            String hotel1Parameter;
+            String hotel2Parameter;
+            switch (sortingOption) {
+                case Value.HOTEL_NAME: {
+                    hotel1Parameter = hotel1.getName();
+                    hotel2Parameter = hotel2.getName();
+                    break;
+                }
+                case Value.HOTEL_COUNTRY: {
+                    hotel1Parameter = hotel1.getCountry();
+                    hotel2Parameter = hotel2.getCountry();
+                    break;
+                }
+                case Value.HOTEL_CITY: {
+                    hotel1Parameter = hotel1.getCity();
+                    hotel2Parameter = hotel2.getCity();
+                    break;
+                }
+                default: {
+                    hotel1Parameter = hotel1.getName();
+                    hotel2Parameter = hotel2.getName();
+                }
+            }
+
+            int rez = hotel1Parameter.compareTo(hotel2Parameter);
+            if (rez < 0) {
+                if (ascending) {
+                    result = -1;
+                } else {
+                    result = 0;
+                }
+            } else {
+                if (ascending) {
+                    result = 0;
+                } else {
+                    result = -1;
+                }
+            }
+            return result;
+        }
+    }
+}
+
+
+
+
+

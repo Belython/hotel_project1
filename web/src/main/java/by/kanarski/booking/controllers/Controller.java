@@ -3,7 +3,7 @@
  */
 package by.kanarski.booking.controllers;
 
-import by.kanarski.booking.constants.AttributeValue;
+import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.requestHandler.RequestHandler;
 
@@ -34,6 +34,6 @@ public class Controller extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
-        context.setAttribute(Parameter.LOCALE_LIST, AttributeValue.LOCALE_LIST);
+        context.setAttribute(Parameter.LOCALE_LIST, Value.LOCALE_LIST);
     }
 }

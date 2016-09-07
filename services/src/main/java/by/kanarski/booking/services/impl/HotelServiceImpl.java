@@ -104,4 +104,32 @@ public class HotelServiceImpl implements IHotelService {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
+
+    public List<Hotel> getByCountry(String country) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        List<Hotel> hotelList = new ArrayList<>();
+        try {
+            connection.setAutoCommit(false);
+            hotelList = HotelDao.getInstance().getByCountry(country);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return hotelList;
+    }
+
+    public List<Hotel> getByCity(String city) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        List<Hotel> hotelList = new ArrayList<>();
+        try {
+            connection.setAutoCommit(false);
+            hotelList = HotelDao.getInstance().getByCity(city);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return hotelList;
+    }
 }

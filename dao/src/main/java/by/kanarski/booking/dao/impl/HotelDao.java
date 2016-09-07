@@ -30,6 +30,12 @@ public class HotelDao implements IHotelDao {
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE H.HOTEL_NAME = ?";
     private final String UPDATE_HOTEL_QUERY = "UPDATE HOTELS " +
             "SET HOTEL_NAME = ?, HOTEL_STATUS = ? WHERE HOTEL_ID = ?";
+    private final String GET_BY_COUNTRY_QUERY = "SELECT H.*, L.* " +
+            "FROM HOTELS H " +
+            "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE L.COUNTRY = ?";
+    private final String GET_BY_CITY_QUERY = "SELECT H.*, L.* " +
+            "FROM HOTELS H " +
+            "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE L.CITY = ?";
 
     private HotelDao() {
     }
@@ -144,6 +150,44 @@ public class HotelDao implements IHotelDao {
             ClosingUtil.close(resultSet);
         }
         return hotel;
+    }
+
+    public List<Hotel> getByCountry(String country) throws DaoException {
+        List<Hotel> hotelList = new ArrayList<>();
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_BY_COUNTRY_QUERY)) {
+            stm.setString(1, country);
+            resultSet = stm.executeQuery();
+            while (resultSet.next()) {
+                hotelList.add(EntityParser.parseHotel(resultSet));
+            }
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_HOTEL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_HOTEL_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return hotelList;
+    }
+
+    public List<Hotel> getByCity(String city) throws DaoException {
+        List<Hotel> hotelList = new ArrayList<>();
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_BY_CITY_QUERY)) {
+            stm.setString(1, city);
+            resultSet = stm.executeQuery();
+            while (resultSet.next()) {
+                hotelList.add(EntityParser.parseHotel(resultSet));
+            }
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_HOTEL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_HOTEL_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return hotelList;
     }
 
     public void addList(List<Hotel> hotelList) throws DaoException {
