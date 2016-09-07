@@ -1,8 +1,8 @@
 package by.kanarski.booking.commands.factory;
 
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.commands.impl.admin.AlterHotelsCommand;
-import by.kanarski.booking.commands.impl.admin.GetHotelsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.AlterHotelsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.GetHotelsCommand;
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
 import by.kanarski.booking.commands.impl.user.*;
 

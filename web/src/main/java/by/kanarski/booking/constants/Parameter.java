@@ -42,6 +42,7 @@ public class Parameter {
     public static final String HOTEL_STATUS = "hotelStatus";
     public static final String HOTEL_HOTELS_LIST = "hotelsList";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
+    public static final String ALL_HOTELS = "allHotels";
 
     //Locale parameters
 
@@ -58,6 +59,8 @@ public class Parameter {
     public static final String CURRENT_PAGE_PATH = "currentPagePath";
     public static final String ANY_HOTEL = "any";
     public static final String IS_AJAX_REQUEST = "isAjaxRequest";
+    public static final String SEARCH_PARAMETER = "searchParameter";
+    public static final String SEARCH_PARAMETER_VALUE = "searchParameterValue";
 
     private Parameter() {
     }

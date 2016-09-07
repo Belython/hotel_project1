@@ -1,4 +1,4 @@
-package by.kanarski.booking.commands.impl.admin;
+package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.MessageConstants;
@@ -34,6 +34,28 @@ public class GetHotelsCommand implements ICommand {
                 List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
                 request.setAttribute(Parameter.HOTEL_HOTELS_LIST, hotelList);
                 page = PagePath.HOTEL_LIST_PAGE_PATH;
+
+
+
+
+                String searchParameter = request.getParameter(Parameter.SEARCH_PARAMETER);
+                String searchParameterValue = request.getParameter(Parameter.SEARCH_PARAMETER_VALUE);
+                switch (searchParameterValue) {
+                    case Parameter.HOTEL_COUNTRY: {
+
+                        break;
+                    }
+                    case Parameter.HOTEL_CITY: {
+
+                        break;
+                    }
+                    case Parameter.ALL_HOTELS: {
+
+                        break;
+                    }
+                }
+
+
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
                 servletAction = ServletAction.NO_ACTION;

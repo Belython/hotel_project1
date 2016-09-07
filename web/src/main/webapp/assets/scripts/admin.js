@@ -2,7 +2,7 @@ function main() {
     $("#addBtn").click(function () {
         var tableRow = "\n" +
             "<tr> " +
-            "<input type=\"hidden\" name=\"hotelId\" value=\"\"> " +
+            "<input type=\"hidden\" name=\"hotelId\" value=\"-1\"> " +
             "<td><input type=\"text\" name=\"hotelCountry\" placeholder=\"hotelCountry\"></td> " +
             "<td><input type=\"text\" name=\"hotelCity\" placeholder=\"hotelCity\"></td> " +
             "<td><input type=\"text\" name=\"hotelName\" placeholder=\"hotelName\"></td> " +

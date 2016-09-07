@@ -91,11 +91,7 @@ public class RequestParser {
             }
         }
         for (int i = 0; i < hotelIdArray.length; i++) {
-            String idString = hotelIdArray[i];
-            if (idString == null || idString.equals("")) {
-                idString = "-1";
-            }
-            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(idString), hotelCountryArray[i], hotelCityArray[i], hotelNameArray[i], hotelStatusArray[i]);
+            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(hotelIdArray[i]), hotelCountryArray[i], hotelCityArray[i], hotelNameArray[i], hotelStatusArray[i]);
             hotelList.add(hotel);
         }
 
