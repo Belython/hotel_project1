@@ -30,7 +30,6 @@
 <form name="hotelForm" method="POST" action="controller">
     <input type="hidden" name="command" value="alterHotels"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
-
     <table>
         <tr>
             <th>country</th>

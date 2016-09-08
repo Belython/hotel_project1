@@ -18,4 +18,5 @@ public class Value {
     public static final String HOTEL_COUNTRY = "hotelCountry";
     public static final String HOTEL_NAME = "hotelName";
 
+
 }
