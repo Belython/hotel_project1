@@ -10,8 +10,10 @@ import by.kanarski.booking.utils.ClosingUtil;
 import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.EntityParser;
 
+import java.lang.reflect.Parameter;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HotelDao implements IHotelDao {
@@ -36,6 +38,9 @@ public class HotelDao implements IHotelDao {
     private final String GET_BY_CITY_QUERY = "SELECT H.*, L.* " +
             "FROM HOTELS H " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID WHERE L.CITY = ?";
+    private final String GET_FIELDS_VALUES = "SELECT H.HOTEL_NAME, L.COUNTRY, L.CITY " +
+            "FROM HOTELS H " +
+            "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID";
 
     private HotelDao() {
     }
@@ -53,8 +58,8 @@ public class HotelDao implements IHotelDao {
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
-            stm.setString(1, hotel.getCountry());
-            stm.setString(2, hotel.getCity());
+            stm.setString(1, hotel.getLocation().getCountry());
+            stm.setString(2, hotel.getLocation().getCity());
             stm.setString(3, hotel.getName());
             stm.setString(4, hotel.getStatus());
             stm.executeUpdate();
@@ -195,8 +200,8 @@ public class HotelDao implements IHotelDao {
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
             for (Hotel hotel: hotelList) {
-                stm.setString(1, hotel.getCountry());
-                stm.setString(2, hotel.getCity());
+                stm.setString(1, hotel.getLocation().getCountry());
+                stm.setString(2, hotel.getLocation().getCity());
                 stm.setString(3, hotel.getName());
                 stm.setString(4, hotel.getStatus());
                 stm.addBatch();
@@ -206,5 +211,24 @@ public class HotelDao implements IHotelDao {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_HOTEL_EXCEPTION);
             throw new DaoException(DaoMessages.ADD_HOTEL_EXCEPTION, e);
         }
+    }
+
+    public HashMap<String, List<String>> getFieldsValues() throws DaoException {
+        HashMap<String, List<String>> fieldsValuesMap = new HashMap<>();
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_ALL_QUERY)) {
+            resultSet = stm.executeQuery();
+            while (resultSet.next()) {
+                fieldsValuesMap.put()
+                hotelList.add(EntityParser.parseHotel(resultSet));
+            }
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_HOTEL_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_HOTEL_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return hotelList;
     }
 }

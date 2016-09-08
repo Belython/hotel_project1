@@ -77,14 +77,14 @@ public class SelectHotelCommand extends AbstractCommand {
                 String nextHotelName = roomList.get(i + 1).getHotel().getName();
                 if (!curHotelName.equals(nextHotelName)) {
                     Hotel hotel = roomList.get(i).getHotel();
-                    HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getCountry(), hotel.getCity(), hotel.getName(),
+                    HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getLocation(), hotel.getName(),
                             roomList.subList(separator, i + 1));
                     hotelList.add(hotelDto);
                     separator = i + 1;
                 }
             } else {
                 Hotel hotel = roomList.get(i).getHotel();
-                HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getCountry(), hotel.getCity(), hotel.getName(),
+                HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getLocation(), hotel.getName(),
                         roomList.subList(separator, i + 1));
                 hotelList.add(hotelDto);
                 separator = i + 1;

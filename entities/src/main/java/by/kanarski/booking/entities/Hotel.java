@@ -3,8 +3,7 @@ package by.kanarski.booking.entities;
 public class Hotel {
 
     private long id;
-    private String country;
-    private String city;
+    private Location location;
     private String name;
     private double discount;
     private String status;
@@ -17,20 +16,12 @@ public class Hotel {
         this.id = id;
     }
 
-    public String getCountry() {
-        return country;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getName() {

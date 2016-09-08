@@ -18,18 +18,18 @@ public class RequestParser {
     }
 
     public static User parseUser(ServletRequest request) {
-        long id = -1;
-        if (request.getParameter(Parameter.USER_ID) != null) {
-            id = Long.valueOf(request.getParameter(Parameter.USER_ID));
-        }
+//        long id = -1;
+//        if (request.getParameter(Parameter.USER_ID) != null) {
+//            id = Long.valueOf(request.getParameter(Parameter.USER_ID));
+//        }
         String firstName = request.getParameter(Parameter.USER_FIRST_NAME);
         String lastName = request.getParameter(Parameter.USER_LAST_NAME);
         String email = request.getParameter(Parameter.USER_EMAIL);
         String login = request.getParameter(Parameter.USER_LOGIN);
         String password = request.getParameter(Parameter.USER_PASSWORD);
         String role = request.getParameter(Parameter.USER_ROLE);
-        String status = request.getParameter(Parameter.USER_STATUS);
-        User user = EntityBuilder.buildUser(id, firstName, lastName, email, login, password, role, status);
+//        String status = request.getParameter(Parameter.USER_STATUS);
+        User user = EntityBuilder.buildUser(firstName, lastName, email, login, password, role);
         return user;
     }
 
@@ -46,14 +46,14 @@ public class RequestParser {
     }
 
     public static Hotel parseHotel(ServletRequest request) {
-        long hotelId = -1;
-        if (request.getParameter(Parameter.HOTEL_ID) != null) {
-            hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
-        }
+//        long hotelId = -1;
+//        if (request.getParameter(Parameter.HOTEL_ID) != null) {
+//            hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
+//        }
         String country = request.getParameter(Parameter.LOCATION_COUNTRY);
         String city = request.getParameter(Parameter.LOCATION_CITY);
         String hotelName = request.getParameter(Parameter.HOTEL_NAME);
-        Hotel hotel = EntityBuilder.buildHotel(hotelId, country, city, hotelName, "status");
+        Hotel hotel = EntityBuilder.buildHotel(country, city, hotelName);
         return hotel;
     }
 

@@ -12,31 +12,75 @@ public class EntityBuilder {
 
     public static User buildUser(long userId, String firstName, String lastName, String email, String login,
                                  String password, String role, String userStatus) {
-        User user = new User();
+        User user = buildUser(firstName, lastName, email, login, password, role);
         user.setId(userId);
+        user.setStatus(userStatus);
+        return user;
+    }
+
+    public static User buildUser(String firstName, String lastName, String email, String login,
+                                 String password, String role, String userStatus) {
+        User user = buildUser(firstName, lastName, email, login, password, role);
+        user.setStatus(userStatus);
+        return user;
+    }
+
+    public static User buildUser(String firstName, String lastName, String email, String login,
+                                 String password, String role) {
+        User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
         user.setLogin(login);
         user.setPassword(password);
         user.setRole(role);
-        user.setStatus(userStatus);
         return user;
     }
 
+    public static Location buildLocation(long locationId, String country, String city, String locationStatus) {
+        Location location = buildLocation(country, city);
+        location.setId(locationId);
+        location.setStatus(locationStatus);
+        return location;
+    }
+
+    public static Location buildLocation(String country, String city, String locationStatus) {
+        Location location = buildLocation(country, city);
+        location.setStatus(locationStatus);
+        return location;
+    }
+
+    public static Location buildLocation(String country, String city) {
+        Location location = new Location();
+        location.setCountry(country);
+        location.setCity(city);
+        return location;
+    }
+
     public static Hotel buildHotel(long hotelId, String hotelCountry, String hotelCity, String hotelName, String hotelStatus) {
-        Hotel hotel = new Hotel();
+        Hotel hotel = buildHotel(hotelCountry, hotelCity, hotelName);
         hotel.setId(hotelId);
-        hotel.setCountry(hotelCountry);
-        hotel.setCity(hotelCity);
-        hotel.setName(hotelName);
         hotel.setStatus(hotelStatus);
+        return hotel;
+    }
+
+    public static Hotel buildHotel(String hotelCountry, String hotelCity, String hotelName, String hotelStatus) {
+        Hotel hotel = buildHotel(hotelCountry, hotelCity, hotelName);
+        hotel.setStatus(hotelStatus);
+        return hotel;
+    }
+
+    public static Hotel buildHotel(String hotelCountry, String hotelCity, String hotelName) {
+        Location location = buildLocation(hotelCountry, hotelCity);
+        Hotel hotel = new Hotel();
+        hotel.setLocation(location);
+        hotel.setName(hotelName);
         return hotel;
     }
 
     public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, int roomPricePerNight,
                                          List<String> facilities, String roomTypeStatus) {
-        RoomType roomType = new RoomType();
+        RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
         roomType.setId(roomTypeId);
         roomType.setName(roomTypeName);
         roomType.setMaxPersons(maxPersons);
@@ -46,53 +90,72 @@ public class EntityBuilder {
         return roomType;
     }
 
+    public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
+                                         List<String> facilities, String roomTypeStatus) {
+        RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
+        roomType.setName(roomTypeName);
+        roomType.setMaxPersons(maxPersons);
+        roomType.setRoomPricePerNight(roomPricePerNight);
+        roomType.setFacilities(facilities);
+        roomType.setStatus(roomTypeStatus);
+        return roomType;
+    }
+
+    public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
+                                         List<String> facilities) {
+        RoomType roomType = new RoomType();
+        roomType.setName(roomTypeName);
+        roomType.setMaxPersons(maxPersons);
+        roomType.setRoomPricePerNight(roomPricePerNight);
+        roomType.setFacilities(facilities);
+        return roomType;
+    }
+
+
     public static Room buildRoom(long roomId, Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
                                  long bookingEndDate, String roomStatus) {
-        Room room = new Room();
+        Room room = buildRoom(hotel, roomType, roomNumber, bookingStartDate, bookingEndDate);
         room.setId(roomId);
+        room.setStatus(roomStatus);
+        return room;
+    }
+
+    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
+                                 long bookingEndDate, String roomStatus) {
+        Room room = buildRoom(hotel, roomType, roomNumber, bookingStartDate, bookingEndDate);
+        room.setStatus(roomStatus);
+        return room;
+    }
+
+    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
+                                 long bookingEndDate) {
+        Room room = new Room();
         room.setHotel(hotel);
         room.setRoomType(roomType);
         room.setRoomNumber(roomNumber);
         room.setBookingStartDate(bookingStartDate);
         room.setBookingEndDate(bookingEndDate);
-        room.setStatus(roomStatus);
         return room;
     }
 
-//    public static Bill buildBill(long billId, long userId, String userFirstName, String userLastName, String userEmail,
-//                                 String userLogin, String userPassword, String userRole, String userStatus,
-//                                 int totalPersons, long checkInDate, long checkOutDate, List<Long> roomIdList,
-//                                 int paymentAmount, String billStatus) {
-//        List<Room> roomList = new ArrayList<>();
-//        for (Long roomId: roomIdList) {
-//            Room room = new Room();
-//            room.setId(roomId.longValue());
-//            roomList.add(room);
-//        }
-//        User user = buildUser(userId, userFirstName, userLastName, userEmail, userLogin, userPassword, userRole, userStatus);
-//        Bill bill = new Bill();
-//        bill.setId(billId);
-//        bill.setUser(user);
-//        bill.setTotalPersons(totalPersons);
-//        bill.setCheckInDate(checkInDate);
-//        bill.setCheckOutDate(checkOutDate);
-//        bill.setRoomList(roomList);
-//        bill.setPaymentAmount(paymentAmount);
-//        bill.setStatus(billStatus);
-//        return bill;
-//    }
 
     public static Bill buildBill(long billId, User user, int totalPersons, long checkInDate, long checkOutDate,
                                  List<Long> roomIdList, int paymentAmount, String billStatus) {
-        Bill bill = new Bill();
+        Bill bill = buildBill(user, totalPersons, checkInDate, checkOutDate, roomIdList, paymentAmount);
         bill.setId(billId);
+        bill.setStatus(billStatus);
+        return bill;
+    }
+
+    public static Bill buildBill(User user, int totalPersons, long checkInDate, long checkOutDate,
+                                 List<Long> roomIdList, int paymentAmount) {
+        Bill bill = new Bill();
         bill.setUser(user);
         bill.setTotalPersons(totalPersons);
         bill.setCheckInDate(checkInDate);
         bill.setCheckOutDate(checkOutDate);
         bill.setRoomIdList(roomIdList);
         bill.setPaymentAmount(paymentAmount);
-        bill.setStatus(billStatus);
         return bill;
     }
 

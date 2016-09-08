@@ -36,8 +36,7 @@ public class SelectRoomCommand extends AbstractCommand {
                 hotelRooms = RoomServiceImpl.getInstance().getByHotelId(hotel.getId());
             }
 
-            HotelDto selectedHotelDto = new HotelDto(hotel.getId(), hotel.getCountry(), hotel.getCity(),
-                    hotel.getName(), hotelRooms);
+            HotelDto selectedHotelDto = new HotelDto(hotel.getId(), hotel.getLocation(), hotel.getName(), hotelRooms);
             session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL, selectedHotelDto);
             page = PagePath.CLIENT_SELECT_ROOM_PATH;
         } catch (ServiceException e) {

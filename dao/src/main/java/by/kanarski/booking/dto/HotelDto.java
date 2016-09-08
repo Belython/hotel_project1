@@ -2,6 +2,7 @@ package by.kanarski.booking.dto;
 
 import by.kanarski.booking.constants.Statuses;
 import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.entities.Location;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.utils.EntityBuilder;
@@ -13,18 +14,16 @@ import java.util.List;
 public class HotelDto {
 
     private long hotelId;
-    private String hotelCountry;
-    private String hotelCity;
+    private Location location;
     private String hotelName;
     private List<Room> roomList = new ArrayList<>();
     private List<RoomType> roomTypeList = new ArrayList<>();
     private HashMap<RoomType, Integer> roomTypesCount = new HashMap<>();
     private int roomsCount;
 
-    public HotelDto(long hotelId, String hotelCountry, String hotelCity, String hotelName, List<Room> roomList) {
+    public HotelDto(long hotelId, Location location, String hotelName, List<Room> roomList) {
         this.hotelId = hotelId;
-        this.hotelCountry = hotelCountry;
-        this.hotelCity = hotelCity;
+        this.location = location;
         this.hotelName = hotelName;
         this.roomList = roomList;
         this.roomsCount = roomList.size();
@@ -39,20 +38,12 @@ public class HotelDto {
         this.hotelId = hotelId;
     }
 
-    public String getHotelCountry() {
-        return hotelCountry;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setHotelCountry(String hotelCountry) {
-        this.hotelCountry = hotelCountry;
-    }
-
-    public String getHotelCity() {
-        return hotelCity;
-    }
-
-    public void setHotelCity(String hotelCity) {
-        this.hotelCity = hotelCity;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getHotelName() {
@@ -122,7 +113,7 @@ public class HotelDto {
     }
 
     public Hotel getHotel() {
-        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName, Statuses.HOTEL_AVAILABLE);
+        Hotel hotel = EntityBuilder.buildHotel(location.getCountry(), location.getCity(), hotelName);
         return hotel;
     }
 
