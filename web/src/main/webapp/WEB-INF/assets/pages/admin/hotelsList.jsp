@@ -27,6 +27,20 @@
     <input type="submit" value="sort">
 </form>
 
+<form name="newEntityForm" method="POST" action="controller">
+    <input type="hidden" name="command" value="addNewEntity"/>
+    <c:set var="entityFields" value="${entityFieldMap.keySet()}"/>
+    <c:forEach var="entityField" items="${entityFields}">
+        <c:set var="fieldValues" value="${entityFieldMap.get(entityField)}"/>
+        ${entityField}
+        <select name="${entityField}">
+            <c:forEach var="fieldValue" items="${fieldValues}">
+                <option value="${fieldValue}">${fieldValue}</option>
+            </c:forEach>
+        </select>
+    </c:forEach>
+</form>
+
 <form name="hotelForm" method="POST" action="controller">
     <input type="hidden" name="command" value="alterHotels"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
