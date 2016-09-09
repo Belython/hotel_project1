@@ -7,12 +7,14 @@ import java.util.List;
  */
 public class FieldNames {
 
+    //Hotel fields
+
     public static final String HOTEL_ID = "hotelId";
     public static final String HOTEL_COUNTRY = "hotelCountry";
     public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_NAME = "hotelName";
     public static final String HOTEL_STATUS = "hotelStatus";
-    public static final String HOTEL_LIST = "hotelsList";
-    public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
+
+
 
 }

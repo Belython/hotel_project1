@@ -29,9 +29,9 @@
 
 <form name="newEntityForm" method="POST" action="controller">
     <input type="hidden" name="command" value="addNewEntity"/>
-    <c:set var="entityFields" value="${entityFieldMap.keySet()}"/>
+    <c:set var="entityFields" value="${fieldValuesMap.keySet()}"/>
     <c:forEach var="entityField" items="${entityFields}">
-        <c:set var="fieldValues" value="${entityFieldMap.get(entityField)}"/>
+        <c:set var="fieldValues" value="${fieldValuesMap.get(entityField)}"/>
         ${entityField}
         <select name="${entityField}">
             <c:forEach var="fieldValue" items="${fieldValues}">

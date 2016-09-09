@@ -1,6 +1,8 @@
 package by.kanarski.booking.dao.impl;
 
+import by.kanarski.booking.constants.ColumnName;
 import by.kanarski.booking.constants.DaoMessages;
+import by.kanarski.booking.constants.FieldNames;
 import by.kanarski.booking.dao.interfaces.IHotelDao;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
@@ -12,9 +14,7 @@ import by.kanarski.booking.utils.EntityParser;
 
 import java.lang.reflect.Parameter;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class HotelDao implements IHotelDao {
 
@@ -213,22 +213,29 @@ public class HotelDao implements IHotelDao {
         }
     }
 
-    public HashMap<String, List<String>> getFieldsValues() throws DaoException {
-        HashMap<String, List<String>> fieldsValuesMap = new HashMap<>();
+    public HashMap<String, Set<String>> getFieldsValues() throws DaoException {
+        HashMap<String, Set<String>> fieldsValuesMap = new HashMap<>();
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_ALL_QUERY)) {
+            Set<String> countrySet = new HashSet<>();
+            Set<String> citySet = new HashSet<>();
+            Set<String> nameSet = new HashSet<>();
             resultSet = stm.executeQuery();
             while (resultSet.next()) {
-                fieldsValuesMap.put()
-                hotelList.add(EntityParser.parseHotel(resultSet));
+                countrySet.add(resultSet.getString(ColumnName.LOCATION_COUNTRY));
+                citySet.add(resultSet.getString(ColumnName.LOCATION_CITY));
+                nameSet.add(resultSet.getString(ColumnName.HOTEL_NAME));
             }
+            fieldsValuesMap.put(FieldNames.HOTEL_COUNTRY, countrySet);
+            fieldsValuesMap.put(FieldNames.HOTEL_CITY, citySet);
+            fieldsValuesMap.put(FieldNames.HOTEL_NAME, nameSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_HOTEL_EXCEPTION);
             throw new DaoException(DaoMessages.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
-        return hotelList;
+        return fieldsValuesMap;
     }
 }

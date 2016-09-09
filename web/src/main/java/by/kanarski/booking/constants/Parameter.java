@@ -60,8 +60,11 @@ public class Parameter {
     public static final String IS_AJAX_REQUEST = "isAjaxRequest";
     public static final String SEARCH_PARAMETER = "searchParameter";
     public static final String SEARCH_PARAMETER_VALUE = "searchParameterValue";
+    public static final String FIELD_VALUES_MAP = "fieldValuesMap";
+
 
     //Sort parameters
+
     public static final String SORTING_DIRECTION = "sortingDirection";
     public static final String SORTING_OPTION = "sortingOption";
 

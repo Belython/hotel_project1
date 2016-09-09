@@ -15,7 +15,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 
 public class HotelServiceImpl implements IHotelService {
@@ -40,7 +42,7 @@ public class HotelServiceImpl implements IHotelService {
     @Override
     public List<Hotel> getAll() throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Hotel> hotelList = new ArrayList<>();
+        List<Hotel> hotelList = null;
         try {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getAll();
@@ -107,7 +109,7 @@ public class HotelServiceImpl implements IHotelService {
 
     public List<Hotel> getByCountry(String country) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Hotel> hotelList = new ArrayList<>();
+        List<Hotel> hotelList = null;
         try {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getByCountry(country);
@@ -121,7 +123,7 @@ public class HotelServiceImpl implements IHotelService {
 
     public List<Hotel> getByCity(String city) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Hotel> hotelList = new ArrayList<>();
+        List<Hotel> hotelList = null;
         try {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getByCity(city);
@@ -131,5 +133,19 @@ public class HotelServiceImpl implements IHotelService {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotelList;
+    }
+
+    public HashMap<String, Set<String>> getFieldValues() throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        HashMap<String, Set<String>> fieldsValuesMap = null;
+        try {
+            connection.setAutoCommit(false);
+            fieldsValuesMap = HotelDao.getInstance().getFieldsValues();
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return fieldsValuesMap;
     }
 }

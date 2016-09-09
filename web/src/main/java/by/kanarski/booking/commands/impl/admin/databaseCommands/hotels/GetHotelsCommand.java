@@ -12,7 +12,9 @@ import by.kanarski.booking.services.impl.HotelServiceImpl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Дмитрий on 01.09.2016.
@@ -46,8 +48,9 @@ public class GetHotelsCommand implements ICommand {
                         break;
                     }
                 }
+                HashMap<String, Set<String>> fieldsValuesMap = HotelServiceImpl.getInstance().getFieldValues();
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
-
+                session.setAttribute(Parameter.FIELD_VALUES_MAP, fieldsValuesMap);
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
                 servletAction = ServletAction.NO_ACTION;
