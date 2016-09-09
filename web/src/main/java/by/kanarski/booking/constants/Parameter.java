@@ -40,7 +40,7 @@ public class Parameter {
     public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_NAME = "hotelName";
     public static final String HOTEL_STATUS = "hotelStatus";
-    public static final String HOTEL_LIST = "hotelsList";
+    public static final String HOTEL_LIST = "hotelList";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
 
     //Locale parameters

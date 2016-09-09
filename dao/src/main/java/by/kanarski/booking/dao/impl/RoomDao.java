@@ -142,8 +142,8 @@ public class RoomDao implements IRoomDao {
         List<Room> rooms = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_AVAILABLE_ROOMS_QUERY)) {
-            stm.setString(1, orderDto.getHotel().getCountry());
-            stm.setString(2, orderDto.getHotel().getCity());
+            stm.setString(1, orderDto.getHotel().getLocation().getCountry());
+            stm.setString(2, orderDto.getHotel().getLocation().getCity());
             stm.setString(3, orderDto.getHotel().getName());
             stm.setInt(4, orderDto.getTotalPersons());
             stm.setLong(5, orderDto.getCheckInDate());

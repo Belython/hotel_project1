@@ -61,13 +61,13 @@ public class SortHotelsTableCommand extends AbstractCommand {
                     break;
                 }
                 case Value.HOTEL_COUNTRY: {
-                    hotel1Parameter = hotel1.getCountry();
-                    hotel2Parameter = hotel2.getCountry();
+                    hotel1Parameter = hotel1.getLocation().getCountry();
+                    hotel2Parameter = hotel2.getLocation().getCountry();
                     break;
                 }
                 case Value.HOTEL_CITY: {
-                    hotel1Parameter = hotel1.getCity();
-                    hotel2Parameter = hotel2.getCity();
+                    hotel1Parameter = hotel1.getLocation().getCity();
+                    hotel2Parameter = hotel2.getLocation().getCity();
                     break;
                 }
                 default: {
