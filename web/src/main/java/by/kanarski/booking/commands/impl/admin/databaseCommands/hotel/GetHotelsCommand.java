@@ -1,17 +1,20 @@
-package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
+package by.kanarski.booking.commands.impl.admin.databaseCommands.hotel;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
 import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.entities.Location;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
+import com.google.gson.Gson;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -49,6 +52,7 @@ public class GetHotelsCommand implements ICommand {
                     }
                 }
                 HashMap<String, Set<String>> fieldsValuesMap = HotelServiceImpl.getInstance().getFieldValues();
+                Gson gson = new Gson();
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
                 session.setAttribute(Parameter.FIELD_VALUES_MAP, fieldsValuesMap);
             } else {
@@ -63,5 +67,20 @@ public class GetHotelsCommand implements ICommand {
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
+    }
+
+    private List<String> getJsonList(HttpServletRequest request, HttpSession session) throws ServiceException{
+        String hotelCountry = request.getParameter(Parameter.HOTEL_COUNTRY);
+        String hotelCity = request.getParameter(Parameter.HOTEL_CITY);
+        List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
+        List<String> cityList = new ArrayList<>();
+        for(Hotel hotel: hotelList) {
+            Location hotelLocation = hotel.getLocation();
+            if (!hotelLocation.getCountry().equals(hotelCountry)) {
+                continue;
+            }
+            cityList.add(hotelLocation.getCity());
+        }
+        return null;
     }
 }

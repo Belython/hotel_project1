@@ -1,4 +1,4 @@
-package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
+package by.kanarski.booking.commands.impl.admin.databaseCommands.hotel;
 
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.PagePath;

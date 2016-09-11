@@ -65,4 +65,33 @@ public class Room {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        if (id != room.id) return false;
+        if (roomNumber != room.roomNumber) return false;
+        if (bookingStartDate != room.bookingStartDate) return false;
+        if (bookingEndDate != room.bookingEndDate) return false;
+        if (!hotel.equals(room.hotel)) return false;
+        if (!roomType.equals(room.roomType)) return false;
+        return status.equals(room.status);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + hotel.hashCode();
+        result = 31 * result + roomType.hashCode();
+        result = 31 * result + roomNumber;
+        result = 31 * result + (int) (bookingStartDate ^ (bookingStartDate >>> 32));
+        result = 31 * result + (int) (bookingEndDate ^ (bookingEndDate >>> 32));
+        result = 31 * result + status.hashCode();
+        return result;
+    }
 }

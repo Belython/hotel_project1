@@ -58,6 +58,11 @@ public class RoomDao implements IRoomDao {
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID " +
             "WHERE R.ROOM_ID IN (parameters)";
     private final String DELETE_QUERY = "UPDATE ORDERS SET STATUS = 'deleted' WHERE ID = ?";
+    private final String GET_ALL = "SELECT R.*, RT.*, H.*, L.* " +
+            "FROM ROOMS R " +
+            "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
+            "JOIN HOTELS H ON R.HOTEL_ID = H.HOTEL_ID " +
+            "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID";
 
     private RoomDao() {
     }
@@ -112,7 +117,18 @@ public class RoomDao implements IRoomDao {
 
     @Override
     public List<Room> getAll() throws DaoException {
-        return new ArrayList<>();
+        List<Room> roomList = new ArrayList<>();
+        Connection connection = ConnectionUtil.getConnection();
+        try (PreparedStatement stm = connection.prepareStatement(GET_ALL)) {
+            ResultSet resultSet = stm.executeQuery();
+            while (resultSet.next()) {
+                roomList.add(EntityParser.parseRoom(resultSet));
+            }
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+        }
+        return roomList;
     }
 
     @Override

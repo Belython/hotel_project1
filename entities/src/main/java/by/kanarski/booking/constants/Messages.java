@@ -38,7 +38,6 @@ public class Messages {
 
     public static final String PARSE_DATE_EXCEPTION = "Not valid date format ";
 
-
     private Messages() {
     }
 }

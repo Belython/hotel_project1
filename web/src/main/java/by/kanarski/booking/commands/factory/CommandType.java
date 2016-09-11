@@ -1,10 +1,11 @@
 package by.kanarski.booking.commands.factory;
 
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.AlterHotelsCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.GetHotelsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.AlterHotelsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.GetHotelsCommand;
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.hotels.SortHotelsTableCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.SortHotelsTableCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.room.GetRoomsCommand;
 import by.kanarski.booking.commands.impl.user.*;
 
 public enum CommandType {
@@ -13,7 +14,8 @@ public enum CommandType {
     SETLOCALE, CANCELACTION,
 
     //admin commands
-    GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE;
+    GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE,
+    GETROOMS;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -61,8 +63,13 @@ public enum CommandType {
 
             case ALTERHOTELS:
                 return new AlterHotelsCommand();
+
             case SORTHOTELSTABLE:
                 return new SortHotelsTableCommand();
+
+            case GETROOMS:
+                return new GetRoomsCommand();
+
             default:
                 return new LoginUserCommand();
             //throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

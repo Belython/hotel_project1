@@ -60,7 +60,17 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User getById(long id) throws ServiceException {
-        return null;
+        Connection connection = ConnectionUtil.getConnection();
+        User user = null;
+        try {
+            connection.setAutoCommit(false);
+            user = UserDao.getInstance().getById(id);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return user;
     }
 
     @Override

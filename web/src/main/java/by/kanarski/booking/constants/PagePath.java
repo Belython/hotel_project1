@@ -18,6 +18,7 @@ public class PagePath {
     public static final String ACCOUNT_PAGE_PATH = "/WEB-INF/assets/pages/client/account.jsp";
     public static final String ADMIN_MAIN_PAGE_PATH = "/WEB-INF/assets/pages/admin/main.jsp";
     public static final String HOTEL_LIST_PAGE_PATH = "/WEB-INF/assets/pages/admin/hotelsList.jsp";
+    public static final String ROOM_LIST_PAGE_PATH = "/WEB-INF/assets/pages/admin/roomsList.jsp";
 
     private PagePath() {
 

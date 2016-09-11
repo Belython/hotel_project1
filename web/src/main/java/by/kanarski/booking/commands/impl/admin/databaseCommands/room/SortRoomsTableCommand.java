@@ -1,4 +1,4 @@
-package by.kanarski.booking.commands.impl.admin.databaseCommands.hotels;
+package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
 
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.PagePath;
@@ -10,11 +10,10 @@ import by.kanarski.booking.requestHandler.ServletAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SortHotelsTableCommand extends AbstractCommand {
+public class SortRoomsTableCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {

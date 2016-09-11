@@ -49,7 +49,6 @@
             <th>country</th>
             <th>city</th>
             <th>name</th>
-            <th>discount</th>
             <th>status</th>
         </tr>
         <c:forEach var="hotel" items="${hotelList}">
@@ -64,25 +63,24 @@
                 <%--</select>--%>
 
                 <input type="hidden" name="hotelId" placeholder="${hotel.id}" value="${hotel.id}">
+                <c:set var="location" value="${hotel.location}"/>
                 <%--<td><input type="text" name="hotelCountry" placeholder="${hotel.country}" value="${hotel.country}"></td>--%>
                 <td>
-                    <%--<c:set var="fieldValues" value="${fieldValuesMap.get(hotelCountry)}"/>--%>
-                    <%--<select name="hotelCountry">--%>
-                        <%--<c:forEach var="fieldValue" items="${fieldValues}">--%>
-                            <%--<c:choose>--%>
-                                <%--<c:when test="${fieldValue eq hotel.country}">--%>
-                                    <%--<option value="${fieldValue}" selected="selected">${fieldValue}</option>--%>
-                                <%--</c:when>--%>
-                                <%--<c:otherwise>--%>
-                                    <%--<option value="${fieldValue}">${fieldValue}</option>--%>
-                                <%--</c:otherwise>--%>
-                            <%--</c:choose>--%>
-                            <%--<option value="${fieldValue}">${fieldValue}</option>--%>
-                        <%--</c:forEach>--%>
-                    <%--</select>--%>
+                    <c:set var="fieldValues" value="${fieldValuesMap.get('hotelCountry')}"/>
+                    <select name="hotelCountry">
+                        <c:forEach var="fieldValue" items="${fieldValues}">
+                            <c:choose>
+                                <c:when test="${fieldValue eq location.country}">
+                                    <option value="${fieldValue}" selected="selected">${fieldValue}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${fieldValue}">${fieldValue}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>
                 </td>
-
-                <td><input type="text" name="hotelCity" placeholder="${hotel.city}" value="${hotel.city}"></td>
+                <td><input type="text" name="hotelCity" placeholder="${location.city}" value="${location.city}"></td>
                 <td><input type="text" name="hotelName" placeholder="${hotel.name}" value="${hotel.name}"></td>
                 <td><input type="text" name="hotelStatus" placeholder="${hotel.status}" value="${hotel.status}"></td>
                 <td><button class="submitBtn" type="button">Засслать</button></td>

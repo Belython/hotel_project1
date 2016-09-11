@@ -85,4 +85,5 @@ public class RoomType {
         result = 31 * result + status.hashCode();
         return result;
     }
+
 }

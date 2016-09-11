@@ -58,14 +58,13 @@
         <!--<listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>-->
     <!--</listener>-->
 
+    <error-page>
+        <location>/WEB-INF/assets/pages/error/error.jsp</location>
+    </error-page>
 
     <welcome-file-list>
         <welcome-file>assets/pages/index.jsp</welcome-file>
     </welcome-file-list>
 
-    <icon>
-        <large-icon>../assets/images/icon.jpg</large-icon>
-        <small-icon>../assets/images/icon.jpg</small-icon>
-    </icon>
 
 </web-app>
