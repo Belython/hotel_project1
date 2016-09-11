@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Bill {
 
-    private Long id;
+    private long id;
     private User user;
     private int totalPersons;
     private long checkInDate;
