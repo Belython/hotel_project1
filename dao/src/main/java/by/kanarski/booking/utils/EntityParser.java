@@ -28,11 +28,12 @@ public class EntityParser {
 
     public static Hotel parseHotel(ResultSet rs) throws SQLException {
         long hotelId = rs.getLong(ColumnName.HOTEL_ID);
-        String hotelCountry = rs.getString(ColumnName.LOCATION_COUNTRY);
-        String hotelCity = rs.getString(ColumnName.LOCATION_CITY);
+//        String hotelCountry = rs.getString(ColumnName.LOCATION_COUNTRY);
+//        String hotelCity = rs.getString(ColumnName.LOCATION_CITY);
+        Location hotelLocation = parseLocation(rs);
         String hotelName = rs.getString(ColumnName.HOTEL_NAME);
         String hotelStatus = rs.getString(ColumnName.HOTEL_STATUS);
-        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName, hotelStatus);
+        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelLocation, hotelName, hotelStatus);
         return hotel;
     }
 
@@ -62,7 +63,6 @@ public class EntityParser {
         return room;
     }
 
-
     public static Bill parseBill(ResultSet rs) throws SQLException {
         long billId = rs.getLong(ColumnName.BILL_ID);
         User user = parseUser(rs);
@@ -78,5 +78,13 @@ public class EntityParser {
         return bill;
     }
 
+    public static Location parseLocation(ResultSet rs) throws SQLException {
+        long id = rs.getLong(ColumnName.LOCATION_ID);
+        String country = rs.getString(ColumnName.LOCATION_COUNTRY);
+        String city = rs.getString(ColumnName.LOCATION_CITY);
+        String status = rs.getString(ColumnName.LOCATION_STATUS);
+        Location location = EntityBuilder.buildLocation(id, country, city, status);
+        return location;
+    }
 
 }

@@ -31,9 +31,7 @@ function main() {
         });
     }
 
-    function fill(responseText) {
-        var  responseText.valueOf();
-    }
+   
 
 }
 $("document").ready(main);

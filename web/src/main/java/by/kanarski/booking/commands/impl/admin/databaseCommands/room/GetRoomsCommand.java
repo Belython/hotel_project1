@@ -9,6 +9,7 @@ import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,11 +78,14 @@ public class GetRoomsCommand implements ICommand {
         return null;
     }
 
-//    public static void main(String[] args) throws ServiceException {
-//        List<Room> roomList = RoomServiceImpl.getInstance().getAll();
-//        Room room = RoomServiceImpl.getInstance().getById(1);
-//        Gson gson = new Gson();
-//        String str = gson.toJson(roomList);
+    public static void main(String[] args) throws ServiceException {
+        List<Room> roomList = RoomServiceImpl.getInstance().getAll();
+        Room room = RoomServiceImpl.getInstance().getById(1);
+        Gson gson = new Gson();
+        Gson gson1 = new GsonBuilder().serializeNulls().create();
+        String str = gson.toJson(roomList);
+        String str1 = gson1.toJson(roomList);
 //        System.out.println("\n\n\n\n\n" + str + "\n\n\n\n\n\n");
-//    }
+        System.out.println("\n\n\n\n\n" + str1 + "\n\n\n\n\n\n");
+    }
 }

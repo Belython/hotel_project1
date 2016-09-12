@@ -57,6 +57,15 @@ public class EntityBuilder {
         return location;
     }
 
+    public static Hotel buildHotel(long hotelId, Location hotelLocation, String hotelName, String hotelStatus) {
+        Hotel hotel = new Hotel();
+        hotel.setId(hotelId);
+        hotel.setLocation(hotelLocation);
+        hotel.setName(hotelName);
+        hotel.setStatus(hotelStatus);
+        return hotel;
+    }
+
     public static Hotel buildHotel(long hotelId, String hotelCountry, String hotelCity, String hotelName, String hotelStatus) {
         Hotel hotel = buildHotel(hotelCountry, hotelCity, hotelName);
         hotel.setId(hotelId);
