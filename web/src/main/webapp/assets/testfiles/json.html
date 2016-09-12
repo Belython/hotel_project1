@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="main()">
+<script type="text/javascript">
+    function main() {
+        var json = '{"param1" : "val1", "param2" : {"param3" : "val3", "param4" : "val4"}}';
+        var j = JSON.parse(json);
+//        alert(j.hasOwnProperty("param2"));
+        alert(Object.keys(j["param2"]));
+    }
+</script>
+</body>
+</html>

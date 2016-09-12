@@ -16,19 +16,59 @@ function calcul() {
     xhttp.send();
 }
 
-function setLocale() {
-    // var xhttp = new XMLHttpRequest();
-    // var language = $("#language").val();
-    // // var url = "controller?command=setLocale&language=" + language;
-    // // xhttp.open("GET", url, true);
-    // // xhttp.send();
-    // var url = "controller";
-    // xhttp.open("POST", url, false);
-    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // xhttp.send("command=setLocale&language=" + language);
+// function setLocale() {
+//     // var xhttp = new XMLHttpRequest();
+//     // var language = $("#language").val();
+//     // // var url = "controller?command=setLocale&language=" + language;
+//     // // xhttp.open("GET", url, true);
+//     // // xhttp.send();
+//     // var url = "controller";
+//     // xhttp.open("POST", url, false);
+//     // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     // xhttp.send("command=setLocale&language=" + language);
+//
+//     if ($("#amountRooms").text() == "") {
+//         $("#langbtn").click();
+//     }
+// }
 
-    if ($("#amountRooms").text() == "") {
-        $("#langbtn").click();
+function cookieTest() {
+    var x = getCookie("cock");
+    alert(x);
+
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
     }
 }
 
@@ -41,5 +81,5 @@ function setLocale() {
 //     alert("done");
 // }
 
-$(document).ready(setLocale());
+
 

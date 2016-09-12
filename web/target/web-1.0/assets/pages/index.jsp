@@ -80,5 +80,5 @@
 ${operationMessage}
 
 </body>
-<%--<script type="text/javascript" src="assets/scripts/script.js"></script>--%>
+<script type="text/javascript" src="assets/scripts/script.js"></script>
 </html>

@@ -29,7 +29,6 @@ public class GetRoomsCommand implements ICommand {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(Role.ADMINISTRATOR)) {
                 servletAction = ServletAction.FORWARD_PAGE;
-                List<Hotel> hotelList = null;
                 page = PagePath.ROOM_LIST_PAGE_PATH;
                 String searchParameter = request.getParameter(Parameter.SEARCH_PARAMETER);
                 String searchParameterValue = request.getParameter(Parameter.SEARCH_PARAMETER_VALUE);
@@ -37,7 +36,6 @@ public class GetRoomsCommand implements ICommand {
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
                 Set<Hotel> hotelSet = new HashSet<>();
                 Set<RoomType> roomTypeSet = new HashSet<>();
-
                 for (Room room: roomList) {
                     Hotel hotel = room.getHotel();
                     RoomType roomType = room.getRoomType();
@@ -45,7 +43,7 @@ public class GetRoomsCommand implements ICommand {
                     roomTypeSet.add(roomType);
                 }
 
-//                HashMap<String, Set<String>> fieldsValuesMap = HotelServiceImpl.getInstance().getFieldValues();
+
                 session.setAttribute("roomList", roomList);
                 session.setAttribute("hotelList", hotelSet);
                 session.setAttribute("roomTypeList", roomTypeSet);
