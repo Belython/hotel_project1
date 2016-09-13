@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>dao</name>
+    <roomTypeName>dao</roomTypeName>
     <url>http://maven.apache.org</url>
 
 </project>

@@ -5,14 +5,12 @@ import by.kanarski.booking.constants.DaoMessages;
 import by.kanarski.booking.constants.FieldNames;
 import by.kanarski.booking.dao.interfaces.IHotelDao;
 import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.BookingSystemLogger;
 import by.kanarski.booking.utils.ClosingUtil;
 import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.EntityParser;
 
-import java.lang.reflect.Parameter;
 import java.sql.*;
 import java.util.*;
 
@@ -58,14 +56,14 @@ public class HotelDao implements IHotelDao {
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
-            stm.setString(1, hotel.getLocation().getCountry());
-            stm.setString(2, hotel.getLocation().getCity());
-            stm.setString(3, hotel.getName());
-            stm.setString(4, hotel.getStatus());
+            stm.setString(1, hotel.getHotelLocation().getCountry());
+            stm.setString(2, hotel.getHotelLocation().getCity());
+            stm.setString(3, hotel.getHotelName());
+            stm.setString(4, hotel.getHotelStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
-            hotel.setId(resultSet.getLong(1));
+            hotel.setHotelId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_HOTEL_EXCEPTION);
             throw new DaoException(DaoMessages.ADD_HOTEL_EXCEPTION, e);
@@ -108,9 +106,9 @@ public class HotelDao implements IHotelDao {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_HOTEL_QUERY)) {
             for (Hotel hotel : hotelList) {
-                stm.setString(1, hotel.getName());
-                stm.setString(2, hotel.getStatus());
-                stm.setLong(3, hotel.getId());
+                stm.setString(1, hotel.getHotelName());
+                stm.setString(2, hotel.getHotelStatus());
+                stm.setLong(3, hotel.getHotelId());
                 stm.addBatch();
             }
             stm.executeBatch();
@@ -200,10 +198,10 @@ public class HotelDao implements IHotelDao {
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
             for (Hotel hotel: hotelList) {
-                stm.setString(1, hotel.getLocation().getCountry());
-                stm.setString(2, hotel.getLocation().getCity());
-                stm.setString(3, hotel.getName());
-                stm.setString(4, hotel.getStatus());
+                stm.setString(1, hotel.getHotelLocation().getCountry());
+                stm.setString(2, hotel.getHotelLocation().getCity());
+                stm.setString(3, hotel.getHotelName());
+                stm.setString(4, hotel.getHotelStatus());
                 stm.addBatch();
             }
             stm.executeBatch();

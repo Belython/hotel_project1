@@ -132,7 +132,7 @@ public class UserServiceImpl implements IUserService {
         try {
             connection.setAutoCommit(false);
             user.setRole("client");
-            user.setStatus("active");
+            user.setUserStatus("active");
             UserDao.getInstance().add(user);
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);

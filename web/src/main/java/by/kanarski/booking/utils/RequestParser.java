@@ -2,7 +2,7 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.entities.ExtendedHotel;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.*;
 
@@ -149,18 +149,18 @@ public class RequestParser {
         OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
         long checkInDate = orderDto.getCheckInDate();
         long checkOutDate = orderDto.getCheckOutDate();
-        HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL);
-//        Hotel hotel = hotelDto.getHotel();
+        ExtendedHotel extendedHotel = (ExtendedHotel) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL);
+//        Hotel hotel = extendedHotel.getRoomHotel();
         int totalPersons = orderDto.getTotalPersons();
-        List<RoomType> roomTypeList = hotelDto.getRoomTypeList();
+        List<RoomType> roomTypeList = extendedHotel.getRoomTypeList();
         HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();
         for (RoomType roomType : roomTypeList) {
-            int roomTypeCount = Integer.valueOf(request.getParameter(roomType.getName()));
+            int roomTypeCount = Integer.valueOf(request.getParameter(roomType.getRoomTypeName()));
             if (roomTypeCount != 0) {
                 selectedRoomTypes.put(roomType, roomTypeCount);
             }
         }
-        List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, hotelDto.getRoomList());
+        List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, extendedHotel.getRoomList());
         int paymentAmount = calc(LocalizationUtil.getDays(checkInDate, checkOutDate), selectedRooms);
         Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
                 paymentAmount);

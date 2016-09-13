@@ -40,15 +40,15 @@ public class RoomTypeDao implements IRoomTypeDao {
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
-            stm.setString(1, roomType.getName());
+            stm.setString(1, roomType.getRoomTypeName());
             stm.setInt(2, roomType.getMaxPersons());
             stm.setInt(3, roomType.getRoomPricePerNight());
             stm.setBlob(4, SerializationUtil.serialize(roomType.getFacilities()));
-            stm.setString(5, roomType.getStatus());
+            stm.setString(5, roomType.getRoomTypeStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
-            roomType.setId(resultSet.getLong(1));
+            roomType.setRoomTypeId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_ROOM_EXCEPTION);
             throw new DaoException(DaoMessages.ADD_ROOM_EXCEPTION, e);
@@ -94,12 +94,12 @@ public class RoomTypeDao implements IRoomTypeDao {
     public void update(RoomType roomType) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
-            stm.setString(1, roomType.getName());
+            stm.setString(1, roomType.getRoomTypeName());
             stm.setInt(2, roomType.getMaxPersons());
             stm.setInt(3, roomType.getRoomPricePerNight());
             stm.setBlob(4, SerializationUtil.serialize(roomType.getFacilities()));
-            stm.setString(5, roomType.getStatus());
-            stm.setLong(6, roomType.getId());
+            stm.setString(5, roomType.getRoomTypeStatus());
+            stm.setLong(6, roomType.getRoomTypeId());
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);

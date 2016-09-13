@@ -38,7 +38,7 @@ public class GetRoomsCommand implements ICommand {
                 Set<Hotel> hotelSet = new HashSet<>();
                 Set<RoomType> roomTypeSet = new HashSet<>();
                 for (Room room: roomList) {
-                    Hotel hotel = room.getHotel();
+                    Hotel hotel = room.getRoomHotel();
                     RoomType roomType = room.getRoomType();
                     hotelSet.add(hotel);
                     roomTypeSet.add(roomType);
@@ -69,7 +69,7 @@ public class GetRoomsCommand implements ICommand {
         List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
         List<String> cityList = new ArrayList<>();
         for(Hotel hotel: hotelList) {
-            Location hotelLocation = hotel.getLocation();
+            Location hotelLocation = hotel.getHotelLocation();
             if (!hotelLocation.getCountry().equals(hotelCountry)) {
                 continue;
             }
@@ -80,12 +80,51 @@ public class GetRoomsCommand implements ICommand {
 
     public static void main(String[] args) throws ServiceException {
         List<Room> roomList = RoomServiceImpl.getInstance().getAll();
+        Map<String, Set> fieldVariants = new HashMap<>();
+        Set<Hotel> hotelVariants = new HashSet<>();
+        Set<RoomType> roomTypeVariants = new HashSet<>();
+        for (Room room : roomList) {
+            Hotel hotel = room.getRoomHotel();
+            RoomType roomType = room.getRoomType();
+            hotelVariants.add(hotel);
+            roomTypeVariants.add(roomType);
+        }
+        fieldVariants.put("roomHotel", hotelVariants);
+        fieldVariants.put("roomType", roomTypeVariants);
         Room room = RoomServiceImpl.getInstance().getById(1);
         Gson gson = new Gson();
-        Gson gson1 = new GsonBuilder().serializeNulls().create();
         String str = gson.toJson(roomList);
-        String str1 = gson1.toJson(roomList);
-//        System.out.println("\n\n\n\n\n" + str + "\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n" + str1 + "\n\n\n\n\n\n");
+        List<String> fieldsOrder = new ArrayList<>();
+        fieldsOrder = Arrays.asList("hotelName", "hotelCountry");
+        Map<String, Object> responeMap = new LinkedHashMap<>();
+        responeMap.put("entityList", roomList);
+        responeMap.put("fieldMap", fieldVariants);
+        responeMap.put("fieldOrder", fieldsOrder);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("one", "ONE");
+        map.put("two", "TWO");
+        map.put("thre", "THRE");
+        String sring = gson.toJson(map);
+
+
+        String json = gson.toJson(responeMap);
+        System.out.println("\n\n\n\n\n" + json + "\n\n\n\n\n\n");
     }
+
+//    private Map<String, ?> convertToMap(Room room) {
+//        Map<String, ?> roomMap = new HashMap<>();
+//    }
+//
+//    private Map<String, > convertToMap(RoomType roomType) {
+//        Map<String, > roomTypeMap = new HashMap<>();
+//        String facilities = Arrays.toString(roomType.getFacilities());
+//        roomTypeMap.put(Parameter.ROOM_TYPE_ID, roomType.getRoomTypeId());
+//        roomTypeMap.put(Parameter.ROOM_TYPE_NAME, roomType.getRoomTypeName());
+//        roomTypeMap.put(Parameter.ROOM_TYPE_MAX_PERSONS, roomType.getMaxPersons());
+//        roomTypeMap.put(Parameter.ROOM_TYPE_PRICE_PER_NIGHT, roomType.getRoomPricePerNight());
+//        roomTypeMap.put(Parameter.ROOM_TYPE_FACILITIES, facilities);
+//        roomTypeMap.put(Parameter.ROOM_TYPE_STATUS, roomType.getRoomTypeStatus());
+//        return roomTypeMap;
+//    }
 }

@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-        <servlet-name>Controller</servlet-name>
+        <servlet-roomTypeName>Controller</servlet-roomTypeName>
         <servlet-class>by.kanarski.booking.controllers.Controller</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
+        <servlet-roomTypeName>Controller</servlet-roomTypeName>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
 
@@ -18,40 +18,40 @@
     </session-config>
 
     <filter>
-        <filter-name>EncodingFilter</filter-name>
+        <filter-roomTypeName>EncodingFilter</filter-roomTypeName>
         <filter-class>by.kanarski.booking.filters.EncodingFilter</filter-class>
         <init-param>
-            <param-name>requestEncoding</param-name>
+            <param-roomTypeName>requestEncoding</param-roomTypeName>
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>EncodingFilter</filter-name>
+        <filter-roomTypeName>EncodingFilter</filter-roomTypeName>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
-        <filter-name>LocalizationFilter</filter-name>
+        <filter-roomTypeName>LocalizationFilter</filter-roomTypeName>
         <filter-class>by.kanarski.booking.filters.LocalizationFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>LocalizationFilter</filter-name>
+        <filter-roomTypeName>LocalizationFilter</filter-roomTypeName>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
-        <filter-name>AuthorizationFilter</filter-name>
+        <filter-roomTypeName>AuthorizationFilter</filter-roomTypeName>
         <filter-class>by.kanarski.booking.filters.AuthorizationFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>AuthorizationFilter</filter-name>
+        <filter-roomTypeName>AuthorizationFilter</filter-roomTypeName>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!--<filter>-->
-    <!--<filter-name>SecurityFilter</filter-name>-->
+    <!--<filter-roomTypeName>SecurityFilter</filter-roomTypeName>-->
     <!--<filter-class>filters.SecurityFilter</filter-class>-->
     <!--</filter>-->
     <!--<filter-mapping>-->
-    <!--<filter-name>SecurityFilter</filter-name>-->
-    <!--<servlet-name>Controller</servlet-name>-->
+    <!--<filter-roomTypeName>SecurityFilter</filter-roomTypeName>-->
+    <!--<servlet-roomTypeName>Controller</servlet-roomTypeName>-->
     <!--</filter-mapping>-->
 
     <!--<listener>-->
@@ -59,7 +59,7 @@
     <!--</listener>-->
 
     <error-page>
-        <location>/WEB-INF/assets/pages/error/error.jsp</location>
+        <hotelLocation>/WEB-INF/assets/pages/error/error.jsp</hotelLocation>
     </error-page>
 
     <welcome-file-list>

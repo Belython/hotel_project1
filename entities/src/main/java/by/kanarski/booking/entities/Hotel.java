@@ -2,50 +2,41 @@ package by.kanarski.booking.entities;
 
 public class Hotel {
 
-    private long id;
-    private Location location;
-    private String name;
-    private double discount;
-    private String status;
+    private long hotelId;
+    private Location hotelLocation;
+    private String hotelName;
+    private String hotelStatus;
 
-    public long getId() {
-        return id;
+    public long getHotelId() {
+        return hotelId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setHotelId(long hotelId) {
+        this.hotelId = hotelId;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getHotelLocation() {
+        return hotelLocation;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setHotelLocation(Location hotelLocation) {
+        this.hotelLocation = hotelLocation;
     }
 
-    public String getName() {
-        return name;
+    public String getHotelName() {
+        return hotelName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
-    public double getDiscount() {
-        return discount;
+    public String getHotelStatus() {
+        return hotelStatus;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setHotelStatus(String hotelStatus) {
+        this.hotelStatus = hotelStatus;
     }
 
     @Override
@@ -55,24 +46,20 @@ public class Hotel {
 
         Hotel hotel = (Hotel) o;
 
-        if (id != hotel.id) return false;
-        if (Double.compare(hotel.discount, discount) != 0) return false;
-        if (!location.equals(hotel.location)) return false;
-        if (!name.equals(hotel.name)) return false;
-        return status.equals(hotel.status);
+        if (hotelId != hotel.hotelId) return false;
+        if (!hotelLocation.equals(hotel.hotelLocation)) return false;
+        if (!hotelName.equals(hotel.hotelName)) return false;
+        return hotelStatus.equals(hotel.hotelStatus);
 
     }
 
     @Override
     public int hashCode() {
         int result;
-        long temp;
-        result = (int) (id ^ (id >>> 32));
-        result = 31 * result + location.hashCode();
-        result = 31 * result + name.hashCode();
-        temp = Double.doubleToLongBits(discount);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + status.hashCode();
+        result = (int) (hotelId ^ (hotelId >>> 32));
+        result = 31 * result + hotelLocation.hashCode();
+        result = 31 * result + hotelName.hashCode();
+        result = 31 * result + hotelStatus.hashCode();
         return result;
     }
 }

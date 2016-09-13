@@ -49,17 +49,17 @@ public class BillDao implements IBillDao {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            stm.setLong(1, bill.getUser().getId());
+            stm.setLong(1, bill.getClient().getRoomId());
             stm.setInt(2, bill.getTotalPersons());
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());
-            stm.setBlob(5, SerializationUtil.serialize(bill.getRoomIdList()));
+            stm.setBlob(5, SerializationUtil.serialize(bill.getBookedRoomIdList()));
             stm.setInt(6, bill.getPaymentAmount());
-            stm.setString(7, bill.getStatus());
+            stm.setString(7, bill.getBillStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
-            bill.setId(resultSet.getLong(1));
+            bill.setBillId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_BILL_EXCEPTION);
             throw new DaoException(DaoMessages.ADD_BILL_EXCEPTION, e);
@@ -111,14 +111,14 @@ public class BillDao implements IBillDao {
     public void update(Bill bill) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
-            stm.setLong(1, bill.getUser().getId());
+            stm.setLong(1, bill.getClient().getRoomId());
             stm.setInt(2, bill.getTotalPersons());
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());
-            stm.setBlob(5, SerializationUtil.serialize(bill.getRoomIdList()));
+            stm.setBlob(5, SerializationUtil.serialize(bill.getBookedRoomIdList()));
             stm.setInt(6, bill.getPaymentAmount());
-            stm.setString(7, bill.getStatus());
-            stm.setLong(8, bill.getId());
+            stm.setString(7, bill.getBillStatus());
+            stm.setLong(8, bill.getBillId());
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_BILL_EXCEPTION);

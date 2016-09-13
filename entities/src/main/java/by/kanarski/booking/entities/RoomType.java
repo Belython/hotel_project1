@@ -1,30 +1,30 @@
 package by.kanarski.booking.entities;
 
-import java.util.List;
+import java.util.Set;
 
 public class RoomType {
 
-    private long id;
-    private String name;
+    private long roomTypeId;
+    private String roomTypeName;
     private int maxPersons;
     private int roomPricePerNight;
-    private List<String> facilities;
-    private String status;
+    private Set<String> facilities;
+    private String roomTypeStatus;
 
-    public long getId() {
-        return id;
+    public long getRoomTypeId() {
+        return roomTypeId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setRoomTypeId(long roomTypeId) {
+        this.roomTypeId = roomTypeId;
     }
 
-    public String getName() {
-        return name;
+    public String getRoomTypeName() {
+        return roomTypeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoomTypeName(String roomTypeName) {
+        this.roomTypeName = roomTypeName;
     }
 
     public int getMaxPersons() {
@@ -43,20 +43,20 @@ public class RoomType {
         this.roomPricePerNight = roomPricePerNight;
     }
 
-    public List<String> getFacilities() {
+    public Set<String> getFacilities() {
         return facilities;
     }
 
-    public void setFacilities(List<String> facilities) {
+    public void setFacilities(Set<String> facilities) {
         this.facilities = facilities;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRoomTypeStatus() {
+        return roomTypeStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRoomTypeStatus(String roomTypeStatus) {
+        this.roomTypeStatus = roomTypeStatus;
     }
 
     @Override
@@ -66,23 +66,23 @@ public class RoomType {
 
         RoomType roomType = (RoomType) o;
 
-        if (id != roomType.id) return false;
+        if (roomTypeId != roomType.roomTypeId) return false;
         if (maxPersons != roomType.maxPersons) return false;
         if (roomPricePerNight != roomType.roomPricePerNight) return false;
-        if (!name.equals(roomType.name)) return false;
+        if (!roomTypeName.equals(roomType.roomTypeName)) return false;
         if (!facilities.equals(roomType.facilities)) return false;
-        return status.equals(roomType.status);
+        return roomTypeStatus.equals(roomType.roomTypeStatus);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
+        int result = (int) (roomTypeId ^ (roomTypeId >>> 32));
+        result = 31 * result + roomTypeName.hashCode();
         result = 31 * result + maxPersons;
         result = 31 * result + roomPricePerNight;
         result = 31 * result + facilities.hashCode();
-        result = 31 * result + status.hashCode();
+        result = 31 * result + roomTypeStatus.hashCode();
         return result;
     }
 

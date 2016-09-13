@@ -1,7 +1,6 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
@@ -29,9 +28,9 @@ public class PayBillCommand extends AbstractCommand {
             User user = (User) session.getAttribute(Parameter.USER);
             long billId = Long.valueOf(request.getParameter(Parameter.BILL_TO_PAY));
             Bill billToPay = BillServiceImpl.getInstance().getById(billId);
-            billToPay.setStatus(Statuses.BILL_PAID);
+            billToPay.setBillStatus(Statuses.BILL_PAID);
             BillServiceImpl.getInstance().update(billToPay);
-            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getId());
+            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getRoomId());
             session.setAttribute(Parameter.BILL_LIST, billList);
             request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.SUCCESS_OPERATION));
             page = PagePath.ACCOUNT_PAGE_PATH;

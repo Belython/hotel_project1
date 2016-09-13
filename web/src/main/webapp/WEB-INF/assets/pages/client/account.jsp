@@ -11,17 +11,17 @@
 </head>
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
-<form name="billsForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="payBill"/>
+<form roomTypeName="billsForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="payBill"/>
     Счета<br/>
     <c:forEach var="bill" items="${billList}">
-        <c:forEach var="room" items="${bill.roomList}">
-            Тип номера ${room.roomType.name}
+        <c:forEach var="room" items="${bill.bookedRoomList}">
+            Тип номера ${room.roomType.roomTypeName}
             Номер номера ${room.roomNumber}
-            Статус ${bill.status}
+            Статус ${bill.roomTypeStatus}
         </c:forEach>
-        <c:if test="${bill.status == 'notPaid'}">
-            <input type="hidden" name="billToPay" value="${bill.id}"/>
+        <c:if test="${bill.roomTypeStatus == 'notPaid'}">
+            <input type="hidden" roomTypeName="billToPay" value="${bill.roomTypeId}"/>
             <input type="submit" value="Оплатить"/>
         </c:if><br/>
     </c:forEach>

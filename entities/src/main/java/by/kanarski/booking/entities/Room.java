@@ -2,28 +2,28 @@ package by.kanarski.booking.entities;
 
 public class Room {
 
-    private long id;
-    private Hotel hotel;
+    private long roomId;
+    private Hotel roomHotel;
     private RoomType roomType;
     private int roomNumber;
     private long bookingStartDate;
     private long bookingEndDate;
-    private String status;
+    private String roomStatus;
 
-    public long getId() {
-        return id;
+    public long getRoomId() {
+        return roomId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public Hotel getRoomHotel() {
+        return roomHotel;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setRoomHotel(Hotel roomHotel) {
+        this.roomHotel = roomHotel;
     }
 
     public RoomType getRoomType() {
@@ -58,12 +58,12 @@ public class Room {
         this.bookingEndDate = bookingEndDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRoomStatus() {
+        return roomStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRoomStatus(String roomStatus) {
+        this.roomStatus = roomStatus;
     }
 
     @Override
@@ -73,25 +73,25 @@ public class Room {
 
         Room room = (Room) o;
 
-        if (id != room.id) return false;
+        if (roomId != room.roomId) return false;
         if (roomNumber != room.roomNumber) return false;
         if (bookingStartDate != room.bookingStartDate) return false;
         if (bookingEndDate != room.bookingEndDate) return false;
-        if (!hotel.equals(room.hotel)) return false;
+        if (!roomHotel.equals(room.roomHotel)) return false;
         if (!roomType.equals(room.roomType)) return false;
-        return status.equals(room.status);
+        return roomStatus.equals(room.roomStatus);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + hotel.hashCode();
+        int result = (int) (roomId ^ (roomId >>> 32));
+        result = 31 * result + roomHotel.hashCode();
         result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;
         result = 31 * result + (int) (bookingStartDate ^ (bookingStartDate >>> 32));
         result = 31 * result + (int) (bookingEndDate ^ (bookingEndDate >>> 32));
-        result = 31 * result + status.hashCode();
+        result = 31 * result + roomStatus.hashCode();
         return result;
     }
 }

@@ -55,23 +55,23 @@ public class SortRoomsTableCommand extends AbstractCommand {
             String hotel2Parameter;
             switch (sortingOption) {
                 case Value.HOTEL_NAME: {
-                    hotel1Parameter = hotel1.getName();
-                    hotel2Parameter = hotel2.getName();
+                    hotel1Parameter = hotel1.getHotelName();
+                    hotel2Parameter = hotel2.getHotelName();
                     break;
                 }
                 case Value.HOTEL_COUNTRY: {
-                    hotel1Parameter = hotel1.getLocation().getCountry();
-                    hotel2Parameter = hotel2.getLocation().getCountry();
+                    hotel1Parameter = hotel1.getHotelLocation().getCountry();
+                    hotel2Parameter = hotel2.getHotelLocation().getCountry();
                     break;
                 }
                 case Value.HOTEL_CITY: {
-                    hotel1Parameter = hotel1.getLocation().getCity();
-                    hotel2Parameter = hotel2.getLocation().getCity();
+                    hotel1Parameter = hotel1.getHotelLocation().getCity();
+                    hotel2Parameter = hotel2.getHotelLocation().getCity();
                     break;
                 }
                 default: {
-                    hotel1Parameter = hotel1.getName();
-                    hotel2Parameter = hotel2.getName();
+                    hotel1Parameter = hotel1.getHotelName();
+                    hotel2Parameter = hotel2.getHotelName();
                 }
             }
 

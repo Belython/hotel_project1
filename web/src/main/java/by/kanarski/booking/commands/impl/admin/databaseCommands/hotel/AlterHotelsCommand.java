@@ -62,7 +62,7 @@ public class AlterHotelsCommand extends AbstractCommand {
 
     private void getNewHotels(List<Hotel> initialHotelList, List<Hotel> newHotels, List<Hotel> changedHotels) {
         for (Hotel hotel : initialHotelList) {
-            if (hotel.getId() == -1) {
+            if (hotel.getHotelId() == -1) {
                 newHotels.add(hotel);
             } else {
                 changedHotels.add(hotel);

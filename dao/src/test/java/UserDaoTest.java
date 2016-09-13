@@ -31,7 +31,7 @@ public class UserDaoTest {
     @Test
     public void testAdd() throws Exception {
         UserDao.getInstance().add(expected);
-        User actual = UserDao.getInstance().getById(expected.getId());
+        User actual = UserDao.getInstance().getById(expected.getRoomId());
         Assert.assertEquals(expected, actual);
         UserDao.getInstance().delete(expected);
     }
@@ -39,7 +39,7 @@ public class UserDaoTest {
 //    @Test
 //    public void testGetById() throws Exception {
 //        expected = EntityBuilder.buildUser(1, "ADMIN", 0, 0);
-//        User actual = UserDao.getInstance().getById(expected.getId());
+//        User actual = UserDao.getInstance().getById(expected.getRoomTypeId());
 //        Assert.assertEquals(expected, actual);
 //    }
 
@@ -48,17 +48,17 @@ public class UserDaoTest {
 //        UserDao.getInstance().add(expected);
 //        double adding = 100;
 //        expected.setAmount(expected.getAmount() + adding);
-//        UserDao.getInstance().updateAmount(adding, expected.getId());
-//        User actual = UserDao.getInstance().getById(expected.getId());
-//        UserDao.getInstance().delete(expected.getId());
+//        UserDao.getInstance().updateAmount(adding, expected.getRoomTypeId());
+//        User actual = UserDao.getInstance().getById(expected.getRoomTypeId());
+//        UserDao.getInstance().delete(expected.getRoomTypeId());
 //        Assert.assertEquals(expected, actual);
 //    }
 //
 //    @Test
 //    public void testDelete() throws Exception {
 //        UserDao.getInstance().add(expected);
-//        UserDao.getInstance().delete(expected.getId());
-//        User actual = UserDao.getInstance().getById(expected.getId());
+//        UserDao.getInstance().delete(expected.getRoomTypeId());
+//        User actual = UserDao.getInstance().getById(expected.getRoomTypeId());
 //        Assert.assertNull(actual);
 //    }
 

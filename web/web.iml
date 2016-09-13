@@ -32,9 +32,9 @@
     <orderEntry type="library" exported="" name="c3p0-0.9.5.22" level="project" />
     <orderEntry type="library" exported="" name="junit-4.10" level="project" />
     <orderEntry type="library" exported="" name="JQuery-3.1.0" level="application" />
-    <orderEntry type="module" module-name="services" exported="" />
-    <orderEntry type="module" module-name="entities" exported="" />
-    <orderEntry type="module" module-name="dao" exported="" />
     <orderEntry type="library" exported="" name="gson-2.7" level="project" />
+    <orderEntry type="module" module-name="entities" exported="" />
+    <orderEntry type="module" module-name="services" exported="" />
+    <orderEntry type="module" module-name="dao" exported="" />
   </component>
 </module>

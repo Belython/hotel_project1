@@ -14,27 +14,27 @@
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <%@include file="sideBar/sideBar.jsp"%>
-<form name="sortForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="sortHotelsTable"/>
-    <select name="sortingOption">
+<form roomTypeName="sortForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="sortHotelsTable"/>
+    <select roomTypeName="sortingOption">
         <option value="hotelName">Название отеля</option>
         <option value="hotelCountry">Страна</option>
         <option value="hotelCity">Город</option>
     </select>
-    <select name="sortingDirection">
+    <select roomTypeName="sortingDirection">
         <option value="ascending">По возрастанию</option>
         <option value="descending">По убыванию</option>
     </select>
     <input type="submit" value="sort">
 </form>
 
-<%--<form name="newEntityForm" method="POST" action="controller">--%>
-    <%--<input type="hidden" name="command" value="addNewEntity"/>--%>
+<%--<form roomTypeName="newEntityForm" method="POST" action="controller">--%>
+    <%--<input type="hidden" roomTypeName="command" value="addNewEntity"/>--%>
     <%--<c:set var="entityFields" value="${fieldValuesMap.keySet()}"/>--%>
     <%--<c:forEach var="entityField" items="${entityFields}">--%>
         <%--<c:set var="fieldValues" value="${fieldValuesMap.get(entityField)}"/>--%>
         <%--${entityField}--%>
-        <%--<select name="${entityField}">--%>
+        <%--<select roomTypeName="${entityField}">--%>
             <%--<c:forEach var="fieldValue" items="${fieldValues}">--%>
                 <%--<option value="${fieldValue}">${fieldValue}</option>--%>
             <%--</c:forEach>--%>
@@ -42,39 +42,39 @@
     <%--</c:forEach>--%>
 <%--</form>--%>
 
-<form name="roomForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="alterRooms"/>
-    <input type="hidden" name="isAjaxRequest" value="false"/>
+<form roomTypeName="roomForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="alterRooms"/>
+    <input type="hidden" roomTypeName="isAjaxRequest" value="false"/>
     <table>
         <tr>
-            <th>hotel</th>
+            <th>roomHotel</th>
             <th>roomType</th>
             <th>roomNumber</th>
             <th>bookingStartDate</th>
             <th>bookingEndDate</th>
-            <th>status</th>
+            <th>roomTypeStatus</th>
         </tr>
-        <c:forEach var="room" items="${roomList}">
-            <%--<c:set var="roomId" value="${room.id}"/>--%>
+        <c:forEach var="room" items="${bookedRoomList}">
+            <%--<c:set var="roomId" value="${room.roomTypeId}"/>--%>
             <tr>
-                <input type="hidden" name="roomId" placeholder="${room.id}" value="${room.id}">
-                <c:set var="hotel" value="${room.hotel}"/>
+                <input type="hidden" roomTypeName="roomId" placeholder="${room.roomTypeId}" value="${room.roomTypeId}">
+                <c:set var="roomHotel" value="${room.roomHotel}"/>
                 <td>
-                    <select name="roomHotel">
+                    <select roomTypeName="roomHotel">
                         <c:forEach var="currentHotel" items="${hotelList}">
                             <c:choose>
-                                <c:when test="${currentHotel eq hotel}">
-                                    <option value="${currentHotel.id}" selected="selected">
-                                        country ${currentHotel.location.country}
-                                        city ${currentHotel.location.city}
-                                        hotelName ${currentHotel.name}
+                                <c:when test="${currentHotel eq roomHotel}">
+                                    <option value="${currentHotel.roomTypeId}" selected="selected">
+                                        country ${currentHotel.hotelLocation.country}
+                                        city ${currentHotel.hotelLocation.city}
+                                        hotelName ${currentHotel.roomTypeName}
                                     </option>
                                 </c:when>
                                 <c:otherwise>
-                                    <option value="${currentHotel.id}">
-                                        country ${currentHotel.location.country}
-                                        city ${currentHotel.location.city}
-                                        hotelName ${currentHotel.name}
+                                    <option value="${currentHotel.roomTypeId}">
+                                        country ${currentHotel.hotelLocation.country}
+                                        city ${currentHotel.hotelLocation.city}
+                                        hotelName ${currentHotel.roomTypeName}
                                     </option>
                                 </c:otherwise>
                             </c:choose>
@@ -83,19 +83,19 @@
                 </td>
                 <c:set var="roomType" value="${room.roomType}"/>
                 <td>
-                    <select name="roomType">
+                    <select roomTypeName="roomType">
                         <c:forEach var="currentRoomType" items="${roomTypeList}">
                             <c:choose>
                                 <c:when test="${currentRoomType eq roomType}">
-                                    <option value="${currentRoomType.id}" selected="selected">
-                                        name ${roomType.name}
+                                    <option value="${currentRoomType.roomTypeId}" selected="selected">
+                                        roomTypeName ${roomType.roomTypeName}
                                         maxPersons ${roomType.maxPersons}
                                         price ${roomType.roomPricePerNight}
                                     </option>
                                 </c:when>
                                 <c:otherwise>
-                                    <option value="${currentRoomType.id}">
-                                        name ${roomType.name}
+                                    <option value="${currentRoomType.roomTypeId}">
+                                        roomTypeName ${roomType.roomTypeName}
                                         maxPersons ${roomType.maxPersons}
                                         price ${roomType.roomPricePerNight}
                                     </option>
@@ -104,16 +104,16 @@
                         </c:forEach>
                     </select>
                 </td>
-                <td><input type="text" name="roomNumber" value="${room.roomNumber}"></td>
-                <td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>
-                <td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>
-                <td><input type="text" name="status" value="${room.status}"></td>
+                <td><input type="text" roomTypeName="roomNumber" value="${room.roomNumber}"></td>
+                <td><input type="text" roomTypeName="bookingStartDate" value="${room.bookingStartDate}"></td>
+                <td><input type="text" roomTypeName="bookingEndDate" value="${room.bookingEndDate}"></td>
+                <td><input type="text" roomTypeName="roomTypeStatus" value="${room.roomTypeStatus}"></td>
                 <td><button class="submitBtn" type="button">Засслать</button></td>
             </tr>
         </c:forEach>
     </table>
     <input type="submit" value="SubmitAll">
 </form>
-<button id="addBtn" type="button" name="butt"> Добавить номер </button>
+<button roomTypeId="addBtn" type="button" roomTypeName="butt"> Добавить номер </button>
 </body>
 </html>

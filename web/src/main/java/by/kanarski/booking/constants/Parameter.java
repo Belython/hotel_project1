@@ -48,6 +48,25 @@ public class Parameter {
     public static final String LOCALE_LIST = "localeList";
     public static final String LOCALE = "locale";
 
+    //RoomType parameters
+
+    public static final String ROOM_TYPE_ID = "roomTypeId";
+    public static final String ROOM_TYPE_NAME = "roomTypeName";
+    public static final String ROOM_TYPE_MAX_PERSONS = "maxPersons";
+    public static final String ROOM_TYPE_PRICE_PER_NIGHT = "pricePerNight";
+    public static final String ROOM_TYPE_FACILITIES = "facilities";
+    public static final String ROOM_TYPE_STATUS = "roomTypeStatus";
+
+    //Room parameters
+
+    public static final String ROOM_ID = "roomId";
+    public static final String ROOM_HOTEL = "hotelRoom";
+    public static final String ROOM_ROOM_TYPE = "roomType";
+    public static final String ROOM_NUMBER = "roomNumber";
+    public static final String ROOM_BOOKING_START_DATE = "bookingEndDate";
+    public static final String ROOM_BOOKING_END_DATE = "bookingStartDate";
+    public static final String ROOM_STATUS = "roomStatus";
+
     //General attributes
 
     public static final String COMMAND = "command";

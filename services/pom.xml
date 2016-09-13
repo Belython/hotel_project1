@@ -51,7 +51,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>services</name>
+    <roomTypeName>services</roomTypeName>
     <url>http://maven.apache.org</url>
 
 </project>

@@ -4,7 +4,7 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.entities.ExtendedHotel;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
@@ -34,7 +34,7 @@ public class SelectHotelCommand extends AbstractCommand {
             session.setAttribute(Parameter.ORDER, order);
             // TODO: 26.06.2016 ЭТО ВСЕ ВРЕМЕННО
             roomTypeFill();
-            String hotelName = order.getHotel().getName();
+            String hotelName = order.getHotel().getHotelName();
             if (!hotelName.equals(Parameter.ANY_HOTEL)) {
                 Hotel hotel = HotelServiceImpl.getInstance().getByHotelName(hotelName);
                 session.setAttribute(Parameter.HOTEL, hotel);
@@ -68,25 +68,25 @@ public class SelectHotelCommand extends AbstractCommand {
         }
     }
 
-    private List<HotelDto> getHotels(List<Room> roomList) {
-        List<HotelDto> hotelList = new ArrayList<>();
+    private List<ExtendedHotel> getHotels(List<Room> roomList) {
+        List<ExtendedHotel> hotelList = new ArrayList<>();
         int separator = 0;
         for (int i = 0; i < roomList.size(); i++) {
             if (i < (roomList.size() - 1)) {
-                String curHotelName = roomList.get(i).getHotel().getName();
-                String nextHotelName = roomList.get(i + 1).getHotel().getName();
+                String curHotelName = roomList.get(i).getRoomHotel().getHotelName();
+                String nextHotelName = roomList.get(i + 1).getRoomHotel().getHotelName();
                 if (!curHotelName.equals(nextHotelName)) {
-                    Hotel hotel = roomList.get(i).getHotel();
-                    HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getLocation(), hotel.getName(),
+                    Hotel hotel = roomList.get(i).getRoomHotel();
+                    ExtendedHotel extendedHotel = new ExtendedHotel(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                             roomList.subList(separator, i + 1));
-                    hotelList.add(hotelDto);
+                    hotelList.add(extendedHotel);
                     separator = i + 1;
                 }
             } else {
-                Hotel hotel = roomList.get(i).getHotel();
-                HotelDto hotelDto = new HotelDto(hotel.getId(), hotel.getLocation(), hotel.getName(),
+                Hotel hotel = roomList.get(i).getRoomHotel();
+                ExtendedHotel extendedHotel = new ExtendedHotel(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                         roomList.subList(separator, i + 1));
-                hotelList.add(hotelDto);
+                hotelList.add(extendedHotel);
                 separator = i + 1;
             }
         }

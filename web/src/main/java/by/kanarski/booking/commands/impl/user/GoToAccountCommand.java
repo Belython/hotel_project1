@@ -1,17 +1,13 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
-import by.kanarski.booking.utils.BookingSystemLogger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +24,7 @@ public class GoToAccountCommand extends AbstractCommand {
         try {
 
             User user = (User) session.getAttribute(Parameter.USER);
-            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getId());
+            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getRoomId());
             session.setAttribute(Parameter.BILL_LIST, billList);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {

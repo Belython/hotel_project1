@@ -13,27 +13,27 @@
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <%@include file="sideBar/sideBar.jsp"%>
-<form name="sortForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="sortHotelsTable"/>
-    <select name="sortingOption">
+<form roomTypeName="sortForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="sortHotelsTable"/>
+    <select roomTypeName="sortingOption">
         <option value="hotelName">Название отеля</option>
         <option value="hotelCountry">Страна</option>
         <option value="hotelCity">Город</option>
     </select>
-    <select name="sortingDirection">
+    <select roomTypeName="sortingDirection">
         <option value="ascending">По возрастанию</option>
         <option value="descending">По убыванию</option>
     </select>
     <input type="submit" value="sort">
 </form>
 
-<%--<form name="newEntityForm" method="POST" action="controller">--%>
-    <%--<input type="hidden" name="command" value="addNewEntity"/>--%>
+<%--<form roomTypeName="newEntityForm" method="POST" action="controller">--%>
+    <%--<input type="hidden" roomTypeName="command" value="addNewEntity"/>--%>
     <%--<c:set var="entityFields" value="${fieldValuesMap.keySet()}"/>--%>
     <%--<c:forEach var="entityField" items="${entityFields}">--%>
         <%--<c:set var="fieldValues" value="${fieldValuesMap.get(entityField)}"/>--%>
         <%--${entityField}--%>
-        <%--<select name="${entityField}">--%>
+        <%--<select roomTypeName="${entityField}">--%>
             <%--<c:forEach var="fieldValue" items="${fieldValues}">--%>
                 <%--<option value="${fieldValue}">${fieldValue}</option>--%>
             <%--</c:forEach>--%>
@@ -41,36 +41,36 @@
     <%--</c:forEach>--%>
 <%--</form>--%>
 
-<form name="hotelForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="alterHotels"/>
-    <input type="hidden" name="isAjaxRequest" value="false"/>
+<form roomTypeName="hotelForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="alterHotels"/>
+    <input type="hidden" roomTypeName="isAjaxRequest" value="false"/>
     <table>
         <tr>
             <th>country</th>
             <th>city</th>
-            <th>name</th>
-            <th>status</th>
+            <th>roomTypeName</th>
+            <th>roomTypeStatus</th>
         </tr>
-        <c:forEach var="hotel" items="${hotelList}">
-            <c:set var="id" value="${hotel.id}"/>
+        <c:forEach var="roomHotel" items="${hotelList}">
+            <c:set var="roomTypeId" value="${roomHotel.roomTypeId}"/>
             <tr>
 
                 <%--<c:set var="fieldValues" value="${fieldValuesMap.get(hotelCountry)}"/>--%>
-                <%--<select name="${entityField}">--%>
+                <%--<select roomTypeName="${entityField}">--%>
                     <%--<c:forEach var="fieldValue" items="${fieldValues}">--%>
                         <%--<option value="${fieldValue}">${fieldValue}</option>--%>
                     <%--</c:forEach>--%>
                 <%--</select>--%>
 
-                <input type="hidden" name="hotelId" placeholder="${hotel.id}" value="${hotel.id}">
-                <c:set var="location" value="${hotel.location}"/>
-                <%--<td><input type="text" name="hotelCountry" placeholder="${hotel.country}" value="${hotel.country}"></td>--%>
+                <input type="hidden" roomTypeName="hotelId" placeholder="${roomHotel.roomTypeId}" value="${roomHotel.roomTypeId}">
+                <c:set var="hotelLocation" value="${roomHotel.hotelLocation}"/>
+                <%--<td><input type="text" roomTypeName="hotelCountry" placeholder="${roomHotel.country}" value="${roomHotel.country}"></td>--%>
                 <td>
                     <c:set var="fieldValues" value="${fieldValuesMap.get('hotelCountry')}"/>
-                    <select name="hotelCountry">
+                    <select roomTypeName="hotelCountry">
                         <c:forEach var="fieldValue" items="${fieldValues}">
                             <c:choose>
-                                <c:when test="${fieldValue eq location.country}">
+                                <c:when test="${fieldValue eq hotelLocation.country}">
                                     <option value="${fieldValue}" selected="selected">${fieldValue}</option>
                                 </c:when>
                                 <c:otherwise>
@@ -80,15 +80,15 @@
                         </c:forEach>
                     </select>
                 </td>
-                <td><input type="text" name="hotelCity" placeholder="${location.city}" value="${location.city}"></td>
-                <td><input type="text" name="hotelName" placeholder="${hotel.name}" value="${hotel.name}"></td>
-                <td><input type="text" name="hotelStatus" placeholder="${hotel.status}" value="${hotel.status}"></td>
+                <td><input type="text" roomTypeName="hotelCity" placeholder="${hotelLocation.city}" value="${hotelLocation.city}"></td>
+                <td><input type="text" roomTypeName="hotelName" placeholder="${roomHotel.roomTypeName}" value="${roomHotel.roomTypeName}"></td>
+                <td><input type="text" roomTypeName="hotelStatus" placeholder="${roomHotel.roomTypeStatus}" value="${roomHotel.roomTypeStatus}"></td>
                 <td><button class="submitBtn" type="button">Засслать</button></td>
             </tr>
         </c:forEach>
     </table>
     <input type="submit" value="SubmitAll">
 </form>
-<button id="addBtn" type="button" name="butt"> Добавить отель </button>
+<button roomTypeId="addBtn" type="button" roomTypeName="butt"> Добавить отель </button>
 </body>
 </html>

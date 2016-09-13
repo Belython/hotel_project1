@@ -58,7 +58,7 @@ public class BillServiceImpl implements IBillService {
         try {
             connection.setAutoCommit(false);
             bill = BillDao.getInstance().getById(billId);
-            List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getRoomIdList());
+            List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
             bill = EntityBuilder.buildBill(bill, roomList);
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
@@ -94,8 +94,8 @@ public class BillServiceImpl implements IBillService {
             connection.setAutoCommit(false);
             bills = BillDao.getInstance().getByUserId(userId);
             for (Bill bill : bills) {
-                List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getRoomIdList());
-                bill.setRoomList(roomList);
+                List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
+                bill.setBookedRoomList(roomList);
                 newBills.add(bill);
             }
             connection.commit();

@@ -75,7 +75,7 @@ public class GetHotelsCommand implements ICommand {
         List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
         List<String> cityList = new ArrayList<>();
         for(Hotel hotel: hotelList) {
-            Location hotelLocation = hotel.getLocation();
+            Location hotelLocation = hotel.getHotelLocation();
             if (!hotelLocation.getCountry().equals(hotelCountry)) {
                 continue;
             }

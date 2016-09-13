@@ -5,30 +5,30 @@ import java.util.List;
 
 public class Bill {
 
-    private long id;
-    private User user;
+    private long billId;
+    private User client;
     private int totalPersons;
     private long checkInDate;
     private long checkOutDate;
-    private List<Room> roomList;
-    private List<Long> roomIdList;
+    private List<Room> bookedRoomList;
+    private List<Long> bookedRoomIdList;
     private int paymentAmount;
-    private String status;
+    private String billStatus;
 
-    public long getId() {
-        return id;
+    public long getBillId() {
+        return billId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setBillId(long billId) {
+        this.billId = billId;
     }
 
-    public User getUser() {
-        return user;
+    public User getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(User client) {
+        this.client = client;
     }
 
     public int getTotalPersons() {
@@ -55,24 +55,24 @@ public class Bill {
         this.checkOutDate = checkOutDate;
     }
 
-    public List<Room> getRoomList() {
-        return roomList;
+    public List<Room> getBookedRoomList() {
+        return bookedRoomList;
     }
 
-    public void setRoomList(List<Room> roomList) {
-        this.roomList = roomList;
-        roomIdList = new ArrayList<>();
-        for (Room room : roomList) {
-            roomIdList.add(room.getId());
+    public void setBookedRoomList(List<Room> bookedRoomList) {
+        this.bookedRoomList = bookedRoomList;
+        bookedRoomIdList = new ArrayList<>();
+        for (Room room : bookedRoomList) {
+            bookedRoomIdList.add(room.getRoomId());
         }
     }
 
-    public List<Long> getRoomIdList() {
-        return roomIdList;
+    public List<Long> getBookedRoomIdList() {
+        return bookedRoomIdList;
     }
 
-    public void setRoomIdList(List<Long> roomIdList) {
-        this.roomIdList = roomIdList;
+    public void setBookedRoomIdList(List<Long> bookedRoomIdList) {
+        this.bookedRoomIdList = bookedRoomIdList;
     }
 
     public int getPaymentAmount() {
@@ -83,12 +83,12 @@ public class Bill {
         this.paymentAmount = paymentAmount;
     }
 
-    public String getStatus() {
-        return status;
+    public String getBillStatus() {
+        return billStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setBillStatus(String billStatus) {
+        this.billStatus = billStatus;
     }
 }
 

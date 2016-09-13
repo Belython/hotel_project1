@@ -13,15 +13,15 @@
 <body onload="setLocale()">
 <%@include file="inputs/header.jsp" %>
 
-<form name="findForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="selectHotel"/>
+<form roomTypeName="findForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="selectHotel"/>
     <br/>
     Параметры поиска:<br/>
-    <input type="text" name="country" placeholder="Страна" value="Belarus"/>
-    <input type="text" name="city" placeholder="Город" value="Minsk"/>
-    <input type="text" name="hotelName" placeholder="Отель" value="any"/><br/>
-    <label id="amountRooms" for="no_rooms">${roomsAmount}</label>
-    <select id="no_rooms" name="totalRooms">
+    <input type="text" roomTypeName="country" placeholder="Страна" value="Belarus"/>
+    <input type="text" roomTypeName="city" placeholder="Город" value="Minsk"/>
+    <input type="text" roomTypeName="hotelName" placeholder="Отель" value="any"/><br/>
+    <label roomTypeId="amountRooms" for="no_rooms">${roomsAmount}</label>
+    <select roomTypeId="no_rooms" roomTypeName="totalRooms">
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -45,7 +45,7 @@
     </select>
     <br/>
     <label for="no_persons">${personsAmount}</label>
-    <select id="no_persons" name="totalPersons">
+    <select roomTypeId="no_persons" roomTypeName="totalPersons">
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -70,9 +70,9 @@
     <br/>
 
     <label for="checkInDate">Дата въезда</label>
-    <input id="checkInDate" type="text" name="checkInDate" value=""/>
+    <input roomTypeId="checkInDate" type="text" roomTypeName="checkInDate" value=""/>
     <label for="checkOutDate">Дата отъезда</label>
-    <input id="checkOutDate" type="text" name="checkOutDate" value=""/>
+    <input roomTypeId="checkOutDate" type="text" roomTypeName="checkOutDate" value=""/>
     <input type="submit" value="Искать">
 </form>
 

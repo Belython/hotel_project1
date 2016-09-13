@@ -2,17 +2,17 @@ package by.kanarski.booking.entities;
 
 public class Location {
 
-    private long id;
+    private long locationId;
     private String country;
     private String city;
-    private String status;
+    private String locationStatus;
 
-    public long getId() {
-        return id;
+    public long getLocationId() {
+        return locationId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setLocationId(long locationId) {
+        this.locationId = locationId;
     }
 
     public String getCountry() {
@@ -31,11 +31,11 @@ public class Location {
         this.city = city;
     }
 
-    public String getStatus() {
-        return status;
+    public String getLocationStatus() {
+        return locationStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setLocationStatus(String locationStatus) {
+        this.locationStatus = locationStatus;
     }
 }

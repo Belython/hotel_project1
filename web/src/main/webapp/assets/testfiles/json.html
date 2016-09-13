@@ -8,17 +8,17 @@
 <body onload="fill()">
 
 
-<form name="newRoomsForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="addNewRooms"/>
+<form roomTypeName="newRoomsForm" method="POST" action="controller">
+    <input type="hidden" roomTypeName="command" value="addNewRooms"/>
     <table>
         <thead>
         <tr>
-            <th>hotel</th>
+            <th>roomHotel</th>
             <th>roomType</th>
             <th>roomNumber</th>
             <th>bookingStartDate</th>
             <th>bookingEndDate</th>
-            <th>status</th>
+            <th>roomTypeStatus</th>
         </tr>
         </thead>
         <tbody>
@@ -28,21 +28,25 @@
 </form>
 
 <script type="text/javascript">
-    function main() {
-        var json = '{"param1" : "val1", "param2" : {"param3" : "val3", "param4" : "val4"}}';
-        var j = JSON.parse(json);
-//        alert(j.hasOwnProperty("param2"));
-        alert(Object.keys(j["param2"]));
-    }
 
     function fill() {
-        var text = '[{"id":1,"hotel":{"id":1,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"Belarus Hotel","discount":0.0,"status":"active"},"roomType":{"id":1,"name":"Standard Twin","maxPersons":2,"roomPricePerNight":200,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":1,"bookingStartDate":20,"bookingEndDate":400,"status":"1"},{"id":2,"hotel":{"id":1,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"Belarus Hotel","discount":0.0,"status":"active"},"roomType":{"id":2,"name":"Standard Double","maxPersons":2,"roomPricePerNight":300,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":2,"bookingStartDate":30,"bookingEndDate":500,"status":"1"},{"id":6,"hotel":{"id":1,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"Belarus Hotel","discount":0.0,"status":"active"},"roomType":{"id":2,"name":"Standard Double","maxPersons":2,"roomPricePerNight":300,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":6,"bookingStartDate":70,"bookingEndDate":900,"status":"1"},{"id":8,"hotel":{"id":1,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"Belarus Hotel","discount":0.0,"status":"active"},"roomType":{"id":4,"name":"Standard Single","maxPersons":1,"roomPricePerNight":500,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":8,"bookingStartDate":90,"bookingEndDate":1100,"status":"1"},{"id":9,"hotel":{"id":1,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"Belarus Hotel","discount":0.0,"status":"active"},"roomType":{"id":1,"name":"Standard Twin","maxPersons":2,"roomPricePerNight":200,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":9,"bookingStartDate":100,"bookingEndDate":1200,"status":"1"},{"id":3,"hotel":{"id":2,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"U Fontana","discount":0.0,"status":"active"},"roomType":{"id":3,"name":"Family","maxPersons":3,"roomPricePerNight":400,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":3,"bookingStartDate":40,"bookingEndDate":600,"status":"0"},{"id":4,"hotel":{"id":2,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"U Fontana","discount":0.0,"status":"active"},"roomType":{"id":4,"name":"Standard Single","maxPersons":1,"roomPricePerNight":500,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":4,"bookingStartDate":50,"bookingEndDate":700,"status":"0"},{"id":5,"hotel":{"id":2,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"U Fontana","discount":0.0,"status":"active"},"roomType":{"id":5,"name":"Huge","maxPersons":4,"roomPricePerNight":600,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":5,"bookingStartDate":60,"bookingEndDate":800,"status":"0"},{"id":7,"hotel":{"id":2,"location":{"id":1,"country":"Belarus","city":"Minsk","status":"active"},"name":"U Fontana","discount":0.0,"status":"active"},"roomType":{"id":3,"name":"Family","maxPersons":3,"roomPricePerNight":400,"facilities":["wi-fi","safe"],"status":"1"},"roomNumber":7,"bookingStartDate":80,"bookingEndDate":1000,"status":"1"}]';
-        var entityJson = JSON.parse(text);
-        var entityAmount = entityJson.length;
+        var entityListConst = "entity";
+        var fieldOrderConst = "fieldOrder";
+        var textJson = '{"entityList":[{"roomTypeId":1,"roomHotel":{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":1,"roomTypeName":"Standard Twin","maxPersons":2,"roomPricePerNight":200,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":1,"bookingStartDate":20,"bookingEndDate":400,"roomTypeStatus":"1"},{"roomTypeId":2,"roomHotel":{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":2,"roomTypeName":"Standard Double","maxPersons":2,"roomPricePerNight":300,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":2,"bookingStartDate":30,"bookingEndDate":500,"roomTypeStatus":"1"},{"roomTypeId":6,"roomHotel":{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":2,"roomTypeName":"Standard Double","maxPersons":2,"roomPricePerNight":300,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":6,"bookingStartDate":70,"bookingEndDate":900,"roomTypeStatus":"1"},{"roomTypeId":8,"roomHotel":{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":4,"roomTypeName":"Standard Single","maxPersons":1,"roomPricePerNight":500,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":8,"bookingStartDate":90,"bookingEndDate":1100,"roomTypeStatus":"1"},{"roomTypeId":9,"roomHotel":{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":1,"roomTypeName":"Standard Twin","maxPersons":2,"roomPricePerNight":200,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":9,"bookingStartDate":100,"bookingEndDate":1200,"roomTypeStatus":"1"},{"roomTypeId":3,"roomHotel":{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":3,"roomTypeName":"Family","maxPersons":3,"roomPricePerNight":400,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":3,"bookingStartDate":40,"bookingEndDate":600,"roomTypeStatus":"0"},{"roomTypeId":4,"roomHotel":{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":4,"roomTypeName":"Standard Single","maxPersons":1,"roomPricePerNight":500,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":4,"bookingStartDate":50,"bookingEndDate":700,"roomTypeStatus":"0"},{"roomTypeId":5,"roomHotel":{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":5,"roomTypeName":"Huge","maxPersons":4,"roomPricePerNight":600,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":5,"bookingStartDate":60,"bookingEndDate":800,"roomTypeStatus":"0"},{"roomTypeId":7,"roomHotel":{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},"roomType":{"roomTypeId":3,"roomTypeName":"Family","maxPersons":3,"roomPricePerNight":400,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},"roomNumber":7,"bookingStartDate":80,"bookingEndDate":1000,"roomTypeStatus":"1"}],"fieldList1":[{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":2,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"U Fontana","discount":0.0,"roomTypeStatus":"1"},{"roomTypeId":1,"hotelLocation":{"roomTypeId":1,"country":"Belarus","city":"Minsk","roomTypeStatus":"1"},"roomTypeName":"Belarus Hotel","discount":0.0,"roomTypeStatus":"1"}],"fieldList2":[{"roomTypeId":2,"roomTypeName":"Standard Double","maxPersons":2,"roomPricePerNight":300,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},{"roomTypeId":4,"roomTypeName":"Standard Single","maxPersons":1,"roomPricePerNight":500,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},{"roomTypeId":3,"roomTypeName":"Family","maxPersons":3,"roomPricePerNight":400,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},{"roomTypeId":5,"roomTypeName":"Huge","maxPersons":4,"roomPricePerNight":600,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"},{"roomTypeId":1,"roomTypeName":"Standard Twin","maxPersons":2,"roomPricePerNight":200,"facilities":["wi-fi","safe"],"roomTypeStatus":"1"}],"fieldOrder":["hotelName","hotelCountry"]}';
+        var objectMap = JSON.parse(textJson);
+        var entityList = objectMap[entityListConst];
+        var fieldsOrder = objectMap[fieldOrderConst];
+        var objectMapKeys = Object.keys(objectMap);
+        var objectMapKeysLength = objectMapKeys.length;
+        var fieldVariants;
+        if (objectMapKeysLength == 3) {
+            fieldVariants = objectMap[2];
+        }
+
         for (var i = 0; i < entityAmount; i++) {
             var tableRow = $("<tr></tr>");
             $("tbody").append(tableRow);
-            var entity = entityJson[i];
+            var entity = entityList[i];
             getEntityFields(entity);
         }
     }
@@ -62,7 +66,7 @@
                 tableElement = fieldValue;
             }
             var input = $("<input type='text'>").attr({
-                "name": field,
+                "roomTypeName": field,
                 "value": tableElement
             });
             $("tr").last().append("<td></td>");
@@ -81,6 +85,7 @@
         }
         return arrayAsString;
     }
+
 
 
 </script>
