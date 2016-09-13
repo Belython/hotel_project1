@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SelectHotelCommand extends AbstractCommand {
 
@@ -59,7 +61,7 @@ public class SelectHotelCommand extends AbstractCommand {
 
     private void roomTypeFill() throws ServiceException {
         List<RoomType> roomTypes = RoomTypeServiceImpl.getInstance().getAll();
-        List<String> facilities = new ArrayList<>();
+        Set<String> facilities = new HashSet<>();
         facilities.add("wi-fi");
         facilities.add("safe");
         for (RoomType roomType : roomTypes) {

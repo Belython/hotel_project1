@@ -5,6 +5,7 @@ import by.kanarski.booking.constants.Statuses;
 import by.kanarski.booking.entities.*;
 
 import java.util.List;
+import java.util.Set;
 
 public class EntityBuilder {
     private EntityBuilder() {
@@ -88,7 +89,7 @@ public class EntityBuilder {
     }
 
     public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, int roomPricePerNight,
-                                         List<String> facilities, String roomTypeStatus) {
+                                         Set<String> facilities, String roomTypeStatus) {
         RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
         roomType.setRoomTypeId(roomTypeId);
         roomType.setRoomTypeName(roomTypeName);
@@ -100,7 +101,7 @@ public class EntityBuilder {
     }
 
     public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
-                                         List<String> facilities, String roomTypeStatus) {
+                                         Set<String> facilities, String roomTypeStatus) {
         RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
         roomType.setRoomTypeName(roomTypeName);
         roomType.setMaxPersons(maxPersons);
@@ -111,7 +112,7 @@ public class EntityBuilder {
     }
 
     public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
-                                         List<String> facilities) {
+                                         Set<String> facilities) {
         RoomType roomType = new RoomType();
         roomType.setRoomTypeName(roomTypeName);
         roomType.setMaxPersons(maxPersons);

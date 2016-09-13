@@ -95,18 +95,11 @@ public class GetRoomsCommand implements ICommand {
         Gson gson = new Gson();
         String str = gson.toJson(roomList);
         List<String> fieldsOrder = new ArrayList<>();
-        fieldsOrder = Arrays.asList("hotelName", "hotelCountry");
+        fieldsOrder = Arrays.asList("roomHotel", "roomType", "roomNumber", "bookingStartDate",
+                "bookingEndDate", "status");
         Map<String, Object> responeMap = new LinkedHashMap<>();
         responeMap.put("entityList", roomList);
         responeMap.put("fieldMap", fieldVariants);
-        responeMap.put("fieldOrder", fieldsOrder);
-
-        Map<String, String> map = new HashMap<>();
-        map.put("one", "ONE");
-        map.put("two", "TWO");
-        map.put("thre", "THRE");
-        String sring = gson.toJson(map);
-
 
         String json = gson.toJson(responeMap);
         System.out.println("\n\n\n\n\n" + json + "\n\n\n\n\n\n");

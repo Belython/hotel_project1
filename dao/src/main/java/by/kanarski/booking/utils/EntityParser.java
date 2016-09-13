@@ -7,6 +7,7 @@ import by.kanarski.booking.entities.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 public class EntityParser {
     private EntityParser() {
@@ -42,7 +43,7 @@ public class EntityParser {
         String roomTypeName = rs.getString(ColumnName.ROOM_TYPE_NAME);
         int maxPersons = rs.getInt(ColumnName.ROOM_TYPE_MAX_PERSONS);
         int roomPricePerNight = rs.getInt(ColumnName.ROOM_TYPE_PRICE_PER_NIGHT);
-        List<String> facilities = null;
+        Set<String> facilities = null;
         facilities = SerializationUtil.deserialize(rs.getBlob(ColumnName.ROOM_TYPE_FACILITIES), facilities);
         String roomTypeStatus = rs.getString(ColumnName.ROOM_TYPE_STATUS);
         RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName, maxPersons, roomPricePerNight,

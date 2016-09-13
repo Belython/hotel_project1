@@ -3,20 +3,20 @@
 
 <log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-    <appender roomTypeName="File" class="org.apache.log4j.RollingFileAppender">
-        <param roomTypeName="File" value="E:/log/log.log"/>
-        <param roomTypeName="Encoding" value="UTF-8"/>
-        <param roomTypeName="MaxFileSize" value="10MB"/>
-        <param roomTypeName="MaxBackupIndex" value="10"/>
+    <appender name="File" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="E:/log/log.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>
         <layout class="org.apache.log4j.EnhancedPatternLayout">
-            <param roomTypeName="ConversionPattern" value="%d{yyyy.MM.dd HH.mm.ss} [%-5p]:[%-16t][%10.30c{1}] - %m %throwable %n"/>
+            <param name="ConversionPattern" value="%d{yyyy.MM.dd HH.mm.ss} [%-5p]:[%-16t][%10.30c{1}] - %m %throwable %n"/>
         </layout>
     </appender>
 
-    <appender roomTypeName="Console" class="org.apache.log4j.ConsoleAppender">
-        <param roomTypeName="Encoding" value="UTF-8"/>
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Encoding" value="UTF-8"/>
         <layout class="org.apache.log4j.EnhancedPatternLayout">
-            <param roomTypeName="ConversionPattern" value="%d{yyyy.MM.dd HH.mm.ss} [%-5p]:[%-16t][%10.30c{1}] - %m %throwable %n"/>
+            <param name="ConversionPattern" value="%d{yyyy.MM.dd HH.mm.ss} [%-5p]:[%-16t][%10.30c{1}] - %m %throwable %n"/>
         </layout>
     </appender>
 
