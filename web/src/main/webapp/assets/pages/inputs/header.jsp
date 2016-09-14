@@ -9,13 +9,13 @@
             <c:choose>
                 <c:when test="${empty client}">
                     <li class="userCenterLoginField">
-                        <form roomTypeId="login" roomTypeName="loginForm" method="POST" action="controller">
-                            <input type="hidden" roomTypeName="command" value="login"/>
-                            <input type="hidden" roomTypeName="currentPagePath" value="/assets/pages/index.jsp"/>
+                        <form roomTypeId="login" name="loginForm" method="POST" action="controller">
+                            <input type="hidden" name="command" value="login"/>
+                            <input type="hidden" name="currentPagePath" value="/assets/pages/index.jsp"/>
                             <h1>Форма входа</h1>
                             <fieldset roomTypeId="inputs">
-                                <input roomTypeId="username" type="text" roomTypeName="login" placeholder="Логин" autofocus required>
-                                <input roomTypeId="password" type="password" roomTypeName="password" placeholder="Пароль" required>
+                                <input roomTypeId="username" type="text" name="login" placeholder="Логин" autofocus required>
+                                <input roomTypeId="password" type="password" name="password" placeholder="Пароль" required>
                             </fieldset>
                             <fieldset roomTypeId="actions">
                                 <input type="submit" roomTypeId="submit" value="ВОЙТИ">
@@ -45,10 +45,10 @@
         </ul>
     </div>
     <div roomTypeId="locale">
-        <form roomTypeName="langForm" method="POST" action="controller">
-            <input type="hidden" roomTypeName="command" value="setLocale"/>
+        <form name="langForm" method="POST" action="controller">
+            <input type="hidden" name="command" value="setLocale"/>
             <label for="currentLocale">Локаль</label>
-            <select roomTypeId="currentLocale" roomTypeName="locale">
+            <select roomTypeId="currentLocale" name="locale">
                 <c:forEach var="localeElement" items="${applicationScope.get('localeList')}">
                     <c:choose>
                         <c:when test="${sessionScope.get('locale') eq localeElement}">

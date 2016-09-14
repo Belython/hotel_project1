@@ -54,7 +54,7 @@
 
     </dependencies>
 
-    <roomTypeName>web</roomTypeName>
+    <name>web</name>
     <url>http://maven.apache.org</url>
 
 </project>

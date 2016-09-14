@@ -12,11 +12,11 @@
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp" %>
 
-<form roomTypeName="searchForm" method="POST" action="controller">
-    <input type="hidden" roomTypeName="command" value="makeBill"/>
+<form name="searchForm" method="POST" action="controller">
+    <input type="hidden" name="command" value="makeBill"/>
     <c:forEach var="roomType" items="${selectedHotel.roomTypeList}">
-        <label for="${roomType.roomTypeId}">${roomType.roomTypeName}${selectedHotel.roomTypesCount.get(roomType)}</label>
-        <select roomTypeId="${roomType.roomTypeId}" roomTypeName="${roomType.roomTypeName}">
+        <label for="${roomType.roomTypeId}">${roomType.name}${selectedHotel.roomTypesCount.get(roomType)}</label>
+        <select roomTypeId="${roomType.roomTypeId}" name="${roomType.name}">
             <option value="0" selected="selected">0</option>
             <option value="1">1</option>
             <option value="2">2</option>

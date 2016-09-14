@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
-<form roomTypeName="resultsForm" method="POST" action="controller">
+<form name="resultsForm" method="POST" action="controller">
     <c:forEach var="roomHotel" items="${hotelList}">
         <a href="controller?command=selectRoom&selectedHotel=${roomHotel.hotelId}">
             ${hotel_name} ${roomHotel.hotelName}

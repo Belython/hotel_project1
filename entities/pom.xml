@@ -26,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <roomTypeName>entities</roomTypeName>
+    <name>entities</name>
     <url>http://maven.apache.org</url>
 
 </project>
