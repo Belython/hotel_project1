@@ -95,4 +95,15 @@ public class SelectHotelCommand extends AbstractCommand {
         return hotelList;
     }
 
+    public static void main(String[] args) throws ServiceException{
+        List<RoomType> roomTypes = RoomTypeServiceImpl.getInstance().getAll();
+        Set<String> facilities = new HashSet<>();
+        facilities.add("wi-fi");
+        facilities.add("safe");
+        for (RoomType roomType : roomTypes) {
+            roomType.setFacilities(facilities);
+            RoomTypeServiceImpl.getInstance().update(roomType);
+        }
+    }
+
 }

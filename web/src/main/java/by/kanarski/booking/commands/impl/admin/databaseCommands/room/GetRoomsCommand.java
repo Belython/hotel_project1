@@ -81,13 +81,15 @@ public class GetRoomsCommand implements ICommand {
     public static void main(String[] args) throws ServiceException {
         List<Room> roomList = RoomServiceImpl.getInstance().getAll();
         Map<String, Set> fieldVariants = new HashMap<>();
-        Set<Hotel> hotelVariants = new HashSet<>();
-        Set<RoomType> roomTypeVariants = new HashSet<>();
+        Set<Map<String, Object>> hotelVariants = new HashSet<>();
+        Set<Map<String, Object>> roomTypeVariants = new HashSet<>();
+        Set<Map<String, Object>> roomSet = new HashSet<>();
         for (Room room : roomList) {
             Hotel hotel = room.getRoomHotel();
             RoomType roomType = room.getRoomType();
-            hotelVariants.add(hotel);
-            roomTypeVariants.add(roomType);
+            hotelVariants.add(getHotelMap(hotel));
+            roomTypeVariants.add(getRoomTypeRepr(roomType));
+            roomSet.add(getRoomMap(room));
         }
         fieldVariants.put("roomHotel", hotelVariants);
         fieldVariants.put("roomType", roomTypeVariants);
@@ -98,11 +100,41 @@ public class GetRoomsCommand implements ICommand {
         fieldsOrder = Arrays.asList("roomHotel", "roomType", "roomNumber", "bookingStartDate",
                 "bookingEndDate", "status");
         Map<String, Object> responeMap = new LinkedHashMap<>();
-        responeMap.put("entityList", roomList);
+        responeMap.put("entityList", roomSet);
         responeMap.put("fieldMap", fieldVariants);
 
         String json = gson.toJson(responeMap);
         System.out.println("\n\n\n\n\n" + json + "\n\n\n\n\n\n");
+    }
+
+    private static Map<String, Object> getRoomTypeRepr(RoomType roomType) {
+        Map<String, Object> roomTypeMap = new LinkedHashMap<>();
+        roomTypeMap.put("roomTypeId", roomType.getRoomTypeId());
+        roomTypeMap.put("roomTypeName", roomType.getRoomTypeName());
+        roomTypeMap.put("mapPersons", roomType.getMaxPersons());
+        roomTypeMap.put("roomPricePerNight", roomType.getRoomPricePerNight());
+        roomTypeMap.put("facilities", roomType.getFacilities());
+        return roomTypeMap;
+    }
+
+    private static Map<String, Object> getHotelMap(Hotel hotel) {
+        Map<String, Object> hotelMap = new LinkedHashMap<>();
+        hotelMap.put("hotelId", hotel.getHotelId());
+        hotelMap.put("hotelCountry", hotel.getHotelLocation().getCountry());
+        hotelMap.put("hotelCity", hotel.getHotelLocation().getCity());
+        hotelMap.put("hotelName", hotel.getHotelName());
+        return hotelMap;
+    }
+
+    private static Map<String, Object> getRoomMap(Room room) {
+        Map<String, Object> roomMap = new LinkedHashMap<>();
+        roomMap.put("roomId", room.getRoomId());
+        roomMap.put("roomHotel", getHotelMap(room.getRoomHotel()));
+        roomMap.put("roomType", getRoomTypeRepr(room.getRoomType()));
+        roomMap.put("roomNumber", room.getRoomNumber());
+        roomMap.put("bookingStartDate", room.getBookingStartDate());
+        roomMap.put("bookingEndDate", room.getBookingEndDate());
+        return roomMap;
     }
 
 //    private Map<String, ?> convertToMap(Room room) {
