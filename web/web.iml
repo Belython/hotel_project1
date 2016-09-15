@@ -36,5 +36,6 @@
     <orderEntry type="module" module-name="dao" exported="" />
     <orderEntry type="module" module-name="entities" exported="" />
     <orderEntry type="module" module-name="services" exported="" />
+    <orderEntry type="library" exported="" name="jsp-api" level="project" />
   </component>
 </module>

@@ -77,8 +77,8 @@ public class Parameter {
     public static final String CURRENT_PAGE_PATH = "currentPagePath";
     public static final String ANY_HOTEL = "any";
     public static final String IS_AJAX_REQUEST = "isAjaxRequest";
-    public static final String SEARCH_PARAMETER = "searchParameter";
-    public static final String SEARCH_PARAMETER_VALUE = "searchParameterValue";
+    public static final String FILTER_PARAMETER = "filterParameter";
+    public static final String FILTER_PARAMETER_VALUE = "filterParameterValue";
     public static final String FIELD_VALUES_MAP = "fieldValuesMap";
 
 

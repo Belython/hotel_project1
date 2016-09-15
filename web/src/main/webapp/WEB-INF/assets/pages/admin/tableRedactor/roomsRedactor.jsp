@@ -4,8 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <h1>Новые номера</h1>
-<form name="newRoomsForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="addNewRooms"/>
+<form name="addRoomsForm" method="POST" action="controller">
+    <input type="hidden" name="command" value="addRooms"/>
     <table>
         <thead>
             <tr>
@@ -18,29 +18,29 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="room" items="${bookedRoomList}">
+            <c:forEach var="room" items="${roomList}">
                 <tr>
                     <input type="hidden" name="roomId" placeholder="${room.roomTypeId}" value="${room.roomTypeId}">
-                    <c:set var="roomHotel" value="${room.roomHotel}"/>
+                    <c:set var="rHotel" value="${room.roomHotel}"/>
                     <td>
                         <select name="roomHotel">
                             <c:forEach var="currentHotel" items="${hotelList}">
-                                <option value="${currentHotel.roomTypeId}">
+                                <option value="${currentHotel.hotelId}">
                                     country ${currentHotel.hotelLocation.country}
                                     city ${currentHotel.hotelLocation.city}
-                                    hotelName ${currentHotel.name}
+                                    hotelName ${currentHotel.hotelName}
                                 </option>
                             </c:forEach>
                         </select>
                     </td>
-                    <c:set var="roomType" value="${room.roomType}"/>
+                    <c:set var="rType" value="${room.roomType}"/>
                     <td>
                         <select name="roomType">
                             <c:forEach var="currentRoomType" items="${roomTypeList}">
                                 <option value="${currentRoomType.roomTypeId}">
-                                    name ${roomType.name}
-                                    maxPersons ${roomType.maxPersons}
-                                    price ${roomType.roomPricePerNight}
+                                    name ${rType.roomTypeName}
+                                    maxPersons ${rType.maxPersons}
+                                    price ${rType.roomPricePerNight}
                                 </option>
                             </c:forEach>
                         </select>
@@ -48,12 +48,13 @@
                     <td><input type="text" name="roomNumber" value="${room.roomNumber}"></td>
                     <td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>
                     <td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>
-                    <td><input type="text" name="roomTypeStatus" value="${room.roomTypeStatus}"></td>
+                    <td><input type="text" name="roomTypeStatus" value="${room.roomStatus}"></td>
                     <td><button class="addBtn" type="button">Добавить номер</button></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
+    <input type="submit" value="Подтвердить">
 </form>
 
 <form name="sortRoomsForm" method="POST" action="controller">
@@ -89,49 +90,49 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="room" items="${bookedRoomList}">
+            <c:forEach var="room" items="${roomList}">
                 <tr>
-                    <input type="hidden" name="roomId" placeholder="${room.roomTypeId}" value="${room.roomTypeId}">
-                    <c:set var="roomHotel" value="${room.roomHotel}"/>
+                    <input type="hidden" name="roomId" placeholder="${room.roomId}" value="${room.roomId}">
+                    <c:set var="rHotel" value="${room.roomHotel}"/>
                     <td>
                         <select name="roomHotel">
                             <c:forEach var="currentHotel" items="${hotelList}">
                                 <c:choose>
-                                    <c:when test="${currentHotel eq roomHotel}">
-                                        <option value="${currentHotel.roomTypeId}" selected="selected">
+                                    <c:when test="${currentHotel eq rHotel}">
+                                        <option value="${currentHotel.hotelId}" selected="selected">
                                             country ${currentHotel.hotelLocation.country}
                                             city ${currentHotel.hotelLocation.city}
-                                            hotelName ${currentHotel.name}
+                                            hotelName ${currentHotel.hotelName}
                                         </option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${currentHotel.roomTypeId}">
                                             country ${currentHotel.hotelLocation.country}
                                             city ${currentHotel.hotelLocation.city}
-                                            hotelName ${currentHotel.name}
+                                            hotelName ${currentHotel.hotelName}
                                         </option>
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
                         </select>
                     </td>
-                    <c:set var="roomType" value="${room.roomType}"/>
+                    <c:set var="rType" value="${room.roomType}"/>
                     <td>
                         <select name="roomType">
                             <c:forEach var="currentRoomType" items="${roomTypeList}">
                                 <c:choose>
-                                    <c:when test="${currentRoomType eq roomType}">
+                                    <c:when test="${currentRoomType eq rType}">
                                         <option value="${currentRoomType.roomTypeId}" selected="selected">
-                                            name ${roomType.name}
-                                            maxPersons ${roomType.maxPersons}
-                                            price ${roomType.roomPricePerNight}
+                                            name ${rType.roomTypeName}
+                                            maxPersons ${rType.maxPersons}
+                                            price ${rType.roomPricePerNight}
                                         </option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${currentRoomType.roomTypeId}">
-                                            name ${roomType.name}
-                                            maxPersons ${roomType.maxPersons}
-                                            price ${roomType.roomPricePerNight}
+                                            name ${rType.roomTypeName}
+                                            maxPersons ${rType.maxPersons}
+                                            price ${rType.roomPricePerNight}
                                         </option>
                                     </c:otherwise>
                                 </c:choose>
@@ -141,7 +142,7 @@
                     <td><input type="text" name="roomNumber" value="${room.roomNumber}"></td>
                     <td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>
                     <td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>
-                    <td><input type="text" name="roomTypeStatus" value="${room.roomTypeStatus}"></td>
+                    <td><input type="text" name="roomStatus" value="${room.roomStatus}"></td>
                     <td><button class="alterBtn" type="button">Изменить номер</button></td>
                 </tr>
             </c:forEach>

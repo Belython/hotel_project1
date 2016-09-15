@@ -167,6 +167,60 @@ public class RequestParser {
         return bill;
     }
 
+    public static List<Room> parseRoomList(HttpServletRequest request) {
+        List<Room> roomList = new ArrayList<>();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Set<String> parameterSet = parameterMap.keySet();
+        String[] roomIdArray = null;
+        String[] hotelIdArray = null;
+        String[] roomTypeIdArray = null;
+        String[] rooomNumberArray = null;
+        String[] bookingStatartDateArray = null;
+        String[] bookingEndDateArray = null;
+        String[] roomStatusArray = null;
+    }
+
+    public static List<Hotel> parseHotelList(ServletRequest request) {
+        List<Hotel> hotelList = new ArrayList<>();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Set<String> parameterSet = parameterMap.keySet();
+        String[] hotelIdArray = null;
+        String[] hotelNameArray = null;
+        String[] hotelStatusArray = null;
+        String[] hotelCityArray = null;
+        String[] hotelCountryArray = null;
+        for (String parameter : parameterSet) {
+            switch (parameter) {
+                case Parameter.HOTEL_ID: {
+                    hotelIdArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_NAME: {
+                    hotelNameArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_STATUS: {
+                    hotelStatusArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_CITY: {
+                    hotelCityArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.HOTEL_COUNTRY: {
+                    hotelCountryArray = parameterMap.get(parameter);
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < hotelIdArray.length; i++) {
+            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(hotelIdArray[i]), hotelCountryArray[i], hotelCityArray[i], hotelNameArray[i], hotelStatusArray[i]);
+            hotelList.add(hotel);
+        }
+
+        return hotelList;
+    }
+
     private static int calc(int days, List<Room> roomList) {
         int payment = 0;
         for (Room room : roomList) {

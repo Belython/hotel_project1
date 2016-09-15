@@ -35,8 +35,8 @@ public class GetHotelsCommand implements ICommand {
                 servletAction = ServletAction.FORWARD_PAGE;
                 List<Hotel> hotelList = null;
                 page = PagePath.HOTEL_LIST_PAGE_PATH;
-                String searchParameter = request.getParameter(Parameter.SEARCH_PARAMETER);
-                String searchParameterValue = request.getParameter(Parameter.SEARCH_PARAMETER_VALUE);
+                String searchParameter = request.getParameter(Parameter.FILTER_PARAMETER);
+                String searchParameterValue = request.getParameter(Parameter.FILTER_PARAMETER_VALUE);
                 switch (searchParameter) {
                     case Value.HOTEL_COUNTRY: {
                         hotelList = HotelServiceImpl.getInstance().getByCountry(searchParameterValue);
