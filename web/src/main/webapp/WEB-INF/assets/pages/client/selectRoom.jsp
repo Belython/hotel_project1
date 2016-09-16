@@ -15,8 +15,8 @@
 <form name="searchForm" method="POST" action="controller">
     <input type="hidden" name="command" value="makeBill"/>
     <c:forEach var="roomType" items="${selectedHotel.roomTypeList}">
-        <label for="${roomType.roomTypeId}">${roomType.name}${selectedHotel.roomTypesCount.get(roomType)}</label>
-        <select roomTypeId="${roomType.roomTypeId}" name="${roomType.name}">
+        <label for="${roomType.id}">${roomType.name}${selectedHotel.roomTypesCount.get(roomType)}</label>
+        <select id="${roomType.roomTypeId}" name="${roomType.name}">
             <option value="0" selected="selected">0</option>
             <option value="1">1</option>
             <option value="2">2</option>

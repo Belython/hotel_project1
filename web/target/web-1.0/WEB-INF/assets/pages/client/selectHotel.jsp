@@ -12,10 +12,10 @@
 <body>
 <%@include file="../../../../assets/pages/inputs/header.jsp"%>
 <form name="resultsForm" method="POST" action="controller">
-    <c:forEach var="hotel" items="${hotelList}">
-        <a href="controller?command=selectRoom&selectedHotel=${hotel.hotelId}">
-            ${hotel_name} ${hotel.hotelName}
-            ${rooms_available} ${hotel.roomsCount}
+    <c:forEach var="roomHotel" items="${hotelList}">
+        <a href="controller?command=selectRoom&selectedHotel=${roomHotel.hotelId}">
+            ${hotel_name} ${roomHotel.hotelName}
+            ${rooms_available} ${roomHotel.roomsCount}
         </a><br/>
     </c:forEach>
 

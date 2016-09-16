@@ -43,9 +43,7 @@ public class Hotel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Hotel hotel = (Hotel) o;
-
         if (hotelId != hotel.hotelId) return false;
         if (!hotelLocation.equals(hotel.hotelLocation)) return false;
         if (!hotelName.equals(hotel.hotelName)) return false;
@@ -55,8 +53,7 @@ public class Hotel {
 
     @Override
     public int hashCode() {
-        int result;
-        result = (int) (hotelId ^ (hotelId >>> 32));
+        int result = (int) (hotelId ^ (hotelId >>> 32));
         result = 31 * result + hotelLocation.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelStatus.hashCode();

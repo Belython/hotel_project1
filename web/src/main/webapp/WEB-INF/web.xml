@@ -59,7 +59,7 @@
     <!--</listener>-->
 
     <error-page>
-        <hotelLocation>/WEB-INF/assets/pages/error/error.jsp</hotelLocation>
+        <location>/WEB-INF/assets/pages/error/error.jsp</location>
     </error-page>
 
     <welcome-file-list>

@@ -42,9 +42,9 @@ public class GetRoomsCommand implements ICommand {
                     hotelSet.add(hotel);
                     roomTypeSet.add(roomType);
                 }
-                session.setAttribute("roomList", roomList);
-                session.setAttribute("hotelList", hotelSet);
-                session.setAttribute("roomTypeList", roomTypeSet);
+                session.setAttribute(Parameter.ROOM_LIST, roomList);
+                session.setAttribute(Parameter.HOTEL_SET, hotelSet);
+                session.setAttribute(Parameter.ROOM_TYPE_SET, roomTypeSet);
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
                 servletAction = ServletAction.NO_ACTION;

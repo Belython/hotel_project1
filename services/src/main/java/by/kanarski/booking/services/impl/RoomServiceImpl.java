@@ -124,4 +124,16 @@ public class RoomServiceImpl implements IRoomService {
         return roomList;
     }
 
+    public void updateList(List<Room> roomList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            RoomDao.getInstance().updateList(roomList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+    }
+
 }

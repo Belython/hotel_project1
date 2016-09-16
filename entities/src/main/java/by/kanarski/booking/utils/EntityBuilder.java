@@ -130,6 +130,8 @@ public class EntityBuilder {
         return room;
     }
 
+
+
     public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
                                  long bookingEndDate, String roomStatus) {
         Room room = buildRoom(hotel, roomType, roomNumber, bookingStartDate, bookingEndDate);

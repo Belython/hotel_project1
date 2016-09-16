@@ -5,7 +5,7 @@ public class Parameter {
     //User parameters
 
     public static final String USER = "user";
-    public static final String USER_ID = "clientId";
+    public static final String USER_ID = "userId";
     public static final String USER_FIRST_NAME = "firstName";
     public static final String USER_LAST_NAME = "lastName";
     public static final String USER_EMAIL = "email";
@@ -41,6 +41,7 @@ public class Parameter {
     public static final String HOTEL_NAME = "hotelName";
     public static final String HOTEL_STATUS = "hotelStatus";
     public static final String HOTEL_LIST = "hotelList";
+    public static final String HOTEL_SET = "hotelSet";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
 
     //Locale parameters
@@ -56,6 +57,8 @@ public class Parameter {
     public static final String ROOM_TYPE_PRICE_PER_NIGHT = "pricePerNight";
     public static final String ROOM_TYPE_FACILITIES = "facilities";
     public static final String ROOM_TYPE_STATUS = "roomTypeStatus";
+    public static final String ROOM_TYPE_LIST = "roomTypeList";
+    public static final String ROOM_TYPE_SET = "roomTypeSet";
 
     //Room parameters
 
@@ -66,6 +69,7 @@ public class Parameter {
     public static final String ROOM_BOOKING_START_DATE = "bookingEndDate";
     public static final String ROOM_BOOKING_END_DATE = "bookingStartDate";
     public static final String ROOM_STATUS = "roomStatus";
+    public static final String ROOM_LIST = "roomList";
 
     //General attributes
 

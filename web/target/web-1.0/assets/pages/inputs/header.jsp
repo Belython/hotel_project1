@@ -11,7 +11,6 @@
                     <li class="userCenterLoginField">
                         <form id="login" name="loginForm" method="POST" action="controller">
                             <input type="hidden" name="command" value="login"/>
-                            <input type="hidden" name="currentPagePath" value="/assets/pages/index.jsp"/>
                             <h1>Форма входа</h1>
                             <fieldset id="inputs">
                                 <input id="username" type="text" name="login" placeholder="Логин" autofocus required>

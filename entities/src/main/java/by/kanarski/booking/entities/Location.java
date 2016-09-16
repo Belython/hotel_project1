@@ -38,4 +38,27 @@ public class Location {
     public void setLocationStatus(String locationStatus) {
         this.locationStatus = locationStatus;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Location location = (Location) o;
+
+        if (locationId != location.locationId) return false;
+        if (!country.equals(location.country)) return false;
+        if (!city.equals(location.city)) return false;
+        return locationStatus.equals(location.locationStatus);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (locationId ^ (locationId >>> 32));
+        result = 31 * result + country.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + locationStatus.hashCode();
+        return result;
+    }
 }

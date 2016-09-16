@@ -4,9 +4,11 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
+import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,14 +26,9 @@ public class AlterRoomsCommand extends AbstractCommand {
         ServletAction servletAction = null;
         String page = null;
         HttpSession session = request.getSession();
-        List<Hotel> newHotels = new ArrayList<>();
-        List<Hotel> changedHotels = new ArrayList<>();
-        List<Hotel> hotelList = RequestParser.parseHotelList(request);
-        getNewHotels(hotelList, newHotels, changedHotels);
-
+        List<Room> roomList = RequestParser.parseRoomList(request);
         try {
-            HotelServiceImpl.getInstance().addList(newHotels);
-            HotelServiceImpl.getInstance().updateList(changedHotels);
+            RoomServiceImpl.getInstance().updateList(roomList);
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;
                 writeResponse(response);
@@ -59,21 +56,6 @@ public class AlterRoomsCommand extends AbstractCommand {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void getNewHotels(List<Hotel> initialHotelList, List<Hotel> newHotels, List<Hotel> changedHotels) {
-        for (Hotel hotel : initialHotelList) {
-            if (hotel.getHotelId() == -1) {
-                newHotels.add(hotel);
-            } else {
-                changedHotels.add(hotel);
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        String str = null;
-        System.out.println(Long.valueOf(""));
     }
 
 

@@ -16,6 +16,7 @@ public class DaoMessages {
 
     public static final String ADD_ROOM_EXCEPTION = "Unable to add the room ";
     public static final String GET_ROOM_EXCEPTION = "Unable to get the room ";
+    public static final String UPDATE_ROOM_EXCEPTION = "Unable to update the room ";
 
 
 
