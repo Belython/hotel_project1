@@ -10,7 +10,7 @@ public class Value {
 
     public static final List<String> LOCALE_LIST = Arrays.asList("ru_RU", "en_US", "en_EN");
 
-    public static final String ACENDING = "ascending";
+    public static final String ASCENDING = "ascending";
     public static final String DESCENDING = "descending";
 
     public static final String ALL_HOTELS = "allHotels";
@@ -18,5 +18,9 @@ public class Value {
     public static final String HOTEL_COUNTRY = "hotelCountry";
     public static final String HOTEL_NAME = "hotelName";
 
+    //Sub commands constants
+
+    public static final String ADD_NEW = "addNew";
+    public static final String CHANGE_EXISTING = "changeExisting";
 
 }

@@ -228,6 +228,26 @@ public class RoomDao implements IRoomDao {
         }
     }
 
+    public void addList(List<Room> roomList) throws DaoException {
+        Connection connection = ConnectionUtil.getConnection();
+        try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
+                Statement.RETURN_GENERATED_KEYS)) {
+            for (Room room : roomList) {
+                stm.setLong(1, room.getRoomHotel().getHotelId());
+                stm.setLong(2, room.getRoomType().getRoomTypeId());
+                stm.setInt(3, room.getRoomNumber());
+                stm.setLong(4, room.getBookingStartDate());
+                stm.setLong(5, room.getBookingEndDate());
+                stm.setString(6, room.getRoomStatus());
+                stm.addBatch();
+            }
+            stm.executeBatch();
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_ROOM_EXCEPTION);
+            throw new DaoException(DaoMessages.ADD_ROOM_EXCEPTION, e);
+        }
+    }
+
     private String getFinishedQuery(String initialQuery, List<Long> parametersList) {
         StringBuilder buffer = new StringBuilder();
         String regex = "parameters";

@@ -13,6 +13,9 @@ public class MessageConstants {
     public static final String ERROR_DATABASE = "message.databaseerror";
     public static final String AUTHORIZATION_ERRON = "message.authorizationerror";
 
+
+    public static final String DATABASE_CHANGE_SUCCES = "message.databaseChangeSucces";
+
     private MessageConstants() {
     }
 }

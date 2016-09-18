@@ -71,9 +71,13 @@ public class Parameter {
     public static final String ROOM_STATUS = "roomStatus";
     public static final String ROOM_LIST = "roomList";
 
-    //General attributes
+    //Command attributes
 
     public static final String COMMAND = "command";
+    public static final String SUB_COMMAND = "subCommand";
+
+    //General attributes
+
     public static final String ERROR_DATABASE = "errorDatabase";
     public static final String ERROR_LOGIN_OR_PASSWORD = "errorLoginOrPassword";
     public static final String ERROR_USER_EXISTS = "errorUserExists";

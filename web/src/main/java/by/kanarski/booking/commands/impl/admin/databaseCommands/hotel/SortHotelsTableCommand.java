@@ -44,7 +44,7 @@ public class SortHotelsTableCommand extends AbstractCommand {
         String sortingOption;
 
         SortBy(String sortingOption, String sortingDirection) {
-            ascending = sortingDirection.equals(Value.ACENDING);
+            ascending = sortingDirection.equals(Value.ASCENDING);
             this.sortingOption = sortingOption;
         }
 

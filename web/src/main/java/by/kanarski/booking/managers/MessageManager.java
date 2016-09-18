@@ -4,7 +4,7 @@ import by.kanarski.booking.constants.ResourcePath;
 
 import java.util.ResourceBundle;
 
-
+// TODO: 17.09.2016 удалить
 public class MessageManager {
     private static MessageManager instance;
     private final ResourceBundle bundle = ResourceBundle.getBundle(ResourcePath.MESSAGES_SOURCE);
