@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-/**
- * Created by Дмитрий on 01.09.2016.
- */
+
 public class GetRoomsCommand implements ICommand {
 
     @Override
@@ -30,12 +28,7 @@ public class GetRoomsCommand implements ICommand {
             if (admin.getRole().equals(Role.ADMINISTRATOR)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOM_LIST_PAGE_PATH;
-                String filterParameter = request.getParameter(Parameter.FILTER_PARAMETER);
-                String filterParameterValue = request.getParameter(Parameter.FILTER_PARAMETER_VALUE);
                 // TODO: 10.09.2016 Зделать геттеры
-
-
-
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
                 List<RoomDto> roomDtoList = covertToRoomDtoList(roomList, session);
                 Set<Hotel> hotelSet = new HashSet<>();
@@ -46,9 +39,11 @@ public class GetRoomsCommand implements ICommand {
                     hotelSet.add(hotel);
                     roomTypeSet.add(roomType);
                 }
-                session.setAttribute(Parameter.ROOM_LIST, roomDtoList);
+                request.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
+                session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_SET, hotelSet);
                 session.setAttribute(Parameter.ROOM_TYPE_SET, roomTypeSet);
+                session.setAttribute(Parameter.STATUS_LIST, Value.STATUS_LIST);
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
                 servletAction = ServletAction.NO_ACTION;

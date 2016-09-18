@@ -66,10 +66,11 @@ public class Parameter {
     public static final String ROOM_HOTEL = "hotelRoom";
     public static final String ROOM_ROOM_TYPE = "roomType";
     public static final String ROOM_NUMBER = "roomNumber";
-    public static final String ROOM_BOOKING_START_DATE = "bookingEndDate";
-    public static final String ROOM_BOOKING_END_DATE = "bookingStartDate";
+    public static final String ROOM_BOOKING_START_DATE = "bookingStartDate";
+    public static final String ROOM_BOOKING_END_DATE = "bookingEndDate";
     public static final String ROOM_STATUS = "roomStatus";
     public static final String ROOM_LIST = "roomList";
+    public static final String ROOM_DTO_LIST = "roomDtoList";
 
     //Command attributes
 
@@ -88,7 +89,7 @@ public class Parameter {
     public static final String FILTER_PARAMETER = "filterParameter";
     public static final String FILTER_PARAMETER_VALUE = "filterParameterValue";
     public static final String FIELD_VALUES_MAP = "fieldValuesMap";
-
+    public static final String STATUS_LIST = "statusList";
 
     //Sort parameters
 

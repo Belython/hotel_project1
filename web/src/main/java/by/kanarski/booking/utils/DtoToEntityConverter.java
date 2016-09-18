@@ -40,7 +40,7 @@ public class DtoToEntityConverter {
         int roomNumber = room.getRoomNumber();
         String bookingStartDate = LocalizationUtil.getFormattedDate(room.getBookingStartDate(), locale);
         String bookingEndDate = LocalizationUtil.getFormattedDate(room.getBookingEndDate(), locale);
-        String roomStatus = roomDto.getRoomStatus();
+        String roomStatus = room.getRoomStatus();
         roomDto.setRoomId(roomId);
         roomDto.setRoomHotel(roomHotel);
         roomDto.setRoomType(roomType);
@@ -58,6 +58,15 @@ public class DtoToEntityConverter {
             roomList.add(room);
         }
         return roomList;
+    }
+
+    public static List<RoomDto> covertToRoomDtoList(List<Room> roomList, Locale locale) {
+        List<RoomDto> roomDtoList = new ArrayList<>();
+        for (Room room : roomList) {
+            RoomDto roomDto = DtoToEntityConverter.convertToRoomDto(room, locale);
+            roomDtoList.add(roomDto);
+        }
+        return roomDtoList;
     }
 
 }

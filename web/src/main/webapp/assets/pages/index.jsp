@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" errorPage="/WEB-INF/assets/pages/error/error.jsp" %>

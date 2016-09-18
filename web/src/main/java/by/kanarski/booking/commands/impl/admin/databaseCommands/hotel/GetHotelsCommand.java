@@ -46,7 +46,7 @@ public class GetHotelsCommand implements ICommand {
                         hotelList = HotelServiceImpl.getInstance().getByCity(searchParameterValue);
                         break;
                     }
-                    case Value.ALL_HOTELS: {
+                    case Value.HOTEL_ALL_HOTELS: {
                         hotelList = HotelServiceImpl.getInstance().getAll();
                         break;
                     }

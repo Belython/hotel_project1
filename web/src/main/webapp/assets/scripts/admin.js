@@ -1,7 +1,9 @@
+function main() {
+    $(".submitBtn").click(function (event) {
+        alterEntity(event)
+    });
 
-    $(".submitBtn").click(function (event) {alterEntity(event)});
-
-    function alterEntity (event) {
+    function alterEntity(event) {
         var button = event.target;
         var tableRow = $(button).parents().eq(1);
         var rowInputNodes = tableRow.find("input, select");
@@ -18,8 +20,10 @@
         });
     }
 
-    $(".addRowBtn").click(function () {addRow()});
-    
+    $(".addRowBtn").click(function () {
+        addRow()
+    });
+
     function addRow() {
         var tableRow = $(".newEntity tr").last().clone();
         $(".newEntity tbody").append(tableRow);
@@ -31,16 +35,22 @@
         });
     }
 
-    $(".alterEntityBtn").click(function (event) {alterEntity(event)});
+    $(".alterEntityBtn").click(function (event) {
+        alterEntity(event)
+    });
 
-    $(".addEntityBtn").click(function (event) {alterEntity(event)});
+    $(".addEntityBtn").click(function (event) {
+        alterEntity(event)
+    });
 
-    $(".removeRowBtn").click(function (event) {removeRow(event)});
+    $(".removeRowBtn").click(function (event) {
+        removeRow(event)
+    });
 
-    function removeRow (event) {
+    function removeRow(event) {
         var button = event.target;
         var tableRow = $(button).parents().eq(1);
         tableRow.remove();
     }
-    
-
+}
+$("document").ready(main);

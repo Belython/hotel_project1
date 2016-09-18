@@ -45,6 +45,8 @@ public class AlterRoomsCommand extends AbstractCommand {
                     break;
                 }
             }
+            List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
+            session.setAttribute(Parameter.ROOM_LIST, newRoomList);
             String responseText = Message.getProperty(MessageConstants.DATABASE_CHANGE_SUCCES, locale);
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;

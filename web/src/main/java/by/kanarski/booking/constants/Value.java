@@ -13,10 +13,14 @@ public class Value {
     public static final String ASCENDING = "ascending";
     public static final String DESCENDING = "descending";
 
-    public static final String ALL_HOTELS = "allHotels";
+    public static final String HOTEL_ALL_HOTELS = "allHotels";
     public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_COUNTRY = "hotelCountry";
     public static final String HOTEL_NAME = "hotelName";
+
+    public static final String ROOM_TYPE_NAME = "roomTypeName";
+
+    public static final List<String> STATUS_LIST = Arrays.asList("active", "deleted");
 
     //Sub commands constants
 
