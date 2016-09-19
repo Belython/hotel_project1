@@ -59,11 +59,11 @@
     <!--</listener>-->
 
     <error-page>
-        <location>/WEB-INF/assets/pages/error/error.jsp</location>
+        <location>/WEB-INF/assets/jsp/error/error.jsp</location>
     </error-page>
 
     <welcome-file-list>
-        <welcome-file>assets/pages/index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/assets/jsp/user/index.jsp</welcome-file>
     </welcome-file-list>
 
 

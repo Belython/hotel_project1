@@ -32,7 +32,7 @@ public class SortRoomsCommand extends AbstractCommand {
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale);
         session.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
-        String page = PagePath.ROOM_LIST_PAGE_PATH;
+        String page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;

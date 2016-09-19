@@ -11,21 +11,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="log4j-api-2.6.1" level="project" />
-    <orderEntry type="library" exported="" name="c3p0-0.9.5.2" level="project" />
-    <orderEntry type="library" exported="" name="c3p0-oracle-thin-extras-0.9.5.2" level="project" />
-    <orderEntry type="library" exported="" name="mchange-commons-java-0.2.11" level="project" />
-    <orderEntry type="library" exported="" name="mysql-connector-java-5.1.39-bin" level="project" />
-    <orderEntry type="library" exported="" name="log4j-core-2.6.1" level="project" />
-    <orderEntry type="library" exported="" name="servlet-api" level="project" />
-    <orderEntry type="library" exported="" name="log4j-1.2.17" level="project" />
-    <orderEntry type="library" exported="" name="taglibs-standard-impl-1.2.5" level="project" />
-    <orderEntry type="library" exported="" name="taglibs-standard-spec-1.2.5" level="project" />
-    <orderEntry type="library" exported="" name="junit-4.12" level="project" />
-    <orderEntry type="library" exported="" name="hamcrest-core-1.3" level="project" />
-    <orderEntry type="library" exported="" name="c3p0-0.9.5.21" level="project" />
-    <orderEntry type="library" exported="" name="junit-4.10" level="project" />
-    <orderEntry type="library" exported="" name="c3p0-0.9.5.22" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.7" level="project" />
+    <orderEntry type="library" name="c3p0-0.9.5.2" level="project" />
   </component>
 </module>

@@ -23,14 +23,14 @@ public class GetRoomsCommand implements ICommand {
         ServletAction servletAction;
         String page = null;
         HttpSession session = request.getSession();
+        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         try {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(Role.ADMINISTRATOR)) {
                 servletAction = ServletAction.FORWARD_PAGE;
-                page = PagePath.ROOM_LIST_PAGE_PATH;
-                // TODO: 10.09.2016 Зделать геттеры
+                page = PagePath.ROOMS_REDACTOR_PATH;
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
-                List<RoomDto> roomDtoList = covertToRoomDtoList(roomList, session);
+                List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale);
                 Set<Hotel> hotelSet = new HashSet<>();
                 Set<RoomType> roomTypeSet = new HashSet<>();
                 for (Room room: roomList) {
@@ -58,13 +58,4 @@ public class GetRoomsCommand implements ICommand {
         return servletAction;
     }
 
-    private List<RoomDto> covertToRoomDtoList(List<Room> roomList, HttpSession session) {
-        List<RoomDto> roomDtoList = new ArrayList<>();
-        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-        for (Room room : roomList) {
-            RoomDto roomDto = DtoToEntityConverter.convertToRoomDto(room, locale);
-            roomDtoList.add(roomDto);
-        }
-        return roomDtoList;
-    }
 }

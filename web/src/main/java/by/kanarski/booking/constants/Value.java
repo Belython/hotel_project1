@@ -27,4 +27,8 @@ public class Value {
     public static final String ADD_NEW = "addNew";
     public static final String CHANGE_EXISTING = "changeExisting";
 
+    //Database redactor types
+
+    public static final String ROOM_REDACTOR = "roomRedactor";
+
 }

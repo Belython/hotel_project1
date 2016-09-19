@@ -31,6 +31,8 @@ public class Parameter {
 
     public static final String LOCATION_COUNTRY = "country";
     public static final String LOCATION_CITY = "city";
+    public static final String SUPPORTED_COUNTRIES = "supportedCountries";
+    public static final String SUPPORTED_CITIES = "supportedCities";
 
     //Hotel parameters
 
@@ -43,6 +45,7 @@ public class Parameter {
     public static final String HOTEL_LIST = "hotelList";
     public static final String HOTEL_SET = "hotelSet";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
+    public static final String SUPPORTED_HOTELS = "supportedHotels";
 
     //Locale parameters
 
@@ -96,7 +99,13 @@ public class Parameter {
     public static final String SORTING_DIRECTION = "sortingDirection";
     public static final String SORTING_OPTION = "sortingOption";
 
+    //Database redactor parameters
 
+    public static final String TABLE_REDACTOR_TYPE = "tableRedactorType";
+
+    //Localisation parameters
+
+    public static final String TEXT_MAP = "textMap";
 
     private Parameter() {
     }
