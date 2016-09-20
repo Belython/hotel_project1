@@ -4,6 +4,7 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.entities.ExtendedHotel;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
@@ -37,7 +38,7 @@ public class SelectHotelCommand extends AbstractCommand {
             // TODO: 26.06.2016 ЭТО ВСЕ ВРЕМЕННО
             roomTypeFill();
             String hotelName = order.getHotel().getHotelName();
-            if (!hotelName.equals(Parameter.ANY_HOTEL)) {
+            if (!hotelName.equals(Value.HOTEL_ALL_HOTELS)) {
                 Hotel hotel = HotelServiceImpl.getInstance().getByHotelName(hotelName);
                 session.setAttribute(Parameter.HOTEL, hotel);
                 servletAction = ServletAction.CALL_COMMAND;

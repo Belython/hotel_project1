@@ -1,13 +1,8 @@
 package by.kanarski.booking.i18n.l10n.filler;
 
-import by.kanarski.booking.constants.PageTextContentName;
-
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by dkanarsky on 31.08.2016.
- */
 public class PageDescriptor {
 
     public static final List<List<String>> INDEX = Arrays.asList(

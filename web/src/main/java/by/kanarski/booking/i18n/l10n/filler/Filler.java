@@ -21,23 +21,12 @@ public class Filler {
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         ResourceBundle bundle = ResourceBundle.getBundle(ResourcePath.TEXT_SOURCE, locale);
-        String attributeRegExp = "\\.\\w+";
-        Pattern pattern = Pattern.compile(attributeRegExp);
-        Map<String, String> textMap = new HashMap<>();
         for (List<String> contentList : pageDescriptor) {
             for (String contentName : contentList) {
-                Matcher matcher = pattern.matcher(contentName);
-                matcher.find();
-                String attributeName = matcher.group().substring(1);
-                textMap.put(attributeName, bundle.getString(contentName));
+                String attributeName = contentName.replace(".", "_");
+                request.setAttribute(attributeName, bundle.getString(contentName));
             }
         }
-        session.setAttribute(Parameter.TEXT_MAP, textMap);
     }
-
-
-
-
-
 
 }

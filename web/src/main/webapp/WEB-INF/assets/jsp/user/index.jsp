@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>--%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>
 
 <html>
 <head>
@@ -15,16 +15,54 @@
 </head>
 <body onload="setLocale()">
 <%@include file="header/header.jsp" %>
-<%--<c:set var="t" value="${textMap}"/>--%>
-<%--${t.get('searchParameters')}--%>
+${index_searchParameters}
 <form name="findForm" method="POST" action="controller">
     <input type="hidden" name="command" value="selectHotel"/>
-    <%--<label for="country">${t.get('country')}</label>--%>
-    <input type="text" name="country" id="country" value="Belarus"/>
-    <input type="text" name="city" id="city" placeholder="Город" value="Minsk"/>
-    <input type="text" name="hotelName" id="hotelName" placeholder="Отель" value="any"/><br/>
-    <label id="amountRooms" for="noRooms">${roomsAmount}</label>
-    <select id="noRooms" name="totalRooms">
+    <label for="country">${index_country}</label>
+    <select id="country" name="country">
+        <c:forEach var="country" items="${supportedCountries}">
+            <option value="${country}">${country}</option>
+        </c:forEach>
+    </select>
+    <label for="city">${index_city}</label>
+    <select id="city" name="city">
+        <c:forEach var="city" items="${supportedCities}">
+            <option value="${city}">${city}</option>
+        </c:forEach>
+    </select>
+    <label for="hotel">${index_hotel}</label>
+    <select id="hotel" name="hotelName">
+        <c:forEach var="hotel" items="${supportedHotels}">
+            <option value="${hotel}">${hotel}</option>
+        </c:forEach>
+        <option value="allHotels">${index_allHotels}</option>
+    </select>
+    <br/>
+    <label for="roomsAmount">${index_roomsAmount}</label>
+    <select id="roomsAmount" name="totalRooms">
+        <option value="1" selected="selected">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+    </select>
+    <label for="personsAmount">${index_personsAmount}</label>
+    <select id="personsAmount" name="totalPersons">
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -47,36 +85,11 @@
         <option value="20">20</option>
     </select>
     <br/>
-    <label for="noPersons">${personsAmount}</label>
-    <select id="noPersons" name="totalPersons">
-        <option value="1" selected="selected">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-    </select>
-    <br/>
-
-    <label for="checkInDate">Дата въезда</label>
+    <label for="checkInDate">${index_checkInDate}</label>
     <input id="checkInDate" type="text" name="checkInDate" value=""/>
-    <label for="checkOutDate">Дата отъезда</label>
+    <label for="checkOutDate">${index_checkOutDate}</label>
     <input id="checkOutDate" type="text" name="checkOutDate" value=""/>
-    <input type="submit" value="Искать">
+    <input type="submit" value="${index_searchRooms}">
 </form>
 
 

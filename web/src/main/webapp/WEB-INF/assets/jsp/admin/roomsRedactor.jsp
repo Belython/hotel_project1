@@ -41,10 +41,13 @@
             <td>
                 <select name="hotelId">
                     <c:forEach var="hotel" items="${hotelSet}">
-                        <option value="${hotel.hotelId}">
+                        <c:set var="hotelOption" value="
                             country ${hotel.hotelLocation.country}
                             city ${hotel.hotelLocation.city}
-                            hotelName ${hotel.hotelName}
+                            hotelName ${hotel.hotelName}"
+                        />
+                        <option value="${hotel.hotelId}">
+                            ${hotelOption}
                         </option>
                     </c:forEach>
                 </select>

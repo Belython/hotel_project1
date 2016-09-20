@@ -1,7 +1,5 @@
 package by.kanarski.booking.i18n.l10n.filler;
 
-import by.kanarski.booking.constants.PageTextContentName;
-
 import java.util.Arrays;
 import java.util.List;
 

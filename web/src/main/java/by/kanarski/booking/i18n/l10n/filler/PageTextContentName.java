@@ -1,4 +1,4 @@
-package by.kanarski.booking.constants;
+package by.kanarski.booking.i18n.l10n.filler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,10 +6,16 @@ import java.util.List;
 public class PageTextContentName {
 
     public static final List<String> INDEX = Arrays.asList(
+            "index.searchParameters",
+            "index.country",
+            "index.city",
+            "index.hotel",
+            "index.allHotels",
             "index.roomsAmount",
             "index.personsAmount",
             "index.checkInDate",
-            "index.checkOutDate"
+            "index.checkOutDate",
+            "index.searchRooms"
     );
 
     public static final List<String> REGISTRATION = Arrays.asList(
@@ -45,7 +51,10 @@ public class PageTextContentName {
             "header.signOut",
             "header.register",
             "header.forgotPassword",
-            "header.goToMain"
+            "header.goToMain",
+            "header.goAdminPage",
+            "header.selectLanguage",
+            "header.submit"
     );
 
     private PageTextContentName() {

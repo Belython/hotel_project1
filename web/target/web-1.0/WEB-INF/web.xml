@@ -45,6 +45,14 @@
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>InitializationFilter</filter-name>
+        <filter-class>by.kanarski.booking.filters.InitializationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>InitializationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!--<filter>-->
     <!--<filter-name>SecurityFilter</filter-name>-->
     <!--<filter-class>filters.SecurityFilter</filter-class>-->
@@ -54,9 +62,9 @@
     <!--<servlet-name>Controller</servlet-name>-->
     <!--</filter-mapping>-->
 
-    <!--<listener>-->
-        <!--<listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>-->
-    <!--</listener>-->
+    <listener>
+        <listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>
+    </listener>
 
     <error-page>
         <location>/WEB-INF/assets/jsp/error/error.jsp</location>
