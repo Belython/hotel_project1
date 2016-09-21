@@ -18,7 +18,7 @@
                             </fieldset>
                             <fieldset id="actions">
                                 <input type="submit" id="submit" value="${header_signIn}">
-                                <a href="">Забыли пароль?</a>
+                                <a href="">#{header_forgotPassword}</a>
                                 <a href="controller?command=gotoregistration">${header_register}</a>
                             </fieldset>
                                 ${errorLoginOrPassword}<br/>

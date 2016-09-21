@@ -5,40 +5,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <html>
 <head>
-    <title>Регистрация</title>
+    <title>${registration_registration}</title>
 </head>
 <body>
 <%@include file="header/header.jsp"%>
 <form name="registrationForm" method="POST" action="controller">
     <input type="hidden" name="command" value="registration"/>
-    Введите ваши данные:<br/>
+    <p>${registration_enterYourData}:</p>
+    <br/>
     <table>
         <tr>
-            <td>Имя:</td>
+            <td>${registration_firstName}:</td>
             <td><input type="text" name="firstName" value="" size="20"/></td>
         </tr>
         <tr>
-            <td>Фамилия:</td>
+            <td>${registration_lastName}:</td>
             <td><input type="text" name="lastName" value="" size="20"/></td>
         </tr>
         <tr>
-            <td>Email:</td>
+            <td>${registration_email}:</td>
             <td><input type="text" name="email" value="" size="20"></td>
         </tr>
         <tr>
-            <td>Логин:</td>
+            <td>${registration_login}:</td>
             <td><input type="text" name="login" value="" size="20"/></td>
         </tr>
         <tr>
-            <td>Пароль:</td>
+            <td>${registration_password}:</td>
             <td><input type="password" name="password" value="" size="20"/></td>
         </tr>
     </table>
     ${operationMessage}
     ${errorUserExists} <br/>
-    <input type="submit" value="Зарегистрировать"/>
+    <input type="submit" value="${registration_register}"/>
 </form>
-
 
 </body>
 </html>
