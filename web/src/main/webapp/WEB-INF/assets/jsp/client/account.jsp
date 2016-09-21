@@ -5,29 +5,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
 <html>
 <head>
     <title>${account_account}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/script.js"></script>
 </head>
 <body>
 <%@include file="../user/header/header.jsp"%>
-<form name="billsForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="payBill"/>
-    ${account_billList}
-    <br/>
-    <c:forEach var="bill" items="${billList}">
-        <c:forEach var="room" items="${bill.bookedRoomList}">
-            Тип номера ${room.roomType.roomTypeName}
-            Номер номера ${room.roomNumber}
-            Статус ${bill.roomTypeStatus}
-        </c:forEach>
-        <c:if test="${bill.roomTypeStatus == 'notPaid'}">
-            <input type="hidden" name="billToPay" value="${bill.roomTypeId}"/>
-            <input type="submit" value="Оплатить"/>
-        </c:if><br/>
-    </c:forEach>
-</form>
 
 <form class="accountForm" name="billsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="payBill"/>
@@ -45,6 +31,7 @@
                 <th>${account_checkInDate}</th>
                 <th>${account_checkOutDate}</th>
                 <th>${account_paymentAmount}</th>
+                <th>${account_billStatus}</th>
             </tr>
         </thead>
         <tbody>
@@ -56,25 +43,32 @@
             <c:set var="roomTypes" value="${roomTypeMap.keySet()}"/>
             <c:set var="rtSize" value="${roomTypes.size()}"/>
             <tr>
-                <td>${location.country}</td>
-                <td>${location.city}</td>
-                <td>${hotel.hotelName}</td>
-                <c:forEach var="roomType" items="${roomTypes}">
+                <td rowspan="${rtSize}">${location.country}</td>
+                <td rowspan="${rtSize}">${location.city}</td>
+                <td rowspan="${rtSize}">${hotel.hotelName}</td>
+                <c:forEach var="roomType" items="${roomTypes}" end="0">
                     <td>${roomType.roomTypeName}</td>
                     <td>${roomType.maxPersons}</td>
                     <td>${roomTypeMap.get(roomType)}</td>
                 </c:forEach>
-                <td>${bill.checkInDate}</td>
-                <td>${bill.checkOutDate}</td>
-                <td>${bill.billStatus}</td>
-                <td><button class="payBtn" type="button">Добавить номер</button></td>
-                <td><button class="" type="button">Убрать номер</button></td>
+                <td rowspan="${rtSize}">${bill.checkInDate}</td>
+                <td rowspan="${rtSize}">${bill.checkOutDate}</td>
+                <td rowspan="${rtSize}">${bill.billStatus}</td>
+                <c:if test="${bill.roomTypeStatus eq 'notPaid'}">
+                    <td rowspan="${rtSize}"><button class="payBillBtn" type="button">${account_payBill}</button></td>
+                    <td rowspan="${rtSize}"><button class="refuseBill" type="button">${account_refuseBill}</button></td>
+                </c:if>
             </tr>
+            <c:forEach var="roomType" items="${roomTypes}" begin="1">
+                <tr>
+                    <td>${roomType.roomTypeName}</td>
+                    <td>${roomType.maxPersons}</td>
+                    <td>${roomTypeMap.get(roomType)}</td>
+                </tr>
+            </c:forEach>
         </c:forEach>
         </tbody>
     </table>
-    <input type="submit" value="Добавить все">
-    <button class="addRowBtn" type="button">Добавить строку</button>
 </form>
 
 

@@ -3,7 +3,7 @@ package by.kanarski.booking.commands.impl.user;
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.entities.ExtendedHotel;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
@@ -26,15 +26,15 @@ public class SelectRoomCommand extends AbstractCommand {
             Hotel hotel = (Hotel) session.getAttribute(Parameter.HOTEL);
             List<Room> hotelRooms;
             if (hotel == null) {
-                long hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_SELECTED_HOTEL));
+                long hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
                 hotelRooms = RoomServiceImpl.getInstance().getByHotelId(hotelId);
                 hotel = hotelRooms.get(0).getRoomHotel();
             } else {
                 hotelRooms = RoomServiceImpl.getInstance().getByHotelId(hotel.getHotelId());
             }
 
-            ExtendedHotel selectedExtendedHotel = new ExtendedHotel(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);
-            session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL, selectedExtendedHotel);
+            HotelDto selectedHotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);
+            session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL, selectedHotelDto);
             page = PagePath.CLIENT_SELECT_ROOM_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

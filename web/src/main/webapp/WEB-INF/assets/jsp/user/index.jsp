@@ -5,13 +5,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
 
 <html>
 <head>
-    <title>Авторизация</title>
+    <title>${index_booking}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/scripts/script.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/script.js"></script>
 </head>
 <body onload="setLocale()">
 <%@include file="header/header.jsp" %>

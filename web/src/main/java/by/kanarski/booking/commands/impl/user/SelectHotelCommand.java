@@ -5,7 +5,7 @@ import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
-import by.kanarski.booking.entities.ExtendedHotel;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
@@ -45,7 +45,8 @@ public class SelectHotelCommand extends AbstractCommand {
                 servletAction.setCommandName(CommandType.SELECTROOM.name());
             } else {
                 List<Room> availableRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
-                session.setAttribute(Parameter.HOTEL_LIST, getHotels(availableRooms));
+                List<HotelDto> hotelList = getHotels(availableRooms);
+                session.setAttribute(Parameter.HOTEL_DTO_LIST, hotelList);
                 page = PagePath.CLIENT_SELECT_HOTEL_PATH;
                 servletAction = ServletAction.FORWARD_PAGE;
             }
@@ -71,8 +72,8 @@ public class SelectHotelCommand extends AbstractCommand {
         }
     }
 
-    private List<ExtendedHotel> getHotels(List<Room> roomList) {
-        List<ExtendedHotel> hotelList = new ArrayList<>();
+    private List<HotelDto> getHotels(List<Room> roomList) {
+        List<HotelDto> hotelList = new ArrayList<>();
         int separator = 0;
         for (int i = 0; i < roomList.size(); i++) {
             if (i < (roomList.size() - 1)) {
@@ -80,31 +81,19 @@ public class SelectHotelCommand extends AbstractCommand {
                 String nextHotelName = roomList.get(i + 1).getRoomHotel().getHotelName();
                 if (!curHotelName.equals(nextHotelName)) {
                     Hotel hotel = roomList.get(i).getRoomHotel();
-                    ExtendedHotel extendedHotel = new ExtendedHotel(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
+                    HotelDto hotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                             roomList.subList(separator, i + 1));
-                    hotelList.add(extendedHotel);
+                    hotelList.add(hotelDto);
                     separator = i + 1;
                 }
             } else {
                 Hotel hotel = roomList.get(i).getRoomHotel();
-                ExtendedHotel extendedHotel = new ExtendedHotel(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
+                HotelDto hotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                         roomList.subList(separator, i + 1));
-                hotelList.add(extendedHotel);
+                hotelList.add(hotelDto);
                 separator = i + 1;
             }
         }
         return hotelList;
     }
-
-    public static void main(String[] args) throws ServiceException{
-        List<RoomType> roomTypes = RoomTypeServiceImpl.getInstance().getAll();
-        Set<String> facilities = new HashSet<>();
-        facilities.add("wi-fi");
-        facilities.add("safe");
-        for (RoomType roomType : roomTypes) {
-            roomType.setFacilities(facilities);
-            RoomTypeServiceImpl.getInstance().update(roomType);
-        }
-    }
-
 }

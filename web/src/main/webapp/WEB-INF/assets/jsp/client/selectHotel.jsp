@@ -5,24 +5,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="/assets/css/index.css"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
 <html>
 <head>
-    <title>Результаты поиска</title>
+    <title>${selectHotel_selectHotel}</title>
 </head>
 <body>
 <%@include file="../user/header/header.jsp"%>
-<form name="resultsForm" method="POST" action="controller">
-    <c:forEach var="roomHotel" items="${hotelList}">
-        <a href="controller?command=selectRoom&selectedHotel=${roomHotel.hotelId}">
-            ${hotel_name} ${roomHotel.hotelName}
-            ${rooms_available} ${roomHotel.roomsCount}
-        </a><br/>
-    </c:forEach>
 
+<form name="selectHotelForm" method="POST" action="controller">
+    <input type="hidden" name="command" value="selectRoom"/>
 
-    ${operationMessage}
-    ${errorUserExists} <br/>
+    <table class="hotelList">
+        <thead>
+            <tr>
+                <th>${selectHotel_country}</th>
+                <th>${selectHotel_city}</th>
+                <th>${selectHotel_hotelName}</th>
+                <th>${selectHotel_roomsAvailable}</th>
+            </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="hotel" items="${hotelDtoList}">
+            <input type="hidden" name="hotelId" value="${hotel.hotelId}">
+            <c:set var="location" value="${hotel.hotelLocation}"/>
+            <tr>
+                <td>${location.country}</td>
+                <td>${location.city}</td>
+                <td>${hotel.hotelName}</td>
+                <td>${hotel.roomsAvailable}</td>
+                <td><button class="selectHotelBtn" type="button">${selectHotel_submitHotel}</button></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 </form>
 
 

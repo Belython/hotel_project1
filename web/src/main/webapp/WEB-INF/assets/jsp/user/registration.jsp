@@ -35,9 +35,9 @@
             <td><input type="password" name="password" value="" size="20"/></td>
         </tr>
     </table>
+    <input type="submit" value="${registration_register}"/>
     ${operationMessage}
     ${errorUserExists} <br/>
-    <input type="submit" value="${registration_register}"/>
 </form>
 
 </body>

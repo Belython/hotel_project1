@@ -46,6 +46,7 @@ public class Parameter {
     public static final String HOTEL_SET = "hotelSet";
     public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
     public static final String SUPPORTED_HOTELS = "supportedHotels";
+    public static final String HOTEL_DTO_LIST = "hotelDtoList";
 
     //Locale parameters
 

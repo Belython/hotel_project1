@@ -2,11 +2,11 @@
          pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Ошибка</title>
+    <title>${erro_error}</title>
 </head>
 <body>
-Извините, но в данный момент сервис не доступен: <br/>
+${error_sorry}: <br/>
 ${errorDatabase} <br/>
-<a href="controller?command=logout">Назад</a>
+<a href="controller?command=goToMain">${error_goToMain}}</a>
 </body>
 </html>

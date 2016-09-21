@@ -6,6 +6,7 @@ import java.util.List;
 public class PageTextContentName {
 
     public static final List<String> INDEX = Arrays.asList(
+            "index.booking",
             "index.searchParameters",
             "index.country",
             "index.city",
@@ -30,33 +31,55 @@ public class PageTextContentName {
     );
 
     public static final List<String> ACCOUNT = Arrays.asList(
-
+            "account.account",
+            "account.country",
+            "account.city",
+            "account.hotelName",
+            "account.roomTypeName",
+            "account.maxPersons",
+            "account.totalPersons",
+            "account.roomsAmount",
+            "account.checkInDate",
+            "account.checkOutDate",
+            "account.paymentAmount",
+            "account.billStatus",
+            "account.payBill",
+            "account.refuseBill"
     );
 
     public static final List<String> ERROR = Arrays.asList(
-
+            "error.error",
+            "error.sorry",
+            "error.goToMain"
     );
 
     public static final List<String> SELECT_HOTEL = Arrays.asList(
+            "selectHotel.selectHotel",
+            "selectHotel.сountry",
+            "selectHotel.сity",
             "selectHotel.hotelName",
-            "selectHotel.roomsAvailable"
+            "selectHotel.roomsAvailable",
+            "selectHotel.submitHotel"
     );
 
     public static final List<String> SELECT_ROOM = Arrays.asList(
-
+            "selectRoom.selectRoom",
+            "selectRoom.roomTypeName",
+            "selectRoom.available",
+            "selectRoom.submitRooms"
     );
 
     public static final List<String> HEADER = Arrays.asList(
-            "header.login",
-            "header.password",
-            "header.signIn",
-            "header.signOut",
-            "header.register",
-            "header.forgotPassword",
-            "header.goToMain",
-            "header.goAdminPage",
-            "header.selectLanguage",
-            "header.submit"
+        "header.login",
+        "header.password",
+        "header.signIn",
+        "header.signOut",
+        "header.register",
+        "header.forgotPassword",
+        "header.goToMain",
+        "header.goAdminPage",
+        "header.selectLanguage",
+        "header.submit"
     );
 
     private PageTextContentName() {
