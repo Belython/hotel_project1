@@ -19,12 +19,14 @@ public class PageTextContentName {
     );
 
     public static final List<String> REGISTRATION = Arrays.asList(
+            "registration.registration",
             "registration.enterYourData",
             "registration.firstName",
             "registration.lastMame",
             "registration.email",
             "registration.login",
-            "registration.password"
+            "registration.password",
+            "registration.register"
     );
 
     public static final List<String> ACCOUNT = Arrays.asList(
