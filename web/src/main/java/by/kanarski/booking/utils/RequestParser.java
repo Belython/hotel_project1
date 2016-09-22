@@ -34,7 +34,7 @@ public class RequestParser {
         return user;
     }
 
-    public static OrderDto getOrder(HttpServletRequest request) {
+    public static OrderDto parseOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Locale currentLocale = (Locale) session.getAttribute(Parameter.LOCALE);
         User user = (User) session.getAttribute(Parameter.USER);
