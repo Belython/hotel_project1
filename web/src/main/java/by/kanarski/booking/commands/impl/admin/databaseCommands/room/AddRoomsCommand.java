@@ -19,9 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by dkanarsky on 15.09.2016.
- */
 public class AddRoomsCommand extends AbstractCommand {
 
     @Override

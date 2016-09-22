@@ -16,15 +16,17 @@ public class DtoToEntityConverter {
         Hotel roomHotel = roomDto.getRoomHotel();
         RoomType roomType = roomDto.getRoomType();
         int roomNumber = roomDto.getRoomNumber();
-        long bookingStartDate = LocalizationUtil.parseDate(roomDto.getBookingStartDate(), locale);
-        long bookingEndDate = LocalizationUtil.parseDate(roomDto.getBookingEndDate(), locale);
+//        Map<String, String> bookedDatesAsString = new HashMap<>();
+//        TreeMap<Long, Long> bookedDates = room.
+//        long bookingStartDate = LocalizationUtil.parseDate(roomDto.getBookingStartDate(), locale);
+//        long bookingEndDate = LocalizationUtil.parseDate(roomDto.getBookingEndDate(), locale);
         String roomStatus = roomDto.getRoomStatus();
         room.setRoomId(roomId);
         room.setRoomHotel(roomHotel);
         room.setRoomType(roomType);
         room.setRoomNumber(roomNumber);
-        room.setBookingStartDate(bookingStartDate);
-        room.setBookingEndDate(bookingEndDate);
+//        room.setBookingStartDate(bookingStartDate);
+//        room.setBookingEndDate(bookingEndDate);
         room.setRoomStatus(roomStatus);
         return room;
     }
@@ -35,16 +37,20 @@ public class DtoToEntityConverter {
         Hotel roomHotel = room.getRoomHotel();
         RoomType roomType = room.getRoomType();
         int roomNumber = room.getRoomNumber();
-        String bookingStartDate = LocalizationUtil.getFormattedDate(room.getBookingStartDate(), locale);
-        String bookingEndDate = LocalizationUtil.getFormattedDate(room.getBookingEndDate(), locale);
-        String roomStatus = room.getRoomStatus();
+//        String bookingStartDate = LocalizationUtil.getFormattedDate(room.getBookingStartDate(), locale);
+//        String bookingEndDate = LocalizationUtil.getFormattedDate(room.getBookingEndDate(), locale);
+//        Map<String, String> bookedDatesAsString = new LinkedHashMap<>();
+//        TreeMap<Long, Long> bookedDates = room.getBookedDates();
+//        NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();
+//        Long bookingStart = bookingStartSet.ceiling(checkOutDate);
+//        String roomStatus = room.getRoomStatus();
         roomDto.setRoomId(roomId);
         roomDto.setRoomHotel(roomHotel);
         roomDto.setRoomType(roomType);
         roomDto.setRoomNumber(roomNumber);
-        roomDto.setBookingStartDate(bookingStartDate);
-        roomDto.setBookingEndDate(bookingEndDate);
-        roomDto.setRoomStatus(roomStatus);
+//        roomDto.setBookingStartDate(bookingStartDate);
+//        roomDto.setBookingEndDate(bookingEndDate);
+//        roomDto.setRoomStatus(roomStatus);
         return roomDto;
     }
 

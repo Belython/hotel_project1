@@ -11,10 +11,11 @@ import by.kanarski.booking.services.interfaces.IRoomService;
 import by.kanarski.booking.utils.BookingSystemLogger;
 import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.ExceptionHandler;
+import by.kanarski.booking.utils.SerializationUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
 
 public class RoomServiceImpl implements IRoomService {
     private static RoomServiceImpl instance;
@@ -84,10 +85,30 @@ public class RoomServiceImpl implements IRoomService {
 
     public List<Room> getAvailableRooms(OrderDto orderDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Room> rooms = null;
+        List<Room> rooms = new ArrayList<>();
+        long checkInDate = orderDto.getCheckInDate();
+        long checkOutDate = orderDto.getCheckOutDate();
         try {
             connection.setAutoCommit(false);
-            rooms = RoomDao.getInstance().getAvailableRooms(orderDto);
+            List<Room> roomsForAllDates = RoomDao.getInstance().getAvailableRooms(orderDto);
+            for (Room room : roomsForAllDates) {
+                TreeMap<Long, Long> bookedDates = room.getBookedDates();
+                if (bookedDates == null) {
+                    rooms.add(room);
+                } else {
+                    NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();
+                    Long bookingStart = bookingStartSet.ceiling(checkOutDate);
+                    if (bookingStart == null) {
+                        rooms.add(room);
+                    } else {
+                        Long prevBookingStart = bookedDates.lowerKey(bookingStart);
+                        Long prevBookingEnd = bookedDates.get(prevBookingStart);
+                        if (prevBookingEnd < checkInDate) {
+                            rooms.add(room);
+                        }
+                    }
+                }
+            }
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
@@ -141,6 +162,18 @@ public class RoomServiceImpl implements IRoomService {
         try {
             connection.setAutoCommit(false);
             RoomDao.getInstance().addList(roomList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+    }
+
+    public void reserveRoomList(List<Room> roomList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            RoomDao.getInstance().reserveRoomList(roomList);
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {

@@ -4,10 +4,13 @@ package by.kanarski.booking.utils;
 import by.kanarski.booking.constants.ColumnName;
 import by.kanarski.booking.entities.*;
 
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class EntityParser {
     private EntityParser() {
@@ -44,7 +47,8 @@ public class EntityParser {
         int maxPersons = rs.getInt(ColumnName.ROOM_TYPE_MAX_PERSONS);
         int roomPricePerNight = rs.getInt(ColumnName.ROOM_TYPE_PRICE_PER_NIGHT);
         Set<String> facilities = null;
-        facilities = SerializationUtil.deserialize(rs.getBlob(ColumnName.ROOM_TYPE_FACILITIES), facilities);
+        Blob serializedFacilities = rs.getBlob(ColumnName.ROOM_TYPE_FACILITIES);
+        facilities = SerializationUtil.deserialize(serializedFacilities, facilities);
         String roomTypeStatus = rs.getString(ColumnName.ROOM_TYPE_STATUS);
         RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName, maxPersons, roomPricePerNight,
                 facilities, roomTypeStatus);
@@ -56,11 +60,11 @@ public class EntityParser {
         Hotel hotel = parseHotel(rs);
         RoomType roomType = parseRoomType(rs);
         int roomNumber = rs.getInt(ColumnName.ROOM_NUMBER);
-        long bookingStartDate = rs.getLong(ColumnName.ROOM_BOOKING_START_DATE);
-        long bookingEndDate = rs.getLong(ColumnName.ROOM_BOOKING_END_DATE);
+        TreeMap<Long, Long> bookedDates = null;
+        Blob serializedBookedDates = rs.getBlob(ColumnName.ROOM_BOOKED_DATES);
+        bookedDates = SerializationUtil.deserialize(serializedBookedDates, bookedDates);
         String roomStatus = rs.getString(ColumnName.ROOM_STATUS);
-        Room room = EntityBuilder.buildRoom(roomId, hotel, roomType, roomNumber, bookingStartDate, bookingEndDate,
-                roomStatus);
+        Room room = EntityBuilder.buildRoom(roomId, hotel, roomType, roomNumber, bookedDates, roomStatus);
         return room;
     }
 

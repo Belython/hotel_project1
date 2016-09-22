@@ -33,8 +33,9 @@ public class ColumnName {
     public static final String ROOM_HOTEL_ID = "HOTEL_ID";
     public static final String ROOM_ROOM_TYPE_ID = "ROOM_TYPE_ID";
     public static final String ROOM_NUMBER = "ROOM_NUMBER";
-    public static final String ROOM_BOOKING_START_DATE = "BOOKING_START_DATE";
-    public static final String ROOM_BOOKING_END_DATE = "BOOKING_END_DATE";
+//    public static final String ROOM_BOOKING_START_DATE = "BOOKING_START_DATE";
+//    public static final String ROOM_BOOKING_END_DATE = "BOOKING_END_DATE";
+    public static final String ROOM_BOOKED_DATES = "BOOKED_DATES";
     public static final String ROOM_STATUS = "ROOM_STATUS";
 
     public static final String ROOM_TYPE_ID = "ROOM_TYPE_ID";

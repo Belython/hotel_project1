@@ -6,6 +6,7 @@ import by.kanarski.booking.entities.*;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class EntityBuilder {
     private EntityBuilder() {
@@ -122,9 +123,9 @@ public class EntityBuilder {
     }
 
 
-    public static Room buildRoom(long roomId, Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
-                                 long bookingEndDate, String roomStatus) {
-        Room room = buildRoom(hotel, roomType, roomNumber, bookingStartDate, bookingEndDate);
+    public static Room buildRoom(long roomId, Hotel hotel, RoomType roomType, int roomNumber,
+                                 TreeMap<Long, Long> bookedDates, String roomStatus) {
+        Room room = buildRoom(hotel, roomType, roomNumber, bookedDates);
         room.setRoomId(roomId);
         room.setRoomStatus(roomStatus);
         return room;
@@ -132,21 +133,18 @@ public class EntityBuilder {
 
 
 
-    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
-                                 long bookingEndDate, String roomStatus) {
-        Room room = buildRoom(hotel, roomType, roomNumber, bookingStartDate, bookingEndDate);
+    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, TreeMap<Long, Long> bookedDates, String roomStatus) {
+        Room room = buildRoom(hotel, roomType, roomNumber, bookedDates);
         room.setRoomStatus(roomStatus);
         return room;
     }
 
-    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, long bookingStartDate,
-                                 long bookingEndDate) {
+    public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, TreeMap<Long, Long> bookedDates) {
         Room room = new Room();
         room.setRoomHotel(hotel);
         room.setRoomType(roomType);
         room.setRoomNumber(roomNumber);
-        room.setBookingStartDate(bookingStartDate);
-        room.setBookingEndDate(bookingEndDate);
+        room.setBookedDates(bookedDates);
         return room;
     }
 

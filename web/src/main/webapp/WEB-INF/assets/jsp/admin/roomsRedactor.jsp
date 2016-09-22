@@ -30,8 +30,7 @@
             <th>roomHotel</th>
             <th>roomType</th>
             <th>roomNumber</th>
-            <th>bookingStartDate</th>
-            <th>bookingEndDate</th>
+            <%--<th>bookedDates</th>--%>
             <th>roomStatus</th>
         </tr>
         </thead>
@@ -64,8 +63,8 @@
                 </select>
             </td>
             <td><input type="text" name="roomNumber"></td>
-            <td><input type="text" name="bookingStartDate"></td>
-            <td><input type="text" name="bookingEndDate"></td>
+            <%--<td><input type="text" name="bookingStartDate"></td>--%>
+            <%--<td><input type="text" name="bookingEndDate"></td>--%>
             <td>
                 <select name="roomStatus">
                     <c:forEach var="status" items="${statusList}">
@@ -90,8 +89,8 @@
         <option value="hotelCity">Город</option>
         <option value="roomTypeName">Тип номера</option>
         <option value="roomNumber">Номер номера</option>
-        <option value="bookingStartDate">Дата начала бронирования</option>
-        <option value="bookingEndDate">Дата окончания бронирования</option>
+        <%--<option value="bookingStartDate">Дата начала бронирования</option>--%>
+        <%--<option value="bookingEndDate">Дата окончания бронирования</option>--%>
     </select>
     <select name="sortingDirection">
         <option value="ascending">По возрастанию</option>
@@ -110,8 +109,8 @@
             <th>roomHotel</th>
             <th>roomType</th>
             <th>roomNumber</th>
-            <th>bookingStartDate</th>
-            <th>bookingEndDate</th>
+            <%--<th>bookingStartDate</th>--%>
+            <%--<th>bookingEndDate</th>--%>
             <th>roomStatus</th>
         </tr>
         </thead>
@@ -166,8 +165,8 @@
                     </select>
                 </td>
                 <td><input type="text" name="roomNumber" value="${room.roomNumber}"></td>
-                <td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>
-                <td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>
+                <%--<td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>--%>
+                <%--<td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>--%>
                     <%--<td><input type="text" name="roomStatus" value="${room.roomStatus}"></td>--%>
                 <c:set var="currentRoomStatus" value="${room.roomStatus}"/>
                 <td>

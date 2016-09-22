@@ -80,16 +80,6 @@ public class SortRoomsCommand extends AbstractCommand {
                     r2Parameter = room2.getRoomNumber();
                     break;
                 }
-                case Parameter.ROOM_BOOKING_START_DATE: {
-                    r1Parameter = room1.getBookingStartDate();
-                    r2Parameter = room2.getBookingStartDate();
-                    break;
-                }
-                case Parameter.ROOM_BOOKING_END_DATE: {
-                    r1Parameter = room1.getBookingEndDate();
-                    r2Parameter = room2.getBookingEndDate();
-                    break;
-                }
                 default: {
                     r1Parameter = room1.getRoomHotel().getHotelName();
                     r2Parameter = room2.getRoomHotel().getHotelName();

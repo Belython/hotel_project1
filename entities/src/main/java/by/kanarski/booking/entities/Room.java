@@ -1,13 +1,15 @@
 package by.kanarski.booking.entities;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Room {
 
     private long roomId;
     private Hotel roomHotel;
     private RoomType roomType;
     private int roomNumber;
-    private long bookingStartDate;
-    private long bookingEndDate;
+    private TreeMap<Long, Long> bookedDates;
     private String roomStatus;
 
     public long getRoomId() {
@@ -42,20 +44,12 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public long getBookingStartDate() {
-        return bookingStartDate;
+    public TreeMap<Long, Long> getBookedDates() {
+        return bookedDates;
     }
 
-    public void setBookingStartDate(long bookingStartDate) {
-        this.bookingStartDate = bookingStartDate;
-    }
-
-    public long getBookingEndDate() {
-        return bookingEndDate;
-    }
-
-    public void setBookingEndDate(long bookingEndDate) {
-        this.bookingEndDate = bookingEndDate;
+    public void setBookedDates(TreeMap<Long, Long> bookedDates) {
+        this.bookedDates = bookedDates;
     }
 
     public String getRoomStatus() {
@@ -75,10 +69,9 @@ public class Room {
 
         if (roomId != room.roomId) return false;
         if (roomNumber != room.roomNumber) return false;
-        if (bookingStartDate != room.bookingStartDate) return false;
-        if (bookingEndDate != room.bookingEndDate) return false;
         if (!roomHotel.equals(room.roomHotel)) return false;
         if (!roomType.equals(room.roomType)) return false;
+        if (!bookedDates.equals(room.bookedDates)) return false;
         return roomStatus.equals(room.roomStatus);
 
     }
@@ -89,8 +82,7 @@ public class Room {
         result = 31 * result + roomHotel.hashCode();
         result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;
-        result = 31 * result + (int) (bookingStartDate ^ (bookingStartDate >>> 32));
-        result = 31 * result + (int) (bookingEndDate ^ (bookingEndDate >>> 32));
+        result = 31 * result + bookedDates.hashCode();
         result = 31 * result + roomStatus.hashCode();
         return result;
     }

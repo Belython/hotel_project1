@@ -33,7 +33,7 @@ public class SelectHotelCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         try {
-            OrderDto order = RequestParser.getOrder(request);
+            OrderDto order = RequestParser.parseOrder(request);
             session.setAttribute(Parameter.ORDER, order);
             // TODO: 26.06.2016 ЭТО ВСЕ ВРЕМЕННО
             roomTypeFill();
