@@ -5,10 +5,7 @@ import by.kanarski.booking.dao.interfaces.IRoomDao;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.DaoException;
-import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.ClosingUtil;
-import by.kanarski.booking.utils.ConnectionUtil;
-import by.kanarski.booking.utils.EntityParser;
+import by.kanarski.booking.utils.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,8 +17,8 @@ public class RoomDao implements IRoomDao {
     private static RoomDao instance = null;
 
     private final String ADD_QUERY = "INSERT INTO ROOMS (" +
-            "HOTEL_ID, ROOM_TYPE_ID, ROOM_NUMBER, BOOKING_START_DATE, BOOKING_END_DATE, ROOM_STATUS) " +
-            "VALUES(?, ?, ?, ?, ?, ?)";
+            "HOTEL_ID, ROOM_TYPE_ID, ROOM_NUMBER, BOOKED_DATES, ROOM_STATUS) " +
+            "VALUES(?, ?, ?, ?, ?)";
     private final String GET_BY_ID_QUERY = "SELECT R.*, RT.*, H.*, L.* " +
             "FROM ROOMS R " +
             "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
@@ -33,7 +30,7 @@ public class RoomDao implements IRoomDao {
             "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
             "JOIN HOTELS H ON R.HOTEL_ID = H.HOTEL_ID " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID " +
-            "WHERE L.COUNTRY = ? AND L.CITY = ? AND ? = (H.HOTEL_NAME OR 'any') AND RT.MAX_PERSONS >= ? AND (R.BOOKING_END_DATE < ? OR R.BOOKING_START_DATE > ?) " +
+            "WHERE L.COUNTRY = ? AND L.CITY = ? AND ? = (H.HOTEL_NAME OR 'allHotels') AND RT.MAX_PERSONS >= ?" +
             "ORDER BY H.HOTEL_NAME ASC";
     private final String GET_BY_HOTEL_ID_QUERY = "SELECT R.*, RT.*, H.*, L.* " +
             "FROM ROOMS R " +
@@ -50,7 +47,7 @@ public class RoomDao implements IRoomDao {
             "WHERE L.COUNTRY = ? AND L.CITY = ? AND H.HOTEL_NAME = ? AND RT.ROOM_TYPE_ID = ? AND (R.BOOKING_END_DATE < ? OR R.BOOKING_START_DATE > ?) " +
             "ORDER BY R.ROOM_NUMBER ASC";
     private final String UPDATE_QUERY = "UPDATE ROOMS SET HOTEL_ID = ?, ROOM_TYPE_ID = ?, ROOM_NUMBER = ?," +
-            " BOOKING_START_DATE = ?, BOOKING_END_DATE = ?, ROOM_STATUS = ? WHERE ROOM_ID = ?";
+            " BOOKED_DATES = ?, ROOM_STATUS = ? WHERE ROOM_ID = ?";
     private final String GET_BY_LIST_ID_QUERY = "SELECT R.*, RT.*, H.*, L.* " +
             "FROM ROOMS R " +
             "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
@@ -63,6 +60,7 @@ public class RoomDao implements IRoomDao {
             "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
             "JOIN HOTELS H ON R.HOTEL_ID = H.HOTEL_ID " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID";
+    private final String RESERVE_ROOM_QUERY = "UPDATE ROOMS SET BOOKED_DATES = ? WHERE ROOM_ID = ?";
 
     private RoomDao() {
     }
@@ -83,9 +81,9 @@ public class RoomDao implements IRoomDao {
             stm.setLong(1, room.getRoomHotel().getHotelId());
             stm.setLong(2, room.getRoomType().getRoomTypeId());
             stm.setInt(3, room.getRoomNumber());
-            stm.setLong(4, room.getBookingStartDate());
-            stm.setLong(5, room.getBookingEndDate());
-            stm.setString(6, room.getRoomStatus());
+            Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
+            stm.setBlob(4, serializedBookedDates);
+            stm.setString(5, room.getRoomStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
@@ -138,10 +136,10 @@ public class RoomDao implements IRoomDao {
             stm.setLong(1, room.getRoomHotel().getHotelId());
             stm.setLong(2, room.getRoomType().getRoomTypeId());
             stm.setInt(3, room.getRoomNumber());
-            stm.setLong(4, room.getBookingStartDate());
-            stm.setLong(5, room.getBookingEndDate());
-            stm.setString(6, room.getRoomStatus());
-            stm.setLong(7, room.getRoomId());
+            Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
+            stm.setBlob(4, serializedBookedDates);
+            stm.setString(5, room.getRoomStatus());
+            stm.setLong(6, room.getRoomId());
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
@@ -162,8 +160,6 @@ public class RoomDao implements IRoomDao {
             stm.setString(2, orderDto.getHotel().getHotelLocation().getCity());
             stm.setString(3, orderDto.getHotel().getHotelName());
             stm.setInt(4, orderDto.getTotalPersons());
-            stm.setLong(5, orderDto.getCheckInDate());
-            stm.setLong(6, orderDto.getCheckOutDate());
             ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 rooms.add(EntityParser.parseRoom(resultSet));
@@ -215,10 +211,10 @@ public class RoomDao implements IRoomDao {
                 stm.setLong(1, room.getRoomHotel().getHotelId());
                 stm.setLong(2, room.getRoomType().getRoomTypeId());
                 stm.setInt(3, room.getRoomNumber());
-                stm.setLong(4, room.getBookingStartDate());
-                stm.setLong(5, room.getBookingEndDate());
-                stm.setString(6, room.getRoomStatus());
-                stm.setLong(7, room.getRoomId());
+                Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
+                stm.setBlob(4, serializedBookedDates);
+                stm.setString(5, room.getRoomStatus());
+                stm.setLong(6, room.getRoomId());
                 stm.addBatch();
             }
             stm.executeBatch();
@@ -236,9 +232,9 @@ public class RoomDao implements IRoomDao {
                 stm.setLong(1, room.getRoomHotel().getHotelId());
                 stm.setLong(2, room.getRoomType().getRoomTypeId());
                 stm.setInt(3, room.getRoomNumber());
-                stm.setLong(4, room.getBookingStartDate());
-                stm.setLong(5, room.getBookingEndDate());
-                stm.setString(6, room.getRoomStatus());
+                Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
+                stm.setBlob(4, serializedBookedDates);
+                stm.setString(5, room.getRoomStatus());
                 stm.addBatch();
             }
             stm.executeBatch();
@@ -260,6 +256,36 @@ public class RoomDao implements IRoomDao {
         return finishedQuery;
     }
 
+    public void reserveRoomList(List<Room> roomList) throws DaoException {
+        Connection connection = ConnectionUtil.getConnection();
+        try (PreparedStatement stm = connection.prepareStatement(RESERVE_ROOM_QUERY)) {
+            for (Room room : roomList) {
+                Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
+                stm.setBlob(1, serializedBookedDates);
+                stm.setLong(2, room.getRoomId());
+                stm.addBatch();
+            }
+            stm.executeBatch();
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
+            throw new DaoException(DaoMessages.UPDATE_ROOM_EXCEPTION, e);
+        }
+    }
+
+//    public List<Room> getByIdList(List<>) throws DaoException {
+//        List<Room> roomList = new ArrayList<>();
+//        Connection connection = ConnectionUtil.getConnection();
+//        try (PreparedStatement stm = connection.prepareStatement(GET_ALL)) {
+//            ResultSet resultSet = stm.executeQuery();
+//            while (resultSet.next()) {
+//                roomList.add(EntityParser.parseRoom(resultSet));
+//            }
+//        } catch (SQLException e) {
+//            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
+//            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+//        }
+//        return roomList;
+//    }
 
 
 }
