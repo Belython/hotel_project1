@@ -53,7 +53,8 @@
                         <option value="20">20</option>
                     </select>
                 </td>
-                <td><button class="selectRoomsBtn" type="button">${selectRoom_submitRooms}</button></td>
+                <%--<td><button class="selectRoomsBtn" type="button">${selectRoom_submitRooms}</button></td>--%>
+                <td><input type="submit">${selectRoom_submitRooms}</input></td>
             </tr>
         </c:forEach>
         </tbody>

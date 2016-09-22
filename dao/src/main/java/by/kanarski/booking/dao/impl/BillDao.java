@@ -49,7 +49,7 @@ public class BillDao implements IBillDao {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            stm.setLong(1, bill.getClient().getRoomId());
+            stm.setLong(1, bill.getClient().getUserId());
             stm.setInt(2, bill.getTotalPersons());
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());
@@ -111,7 +111,7 @@ public class BillDao implements IBillDao {
     public void update(Bill bill) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
-            stm.setLong(1, bill.getClient().getRoomId());
+            stm.setLong(1, bill.getClient().getUserId());
             stm.setInt(2, bill.getTotalPersons());
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());

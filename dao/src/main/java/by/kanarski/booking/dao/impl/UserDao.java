@@ -54,7 +54,7 @@ public class UserDao implements IUserDao {
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
             resultSet.next();
-            user.setRoomId(resultSet.getLong(1));
+            user.setUserId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_USER_EXCEPTION);
             throw new DaoException(DaoMessages.ADD_USER_EXCEPTION, e);
@@ -132,7 +132,7 @@ public class UserDao implements IUserDao {
             stm.setString(3, user.getEmail());
             stm.setString(4, user.getLogin());
             stm.setString(5, user.getPassword());
-            stm.setLong(6, user.getRoomId());
+            stm.setLong(6, user.getUserId());
             stm.setString(7, user.getUserStatus());
             stm.executeUpdate();
         } catch (SQLException e) {
@@ -145,7 +145,7 @@ public class UserDao implements IUserDao {
     public void delete(User user) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(DELETE_QUERY)) {
-            stm.setLong(1, user.getRoomId());
+            stm.setLong(1, user.getUserId());
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.DELETE_USER_EXCEPTION);

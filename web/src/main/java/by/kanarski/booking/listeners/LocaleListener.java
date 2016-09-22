@@ -35,7 +35,7 @@ public class LocaleListener implements ServletRequestAttributeListener {
         HttpServletRequest request = (HttpServletRequest) servletRequestAttributeEvent.getServletRequest();
         switch (attributeName) {
             case Parameter.CURRENT_PAGE_PATH: {
-                String pagePath = (String) servletRequestAttributeEvent.getValue();
+                String pagePath = (String) request.getAttribute(attributeName);
                 Filler filler = FillerFactory.getInstance().defineFiller(pagePath);
                 filler.fill(request);
             }

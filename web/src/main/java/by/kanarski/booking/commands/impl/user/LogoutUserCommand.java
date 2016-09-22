@@ -17,11 +17,14 @@ public class LogoutUserCommand extends AbstractCommand {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         HttpSession session = request.getSession();
         session.removeAttribute(Parameter.USER);
-        String page = (String) request.getAttribute(Parameter.CURRENT_PAGE_PATH);
-        if (page == null) {
-            page = PagePath.INDEX_PAGE_PATH;
-        }
+        // TODO: 22.09.2016 небезопасно, при выходе оставляет кучу контента
+//        String page = (String) request.getAttribute(Parameter.CURRENT_PAGE_PATH);
+//        if (page == null) {
+//            page = PagePath.INDEX_PAGE_PATH;
+//        }
+        String page = PagePath.INDEX_PAGE_PATH;
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

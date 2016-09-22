@@ -5,17 +5,20 @@ import by.kanarski.booking.constants.MessageConstants;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Statuses;
+import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
+import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Locale;
 
 public class PayBillCommand extends AbstractCommand {
 
@@ -24,14 +27,16 @@ public class PayBillCommand extends AbstractCommand {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         String page = null;
         HttpSession session = request.getSession();
+        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         try {
             User user = (User) session.getAttribute(Parameter.USER);
             long billId = Long.valueOf(request.getParameter(Parameter.BILL_TO_PAY));
             Bill billToPay = BillServiceImpl.getInstance().getById(billId);
             billToPay.setBillStatus(Statuses.BILL_PAID);
             BillServiceImpl.getInstance().update(billToPay);
-            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getRoomId());
-            session.setAttribute(Parameter.BILL_LIST, billList);
+            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
+            List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale);
+            session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
             request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.SUCCESS_OPERATION));
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
@@ -39,6 +44,7 @@ public class PayBillCommand extends AbstractCommand {
             handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

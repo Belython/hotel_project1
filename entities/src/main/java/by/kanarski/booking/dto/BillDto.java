@@ -21,6 +21,19 @@ public class BillDto {
     private int paymentAmount;
     private String billStatus;
 
+    public BillDto(long billId, User client, int totalPersons, String checkInDate, String checkOutDate,
+                   Hotel bookedHotel, Map<RoomType, Integer> bookedRoomTypeMap, int paymentAmount, String billStatus) {
+        this.billId = billId;
+        this.client = client;
+        this.totalPersons = totalPersons;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.bookedHotel = bookedHotel;
+        this.bookedRoomTypeMap = bookedRoomTypeMap;
+        this.paymentAmount = paymentAmount;
+        this.billStatus = billStatus;
+    }
+
     public long getBillId() {
         return billId;
     }

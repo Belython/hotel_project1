@@ -18,48 +18,56 @@
 <form class="accountForm" name="billsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="payBill"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
-    <table class="billList">
+    <table class="billList" border="2px">
         <thead>
             <tr>
                 <th>${account_country}</th>
                 <th>${account_city}</th>
                 <th>${account_hotelName}</th>
                 <th>${account_roomTypeName}</th>
-                <th>${account_roomTypeMaxPersons}</th>
-                <th>${account_totalPersons}</th>
+                <th>${account_maxPersons}</th>
                 <th>${account_roomsAmount}</th>
+                <th>${account_totalPersons}</th>
                 <th>${account_checkInDate}</th>
                 <th>${account_checkOutDate}</th>
                 <th>${account_paymentAmount}</th>
                 <th>${account_billStatus}</th>
             </tr>
         </thead>
-        <tbody>
+        <%--<tbody>--%>
         <c:forEach var="bill" items="${billDtoList}">
-            <input type="hidden" name="billId" value="${bill.billId}">
+            <%--<input type="hidden" name="billId" value="${bill.billId}">--%>
             <c:set var="hotel" value="${bill.bookedHotel}"/>
             <c:set var="location" value="${hotel.hotelLocation}"/>
             <c:set var="roomTypeMap" value="${bill.bookedRoomTypeMap}"/>
-            <c:set var="roomTypes" value="${roomTypeMap.keySet()}"/>
-            <c:set var="rtSize" value="${roomTypes.size()}"/>
+            <c:set var="roomTypeSet" value="${roomTypeMap.keySet()}"/>
+            <c:set var="rtSize" value="${roomTypeSet.size()}"/>
             <tr>
                 <td rowspan="${rtSize}">${location.country}</td>
                 <td rowspan="${rtSize}">${location.city}</td>
                 <td rowspan="${rtSize}">${hotel.hotelName}</td>
-                <c:forEach var="roomType" items="${roomTypes}" end="0">
+                <c:forEach var="roomType" items="${roomTypeSet}" end="0">
                     <td>${roomType.roomTypeName}</td>
                     <td>${roomType.maxPersons}</td>
                     <td>${roomTypeMap.get(roomType)}</td>
                 </c:forEach>
+                <td rowspan="${rtSize}">${bill.totalPersons}</td>
                 <td rowspan="${rtSize}">${bill.checkInDate}</td>
                 <td rowspan="${rtSize}">${bill.checkOutDate}</td>
+                <td rowspan="${rtSize}">${bill.paymentAmount}</td>
                 <td rowspan="${rtSize}">${bill.billStatus}</td>
-                <c:if test="${bill.roomTypeStatus eq 'notPaid'}">
-                    <td rowspan="${rtSize}"><button class="payBillBtn" type="button">${account_payBill}</button></td>
-                    <td rowspan="${rtSize}"><button class="refuseBill" type="button">${account_refuseBill}</button></td>
+                <c:if test="${bill.billStatus eq 'notPaid'}">
+                    <td rowspan="${rtSize}">
+                        <%--<input class="payBillBtn" type="button" name="billId" value="${bill.billId}">${account_payBill}</input>--%>
+                        <a href="controller?command=payBill&billToPay=${bill.billId}">${account_payBill}</a>
+                    </td>
+                    <td rowspan="${rtSize}">
+                        <%--<input class="refuseBill" type="button" name="refusedBillId" value="${bill.billId}">${account_refuseBill}</input>--%>
+                        <a href="controller?command=refuseBill&billToRefuse=${bill.billId}">${account_refuseBill}</a>
+                    </td>
                 </c:if>
             </tr>
-            <c:forEach var="roomType" items="${roomTypes}" begin="1">
+            <c:forEach var="roomType" items="${roomTypeSet}" begin="1">
                 <tr>
                     <td>${roomType.roomTypeName}</td>
                     <td>${roomType.maxPersons}</td>
@@ -67,7 +75,7 @@
                 </tr>
             </c:forEach>
         </c:forEach>
-        </tbody>
+        <%--</tbody>--%>
     </table>
 </form>
 

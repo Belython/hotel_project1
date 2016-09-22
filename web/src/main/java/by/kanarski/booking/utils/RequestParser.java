@@ -151,7 +151,6 @@ public class RequestParser {
         long checkInDate = orderDto.getCheckInDate();
         long checkOutDate = orderDto.getCheckOutDate();
         HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL);
-//        Hotel hotel = extendedHotel.getRoomHotel();
         int totalPersons = orderDto.getTotalPersons();
         List<RoomType> roomTypeList = hotelDto.getRoomTypeList();
         HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();
@@ -167,79 +166,6 @@ public class RequestParser {
                 paymentAmount);
         return bill;
     }
-
-//    public static List<Room> parseRoomList(HttpServletRequest request) {
-//        List<Room> roomList = new ArrayList<>();
-//        Map<String, String[]> parameterMap = request.getParameterMap();
-//        Set<String> parameterSet = parameterMap.keySet();
-//        String[] roomIdArray = null;
-//        String[] hotelIdArray = null;
-//        String[] roomTypeIdArray = null;
-//        String[] roomNumberArray = null;
-//        String[] bookingStartDateArray = null;
-//        String[] bookingEndDateArray = null;
-//        String[] roomStatusArray = null;
-//        for (String parameter : parameterSet) {
-//            switch (parameter) {
-//                case Parameter.ROOM_ID: {
-//                    roomIdArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.HOTEL_ID: {
-//                    hotelIdArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.ROOM_TYPE_ID: {
-//                    roomTypeIdArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.ROOM_NUMBER: {
-//                    roomNumberArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.ROOM_BOOKING_START_DATE: {
-//                    bookingStartDateArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.ROOM_BOOKING_END_DATE: {
-//                    bookingEndDateArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//                case Parameter.ROOM_STATUS: {
-//                    roomStatusArray = parameterMap.get(parameter);
-//                    break;
-//                }
-//            }
-//        }
-//        HttpSession session = request.getSession();
-//        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-//        for (int i = 0; i < roomIdArray.length; i++) {
-//            Set<Hotel> hotelSet = (Set<Hotel>) session.getAttribute(Parameter.HOTEL_SET);
-//            Set<RoomType> roomTypeSet = (Set<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_SET);
-//            long roomId = Long.valueOf(roomIdArray[i]);
-//            long hotelId = Long.valueOf(hotelIdArray[i]);
-//            long roomTypelId = Long.valueOf(roomTypeIdArray[i]);
-//            int roomNumber = Integer.valueOf(roomNumberArray[i]);
-//            long bookingStartDate = LocalizationUtil.parseDate(bookingStartDateArray[i], locale);
-//            long bookingEndDate = LocalizationUtil.parseDate(bookingEndDateArray[i], locale);
-//            Hotel neededHotel = null;
-//            RoomType neededRoomType = null;
-//            for (Hotel hotel : hotelSet) {
-//                if (hotel.getHotelId() == hotelId) {
-//                    neededHotel = hotel;
-//                }
-//            }
-//            for (RoomType roomType : roomTypeSet) {
-//                if (roomType.getRoomTypeId() == roomTypelId) {
-//                    neededRoomType = roomType;
-//                }
-//            }
-//            Room room = EntityBuilder.buildRoom(roomId, neededHotel, neededRoomType, roomNumber,
-//                    bookingStartDate, bookingEndDate, roomStatusArray[i]);
-//            roomList.add(room);
-//        }
-//        return roomList;
-//    }
 
     public static List<RoomDto> parseRoomDtoList(HttpServletRequest request) {
         List<RoomDto> roomDtoList = new ArrayList<>();

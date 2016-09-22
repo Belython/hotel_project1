@@ -47,6 +47,8 @@ public class PageTextContentName {
             "account.refuseBill"
     );
 
+    // TODO: 22.09.2016 Локализация error page не работает, после форварда от нее index.jsp не локализуется 
+
     public static final List<String> ERROR = Arrays.asList(
             "error.error",
             "error.sorry",
@@ -70,16 +72,19 @@ public class PageTextContentName {
     );
 
     public static final List<String> HEADER = Arrays.asList(
-        "header.login",
-        "header.password",
-        "header.signIn",
-        "header.signOut",
-        "header.register",
-        "header.forgotPassword",
-        "header.goToMain",
-        "header.goAdminPage",
-        "header.selectLanguage",
-        "header.submit"
+            "header.login",
+            "header.password",
+            "header.signIn",
+            "header.signOut",
+            "header.register",
+            "header.forgotPassword",
+            "header.goToMain",
+            "header.welcome",
+            "header.administrator",
+            "header.goToAdminPage",
+            "header.goToAccount",
+            "header.selectLanguage",
+            "header.submit"
     );
 
     private PageTextContentName() {

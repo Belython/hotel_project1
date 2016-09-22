@@ -2,7 +2,7 @@ package by.kanarski.booking.entities;
 
 public class User {
 
-    private long roomId;
+    private long userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,12 +11,12 @@ public class User {
     private String role;
     private String userStatus;
 
-    public long getRoomId() {
-        return roomId;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setRoomId(long roomId) {
-        this.roomId = roomId;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -82,7 +82,7 @@ public class User {
 
         User user = (User) o;
 
-        if (roomId != user.roomId) return false;
+        if (userId != user.userId) return false;
         if (!firstName.equals(user.firstName)) return false;
         if (!lastName.equals(user.lastName)) return false;
         if (!email.equals(user.email)) return false;
@@ -95,7 +95,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = (int) (roomId ^ (roomId >>> 32));
+        int result = (int) (userId ^ (userId >>> 32));
         result = 31 * result + firstName.hashCode();
         result = 31 * result + lastName.hashCode();
         result = 31 * result + email.hashCode();

@@ -2,11 +2,9 @@ package by.kanarski.booking.utils;
 
 
 import by.kanarski.booking.constants.Statuses;
-import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.entities.*;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 public class EntityBuilder {
@@ -16,7 +14,7 @@ public class EntityBuilder {
     public static User buildUser(long userId, String firstName, String lastName, String email, String login,
                                  String password, String role, String userStatus) {
         User user = buildUser(firstName, lastName, email, login, password, role);
-        user.setRoomId(userId);
+        user.setUserId(userId);
         user.setUserStatus(userStatus);
         return user;
     }

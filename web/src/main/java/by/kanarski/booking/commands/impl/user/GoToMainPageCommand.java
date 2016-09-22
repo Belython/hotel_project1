@@ -18,6 +18,7 @@ public class GoToMainPageCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         String page = PagePath.INDEX_PAGE_PATH;
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

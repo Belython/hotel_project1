@@ -18,6 +18,7 @@ public class Parameter {
 
     public static final String BILL_LIST = "billList";
     public static final String BILL_TO_PAY = "billToPay";
+    public static final String BILL_DTO_LIST = "billDtoList";
 
     public static final String ORDER = "order";
 

@@ -16,62 +16,25 @@ function calcul() {
     xhttp.send();
 }
 
-// function setLocale() {
-//     // var xhttp = new XMLHttpRequest();
-//     // var language = $("#language").val();
-//     // // var url = "controller?command=setLocale&language=" + language;
-//     // // xhttp.open("GET", url, true);
-//     // // xhttp.send();
-//     // var url = "controller";
-//     // xhttp.open("POST", url, false);
-//     // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     // xhttp.send("command=setLocale&language=" + language);
-//
-//     if ($("#amountRooms").text() == "") {
-//         $("#langbtn").click();
-//     }
-// }
 
-function cookieTest() {
-    var x = getCookie("cock");
-    alert(x);
+$(".payBillBtn").click(function (event) {
+    payBill(event)
+});
 
+function payBill(event) {
+    var button = event.target;
+    var tableRow = $(button).parents().eq(1);
+    var rowInputNodes = tableRow.find("input, select");
+    var redactorForm = $(".redactorForm").has(tableRow);
+    var command = redactorForm.children("[name='command']").serialize();
+    var subCommand = redactorForm.children("[name='subCommand']").serialize();
+    var rowParameters = rowInputNodes.serialize();
+    var isAjaxRequest = "isAjaxRequest=true";
+    var url = "controller?" + command + "&" + subCommand + "&" + isAjaxRequest + "&" + rowParameters;
+    $.get(url, function (data, status) {
+        $("#operationMessage").text(data);
+    });
 }
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function checkCookie() {
-    var user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
-}
-
 // function addOptions() {
 //     for (var i = 1; i <= 20; i++) {
 //         var opt = "<option value=" + i + ">" + i + "</option>";

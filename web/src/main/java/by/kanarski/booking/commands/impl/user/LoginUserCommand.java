@@ -45,6 +45,7 @@ public class LoginUserCommand extends AbstractCommand {
             handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

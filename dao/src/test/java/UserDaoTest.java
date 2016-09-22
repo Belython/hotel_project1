@@ -31,7 +31,7 @@ public class UserDaoTest {
     @Test
     public void testAdd() throws Exception {
         UserDao.getInstance().add(expected);
-        User actual = UserDao.getInstance().getById(expected.getRoomId());
+        User actual = UserDao.getInstance().getById(expected.getUserId());
         Assert.assertEquals(expected, actual);
         UserDao.getInstance().delete(expected);
     }

@@ -1,15 +1,12 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.dto.RoomDto;
-import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.entities.RoomType;
+import by.kanarski.booking.entities.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class DtoToEntityConverter {
 
@@ -54,7 +51,7 @@ public class DtoToEntityConverter {
     public static List<Room> covertToRoomList(List<RoomDto> roomDtoList, Locale locale) {
         List<Room> roomList = new ArrayList<>();
         for (RoomDto roomDto : roomDtoList) {
-            Room room = DtoToEntityConverter.convertToRoom(roomDto, locale);
+            Room room = convertToRoom(roomDto, locale);
             roomList.add(room);
         }
         return roomList;
@@ -63,10 +60,45 @@ public class DtoToEntityConverter {
     public static List<RoomDto> covertToRoomDtoList(List<Room> roomList, Locale locale) {
         List<RoomDto> roomDtoList = new ArrayList<>();
         for (Room room : roomList) {
-            RoomDto roomDto = DtoToEntityConverter.convertToRoomDto(room, locale);
+            RoomDto roomDto = convertToRoomDto(room, locale);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
+    }
+
+    public static BillDto convertToBillDto(Bill bill, Locale locale) {
+        long billId = bill.getBillId();
+        User client = bill.getClient();
+        int totalPersons = bill.getTotalPersons();
+        String checkInDate = LocalizationUtil.getFormattedDate(bill.getCheckInDate(), locale);
+        String checkOutDate = LocalizationUtil.getFormattedDate(bill.getCheckOutDate(), locale);
+        List<Room> bookedRoomList = bill.getBookedRoomList();
+        Hotel bookedHotel = bookedRoomList.get(0).getRoomHotel();
+        int paymentAmount = bill.getPaymentAmount();
+        String billStatus = bill.getBillStatus();
+        Map<RoomType, Integer> bookedRoomTypeMap = new HashMap<>();
+        for (Room room : bookedRoomList) {
+            RoomType roomType = room.getRoomType();
+            Integer roomTypeCount = bookedRoomTypeMap.get(roomType);
+            if (roomTypeCount == null) {
+                roomTypeCount = 1;
+            } else {
+                roomTypeCount++;
+            }
+            bookedRoomTypeMap.put(roomType, roomTypeCount);
+        }
+        BillDto billDto = new BillDto(billId, client, totalPersons, checkInDate, checkOutDate, bookedHotel,
+                bookedRoomTypeMap, paymentAmount, billStatus);
+        return billDto;
+    }
+
+    public static List<BillDto> convertToBillDtoList(List<Bill> billList, Locale locale) {
+        List<BillDto> billDtoList = new ArrayList<>();
+        for (Bill bill : billList) {
+            BillDto billDto = convertToBillDto(bill, locale);
+            billDtoList.add(billDto);
+        }
+        return billDtoList;
     }
 
 }

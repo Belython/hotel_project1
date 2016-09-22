@@ -12,6 +12,9 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class MakeBillCommand extends AbstractCommand {
 
@@ -29,6 +32,8 @@ public class MakeBillCommand extends AbstractCommand {
             handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        new LinkedHashMap<>().keySet().it
         servletAction.setPage(page);
         return servletAction;
     }

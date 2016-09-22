@@ -18,15 +18,15 @@
                             </fieldset>
                             <fieldset id="actions">
                                 <input type="submit" id="submit" value="${header_signIn}">
-                                <a href="">#{header_forgotPassword}</a>
+                                <a href="">${header_forgotPassword}</a>
                                 <a href="controller?command=gotoregistration">${header_register}</a>
                             </fieldset>
-                                ${errorLoginOrPassword}<br/>
+                            ${errorLoginOrPassword}<br/>
                         </form>
                     </li>
                 </c:when>
                 <c:otherwise>
-                    <li>${header_hellcome} ${user.firstName}</li>
+                    <li>${header_welcome} ${user.firstName}</li>
                     <li>
                         <c:if test="${user.role eq 'admin'}">
                             <p>${header_administrator}</p>
