@@ -54,6 +54,7 @@ public class RegistrationCommand extends AbstractCommand {
             e.printStackTrace();
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

@@ -5,10 +5,12 @@ import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
+import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
+import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
+import java.util.NavigableSet;
+import java.util.TreeMap;
 
 public class GoToAccountCommand extends AbstractCommand {
 
@@ -42,4 +46,19 @@ public class GoToAccountCommand extends AbstractCommand {
         return servletAction;
     }
 
+    public static void main(String[] args) throws ServiceException{
+        List<Room> rl = RoomServiceImpl.getInstance().getByHotelId(1);
+        for (Room room : rl) {
+            TreeMap<Long, Long> dd = room.getBookedDates();
+            if (dd != null) {
+                NavigableSet<Long> nks = dd.navigableKeySet();
+                for (Long k : nks) {
+                    Long k1 = dd.get(k);
+                    System.out.println("Start " + k + " end " + k1);
+                }
+            }
+        }
+
+        System.out.println("lool");
+    }
 }

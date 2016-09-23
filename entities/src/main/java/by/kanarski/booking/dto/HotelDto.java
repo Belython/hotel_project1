@@ -18,14 +18,14 @@ public class HotelDto {
     private List<Room> roomList = new ArrayList<>();
     private List<RoomType> roomTypeList = new ArrayList<>();
     private HashMap<RoomType, Integer> roomTypesCount = new HashMap<>();
-    private int roomsCount;
+    private int roomsAvailable;
 
     public HotelDto(long hotelId, Location location, String hotelName, List<Room> roomList) {
         this.hotelId = hotelId;
         this.location = location;
         this.hotelName = hotelName;
         this.roomList = roomList;
-        this.roomsCount = roomList.size();
+        this.roomsAvailable = roomList.size();
         setRoomTypes();
     }
 
@@ -59,7 +59,7 @@ public class HotelDto {
 
     public void setRoomList(List<Room> roomList) {
         this.roomList = roomList;
-        this.roomsCount = roomList.size();
+        this.roomsAvailable = roomList.size();
     }
 
     public List<RoomType> getRoomTypeList() {
@@ -94,12 +94,12 @@ public class HotelDto {
         this.roomTypesCount = roomTypesCount;
     }
 
-    public int getRoomsCount() {
-        return roomsCount;
+    public int getRoomsAvailable() {
+        return roomsAvailable;
     }
 
-    public void setRoomsCount(int roomsCount) {
-        this.roomsCount = roomsCount;
+    public void setRoomsAvailable(int roomsAvailable) {
+        this.roomsAvailable = roomsAvailable;
     }
 
     public RoomType getRoomTypeById(long roomTypeId) {

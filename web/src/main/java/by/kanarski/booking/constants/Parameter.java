@@ -20,7 +20,7 @@ public class Parameter {
     public static final String BILL_TO_PAY = "billToPay";
     public static final String BILL_DTO_LIST = "billDtoList";
 
-    public static final String ORDER = "order";
+    public static final String ORDER_DTO = "order";
 
     //Orrder parameters
 
@@ -45,7 +45,7 @@ public class Parameter {
     public static final String HOTEL_STATUS = "hotelStatus";
     public static final String HOTEL_LIST = "hotelList";
     public static final String HOTEL_SET = "hotelSet";
-    public static final String HOTEL_SELECTED_HOTEL = "selectedHotel";
+    public static final String HOTEL_SELECTED_HOTEL_DTO = "selectedHotelDto";
     public static final String SUPPORTED_HOTELS = "supportedHotels";
     public static final String HOTEL_DTO_LIST = "hotelDtoList";
 

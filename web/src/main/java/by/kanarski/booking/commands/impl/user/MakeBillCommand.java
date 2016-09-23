@@ -14,10 +14,7 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MakeBillCommand extends AbstractCommand {
 
@@ -28,8 +25,21 @@ public class MakeBillCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         try {
             Bill bill = RequestParser.parseBill(request);
+            long checkInDate = bill.getCheckInDate();
+            long checkOutDate = bill.getCheckOutDate();
             List<Long> requestedRoomIdList = bill.getBookedRoomIdList();
-            List<Room> requestedRoomList = RoomServiceImpl.getInstance().get
+            List<Room> requestedRoomList = RoomServiceImpl.getInstance().getByIdList(requestedRoomIdList);
+            List<Room> bookedRoomList = new ArrayList<>();
+            for (Room room : requestedRoomList) {
+                TreeMap<Long, Long> bookedDates = room.getBookedDates();
+                if (bookedDates == null) {
+                    bookedDates = new TreeMap<>();
+                }
+                bookedDates.put(checkInDate, checkOutDate);
+                room.setBookedDates(bookedDates);
+                bookedRoomList.add(room);
+            }
+            RoomServiceImpl.getInstance().reserveRoomList(bookedRoomList);
             BillServiceImpl.getInstance().add(bill);
             page = PagePath.INDEX_PAGE_PATH;
         } catch (ServiceException e) {

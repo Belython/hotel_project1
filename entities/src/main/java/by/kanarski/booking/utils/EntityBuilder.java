@@ -89,6 +89,15 @@ public class EntityBuilder {
         return hotel;
     }
 
+    public static Hotel buildHotel(long hotelId, String hotelCountry, String hotelCity, String hotelName) {
+        Location location = buildLocation(hotelCountry, hotelCity);
+        Hotel hotel = new Hotel();
+        hotel.setHotelId(hotelId);
+        hotel.setHotelLocation(location);
+        hotel.setHotelName(hotelName);
+        return hotel;
+    }
+
     public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, int roomPricePerNight,
                                          Set<String> facilities, String roomTypeStatus) {
         RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);

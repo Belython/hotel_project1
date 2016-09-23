@@ -2,6 +2,7 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
@@ -47,14 +48,14 @@ public class RequestParser {
     }
 
     public static Hotel parseHotel(ServletRequest request) {
-//        long hotelId = -1;
-//        if (request.getParameter(Parameter.HOTEL_ID) != null) {
-//            hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
-//        }
+        long hotelId = Value.UNDEFINED_ID;
+        if (request.getParameter(Parameter.HOTEL_ID) != null) {
+            hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
+        }
         String country = request.getParameter(Parameter.LOCATION_COUNTRY);
         String city = request.getParameter(Parameter.LOCATION_CITY);
         String hotelName = request.getParameter(Parameter.HOTEL_NAME);
-        Hotel hotel = EntityBuilder.buildHotel(country, city, hotelName);
+        Hotel hotel = EntityBuilder.buildHotel(hotelId, country, city, hotelName);
         return hotel;
     }
 
@@ -147,10 +148,10 @@ public class RequestParser {
     public static Bill parseBill(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Parameter.USER);
-        OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
+        OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER_DTO);
         long checkInDate = orderDto.getCheckInDate();
         long checkOutDate = orderDto.getCheckOutDate();
-        HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL);
+        HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO);
         int totalPersons = orderDto.getTotalPersons();
         List<RoomType> roomTypeList = hotelDto.getRoomTypeList();
         HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();

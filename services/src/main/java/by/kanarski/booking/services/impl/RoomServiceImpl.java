@@ -99,7 +99,11 @@ public class RoomServiceImpl implements IRoomService {
                     NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();
                     Long bookingStart = bookingStartSet.ceiling(checkOutDate);
                     if (bookingStart == null) {
-                        rooms.add(room);
+                        Long lowerBookingStart = bookingStartSet.floor(checkOutDate);
+                        Long lowerBookingEnd = bookedDates.get(lowerBookingStart);
+                        if (lowerBookingEnd < checkInDate) {
+                            rooms.add(room);
+                        }
                     } else {
                         Long prevBookingStart = bookedDates.lowerKey(bookingStart);
                         Long prevBookingEnd = bookedDates.get(prevBookingStart);
@@ -179,6 +183,20 @@ public class RoomServiceImpl implements IRoomService {
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
+    }
+
+    public List<Room> getByIdList(List<Long> roomIdList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        List<Room> rooms = null;
+        try {
+            connection.setAutoCommit(false);
+            rooms = RoomDao.getInstance().getByIdList(roomIdList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return rooms;
     }
 
 }

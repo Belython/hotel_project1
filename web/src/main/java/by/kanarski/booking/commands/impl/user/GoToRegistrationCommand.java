@@ -18,6 +18,7 @@ public class GoToRegistrationCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         String page = PagePath.REGISTRATION_PAGE_PATH;
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);;
         servletAction.setPage(page);
         return servletAction;
     }

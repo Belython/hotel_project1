@@ -27,9 +27,9 @@
         <c:forEach var="roomType" items="${selectedHotelDto.roomTypeList}">
             <tr>
                 <td>${roomType.roomTypeName}</td>
-                <td>${selectedHotel.roomTypesCount.get(roomType)}</td>
+                <td>${selectedHotelDto.roomTypesCount.get(roomType)}</td>
                 <td>
-                    <select name="${roomType.name}">
+                    <select name="${roomType.roomTypeName}">
                         <option value="0" selected="selected">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -54,11 +54,11 @@
                     </select>
                 </td>
                 <%--<td><button class="selectRoomsBtn" type="button">${selectRoom_submitRooms}</button></td>--%>
-                <td><input type="submit">${selectRoom_submitRooms}</input></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    <input type="submit" value="${selectRoom_submitRooms}">
 
 </form>
 

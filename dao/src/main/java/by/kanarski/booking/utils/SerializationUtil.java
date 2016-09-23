@@ -27,7 +27,7 @@ public class SerializationUtil {
     public static <T> T deserialize(Blob blob, T outputType) throws SQLException {
         T obj = null;
         try {
-            ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
+             ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
             obj = (T) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

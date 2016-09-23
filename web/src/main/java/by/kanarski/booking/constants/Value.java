@@ -31,4 +31,8 @@ public class Value {
 
     public static final String ROOM_REDACTOR = "roomRedactor";
 
+    //Common values
+
+    public static final long UNDEFINED_ID = -1;
+
 }

@@ -28,7 +28,7 @@
         <tbody>
         <c:forEach var="hotel" items="${hotelDtoList}">
             <%--<input type="hidden" name="hotelId" value="${hotel.hotelId}">--%>
-            <c:set var="location" value="${hotel.hotelLocation}"/>
+            <c:set var="location" value="${hotel.location}"/>
             <tr>
                 <td>${location.country}</td>
                 <td>${location.city}</td>
@@ -36,7 +36,8 @@
                 <td>${hotel.roomsAvailable}</td>
                 <td>
                     <%--<input class="selectHotelBtn" type="button" name="hotelId" value="${hotel.hotelId}">${selectHotel_submitHotel}</input>--%>
-                    <a href="controller?command=refuseBill&billId=${bill.billId}">${account_refuseBill}</a>
+                    <%--<a href="controller?command=refuseBill&billId=${bill.billId}">${account_refuseBill}</a>--%>
+                    <a href="controller?command=selectRoom&hotelId=${hotel.hotelId}">${selectHotel_submitHotel}</a>
                 </td>
             </tr>
         </c:forEach>
