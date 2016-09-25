@@ -30,7 +30,7 @@ public class RoomDao implements IRoomDao {
             "JOIN ROOMS_TYPES RT ON R.ROOM_TYPE_ID = RT.ROOM_TYPE_ID " +
             "JOIN HOTELS H ON R.HOTEL_ID = H.HOTEL_ID " +
             "JOIN LOCATIONS L ON H.LOCATION_ID = L.LOCATION_ID " +
-            "WHERE L.COUNTRY = ? AND L.CITY = ? AND ? = (H.HOTEL_NAME OR 'allHotels') AND RT.MAX_PERSONS >= ? " +
+            "WHERE L.COUNTRY = ? AND L.CITY = ? AND (? = H.HOTEL_NAME OR ? = 'allHotels') AND RT.MAX_PERSONS >= ? " +
             "ORDER BY H.HOTEL_NAME ASC";
     private final String GET_BY_HOTEL_ID_QUERY = "SELECT R.*, RT.*, H.*, L.* " +
             "FROM ROOMS R " +
@@ -159,7 +159,8 @@ public class RoomDao implements IRoomDao {
             stm.setString(1, orderDto.getHotel().getHotelLocation().getCountry());
             stm.setString(2, orderDto.getHotel().getHotelLocation().getCity());
             stm.setString(3, orderDto.getHotel().getHotelName());
-            stm.setInt(4, orderDto.getTotalPersons());
+            stm.setString(4, orderDto.getHotel().getHotelName());
+            stm.setInt(5, orderDto.getTotalPersons());
             ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 rooms.add(EntityParser.parseRoom(resultSet));

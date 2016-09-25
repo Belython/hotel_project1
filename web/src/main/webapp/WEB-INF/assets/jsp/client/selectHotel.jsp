@@ -16,7 +16,7 @@
 <form name="selectHotelForm" method="POST" action="controller">
     <input type="hidden" name="command" value="selectRoom"/>
 
-    <table class="hotelList">
+    <table class="hotelList" border="2px">
         <thead>
             <tr>
                 <th>${selectHotel_country}</th>

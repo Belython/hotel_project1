@@ -50,7 +50,7 @@
             <select id="currentLocale" name="locale">
                 <c:forEach var="localeElement" items="${applicationScope.get('localeList')}">
                     <c:choose>
-                        <c:when test="${sessionScope.get('locale') eq localeElement}">
+                        <c:when test="${locale eq localeElement}">
                             <option value=${localeElement} selected="selected">${localeElement}</option>
                         </c:when>
                         <c:otherwise>

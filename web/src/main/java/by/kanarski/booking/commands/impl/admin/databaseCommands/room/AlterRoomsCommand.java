@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -31,10 +30,10 @@ public class AlterRoomsCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-        List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-        List<Room> roomList = DtoToEntityConverter.covertToRoomList(roomDtoList, locale);
         String subCommand = request.getParameter(Parameter.SUB_COMMAND);
         try {
+            List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
+            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale);
             switch (subCommand) {
                 case Value.ADD_NEW: {
                     RoomServiceImpl.getInstance().addList(roomList);
@@ -46,11 +45,14 @@ public class AlterRoomsCommand extends AbstractCommand {
                 }
             }
             List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
+            List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale);
             session.setAttribute(Parameter.ROOM_LIST, newRoomList);
+            session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
             String responseText = Message.getProperty(MessageConstants.DATABASE_CHANGE_SUCCES, locale);
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;
                 writeResponse(response, responseText);
+                page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
             } else {
                 servletAction = ServletAction.FORWARD_PAGE;
                 request.setAttribute(Parameter.OPERATION_MESSAGE, responseText);
@@ -61,6 +63,8 @@ public class AlterRoomsCommand extends AbstractCommand {
             page = PagePath.ERROR_PAGE_PATH;
             handleServiceException(request, e);
         }
+        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

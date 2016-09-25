@@ -39,6 +39,20 @@ public enum FillerManager {
             PageTextContentName.ACCOUNT,
             PageTextContentName.HEADER
         )
+    ),
+    ADMINMAIN(
+        Arrays.asList(
+            PageTextContentName.ADMIN_MAIN,
+            PageTextContentName.SIDE_BAR,
+            PageTextContentName.HEADER
+        )
+    ),
+    ROOMSREDACTOR(
+        Arrays.asList(
+            PageTextContentName.ROOMS_REDACTOR,
+            PageTextContentName.SIDE_BAR,
+            PageTextContentName.HEADER
+        )
     );
 
     private List<List<String>> pageDescriptor;

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <html>
 <head>
-    <title>Режим администратора</title>
+    <title>${roomsRedactor_roomsRedactor}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/admin.js"></script>
 </head>
@@ -16,7 +16,7 @@
 <%@include file="../user/header/header.jsp"%>
 <%@include file="sideBar/sideBar.jsp"%>
 
-<h1>Новые номера</h1>
+<h1>${roomsRedactor_newRooms}</h1>
 
 <p id="operationMessage"></p>
 
@@ -24,14 +24,14 @@
     <input type="hidden" name="command" value="alterRooms"/>
     <input type="hidden" name="subCommand" value="addNew"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
-    <table class="newEntity">
+    <table class="newEntity" border="2px">
         <thead>
         <tr>
-            <th>roomHotel</th>
-            <th>roomType</th>
-            <th>roomNumber</th>
+            <th>${roomsRedactor_roomHotel}</th>
+            <th>${roomsRedactor_roomType}</th>
+            <th>${roomsRedactor_roomNumber}</th>
             <%--<th>bookedDates</th>--%>
-            <th>roomStatus</th>
+            <th>${roomsRedactor_roomStatus}</th>
         </tr>
         </thead>
         <tbody>
@@ -41,9 +41,9 @@
                 <select name="hotelId">
                     <c:forEach var="hotel" items="${hotelSet}">
                         <c:set var="hotelOption" value="
-                            country ${hotel.hotelLocation.country}
-                            city ${hotel.hotelLocation.city}
-                            hotelName ${hotel.hotelName}"
+                            ${roomsRedactor_country}: ${hotel.hotelLocation.country},
+                            ${roomsRedactor_city}: ${hotel.hotelLocation.city},
+                            ${roomsRedactor_hotelName}: ${hotel.hotelName}"
                         />
                         <option value="${hotel.hotelId}">
                             ${hotelOption}
@@ -55,9 +55,9 @@
                 <select name="roomTypeId">
                     <c:forEach var="roomType" items="${roomTypeSet}">
                         <option value="${roomType.roomTypeId}">
-                            name ${roomType.roomTypeName}
-                            maxPersons ${roomType.maxPersons}
-                            price ${roomType.roomPricePerNight}
+                            ${roomsRedactor_roomTypeName}: ${roomType.roomTypeName},
+                            ${roomsRedactor_maxPersons}: ${roomType.maxPersons}.
+                            ${roomsRedactor_roomPricePerNight}: ${roomType.roomPricePerNight}
                         </option>
                     </c:forEach>
                 </select>
@@ -72,46 +72,61 @@
                     </c:forEach>
                 </select>
             </td>
-            <td><button class="addEntityBtn" type="button">Добавить номер</button></td>
-            <td><button class="removeRowBtn" type="button">Убрать номер</button></td>
+            <td><button class="addEntityBtn" type="button">${roomsRedactor_createRoom}</button></td>
+            <td><button class="removeRowBtn" type="button">${roomsRedactor_removeRoom}</button></td>
         </tr>
         </tbody>
     </table>
+    <button class="addRowBtn" type="button">${roomsRedactor_addRoom}</button>
     <input type="submit" value="Добавить все">
-    <button class="addRowBtn" type="button">Добавить строку</button>
 </form>
 
 <form name="sortForm" method="POST" action="controller">
     <input type="hidden" name="command" value="sortRooms"/>
     <select name="sortingOption">
-        <option value="hotelName">Название отеля</option>
-        <option value="hotelCountry">Страна</option>
-        <option value="hotelCity">Город</option>
-        <option value="roomTypeName">Тип номера</option>
-        <option value="roomNumber">Номер номера</option>
+        <option value="hotelName">${roomsRedactor_hotelName}</option>
+        <option value="hotelCountry">${roomsRedactor_country}</option>
+        <option value="hotelCity">${roomsRedactor_city}</option>
+        <option value="roomTypeName">${roomsRedactor_roomTypeName}</option>
+        <option value="roomNumber">${roomsRedactor_roomNumber}</option>
         <%--<option value="bookingStartDate">Дата начала бронирования</option>--%>
         <%--<option value="bookingEndDate">Дата окончания бронирования</option>--%>
     </select>
     <select name="sortingDirection">
-        <option value="ascending">По возрастанию</option>
-        <option value="descending">По убыванию</option>
+        <option value="ascending">${roomsRedactor_ascending}</option>
+        <option value="descending">${roomsRedactor_descending}</option>
     </select>
-    <input type="submit" value="Сортировать">
+    <input type="submit" value="${roomsRedactor_sort}">
 </form>
+
+<%--<form name="sortForm" method="POST" action="controller">--%>
+    <%--<input type="hidden" name="command" value="sort"/>--%>
+    <%--<select name="sortingOption">--%>
+        <%--<c:set var="optionValues" value="${optionMap.keySet()}"/>--%>
+        <%--<c:forEach var="option" items="${optionValues}">--%>
+            <%--<option value=${option}>${optionMap.get(option)}</option>--%>
+        <%--</c:forEach>--%>
+    <%--</select>--%>
+    <%--<select name="sortingDirection">--%>
+        <%--<option value="ascending">${sorter_ascending}</option>--%>
+        <%--<option value="descending">${sorter_descending}</option>--%>
+    <%--</select>--%>
+    <%--<input type="submit" value="${sorter_sort}">--%>
+<%--</form>--%>
+
 
 <form class="redactorForm" name="alterRoomsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="alterRooms"/>
     <input type="hidden" name="subCommand" value="changeExisting"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
-    <table class="existingEntities">
+    <table class="existingEntities" border="2px">
         <thead>
         <tr>
-            <th>roomHotel</th>
-            <th>roomType</th>
-            <th>roomNumber</th>
-            <%--<th>bookingStartDate</th>--%>
-            <%--<th>bookingEndDate</th>--%>
-            <th>roomStatus</th>
+            <th>${roomsRedactor_roomHotel}</th>
+            <th>${roomsRedactor_roomType}</th>
+            <th>${roomsRedactor_roomNumber}</th>
+            <%--<th>bookedDates</th>--%>
+            <th>${roomsRedactor_roomStatus}</th>
         </tr>
         </thead>
         <tbody>
@@ -125,16 +140,16 @@
                             <c:choose>
                                 <c:when test="${hotel eq currentHotel}">
                                     <option value="${hotel.hotelId}" selected="selected">
-                                        country ${hotel.hotelLocation.country}
-                                        city ${hotel.hotelLocation.city}
-                                        hotelName ${hotel.hotelName}
+                                        ${roomsRedactor_country}: ${hotel.hotelLocation.country},
+                                        ${roomsRedactor_city}: ${hotel.hotelLocation.city},
+                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}"
                                     </option>
                                 </c:when>
                                 <c:otherwise>
                                     <option value="${hotel.hotelId}">
-                                        country ${hotel.hotelLocation.country}
-                                        city ${hotel.hotelLocation.city}
-                                        hotelName ${hotel.hotelName}
+                                        ${roomsRedactor_country}: ${hotel.hotelLocation.country},
+                                        ${roomsRedactor_city}: ${hotel.hotelLocation.city},
+                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}"
                                     </option>
                                 </c:otherwise>
                             </c:choose>
@@ -148,16 +163,16 @@
                             <c:choose>
                                 <c:when test="${roomType eq currentRoomType}">
                                     <option value="${roomType.roomTypeId}" selected="selected">
-                                        name ${roomType.roomTypeName}
-                                        maxPersons ${roomType.maxPersons}
-                                        price ${roomType.roomPricePerNight}
+                                        ${roomsRedactor_roomTypeName}: ${roomType.roomTypeName},
+                                        ${roomsRedactor_maxPersons}: ${roomType.maxPersons},
+                                        ${roomsRedactor_roomPricePerNight}: ${roomType.roomPricePerNight}
                                     </option>
                                 </c:when>
                                 <c:otherwise>
                                     <option value="${roomType.roomTypeId}">
-                                        name ${roomType.roomTypeName}
-                                        maxPersons ${roomType.maxPersons}
-                                        price ${roomType.roomPricePerNight}
+                                        ${roomsRedactor_roomTypeName}: ${roomType.roomTypeName},
+                                        ${roomsRedactor_maxPersons}: ${roomType.maxPersons},
+                                        ${roomsRedactor_roomPricePerNight}: ${roomType.roomPricePerNight}
                                     </option>
                                 </c:otherwise>
                             </c:choose>
@@ -183,12 +198,12 @@
                         </c:forEach>
                     </select>
                 </td>
-                <td><button class="alterEntityBtn" type="button">Изменить номер</button></td>
+                <td><button class="alterEntityBtn" type="button">${roomsRedactor_alterRoom}</button></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <input type="submit" value="Изменить все">
+    <input type="submit" value="${roomsRedactor_alterAllRooms}">
 </form>
 </body>
 </html>

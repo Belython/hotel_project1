@@ -35,6 +35,18 @@ public class PageDescriptor {
             PageTextContentName.HEADER
     );
 
+    public static final List<List<String>> ADMIN_MAIN = Arrays.asList(
+            PageTextContentName.ADMIN_MAIN,
+            PageTextContentName.SIDE_BAR,
+            PageTextContentName.HEADER
+    );
+
+    public static final List<List<String>> ADMIN_ROOMS_REDACTOR = Arrays.asList(
+            PageTextContentName.ROOMS_REDACTOR,
+            PageTextContentName.SIDE_BAR,
+            PageTextContentName.HEADER
+    );
+
     private PageDescriptor() {
 
     }

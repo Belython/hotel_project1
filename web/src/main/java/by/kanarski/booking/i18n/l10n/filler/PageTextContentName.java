@@ -87,6 +87,44 @@ public class PageTextContentName {
             "header.submit"
     );
 
+    public static final List<String> ADMIN_MAIN = Arrays.asList(
+            "adminMain.adminMain"
+    );
+
+    public static final List<String> SIDE_BAR = Arrays.asList(
+            "sideBar.redactHotels",
+            "sideBar.redactLocations",
+            "sideBar.redactUsers",
+            "sideBar.redactRoomTypes",
+            "sideBar.redactRooms",
+            "sideBar.redactBills",
+            "sideBar.submit"
+    );
+
+    public static final List<String> ROOMS_REDACTOR = Arrays.asList(
+            "roomsRedactor.roomsRedactor",
+            "roomsRedactor.roomHotel",
+            "roomsRedactor.roomType",
+            "roomsRedactor.roomNumber",
+            "roomsRedactor.roomStatus",
+            "roomsRedactor.country",
+            "roomsRedactor.city",
+            "roomsRedactor.roomTypeName",
+            "roomsRedactor.maxPersons",
+            "roomsRedactor.roomPricePerNight",
+            "roomsRedactor.createRoom",
+            "roomsRedactor.removeRoom",
+            "roomsRedactor.addRoom",
+            "roomsRedactor.hotelName",
+            "roomsRedactor.ascending",
+            "roomsRedactor.descending",
+            "roomsRedactor.sort",
+            "roomsRedactor.alterRoom",
+            "roomsRedactor.alterAllRooms"
+    );
+
+
+
     private PageTextContentName() {
     }
 

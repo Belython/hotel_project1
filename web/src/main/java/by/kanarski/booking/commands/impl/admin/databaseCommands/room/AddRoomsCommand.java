@@ -27,9 +27,9 @@ public class AddRoomsCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-        List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-        List<Room> roomList = DtoToEntityConverter.covertToRoomList(roomDtoList, locale);
         try {
+            List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
+            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale);
             RoomServiceImpl.getInstance().updateList(roomList);
             servletAction = ServletAction.FORWARD_PAGE;
             request.setAttribute(Parameter.OPERATION_MESSAGE,
@@ -40,6 +40,8 @@ public class AddRoomsCommand extends AbstractCommand {
             page = PagePath.ERROR_PAGE_PATH;
             handleServiceException(request, e);
         }
+        session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

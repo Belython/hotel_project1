@@ -1,6 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
+import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
@@ -26,17 +27,15 @@ public class SelectRoomCommand extends AbstractCommand {
         String page;
         HttpSession session = request.getSession();
         try {
-//            Hotel hotel = (Hotel) session.getAttribute(Parameter.HOTEL);
             List<Room> hotelRooms;
             OrderDto order = (OrderDto) session.getAttribute(Parameter.ORDER_DTO);
             Hotel hotel = order.getHotel();
             long hotelId = hotel.getHotelId();
-            if (hotelId == Value.UNDEFINED_ID) {
+            if (hotelId == FieldValue.UNDEFINED_ID) {
                 hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
                 hotel = HotelServiceImpl.getInstance().getById(hotelId);
                 order.setHotel(hotel);
                 session.setAttribute(Parameter.ORDER_DTO, order);
-//              hotelRooms = RoomServiceImpl.getInstance().getByHotelId(hotelId);
             }
             hotelRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
             HotelDto selectedHotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);

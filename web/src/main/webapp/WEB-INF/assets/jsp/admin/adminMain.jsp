@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <html>
 <head>
-    <title>Режим администратора</title>
+    <title>${adminMain_adminMain}</title>
 </head>
 <body>
 <%@include file="../user/header/header.jsp"%>

@@ -56,7 +56,17 @@ public class HotelServiceImpl implements IHotelService {
 
     @Override
     public Hotel getById(long id) throws ServiceException {
-        return null;
+        Connection connection = ConnectionUtil.getConnection();
+        Hotel hotel = null;
+        try {
+            connection.setAutoCommit(false);
+            hotel = HotelDao.getInstance().getById(id);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return hotel;
     }
 
     @Override

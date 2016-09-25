@@ -1,5 +1,6 @@
 package by.kanarski.booking.utils;
 
+import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.dto.RoomDto;
@@ -16,45 +17,57 @@ public class DtoToEntityConverter {
         Hotel roomHotel = roomDto.getRoomHotel();
         RoomType roomType = roomDto.getRoomType();
         int roomNumber = roomDto.getRoomNumber();
-//        Map<String, String> bookedDatesAsString = new HashMap<>();
-//        TreeMap<Long, Long> bookedDates = room.
-//        long bookingStartDate = LocalizationUtil.parseDate(roomDto.getBookingStartDate(), locale);
-//        long bookingEndDate = LocalizationUtil.parseDate(roomDto.getBookingEndDate(), locale);
+        TreeMap<Long, Long> boodedDates = delocalizeBookedDates(roomDto.getBookedDates(), locale);
         String roomStatus = roomDto.getRoomStatus();
         room.setRoomId(roomId);
         room.setRoomHotel(roomHotel);
         room.setRoomType(roomType);
         room.setRoomNumber(roomNumber);
-//        room.setBookingStartDate(bookingStartDate);
-//        room.setBookingEndDate(bookingEndDate);
+        room.setBookedDates(boodedDates);
         room.setRoomStatus(roomStatus);
         return room;
     }
 
     public static RoomDto convertToRoomDto(Room room, Locale locale) {
-        RoomDto roomDto = new RoomDto();
         long roomId = room.getRoomId();
         Hotel roomHotel = room.getRoomHotel();
         RoomType roomType = room.getRoomType();
         int roomNumber = room.getRoomNumber();
-//        String bookingStartDate = LocalizationUtil.getFormattedDate(room.getBookingStartDate(), locale);
-//        String bookingEndDate = LocalizationUtil.getFormattedDate(room.getBookingEndDate(), locale);
-//        Map<String, String> bookedDatesAsString = new LinkedHashMap<>();
-//        TreeMap<Long, Long> bookedDates = room.getBookedDates();
-//        NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();
-//        Long bookingStart = bookingStartSet.ceiling(checkOutDate);
-//        String roomStatus = room.getRoomStatus();
-        roomDto.setRoomId(roomId);
-        roomDto.setRoomHotel(roomHotel);
-        roomDto.setRoomType(roomType);
-        roomDto.setRoomNumber(roomNumber);
-//        roomDto.setBookingStartDate(bookingStartDate);
-//        roomDto.setBookingEndDate(bookingEndDate);
-//        roomDto.setRoomStatus(roomStatus);
+        TreeMap<String, String> bookedDates = localizeBookedDates(room.getBookedDates(), locale);
+        String roomStatus = room.getRoomStatus();
+        RoomDto roomDto = new RoomDto(roomId, roomHotel, roomType, roomNumber, bookedDates, roomStatus);
         return roomDto;
     }
 
-    public static List<Room> covertToRoomList(List<RoomDto> roomDtoList, Locale locale) {
+    public static TreeMap<String, String> localizeBookedDates(TreeMap<Long, Long> bookedDates, Locale locale) {
+        TreeMap<String, String> localizedBookedDates = new TreeMap<>();
+        if (bookedDates != null) {
+            NavigableSet<Long> bookingStartDates = bookedDates.navigableKeySet();
+            for (Long bookingStartDate : bookingStartDates) {
+                Long bookingEndDate = bookedDates.get(bookingStartDate);
+                String localizedBookingStartDate = LocalizationUtil.getFormattedDate(bookingStartDate, locale);
+                String localizedBookingEndDate = LocalizationUtil.getFormattedDate(bookingEndDate, locale);
+                localizedBookedDates.put(localizedBookingStartDate, localizedBookingEndDate);
+            }
+        }
+        return localizedBookedDates;
+    }
+
+    public static TreeMap<Long, Long> delocalizeBookedDates(TreeMap<String, String> bookedDates, Locale locale) {
+        TreeMap<Long, Long> delocalizedBookedDates = new TreeMap<>();
+        if (bookedDates != null) {
+            NavigableSet<String> bookingStartDates = bookedDates.navigableKeySet();
+            for (String bookingStartDate : bookingStartDates) {
+                String bookingEndDate = bookedDates.get(bookingStartDate);
+                Long delocalizedBookingStartDate = LocalizationUtil.parseDate(bookingStartDate, locale);
+                Long delocalizedBookingEndDate = LocalizationUtil.parseDate(bookingEndDate, locale);
+                delocalizedBookedDates.put(delocalizedBookingStartDate, delocalizedBookingEndDate);
+            }
+        }
+        return delocalizedBookedDates;
+    }
+
+    public static List<Room> convertToRoomList(List<RoomDto> roomDtoList, Locale locale) {
         List<Room> roomList = new ArrayList<>();
         for (RoomDto roomDto : roomDtoList) {
             Room room = convertToRoom(roomDto, locale);
@@ -82,17 +95,7 @@ public class DtoToEntityConverter {
         Hotel bookedHotel = bookedRoomList.get(0).getRoomHotel();
         int paymentAmount = bill.getPaymentAmount();
         String billStatus = bill.getBillStatus();
-        Map<RoomType, Integer> bookedRoomTypeMap = new HashMap<>();
-        for (Room room : bookedRoomList) {
-            RoomType roomType = room.getRoomType();
-            Integer roomTypeCount = bookedRoomTypeMap.get(roomType);
-            if (roomTypeCount == null) {
-                roomTypeCount = 1;
-            } else {
-                roomTypeCount++;
-            }
-            bookedRoomTypeMap.put(roomType, roomTypeCount);
-        }
+        Map<RoomType, Integer> bookedRoomTypeMap = Counter.countRoomTypes(bookedRoomList);
         BillDto billDto = new BillDto(billId, client, totalPersons, checkInDate, checkOutDate, bookedHotel,
                 bookedRoomTypeMap, paymentAmount, billStatus);
         return billDto;

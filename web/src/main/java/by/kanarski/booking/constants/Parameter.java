@@ -19,14 +19,14 @@ public class Parameter {
     public static final String BILL_LIST = "billList";
     public static final String BILL_TO_PAY = "billToPay";
     public static final String BILL_DTO_LIST = "billDtoList";
-
-    public static final String ORDER_DTO = "order";
+    public static final String BILL_TO_REFUSE = "billToRefuse";
 
     //Orrder parameters
 
     public static final String ORDER_TOTAL_PERSONS = "totalPersons";
     public static final String ORDER_CHECK_IN_DATE = "checkInDate";
     public static final String ORDER_CHECK_OUT_DATE = "checkOutDate";
+    public static final String ORDER_DTO = "order";
 
     //Location parameters
 

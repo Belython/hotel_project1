@@ -20,8 +20,6 @@ public class Value {
 
     public static final String ROOM_TYPE_NAME = "roomTypeName";
 
-    public static final List<String> STATUS_LIST = Arrays.asList("active", "deleted");
-
     //Sub commands constants
 
     public static final String ADD_NEW = "addNew";
@@ -31,8 +29,6 @@ public class Value {
 
     public static final String ROOM_REDACTOR = "roomRedactor";
 
-    //Common values
 
-    public static final long UNDEFINED_ID = -1;
 
 }

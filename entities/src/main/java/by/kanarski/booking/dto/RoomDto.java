@@ -3,15 +3,29 @@ package by.kanarski.booking.dto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.RoomType;
 
+import java.util.TreeMap;
+
 public class RoomDto {
 
     private long roomId;
     private Hotel roomHotel;
     private RoomType roomType;
     private int roomNumber;
-    private String bookingStartDate;
-    private String bookingEndDate;
+    private TreeMap<String, String> bookedDates;
     private String roomStatus;
+
+    public RoomDto() {
+
+    }
+
+    public RoomDto(long roomId, Hotel roomHotel, RoomType roomType, int roomNumber, TreeMap<String, String> bookedDates, String roomStatus) {
+        this.roomId = roomId;
+        this.roomHotel = roomHotel;
+        this.roomType = roomType;
+        this.roomNumber = roomNumber;
+        this.bookedDates = bookedDates;
+        this.roomStatus = roomStatus;
+    }
 
     public long getRoomId() {
         return roomId;
@@ -45,20 +59,12 @@ public class RoomDto {
         this.roomNumber = roomNumber;
     }
 
-    public String getBookingStartDate() {
-        return bookingStartDate;
+    public TreeMap<String, String> getBookedDates() {
+        return bookedDates;
     }
 
-    public void setBookingStartDate(String bookingStartDate) {
-        this.bookingStartDate = bookingStartDate;
-    }
-
-    public String getBookingEndDate() {
-        return bookingEndDate;
-    }
-
-    public void setBookingEndDate(String bookingEndDate) {
-        this.bookingEndDate = bookingEndDate;
+    public void setBookedDates(TreeMap<String, String> bookedDates) {
+        this.bookedDates = bookedDates;
     }
 
     public String getRoomStatus() {
@@ -80,8 +86,7 @@ public class RoomDto {
         if (roomNumber != roomDto.roomNumber) return false;
         if (!roomHotel.equals(roomDto.roomHotel)) return false;
         if (!roomType.equals(roomDto.roomType)) return false;
-        if (!bookingStartDate.equals(roomDto.bookingStartDate)) return false;
-        if (!bookingEndDate.equals(roomDto.bookingEndDate)) return false;
+        if (!bookedDates.equals(roomDto.bookedDates)) return false;
         return roomStatus.equals(roomDto.roomStatus);
 
     }
@@ -92,8 +97,7 @@ public class RoomDto {
         result = 31 * result + roomHotel.hashCode();
         result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;
-        result = 31 * result + bookingStartDate.hashCode();
-        result = 31 * result + bookingEndDate.hashCode();
+        result = 31 * result + bookedDates.hashCode();
         result = 31 * result + roomStatus.hashCode();
         return result;
     }

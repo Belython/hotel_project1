@@ -15,7 +15,7 @@
 
 <form name="selectRoomsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="makeBill"/>
-    <table class="hotelList">
+    <table class="hotelList" border="2px">
         <thead>
         <tr>
             <th>${selectRoom_roomTypeName}</th>
@@ -24,10 +24,12 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="roomType" items="${selectedHotelDto.roomTypeList}">
+        <c:set var="roomTypeMap" value="${selectedHotelDto.roomTypesCount}"/>
+        <c:set var="roomTypeSet" value="${roomTypeMap.keySet()}"/>
+        <c:forEach var="roomType" items="${roomTypeSet}">
             <tr>
                 <td>${roomType.roomTypeName}</td>
-                <td>${selectedHotelDto.roomTypesCount.get(roomType)}</td>
+                <td>${roomTypeMap.get(roomType)}</td>
                 <td>
                     <select name="${roomType.roomTypeName}">
                         <option value="0" selected="selected">0</option>

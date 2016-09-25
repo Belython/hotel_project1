@@ -6,18 +6,18 @@ import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.GetHotelsC
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.SortHotelsTableCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.AlterRoomsCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.room.GetRoomsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.room.RedactRoomsCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.SortRoomsCommand;
 import by.kanarski.booking.commands.impl.user.*;
 
 public enum CommandType {
     //user commands
     LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, GOTOMAIN, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
-    SETLOCALE, CANCELACTION,
+    SETLOCALE, CANCELACTION, REFUSEBILL,
 
     //admin commands
     GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE,
-    GETROOMS, ALTERROOMS, SORTROOMS;
+    REDACTROOMS, ALTERROOMS, SORTROOMS;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -69,14 +69,18 @@ public enum CommandType {
             case SORTHOTELSTABLE:
                 return new SortHotelsTableCommand();
 
-            case GETROOMS:
-                return new GetRoomsCommand();
+            case REDACTROOMS:
+                return new RedactRoomsCommand();
 
             case ALTERROOMS:
                 return new AlterRoomsCommand();
 
             case SORTROOMS:
                 return new SortRoomsCommand();
+
+            case REFUSEBILL:
+                return new RefuseBillCommand();
+
             default:
                 throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());
         }

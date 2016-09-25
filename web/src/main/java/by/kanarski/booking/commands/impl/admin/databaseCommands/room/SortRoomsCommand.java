@@ -34,6 +34,7 @@ public class SortRoomsCommand extends AbstractCommand {
         session.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
         String page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

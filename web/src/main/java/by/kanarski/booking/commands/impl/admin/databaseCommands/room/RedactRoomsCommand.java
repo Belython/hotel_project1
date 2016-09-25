@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
-public class GetRoomsCommand implements ICommand {
+public class RedactRoomsCommand implements ICommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -26,7 +26,7 @@ public class GetRoomsCommand implements ICommand {
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         try {
             User admin = (User) session.getAttribute(Parameter.USER);
-            if (admin.getRole().equals(Role.ADMINISTRATOR)) {
+            if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOMS_REDACTOR_PATH;
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
@@ -43,7 +43,7 @@ public class GetRoomsCommand implements ICommand {
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_SET, hotelSet);
                 session.setAttribute(Parameter.ROOM_TYPE_SET, roomTypeSet);
-                session.setAttribute(Parameter.STATUS_LIST, Value.STATUS_LIST);
+                session.setAttribute(Parameter.STATUS_LIST, FieldValue.STATUS_LIST);
             } else {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
                 servletAction = ServletAction.NO_ACTION;
@@ -54,6 +54,7 @@ public class GetRoomsCommand implements ICommand {
             request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE));
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
+        request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
     }

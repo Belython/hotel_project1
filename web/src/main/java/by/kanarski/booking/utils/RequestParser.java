@@ -1,12 +1,15 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.commands.factory.CommandType;
+import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.*;
+import by.kanarski.booking.exceptions.ServiceException;
+import by.kanarski.booking.services.impl.RoomServiceImpl;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +51,7 @@ public class RequestParser {
     }
 
     public static Hotel parseHotel(ServletRequest request) {
-        long hotelId = Value.UNDEFINED_ID;
+        long hotelId = FieldValue.UNDEFINED_ID;
         if (request.getParameter(Parameter.HOTEL_ID) != null) {
             hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
         }
@@ -153,9 +156,9 @@ public class RequestParser {
         long checkOutDate = orderDto.getCheckOutDate();
         HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO);
         int totalPersons = orderDto.getTotalPersons();
-        List<RoomType> roomTypeList = hotelDto.getRoomTypeList();
+        Set<RoomType> roomTypeSet = hotelDto.getRoomTypesCount().keySet();
         HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();
-        for (RoomType roomType : roomTypeList) {
+        for (RoomType roomType : roomTypeSet) {
             int roomTypeCount = Integer.valueOf(request.getParameter(roomType.getRoomTypeName()));
             if (roomTypeCount != 0) {
                 selectedRoomTypes.put(roomType, roomTypeCount);
@@ -168,7 +171,7 @@ public class RequestParser {
         return bill;
     }
 
-    public static List<RoomDto> parseRoomDtoList(HttpServletRequest request) {
+    public static List<RoomDto> parseRoomDtoList(HttpServletRequest request) throws ServiceException{
         List<RoomDto> roomDtoList = new ArrayList<>();
         Map<String, String[]> parameterMap = request.getParameterMap();
         Set<String> parameterSet = parameterMap.keySet();
@@ -176,8 +179,6 @@ public class RequestParser {
         String[] hotelIdArray = null;
         String[] roomTypeIdArray = null;
         String[] roomNumberArray = null;
-        String[] bookingStartDateArray = null;
-        String[] bookingEndDateArray = null;
         String[] roomStatusArray = null;
         for (String parameter : parameterSet) {
             switch (parameter) {
@@ -197,14 +198,6 @@ public class RequestParser {
                     roomNumberArray = parameterMap.get(parameter);
                     break;
                 }
-                case Parameter.ROOM_BOOKING_START_DATE: {
-                    bookingStartDateArray = parameterMap.get(parameter);
-                    break;
-                }
-                case Parameter.ROOM_BOOKING_END_DATE: {
-                    bookingEndDateArray = parameterMap.get(parameter);
-                    break;
-                }
                 case Parameter.ROOM_STATUS: {
                     roomStatusArray = parameterMap.get(parameter);
                     break;
@@ -219,22 +212,28 @@ public class RequestParser {
             long hotelId = Long.valueOf(hotelIdArray[i]);
             long roomTypelId = Long.valueOf(roomTypeIdArray[i]);
             int roomNumber = Integer.valueOf(roomNumberArray[i]);
-            String bookingStartDate = bookingStartDateArray[i];
-            String bookingEndDate = bookingEndDateArray[i];
-            Hotel neededHotel = null;
-            RoomType neededRoomType = null;
+            Hotel requestedHotel = null;
+            RoomType requestedRoomType = null;
             for (Hotel hotel : hotelSet) {
                 if (hotel.getHotelId() == hotelId) {
-                    neededHotel = hotel;
+                    requestedHotel = hotel;
                 }
             }
             for (RoomType roomType : roomTypeSet) {
                 if (roomType.getRoomTypeId() == roomTypelId) {
-                    neededRoomType = roomType;
+                    requestedRoomType = roomType;
                 }
             }
-            RoomDto roomDto = DtoBuilder.buildRoomDto(roomId, neededHotel, neededRoomType, roomNumber,
-                    bookingStartDate, bookingEndDate, roomStatusArray[i]);
+            // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
+            TreeMap<String, String> bookedDates;
+            if (roomId != FieldValue.UNDEFINED_ID) {
+                Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+                Room room = RoomServiceImpl.getInstance().getById(roomId);
+                bookedDates = DtoToEntityConverter.localizeBookedDates(room.getBookedDates(), locale);
+            } else {
+                bookedDates = new TreeMap<>();
+            }
+            RoomDto roomDto = new RoomDto(roomId, requestedHotel, requestedRoomType, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
