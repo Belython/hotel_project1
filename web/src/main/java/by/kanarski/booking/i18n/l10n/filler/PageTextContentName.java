@@ -123,11 +123,14 @@ public class PageTextContentName {
             "roomsRedactor.alterAllRooms"
     );
 
-
+    public static final List<String> LOCALE_LIST = Arrays.asList(
+            "locale.ru_RU",
+            "locale.en_US",
+            "locale.en_EN"
+    );
 
     private PageTextContentName() {
+
     }
-
-
 
 }

@@ -31,7 +31,7 @@ public class GetHotelsCommand implements ICommand {
         HttpSession session = request.getSession();
         try {
             User admin = (User) session.getAttribute(Parameter.USER);
-            if (admin.getRole().equals(Role.ADMINISTRATOR)) {
+            if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 List<Hotel> hotelList = null;
                 page = PagePath.HOTEL_LIST_PAGE_PATH;
@@ -52,7 +52,6 @@ public class GetHotelsCommand implements ICommand {
                     }
                 }
                 HashMap<String, Set<String>> fieldsValuesMap = HotelServiceImpl.getInstance().getFieldValues();
-                Gson gson = new Gson();
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
                 session.setAttribute(Parameter.FIELD_VALUES_MAP, fieldsValuesMap);
             } else {
@@ -69,18 +68,4 @@ public class GetHotelsCommand implements ICommand {
         return servletAction;
     }
 
-    private List<String> getJsonList(HttpServletRequest request, HttpSession session) throws ServiceException{
-        String hotelCountry = request.getParameter(Parameter.HOTEL_COUNTRY);
-        String hotelCity = request.getParameter(Parameter.HOTEL_CITY);
-        List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
-        List<String> cityList = new ArrayList<>();
-        for(Hotel hotel: hotelList) {
-            Location hotelLocation = hotel.getHotelLocation();
-            if (!hotelLocation.getCountry().equals(hotelCountry)) {
-                continue;
-            }
-            cityList.add(hotelLocation.getCity());
-        }
-        return null;
-    }
 }

@@ -17,7 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LoginUserCommand extends AbstractCommand {
 
@@ -39,7 +39,6 @@ public class LoginUserCommand extends AbstractCommand {
                 page = PagePath.INDEX_PAGE_PATH;
                 request.setAttribute(Parameter.ERROR_LOGIN_OR_PASSWORD, MessageManager.getInstance().getProperty(MessageConstants.WRONG_LOGIN_OR_PASSWORD));
             }
-//            session.setAttribute(Parameter.USER, user);
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             handleServiceException(request, e);
@@ -48,6 +47,23 @@ public class LoginUserCommand extends AbstractCommand {
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
+    }
+
+    public static void main(String[] args) {
+        Map<String, String> mapka = new HashMap<>();
+        mapka.put("one", "раз");
+        mapka.put("two", "два");
+        mapka.put("thre", "три");
+        List<Object> objectList = new ArrayList<>();
+        objectList.add("govno");
+        objectList.add(mapka);
+        Object mapo = objectList.get(1);
+        if (mapo instanceof Map) {
+            System.out.println("тру");
+            Map<String, String> map = (Map<String, String>) mapo;
+        } else {
+            System.out.println("фаиль");
+        }
     }
 
 }

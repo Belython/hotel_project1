@@ -92,9 +92,6 @@ ${index_searchParameters}
     <input type="submit" value="${index_searchRooms}">
 </form>
 
-
-${operationMessage}
-
 </body>
 
 </html>

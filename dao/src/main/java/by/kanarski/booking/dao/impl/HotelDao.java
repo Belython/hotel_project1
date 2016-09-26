@@ -2,7 +2,7 @@ package by.kanarski.booking.dao.impl;
 
 import by.kanarski.booking.constants.ColumnName;
 import by.kanarski.booking.constants.DaoMessages;
-import by.kanarski.booking.constants.FieldNames;
+import by.kanarski.booking.constants.FieldName;
 import by.kanarski.booking.dao.interfaces.IHotelDao;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.exceptions.DaoException;
@@ -225,9 +225,9 @@ public class HotelDao implements IHotelDao {
                 citySet.add(resultSet.getString(ColumnName.LOCATION_CITY));
                 nameSet.add(resultSet.getString(ColumnName.HOTEL_NAME));
             }
-            fieldsValuesMap.put(FieldNames.HOTEL_COUNTRY, countrySet);
-            fieldsValuesMap.put(FieldNames.HOTEL_CITY, citySet);
-            fieldsValuesMap.put(FieldNames.HOTEL_NAME, nameSet);
+            fieldsValuesMap.put(FieldName.HOTEL_COUNTRY, countrySet);
+            fieldsValuesMap.put(FieldName.HOTEL_CITY, citySet);
+            fieldsValuesMap.put(FieldName.HOTEL_NAME, nameSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_HOTEL_EXCEPTION);
             throw new DaoException(DaoMessages.GET_HOTEL_EXCEPTION, e);

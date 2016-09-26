@@ -7,40 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e110ccad-4aba-4360-82d5-c851003833f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/Counter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/FieldValue.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ComparatorManager.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/Role.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/Statuses.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/DtoBuilder.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/ContentName.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AddRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AddRoomsCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RefuseBillCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RefuseBillCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectRoomCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectRoomCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Parameter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Parameter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectHotel.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectHotel.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectRoom.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectRoom.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/text.properties" afterPath="$PROJECT_DIR$/web/target/classes/text.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/text_en_US.properties" afterPath="$PROJECT_DIR$/web/target/classes/text_en_US.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/text_ru_RU.properties" afterPath="$PROJECT_DIR$/web/target/classes/text_ru_RU.properties" />
@@ -48,8 +30,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text.properties" afterPath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text_en_US.properties" afterPath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text_en_US.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text_ru_RU.properties" afterPath="$PROJECT_DIR$/web/target/web-1.0/WEB-INF/classes/text_ru_RU.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/GetRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/main.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/adminMain.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldNames.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldName.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/FieldValue.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldValue.java" />
     </list>
     <ignored path="hotel_project-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,12 +68,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DtoToEntityConverter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
+      <file leaf-file-name="FillerManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="408">
+              <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+              <folding>
+                <element signature="e#3322#3323#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +83,8 @@
       <file leaf-file-name="text_en_US.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/main/resources/text_en_US.properties">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="1496">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -109,21 +93,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="roomsRedactor.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
+      <file leaf-file-name="PageTextContentName.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-261">
-              <caret line="173" column="92" selection-start-line="173" selection-start-column="92" selection-end-line="173" selection-end-column="92" />
+            <state relative-caret-position="2023">
+              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageDescriptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java">
+      <file leaf-file-name="ContentName.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/ContentName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+            <state relative-caret-position="136">
+              <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -132,58 +116,58 @@
       <file leaf-file-name="header.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+            <state relative-caret-position="527">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sideBar.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp">
+      <file leaf-file-name="SetLocaleCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageTextContentName.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java">
+      <file leaf-file-name="Filler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+            <state relative-caret-position="391">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlterRoomsCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
+      <file leaf-file-name="FillerFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+            <state relative-caret-position="442">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedactRoomsCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/controllers/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="41" column="54" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+            <state relative-caret-position="408">
+              <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortRoomsCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java">
+      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="33" selection-end-column="67" />
+            <state relative-caret-position="153">
+              <caret line="10" column="90" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -226,23 +210,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToMainPageCommand.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/User.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LogoutUserCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/LocalizationFilter.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/listeners/LocaleListener.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/PayBillCommand.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/ColumnName.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Room.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/SerializationUtil.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegistrationCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToRegistrationCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToAccountCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/MakeBillCommand.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectHotelCommand.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ComparatorManager.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Counter.java" />
@@ -264,7 +236,6 @@
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/DtoBuilder.java" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
@@ -273,9 +244,22 @@
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
+        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/CollectionKey.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageCollectionContentName.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManagerV1.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/ContentType.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Content.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/ContentName.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageContent.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java" />
         <option value="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" />
       </list>
     </option>
@@ -607,9 +591,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1139,6 +1123,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="filler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1824,6 +1842,66 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="LoginUserCommand" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="by.kanarski.booking.commands.impl.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.commands.impl.user.LoginUserCommand" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="web" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="PageCollectionContentName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="by.kanarski.booking.i18n.l10n.filler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.i18n.l10n.filler.PageCollectionContentName" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="web" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Filler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="by.kanarski.booking.i18n.l10n.filler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.i18n.l10n.filler.Filler" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="web" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -2310,14 +2388,20 @@
         </option>
       </method>
     </configuration>
-    <list size="3">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat Server" />
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Unnamed" />
       <item index="2" class="java.lang.String" itemvalue="Application.GoToAccountCommand" />
+      <item index="3" class="java.lang.String" itemvalue="Application.LoginUserCommand" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PageCollectionContentName" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Filler" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.GoToAccountCommand" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.Filler" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PageCollectionContentName" />
+        <item index="2" class="java.lang.String" itemvalue="Application.LoginUserCommand" />
+        <item index="3" class="java.lang.String" itemvalue="Application.GoToAccountCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -2425,7 +2509,9 @@
       <workItem from="1474739510580" duration="10768000" />
       <workItem from="1474792687645" duration="1128000" />
       <workItem from="1474806784900" duration="14279000" />
-      <workItem from="1474842601724" duration="2300000" />
+      <workItem from="1474842601724" duration="2630000" />
+      <workItem from="1474866744382" duration="18506000" />
+      <workItem from="1474905184013" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1472486741118</created>
@@ -2735,11 +2821,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474666058663</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Прогресс!!!">
+      <created>1474844949605</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1474844949605</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="598078000" />
+    <option name="totallyTimeSpent" value="616950000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2756,15 +2849,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3964365" sideWeight="0.5053305" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31514478" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29398665" sideWeight="0.49520257" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3147942" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2775,13 +2866,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5077951" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40311804" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40311804" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29398665" sideWeight="0.49520257" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2982,11 +3075,47 @@
           <properties />
           <option name="timeStamp" value="738" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="786" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="787" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="788" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="789" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="790" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="791" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="766" />
+      <option name="time" value="792" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2999,127 +3128,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ComparatorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/SortResultCounter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-268">
-          <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/jre/lib/rt.jar!/sun/nio/ch/ServerSocketChannelImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="376" column="23" selection-start-line="376" selection-start-column="23" selection-end-line="376" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectHotelCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/Counter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1474725111389" expanded="true" signature="538:676" ph="INSERT INTO ROOMS... " />
-            <marker date="1474725111389" expanded="true" signature="723:1014" ph="SELECT R.*, ROOMS" />
-            <marker date="1474725111389" expanded="true" signature="1071:1486" ph="SELECT R.*, ROOMS" />
-            <marker date="1474725111389" expanded="true" signature="1539:1874" ph="SELECT R.*, ROOMS" />
-            <marker date="1474725111389" expanded="true" signature="2420:2554" ph="UPDATE ROOMS... " />
-            <marker date="1474725111389" expanded="true" signature="3041:3295" ph="SELECT R.*, ROOMS" />
-            <marker date="1474725111389" expanded="true" signature="3345:3396" ph="UPDATE ROOMS... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectRoom.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/selectHotel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/MakeBillCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="51" column="29" selection-start-line="22" selection-start-column="7" selection-end-line="51" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/BillServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="194" column="36" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/Role.java" />
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/Facilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
@@ -3140,20 +3148,6 @@
         <state relative-caret-position="272">
           <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/FieldValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -3227,7 +3221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="87" selection-start-line="5" selection-start-column="87" selection-end-line="5" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3242,53 +3235,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/DtoBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
-          <folding>
-            <element signature="e#793#794#0" expanded="false" />
-            <element signature="e#822#823#0" expanded="false" />
-            <element signature="e#864#865#0" expanded="false" />
-            <element signature="e#900#901#0" expanded="false" />
-            <element signature="e#935#936#0" expanded="false" />
-            <element signature="e#967#968#0" expanded="false" />
-            <element signature="e#1016#1017#0" expanded="false" />
-            <element signature="e#1058#1059#0" expanded="false" />
-            <element signature="e#1095#1096#0" expanded="false" />
-            <element signature="e#1126#1127#0" expanded="false" />
-            <element signature="e#1176#1177#0" expanded="false" />
-            <element signature="e#1216#1217#0" expanded="false" />
-            <element signature="e#1250#1251#0" expanded="false" />
-            <element signature="e#1283#1284#0" expanded="false" />
-            <element signature="e#1332#1333#0" expanded="false" />
-            <element signature="e#1376#1377#0" expanded="false" />
-            <element signature="e#1619#1620#0" expanded="false" />
-            <element signature="e#1652#1653#0" expanded="false" />
-            <element signature="e#1704#1705#0" expanded="false" />
-            <element signature="e#1748#1749#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3296,9 +3250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2669">
           <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3306,7 +3257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3314,7 +3264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3322,7 +3271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="93" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3334,50 +3282,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="33" selection-end-column="67" />
+        <state relative-caret-position="1326">
+          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="3196">
+          <caret line="188" column="70" selection-start-line="188" selection-start-column="70" selection-end-line="188" selection-end-column="70" />
+          <folding>
+            <marker date="1474844684000" expanded="true" signature="10308:10317" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="34" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="33" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="147" column="48" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="213" column="49" selection-start-line="213" selection-start-column="49" selection-end-line="213" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/controllers/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="90" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageCollectionContentName.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/List.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/ResourceBundle.java" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageContent.java" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/CollectionKey.java" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/ContentName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <element signature="e#3322#3323#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageTextContentName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/resources/text_en_US.properties">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="1496">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3385,26 +3440,34 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/FillerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-261">
-          <caret line="173" column="92" selection-start-line="173" selection-start-column="92" selection-end-line="173" selection-end-column="92" />
+        <state relative-caret-position="442">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/PageDescriptor.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        <state relative-caret-position="391">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+        <state relative-caret-position="527">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3440,7 +3503,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jQuery-2.0.0</last-edited>
+          <last-edited>JQuery 3.1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

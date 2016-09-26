@@ -1,7 +1,7 @@
 package by.kanarski.booking.utils;
 
 
-import by.kanarski.booking.constants.Statuses;
+import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.entities.*;
 
 import java.util.List;
@@ -192,7 +192,7 @@ public class EntityBuilder {
         bill.setCheckOutDate(checkOutDate);
         bill.setBookedRoomList(roomList);
         bill.setPaymentAmount(paymentAmount);
-        bill.setBillStatus(Statuses.BILL_NOT_PAID);
+        bill.setBillStatus(FieldValue.STATUS_NOT_PAID);
         return bill;
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by dkanarsky on 08.09.2016.
  */
-public class FieldNames {
+public class FieldName {
 
     //Hotel fields
 

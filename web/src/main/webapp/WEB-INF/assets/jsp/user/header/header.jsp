@@ -48,13 +48,14 @@
             <input type="hidden" name="command" value="setLocale"/>
             <label for="currentLocale">${header_selectLanguage}</label>
             <select id="currentLocale" name="locale">
-                <c:forEach var="localeElement" items="${applicationScope.get('localeList')}">
+                <c:set var="localeSet" value="${localeMap.keySet()}"/>
+                <c:forEach var="localeElement" items="${localeSet}">
                     <c:choose>
                         <c:when test="${locale eq localeElement}">
-                            <option value=${localeElement} selected="selected">${localeElement}</option>
+                            <option value=${localeElement} selected="selected">${localeMap.get(localeElement)}</option>
                         </c:when>
                         <c:otherwise>
-                            <option value=${localeElement}>${localeElement}</option>
+                            <option value=${localeElement}>${localeMap.get(localeElement)}</option
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
