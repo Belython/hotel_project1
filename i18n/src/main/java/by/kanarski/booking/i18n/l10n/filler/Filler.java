@@ -2,6 +2,7 @@ package by.kanarski.booking.i18n.l10n.filler;
 
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.ResourcePath;
+import by.kanarski.booking.i18n.l10n.filler.factory.ContentType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,8 +26,9 @@ public class Filler {
             Set<String> contentNames = contentMap.keySet();
             for (String contentName : contentNames) {
                 List<String> keyList = contentMap.get(contentName);
-                switch (contentName) {
-                    case ContentName.TEXT: {
+                String contentType = ContentType.getContentType(contentName);
+                switch (contentType) {
+                    case ContentType.TEXT: {
                         for (String key : keyList) {
                             String attributeName = key.replace(".", "_");
                             String text = bundle.getString(key);
@@ -34,7 +36,7 @@ public class Filler {
                         }
                         break;
                     }
-                    case ContentName.LOCALE_MAP: {
+                    case ContentType.MAP: {
                         Map<String, String> localeMap = new LinkedHashMap<>();
                         for (String key : keyList) {
                             String reg = "\\w+\\.";

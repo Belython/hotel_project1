@@ -8,6 +8,7 @@
           <element id="module-output" name="entities" />
           <element id="module-output" name="dao" />
           <element id="module-output" name="services" />
+          <element id="module-output" name="i18n" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="c3p0-0.9.5.2" />

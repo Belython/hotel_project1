@@ -4,7 +4,7 @@ import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.i18n.l10n.filler.Filler;
-import by.kanarski.booking.i18n.l10n.filler.FillerFactory;
+import by.kanarski.booking.i18n.l10n.filler.factory.FillerFactory;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.RequestParser;
 

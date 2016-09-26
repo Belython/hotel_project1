@@ -25,6 +25,7 @@
         <processorPath useClasspath="true" />
         <module name="dao" />
         <module name="entities" />
+        <module name="i18n" />
         <module name="services" />
         <module name="web" />
       </profile>
@@ -33,6 +34,7 @@
       <module name="booking" target="1.8" />
       <module name="dao" target="1.8" />
       <module name="entities" target="1.8" />
+      <module name="i18n" target="1.8" />
       <module name="services" target="1.8" />
       <module name="web" target="1.8" />
     </bytecodeTargetLevel>

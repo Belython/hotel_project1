@@ -1,4 +1,4 @@
-package by.kanarski.booking.i18n.l10n.filler;
+package by.kanarski.booking.constants;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,8 @@
-package by.kanarski.booking.i18n.l10n.filler;
+package by.kanarski.booking.i18n.l10n.filler.factory;
+
+import by.kanarski.booking.constants.ContentName;
+import by.kanarski.booking.i18n.l10n.filler.Filler;
+import by.kanarski.booking.constants.PageTextContentName;
 
 import java.util.Arrays;
 import java.util.HashMap;

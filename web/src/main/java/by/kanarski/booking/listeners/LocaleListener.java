@@ -2,7 +2,7 @@ package by.kanarski.booking.listeners;
 
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.i18n.l10n.filler.Filler;
-import by.kanarski.booking.i18n.l10n.filler.FillerFactory;
+import by.kanarski.booking.i18n.l10n.filler.factory.FillerFactory;
 
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;

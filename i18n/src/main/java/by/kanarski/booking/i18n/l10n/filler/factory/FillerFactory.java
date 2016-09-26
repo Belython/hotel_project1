@@ -1,5 +1,7 @@
-package by.kanarski.booking.i18n.l10n.filler;
+package by.kanarski.booking.i18n.l10n.filler.factory;
 
+
+import by.kanarski.booking.i18n.l10n.filler.Filler;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -14,16 +14,25 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <dependencies>
+
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>services</artifactId>
             <version>1.0</version>
         </dependency>
+
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>entities</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>by.kanarski.booking</groupId>
+            <artifactId>i18n</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -57,7 +66,6 @@
             <artifactId>gson</artifactId>
             <version>2.7</version>
         </dependency>
-
 
     </dependencies>
 

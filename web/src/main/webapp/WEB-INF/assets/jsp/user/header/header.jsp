@@ -52,10 +52,10 @@
                 <c:forEach var="localeElement" items="${localeSet}">
                     <c:choose>
                         <c:when test="${locale eq localeElement}">
-                            <option value=${localeElement} selected="selected">${localeMap.get(localeElement)}</option>
+                            <option value="${localeElement}" selected="selected">${localeMap.get(localeElement)}</option>
                         </c:when>
                         <c:otherwise>
-                            <option value=${localeElement}>${localeMap.get(localeElement)}</option
+                            <option value="${localeElement}">${localeMap.get(localeElement)}</option>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>

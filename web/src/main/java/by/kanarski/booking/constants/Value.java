@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Value {
 
-    public static final List<String> LOCALE_LIST = Arrays.asList("ru_RU", "en_US", "en_EN");
+//    public static final List<String> LOCALE_LIST = Arrays.asList("ru_RU", "en_US", "en_EN");
 
     public static final String ASCENDING = "ascending";
     public static final String DESCENDING = "descending";
