@@ -10,14 +10,24 @@ import by.kanarski.booking.utils.ClosingUtil;
 import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.EntityParser;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Dzmitry Kanarski
+ * @version 1.0
+ * @see IUserDao
+ */
+
 public class UserDao implements IUserDao {
 
     private static UserDao instance = null;
+
+    /**
+     * SQL queries
+     */
+
     private final String ADD_QUERY = "INSERT INTO USERS (FIRST_NAME, LAST_NAME, EMAIL, LOGIN, PASSWORD, ROLE, USER_STATUS)" +
             " VALUES(?, ?, ?, ?, ?, ?, ?)";
     private final String GET_BY_ID_QUERY = "SELECT * FROM USERS WHERE USER_ID = ?";
@@ -84,24 +94,6 @@ public class UserDao implements IUserDao {
         return user;
     }
 
-    public User getByLogin(String login) throws DaoException {
-        User user = null;
-        Connection connection = ConnectionUtil.getConnection();
-        ResultSet resultSet = null;
-        try (PreparedStatement stm = connection.prepareStatement(GET_BY_LOGIN_QUERY)) {
-            stm.setString(1, login);
-            resultSet = stm.executeQuery();
-            resultSet.next();
-            user = EntityParser.parseUser(resultSet);
-        } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USER_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_USER_EXCEPTION, e);
-        } finally {
-            ClosingUtil.close(resultSet);
-        }
-        return user;
-    }
-
     @Override
     public List<User> getAll() throws DaoException {
         List<User> list = new ArrayList<>();
@@ -152,6 +144,31 @@ public class UserDao implements IUserDao {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.DELETE_USER_EXCEPTION);
             throw new DaoException(DaoMessages.DELETE_USER_EXCEPTION, e);
         }
+    }
+
+    /**
+     * Recives <b>{@link User}</b> from databse by login
+     * @param login the user login
+     * @return an entity with the corresponding id
+     * @throws DaoException
+     */
+
+    public User getByLogin(String login) throws DaoException {
+        User user = null;
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_BY_LOGIN_QUERY)) {
+            stm.setString(1, login);
+            resultSet = stm.executeQuery();
+            resultSet.next();
+            user = EntityParser.parseUser(resultSet);
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_USER_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return user;
     }
 
     public boolean isAuthorized(String login, String password) throws DaoException {

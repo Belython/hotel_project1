@@ -9,9 +9,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Represents connections pool based on c3p0 library
+ * @author Dzmitry Kanarski
+ * @version 1.0
+ * @see ComboPooledDataSource
+ */
+
 public class DataSource {
     private static DataSource datasource = null;
     private ComboPooledDataSource cpds = null;
+
+    /**
+     * Connections pool cashe with configuration
+     */
 
     private DataSource() {
         cpds = new ComboPooledDataSource();
@@ -41,6 +52,12 @@ public class DataSource {
         }
         return datasource;
     }
+
+    /**
+     * Gives one of connectons from pool
+     * @return connection
+     * @throws SQLException
+     */
 
     public Connection getConnection() throws SQLException {
         return this.cpds.getConnection();

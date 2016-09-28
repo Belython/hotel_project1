@@ -27,4 +27,9 @@ public class BookingSystemLogger {
         logger.error(message, error);
     }
 
+    public void logInfo(Class sender, String message) {
+        logger = Logger.getLogger(sender);
+        logger.info(message);
+    }
+
 }

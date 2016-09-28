@@ -2,10 +2,15 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.DaoMessages;
 
-import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+/**
+ *
+ * @author Dzmitry Kanarski
+ * @version 1.0
+ */
 
 public class ConnectionUtil {
     private static ThreadLocal<Connection> connection = new ThreadLocal<>();

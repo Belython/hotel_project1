@@ -11,48 +11,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e110ccad-4aba-4360-82d5-c851003833f6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/Statuses.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AddRoomsCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ComparatorManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Localizator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/commonUtils/ClassFiller.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/commonUtils/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/database.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/exceptionMasseges.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/exceptionMasseges_en_US.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/exceptionMasseges_ru_RU.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/messages.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/messages_en_US.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/messages_ru_RU.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/DaoMessages.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/DaoMessages.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IHotelDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IHotelDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/ILocationDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/ILocationDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomTypeDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomTypeDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/BookingSystemLogger.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/BookingSystemLogger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/PayBillCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/PayBillCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/web/target/web-1.0/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/assets/scripts/admin.js" afterPath="$PROJECT_DIR$/web/target/web-1.0/assets/scripts/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web-1.0/assets/scripts/script.js" afterPath="$PROJECT_DIR$/web/target/web-1.0/assets/scripts/script.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/MessageConstants.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/MessageConstants.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/managers/MessageManager.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/managers/MessageManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/LocalizationUtil.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DateUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/dao/src/main/resources/database.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/exceptionMasseges.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/exceptionMasseges.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/exceptionMasseges_en_US.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/exceptionMasseges_en_US.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/exceptionMasseges_ru_RU.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/exceptionMasseges_ru_RU.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/log4j.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/log4j.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/messages.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/messages.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/messages_en_US.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/messages_en_US.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/messages_ru_RU.properties" afterPath="$PROJECT_DIR$/i18n/src/main/resources/messages_ru_RU.properties" />
     </list>
     <ignored path="hotel_project-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,23 +62,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserDaoTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java">
+      <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding>
-                <marker date="1475068344000" expanded="true" signature="7:27" ph="..." />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IBillDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java">
+      <file leaf-file-name="EntityParser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            <state relative-caret-position="85">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IUserDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -115,78 +109,60 @@
       <file leaf-file-name="HotelDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDao.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IUserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="roomsRedactor.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="134" column="24" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
               <folding>
-                <marker date="1475084879568" expanded="true" signature="699:828" ph="INSERT INTO USERS... " />
-                <marker date="1475084879568" expanded="true" signature="875:912" ph="SELECT * FRO... USERS" />
-                <marker date="1475084879568" expanded="true" signature="962:997" ph="SELECT * FRO... USERS" />
-                <marker date="1475084879568" expanded="true" signature="1042:1090" ph="SELECT * FRO... USERS" />
-                <marker date="1475084879568" expanded="true" signature="1134:1268" ph="UPDATE USERS... " />
-                <marker date="1475084879568" expanded="true" signature="1312:1347" ph="DELETE FROM " />
-                <marker date="1475084879568" expanded="true" signature="1404:1470" ph="SELECT LOGIN... USERS" />
-                <marker date="1475084879568" expanded="true" signature="1519:1558" ph="SELECT LOGIN... USERS" />
+                <marker date="1475070704000" expanded="true" signature="700:856" ph="INSERT INTO HOTELS... " />
+                <marker date="1475070704000" expanded="true" signature="784:848" ph="SELECT LOCAT... LOCATIONS" />
+                <marker date="1475070704000" expanded="true" signature="903:1037" ph="SELECT H.*, HOTELS" />
+                <marker date="1475070704000" expanded="true" signature="1082:1195" ph="SELECT H.*, HOTELS" />
+                <marker date="1475070704000" expanded="true" signature="1250:1386" ph="SELECT H.*, HOTELS" />
+                <marker date="1475070704000" expanded="true" signature="1436:1522" ph="UPDATE HOTEL... " />
+                <marker date="1475070704000" expanded="true" signature="1574:1707" ph="SELECT H.*, HOTELS" />
+                <marker date="1475070704000" expanded="true" signature="1756:1886" ph="SELECT H.*, HOTELS" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DaoException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClosingUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultSet.java" pinned="false" current-in-tab="false">
+        <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/ResultSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-477">
+              <caret line="147" column="51" selection-start-line="147" selection-start-column="44" selection-end-line="147" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Statement.java" pinned="false" current-in-tab="false">
+        <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/Statement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="99" column="37" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -228,14 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/DtoBuilder.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AddRoomsCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
@@ -270,15 +238,23 @@
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/PayBillCommand.java" />
         <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/ResourcePath.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/DaoMessages.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js" />
         <option value="$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IHotelDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/ILocationDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomTypeDao.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/BookingSystemLogger.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" />
       </list>
     </option>
   </component>
@@ -1261,6 +1237,44 @@
               <option name="myItemId" value="booking" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exceptions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1335,6 +1349,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booking" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2191,7 +2235,7 @@
       <workItem from="1474981274789" duration="2516000" />
       <workItem from="1475000664564" duration="7653000" />
       <workItem from="1475039647529" duration="16492000" />
-      <workItem from="1475084501652" duration="2349000" />
+      <workItem from="1475084501652" duration="9915000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1472486741118</created>
@@ -2522,7 +2566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474927232671</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Рабочая версия 1.">
+      <created>1475087051475</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1475087051475</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2558,7 +2609,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="654124000" />
+    <option name="totallyTimeSpent" value="661690000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2571,7 +2622,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="6" side_tool="false" content_ui="tabs" />
@@ -2581,7 +2632,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3964365" sideWeight="0.5053305" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3147942" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31514478" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2819,102 +2870,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LogoutUserCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/resources/messages_en_US.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/resources/messages_ru_RU.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/resources/exceptionMasseges.properties">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/WebMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/ExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/constants/Statuses.java" />
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/constants/ServiceMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/PayBillCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -2968,14 +2923,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/SerializationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2983,33 +2930,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/BookingSystemLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/managers/MessageManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#587#588#0" expanded="false" />
+            <element signature="e#631#632#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3035,14 +2964,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2567">
           <caret line="166" column="42" selection-start-line="166" selection-start-column="42" selection-end-line="166" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3051,13 +2975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3066,6 +2983,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-578">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3121,14 +3039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5738">
@@ -3137,51 +3047,229 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IHotelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/ILocationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomTypeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IBillDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/BookingSystemLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+        <state relative-caret-position="162">
+          <caret line="184" column="24" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
           <folding>
-            <marker date="1475084879568" expanded="true" signature="699:828" ph="INSERT INTO USERS... " />
-            <marker date="1475084879568" expanded="true" signature="875:912" ph="SELECT * FRO... USERS" />
-            <marker date="1475084879568" expanded="true" signature="962:997" ph="SELECT * FRO... USERS" />
-            <marker date="1475084879568" expanded="true" signature="1042:1090" ph="SELECT * FRO... USERS" />
-            <marker date="1475084879568" expanded="true" signature="1134:1268" ph="UPDATE USERS... " />
-            <marker date="1475084879568" expanded="true" signature="1312:1347" ph="DELETE FROM " />
-            <marker date="1475084879568" expanded="true" signature="1404:1470" ph="SELECT LOGIN... USERS" />
-            <marker date="1475084879568" expanded="true" signature="1519:1558" ph="SELECT LOGIN... USERS" />
+            <element signature="imports" expanded="true" />
+            <marker date="1475089911784" expanded="true" signature="785:914" ph="INSERT INTO USERS... " />
+            <marker date="1475089911784" expanded="true" signature="961:998" ph="SELECT * FRO... USERS" />
+            <marker date="1475089911784" expanded="true" signature="1048:1083" ph="SELECT * FRO... USERS" />
+            <marker date="1475089911784" expanded="true" signature="1128:1176" ph="SELECT * FRO... USERS" />
+            <marker date="1475089911784" expanded="true" signature="1220:1354" ph="UPDATE USERS... " />
+            <marker date="1475089911784" expanded="true" signature="1398:1433" ph="DELETE FROM " />
+            <marker date="1475089911784" expanded="true" signature="1490:1556" ph="SELECT LOGIN... USERS" />
+            <marker date="1475089911784" expanded="true" signature="1605:1644" ph="SELECT LOGIN... USERS" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IRoomDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <marker date="1475088712648" expanded="true" signature="88:174" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/SQLException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5023">
+          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-932">
-          <caret line="117" column="6" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        <state relative-caret-position="1479">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        <state relative-caret-position="102">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="8" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/interfaces/IUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/Wrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="99" column="37" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/exceptions/DaoException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="375" column="48" selection-start-line="375" selection-start-column="44" selection-end-line="375" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <caret line="147" column="51" selection-start-line="147" selection-start-column="44" selection-end-line="147" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/AutoCloseable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="68" column="73" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/ThreadLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="134" column="24" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
+          <folding>
+            <marker date="1475070704000" expanded="true" signature="700:856" ph="INSERT INTO HOTELS... " />
+            <marker date="1475070704000" expanded="true" signature="784:848" ph="SELECT LOCAT... LOCATIONS" />
+            <marker date="1475070704000" expanded="true" signature="903:1037" ph="SELECT H.*, HOTELS" />
+            <marker date="1475070704000" expanded="true" signature="1082:1195" ph="SELECT H.*, HOTELS" />
+            <marker date="1475070704000" expanded="true" signature="1250:1386" ph="SELECT H.*, HOTELS" />
+            <marker date="1475070704000" expanded="true" signature="1436:1522" ph="UPDATE HOTEL... " />
+            <marker date="1475070704000" expanded="true" signature="1574:1707" ph="SELECT H.*, HOTELS" />
+            <marker date="1475070704000" expanded="true" signature="1756:1886" ph="SELECT H.*, HOTELS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ClosingUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/c3p0-0.9.5.2.jar!/com/mchange/v2/c3p0/ComboPooledDataSource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
