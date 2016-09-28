@@ -3,7 +3,6 @@ package by.kanarski.booking.utils;
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
@@ -44,8 +43,8 @@ public class RequestParser {
         User user = (User) session.getAttribute(Parameter.USER);
         int totalPersons = Integer.valueOf(request.getParameter(Parameter.ORDER_TOTAL_PERSONS));
         Hotel hotel = parseHotel(request);
-        long checkInDate = LocalizationUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_IN_DATE), currentLocale);
-        long checkOutDate = LocalizationUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_OUT_DATE), currentLocale);
+        long checkInDate = DateUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_IN_DATE), currentLocale);
+        long checkOutDate = DateUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_OUT_DATE), currentLocale);
         OrderDto orderDto = new OrderDto(user, hotel, totalPersons, checkInDate, checkOutDate);
         return orderDto;
     }
@@ -165,7 +164,7 @@ public class RequestParser {
             }
         }
         List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, hotelDto.getRoomList());
-        int paymentAmount = calc(LocalizationUtil.getDays(checkInDate, checkOutDate), selectedRooms);
+        int paymentAmount = calc(DateUtil.getDays(checkInDate, checkOutDate), selectedRooms);
         Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
                 paymentAmount);
         return bill;

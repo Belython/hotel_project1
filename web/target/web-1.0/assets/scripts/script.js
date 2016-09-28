@@ -16,7 +16,6 @@ function calcul() {
     xhttp.send();
 }
 
-
 $(".payBillBtn").click(function (event) {
     payBill(event)
 });

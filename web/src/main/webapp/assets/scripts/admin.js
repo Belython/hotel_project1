@@ -7,12 +7,10 @@ function main() {
         var button = event.target;
         var tableRow = $(button).parents().eq(1);
         var rowInputNodes = tableRow.find("input, select");
-        // var commonInputNodes = $(".redactorForm").has(tableRow).children("input");
         var redactorForm = $(".redactorForm").has(tableRow);
         var command = redactorForm.children("[name='command']").serialize();
         var subCommand = redactorForm.children("[name='subCommand']").serialize();
         var rowParameters = rowInputNodes.serialize();
-        // var commonParameters = commonInputNodes.serialize();
         var isAjaxRequest = "isAjaxRequest=true";
         var url = "controller?" + command + "&" + subCommand + "&" + isAjaxRequest + "&" + rowParameters;
         $.get(url, function (data, status) {

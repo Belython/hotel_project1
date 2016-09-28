@@ -7,11 +7,11 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 
-public class LocalizationUtil {
+public class DateUtil {
 
     private static final long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
 
-    private LocalizationUtil() {
+    private DateUtil() {
     }
 
     public static String getFormattedDate(long date, Locale locale) {
@@ -26,7 +26,7 @@ public class LocalizationUtil {
         try {
             date = dateFormat.parse(formattedDate).getTime();
         } catch (ParseException e) {
-            BookingSystemLogger.getInstance().logError(LocalizationUtil.class, WebMessages.PARSE_DATE_EXCEPTION + e);
+            BookingSystemLogger.getInstance().logError(DateUtil.class, WebMessages.PARSE_DATE_EXCEPTION + e);
         }
         return date;
     }

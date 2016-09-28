@@ -1,5 +1,6 @@
 package by.kanarski.booking.utils;
 
+import by.kanarski.booking.constants.DaoMessages;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
@@ -30,11 +31,11 @@ public class DataSource {
             cpds.setMaxPoolSize(20);
             cpds.setMaxStatements(180);
         } catch (PropertyVetoException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), "Ошибка Не верное значение настройки " + e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.WRONG_DATASOURCE_SETTINGS + e);
         }
     }
 
-    public static synchronized DataSource getInstance() throws IOException, SQLException, PropertyVetoException {
+    public static synchronized DataSource getInstance() throws IOException, SQLException {
         if (datasource == null) {
             datasource = new DataSource();
         }
@@ -44,4 +45,5 @@ public class DataSource {
     public Connection getConnection() throws SQLException {
         return this.cpds.getConnection();
     }
+
 }

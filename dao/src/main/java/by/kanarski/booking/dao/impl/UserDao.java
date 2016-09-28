@@ -10,6 +10,7 @@ import by.kanarski.booking.utils.ClosingUtil;
 import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.EntityParser;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class UserDao implements IUserDao {
     private final String GET_ALL_QUERY = "SELECT * FROM USERS WHERE USER_STATUS = 'active'";
     private final String UPDATE_QUERY = "UPDATE USERS SET FIRST_NAME = ?, LAST_NAME = ?, " +
             "EMAIL = ?, LOGIN = ?, PASSWORD = ?, USER_STATUS = ? WHERE USER_ID = ?";
-    private final String DELETE_QUERY = "UPDATE USERS SET USER_STATUS = 'deleted' WHERE USER_ID = ?";
+    private final String DELETE_QUERY = "DELETE FROM USERS WHERE USER_ID = ?";
     private final String CHECK_AUTHORIZATION_QUERY = "SELECT LOGIN, PASSWORD FROM USERS WHERE LOGIN = ? AND PASSWORD = ?";
     private final String CHECK_LOGIN_QUERY = "SELECT LOGIN FROM USERS WHERE LOGIN = ?";
 
@@ -132,8 +133,8 @@ public class UserDao implements IUserDao {
             stm.setString(3, user.getEmail());
             stm.setString(4, user.getLogin());
             stm.setString(5, user.getPassword());
-            stm.setLong(6, user.getUserId());
-            stm.setString(7, user.getUserStatus());
+            stm.setString(6, user.getUserStatus());
+            stm.setLong(7, user.getUserId());
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_USER_EXCEPTION);

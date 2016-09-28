@@ -1,5 +1,7 @@
 package by.kanarski.booking.utils;
 
+import by.kanarski.booking.constants.DaoMessages;
+
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,11 +23,9 @@ public class ConnectionUtil {
                 connection.set(instance.getConnection());
             }
         } catch (IOException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, "Ошибка ввода " + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.INPUT_ERROR + e);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, "Ошибка подключения к базе " + e);
-        } catch (PropertyVetoException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, "Ошибка Не верное значение настройки " + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.DATABASE_CONNECTION_ERROR + e);
         }
         return connection.get();
     }

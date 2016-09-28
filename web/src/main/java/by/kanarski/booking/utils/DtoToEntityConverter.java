@@ -1,12 +1,9 @@
 package by.kanarski.booking.utils;
 
-import by.kanarski.booking.constants.FieldValue;
-import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.entities.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 public class DtoToEntityConverter {
@@ -45,8 +42,8 @@ public class DtoToEntityConverter {
             NavigableSet<Long> bookingStartDates = bookedDates.navigableKeySet();
             for (Long bookingStartDate : bookingStartDates) {
                 Long bookingEndDate = bookedDates.get(bookingStartDate);
-                String localizedBookingStartDate = LocalizationUtil.getFormattedDate(bookingStartDate, locale);
-                String localizedBookingEndDate = LocalizationUtil.getFormattedDate(bookingEndDate, locale);
+                String localizedBookingStartDate = DateUtil.getFormattedDate(bookingStartDate, locale);
+                String localizedBookingEndDate = DateUtil.getFormattedDate(bookingEndDate, locale);
                 localizedBookedDates.put(localizedBookingStartDate, localizedBookingEndDate);
             }
         }
@@ -59,8 +56,8 @@ public class DtoToEntityConverter {
             NavigableSet<String> bookingStartDates = bookedDates.navigableKeySet();
             for (String bookingStartDate : bookingStartDates) {
                 String bookingEndDate = bookedDates.get(bookingStartDate);
-                Long delocalizedBookingStartDate = LocalizationUtil.parseDate(bookingStartDate, locale);
-                Long delocalizedBookingEndDate = LocalizationUtil.parseDate(bookingEndDate, locale);
+                Long delocalizedBookingStartDate = DateUtil.parseDate(bookingStartDate, locale);
+                Long delocalizedBookingEndDate = DateUtil.parseDate(bookingEndDate, locale);
                 delocalizedBookedDates.put(delocalizedBookingStartDate, delocalizedBookingEndDate);
             }
         }
@@ -89,8 +86,8 @@ public class DtoToEntityConverter {
         long billId = bill.getBillId();
         User client = bill.getClient();
         int totalPersons = bill.getTotalPersons();
-        String checkInDate = LocalizationUtil.getFormattedDate(bill.getCheckInDate(), locale);
-        String checkOutDate = LocalizationUtil.getFormattedDate(bill.getCheckOutDate(), locale);
+        String checkInDate = DateUtil.getFormattedDate(bill.getCheckInDate(), locale);
+        String checkOutDate = DateUtil.getFormattedDate(bill.getCheckOutDate(), locale);
         List<Room> bookedRoomList = bill.getBookedRoomList();
         Hotel bookedHotel = bookedRoomList.get(0).getRoomHotel();
         int paymentAmount = bill.getPaymentAmount();
