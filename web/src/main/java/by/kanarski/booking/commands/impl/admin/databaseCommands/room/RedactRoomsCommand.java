@@ -5,7 +5,7 @@ import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.entities.*;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
@@ -24,6 +24,7 @@ public class RedactRoomsCommand implements ICommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
@@ -45,13 +46,15 @@ public class RedactRoomsCommand implements ICommand {
                 session.setAttribute(Parameter.ROOM_TYPE_SET, roomTypeSet);
                 session.setAttribute(Parameter.STATUS_LIST, FieldValue.STATUS_LIST);
             } else {
-                request.setAttribute(Parameter.OPERATION_MESSAGE, "иди в жопу хакер сраный");
+                String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
+                request.setAttribute(Parameter.OPERATION_MESSAGE, opertaionMessage);
                 servletAction = ServletAction.NO_ACTION;
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            servletAction = ServletAction.REDIRECT_PAGE;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE));
+            servletAction = ServletAction.FORWARD_PAGE;
+            String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
+            request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
