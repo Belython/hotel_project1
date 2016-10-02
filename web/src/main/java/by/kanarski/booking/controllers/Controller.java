@@ -31,9 +31,4 @@ public class Controller extends HttpServlet {
         RequestHandler.processRequest(request, response);
     }
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-//        ServletContext context = config.getServletContext();
-//        context.setAttribute(Parameter.LOCALE_LIST, Value.LOCALE_LIST);
-    }
 }

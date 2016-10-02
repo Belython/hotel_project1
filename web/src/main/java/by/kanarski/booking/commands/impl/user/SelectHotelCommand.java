@@ -9,21 +9,17 @@ import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
-import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SelectHotelCommand extends AbstractCommand {
 
@@ -46,7 +42,7 @@ public class SelectHotelCommand extends AbstractCommand {
                 List<Room> availableRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
                 List<HotelDto> hotelDtoList = getHotelDtoList(availableRooms);
                 session.setAttribute(Parameter.HOTEL_DTO_LIST, hotelDtoList);
-                page = PagePath.CLIENT_SELECT_HOTEL_PATH;
+                page = PagePath.SELECT_HOTEL_PATH;
                 servletAction = ServletAction.FORWARD_PAGE;
             }
             session.setAttribute(Parameter.ORDER_DTO, order);

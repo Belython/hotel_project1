@@ -1,6 +1,6 @@
 package by.kanarski.booking.filters;
 
-import by.kanarski.booking.constants.MessageConstants;
+import by.kanarski.booking.constants.MessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.Hotel;
@@ -13,7 +13,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -59,7 +58,7 @@ public class InitializationFilter implements Filter {
                 supportedCities.add(city);
             }
         } catch (ServiceException e) {
-            String errorMessage = MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE);
+            String errorMessage = MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE);
             request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
             BookingSystemLogger.getInstance().logError(getClass(), errorMessage, e);
         }

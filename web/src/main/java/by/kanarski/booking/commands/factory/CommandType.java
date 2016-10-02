@@ -8,12 +8,13 @@ import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.SortHotels
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.AlterRoomsCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.RedactRoomsCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.SortRoomsCommand;
+import by.kanarski.booking.commands.impl.client.*;
 import by.kanarski.booking.commands.impl.user.*;
 
 public enum CommandType {
     //user commands
     LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, GOTOMAIN, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
-    SETLOCALE, CANCELACTION, REFUSEBILL,
+    SETLOCALE, CANCELACTION, REFUSEBILL, GOTOREMINDPASSWORD, REMINDPASSWORD,
 
     //admin commands
     GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE,
@@ -80,6 +81,12 @@ public enum CommandType {
 
             case REFUSEBILL:
                 return new RefuseBillCommand();
+
+            case GOTOREMINDPASSWORD:
+                return new GoToRemindPasswordCommand();
+
+            case REMINDPASSWORD:
+                return new RemindPasswordCommand();
 
             default:
                 throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

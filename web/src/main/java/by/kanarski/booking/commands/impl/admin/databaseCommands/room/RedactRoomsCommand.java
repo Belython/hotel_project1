@@ -51,7 +51,7 @@ public class RedactRoomsCommand implements ICommand {
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             servletAction = ServletAction.REDIRECT_PAGE;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageConstants.ERROR_DATABASE));
+            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE));
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

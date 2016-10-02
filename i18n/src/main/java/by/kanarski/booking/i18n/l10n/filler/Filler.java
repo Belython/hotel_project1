@@ -28,29 +28,37 @@ public class Filler {
                 List<String> keyList = contentMap.get(contentName);
                 String contentType = ContentType.getContentType(contentName);
                 switch (contentType) {
-                    case ContentType.TEXT: {
-                        for (String key : keyList) {
-                            String attributeName = key.replace(".", "_");
-                            String text = bundle.getString(key);
-                            request.setAttribute(attributeName, text);
-                        }
+                    case ContentType.STRING: {
+                        fillString(keyList, bundle, request);
                         break;
                     }
                     case ContentType.MAP: {
-                        Map<String, String> localeMap = new LinkedHashMap<>();
-                        for (String key : keyList) {
-                            String reg = "\\w+\\.";
-                            Pattern pattern = Pattern.compile(reg);
-                            Matcher matcher = pattern.matcher(key);
-                            matcher.find();
-                            String attributeName = matcher.replaceFirst("");
-                            String text = bundle.getString(key);
-                            localeMap.put(attributeName, text);
-                        }
-                        request.setAttribute(contentName, localeMap);
+                        fillMap(contentName, keyList, bundle, request);
                     }
                 }
             }
         }
+    }
+
+    private void fillString(List<String> keyList, ResourceBundle bundle, HttpServletRequest request) {
+        for (String key : keyList) {
+            String attributeName = key.replace(".", "_");
+            String text = bundle.getString(key);
+            request.setAttribute(attributeName, text);
+        }
+    }
+
+    private void fillMap(String contentName, List<String> keyList, ResourceBundle bundle, HttpServletRequest request) {
+        Map<String, String> map = new LinkedHashMap<>();
+        for (String key : keyList) {
+            String reg = "\\w+\\.";
+            Pattern pattern = Pattern.compile(reg);
+            Matcher matcher = pattern.matcher(key);
+            matcher.find();
+            String attributeName = matcher.replaceFirst("");
+            String text = bundle.getString(key);
+            map.put(attributeName, text);
+        }
+        request.setAttribute(contentName, map);
     }
 }

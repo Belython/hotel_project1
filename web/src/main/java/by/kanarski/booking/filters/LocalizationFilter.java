@@ -25,7 +25,7 @@ public class LocalizationFilter implements Filter {
             locale = request.getLocale();
             session.setAttribute(Parameter.LOCALE, locale);
         }
-        String currentPagePath = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
+        String currentPagePath = (String) request.getAttribute(Parameter.CURRENT_PAGE_PATH);
         if (currentPagePath == null) {
             currentPagePath = PagePath.INDEX_PAGE_PATH;
             session.setAttribute(Parameter.CURRENT_PAGE_PATH, currentPagePath);

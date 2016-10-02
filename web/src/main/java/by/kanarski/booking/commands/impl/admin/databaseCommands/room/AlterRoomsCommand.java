@@ -1,17 +1,17 @@
 package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.MessageConstants;
+import by.kanarski.booking.constants.MessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
-import by.kanarski.booking.utils.Message;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class AlterRoomsCommand extends AbstractCommand {
 
@@ -48,7 +49,8 @@ public class AlterRoomsCommand extends AbstractCommand {
             List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale);
             session.setAttribute(Parameter.ROOM_LIST, newRoomList);
             session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
-            String responseText = Message.getProperty(MessageConstants.DATABASE_CHANGE_SUCCES, locale);
+            ResourceBundle bundle = ResourceBuilder.MESSAGES.setLocale(locale).create();
+            String responseText = bundle.getString(MessageKeys.DATABASE_CHANGE_SUCCES);
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;
                 writeResponse(response, responseText);

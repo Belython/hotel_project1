@@ -18,8 +18,8 @@
                             </fieldset>
                             <fieldset id="actions">
                                 <input type="submit" id="submit" value="${header_signIn}">
-                                <a href="">${header_forgotPassword}</a>
-                                <a href="controller?command=gotoregistration">${header_register}</a>
+                                <a href="controller?command=goToRemindPassword">${header_forgotPassword}</a>
+                                <a href="controller?command=goToRegistration">${header_register}</a>
                             </fieldset>
                             ${errorLoginOrPassword}<br/>
                         </form>

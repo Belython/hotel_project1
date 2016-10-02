@@ -69,6 +69,13 @@
                 <version>2.7</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -78,6 +85,7 @@
         <module>services</module>
         <module>web</module>
         <module>i18n</module>
+        <module>mail</module>
     </modules>
 
     <properties>
@@ -85,6 +93,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
 
     <name>booking</name>
     <url>http://maven.apache.org</url>

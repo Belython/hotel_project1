@@ -93,7 +93,7 @@ public class RoomServiceImpl implements IRoomService {
             List<Room> roomsForAllDates = RoomDao.getInstance().getAvailableRooms(orderDto);
             for (Room room : roomsForAllDates) {
                 TreeMap<Long, Long> bookedDates = room.getBookedDates();
-                if (bookedDates == null) {
+                if ((bookedDates == null) || (bookedDates.size() == 0)) {
                     rooms.add(room);
                 } else {
                     NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();

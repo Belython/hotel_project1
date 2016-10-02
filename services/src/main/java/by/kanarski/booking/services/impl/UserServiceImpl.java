@@ -83,7 +83,7 @@ public class UserServiceImpl implements IUserService {
 
     }
 
-    public boolean checkUserAuthorization(String login, String password) throws ServiceException {
+    public boolean checkAuthorization(String login, String password) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         boolean isAuthorized = false;
         try {
@@ -97,12 +97,26 @@ public class UserServiceImpl implements IUserService {
         return isAuthorized;
     }
 
-    public User getUserByLogin(String login) throws ServiceException {
+    public User getByLogin(String login) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         User user = null;
         try {
             connection.setAutoCommit(false);
             user = UserDao.getInstance().getByLogin(login);
+            connection.commit();
+            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return user;
+    }
+
+    public User getByEmail(String email) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        User user = null;
+        try {
+            connection.setAutoCommit(false);
+            user = UserDao.getInstance().getByEmail(email);
             connection.commit();
             BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {

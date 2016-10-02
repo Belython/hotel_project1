@@ -1,7 +1,7 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.MessageConstants;
+import by.kanarski.booking.constants.MessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.User;
@@ -25,26 +25,24 @@ public class RegistrationCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         try {
             user = RequestParser.parseUser(request);
-//            accountIdString = request.getParameter(Parameter.ACCOUNT_ID);
             if (areFieldsFullStocked()) {
-//                account = RequestParser.getAccount(request);
                 if (UserServiceImpl.getInstance().checkIsNewUser(user)) {
                     UserServiceImpl.getInstance().registrateUser(user);
                     page = PagePath.REGISTRATION_PAGE_PATH;
-                    request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.SUCCESS_OPERATION));
+                    request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.SUCCESS_OPERATION));
                 } else {
                     page = PagePath.REGISTRATION_PAGE_PATH;
-                    request.setAttribute(Parameter.ERROR_USER_EXISTS, MessageManager.getInstance().getProperty(MessageConstants.USER_EXISTS));
+                    request.setAttribute(Parameter.ERROR_USER_EXISTS, MessageManager.getInstance().getProperty(MessageKeys.USER_EXISTS));
                 }
             } else {
-                request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageConstants.EMPTY_FIELDS));
+                request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.EMPTY_FIELDS));
                 page = PagePath.REGISTRATION_PAGE_PATH;
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             handleServiceException(request, e);
         } catch (NumberFormatException e) {
-            String exceptionMessage = MessageManager.getInstance().getProperty(MessageConstants.INVALID_NUMBER_FORMAT);
+            String exceptionMessage = MessageManager.getInstance().getProperty(MessageKeys.INVALID_NUMBER_FORMAT);
             request.setAttribute(Parameter.OPERATION_MESSAGE, exceptionMessage);
             page = PagePath.REGISTRATION_PAGE_PATH;
         }

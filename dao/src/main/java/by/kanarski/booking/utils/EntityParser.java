@@ -1,6 +1,5 @@
 package by.kanarski.booking.utils;
 
-
 import by.kanarski.booking.constants.ColumnName;
 import by.kanarski.booking.entities.*;
 
@@ -8,13 +7,26 @@ import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+
+/**
+ * Represents static methods for parsing entities
+ * based on <code>ResultSet</code>
+ * @author Dzmitry Kanarski
+ * @version 1.0
+ */
 
 public class EntityParser {
     private EntityParser() {
     }
+
+    /**
+     * Recives User
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
 
     public static User parseUser(ResultSet rs) throws SQLException {
         long userId = rs.getLong(ColumnName.USER_ID);
@@ -32,8 +44,6 @@ public class EntityParser {
 
     public static Hotel parseHotel(ResultSet rs) throws SQLException {
         long hotelId = rs.getLong(ColumnName.HOTEL_ID);
-//        String hotelCountry = rs.getString(ColumnName.LOCATION_COUNTRY);
-//        String hotelCity = rs.getString(ColumnName.LOCATION_CITY);
         Location hotelLocation = parseLocation(rs);
         String hotelName = rs.getString(ColumnName.HOTEL_NAME);
         String hotelStatus = rs.getString(ColumnName.HOTEL_STATUS);

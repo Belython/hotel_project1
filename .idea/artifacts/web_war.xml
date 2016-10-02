@@ -1,8 +1,18 @@
 <component name="ArtifactManager">
   <artifact type="war" name="web:war">
     <output-path>$PROJECT_DIR$/web/target</output-path>
-    <root id="archive" name="web-1.0.war">
+    <root id="archive" name="booking.war">
       <element id="artifact" artifact-name="web:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="booking" />
+          <element id="module-output" name="mail" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ContentType {
 
-    public static final String TEXT = "text";
+    public static final String STRING = "string";
     public static final String MAP = "map";
     public static final String LIST = "list";
 
@@ -25,8 +25,8 @@ public class ContentType {
     }
 
     public static String getContentType(String contentName) {
-        if (contentName.equals(TEXT)) {
-            return TEXT;
+        if (contentName.equals(STRING)) {
+            return STRING;
         }
         ;
         if (MAP_CONTENT.contains(contentName)) {
@@ -36,7 +36,7 @@ public class ContentType {
         if (LIST_CONTENT.contains(contentName)) {
             return LIST;
         };
-        return TEXT;
+        return STRING;
     }
 
 }

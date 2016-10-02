@@ -32,6 +32,7 @@ public class UserDao implements IUserDao {
             " VALUES(?, ?, ?, ?, ?, ?, ?)";
     private final String GET_BY_ID_QUERY = "SELECT * FROM USERS WHERE USER_ID = ?";
     private final String GET_BY_LOGIN_QUERY = "SELECT * FROM USERS WHERE LOGIN = ?";
+    private final String GET_BY_EMAIL_QUERY = "SELECT * FROM USERS WHERE EMAIL = ?";
     private final String GET_ALL_QUERY = "SELECT * FROM USERS WHERE USER_STATUS = 'active'";
     private final String UPDATE_QUERY = "UPDATE USERS SET FIRST_NAME = ?, LAST_NAME = ?, " +
             "EMAIL = ?, LOGIN = ?, PASSWORD = ?, USER_STATUS = ? WHERE USER_ID = ?";
@@ -159,6 +160,24 @@ public class UserDao implements IUserDao {
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_LOGIN_QUERY)) {
             stm.setString(1, login);
+            resultSet = stm.executeQuery();
+            resultSet.next();
+            user = EntityParser.parseUser(resultSet);
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_USER_EXCEPTION);
+            throw new DaoException(DaoMessages.GET_USER_EXCEPTION, e);
+        } finally {
+            ClosingUtil.close(resultSet);
+        }
+        return user;
+    }
+
+    public User getByEmail(String email) throws DaoException {
+        User user = null;
+        Connection connection = ConnectionUtil.getConnection();
+        ResultSet resultSet = null;
+        try (PreparedStatement stm = connection.prepareStatement(GET_BY_EMAIL_QUERY)) {
+            stm.setString(1, email);
             resultSet = stm.executeQuery();
             resultSet.next();
             user = EntityParser.parseUser(resultSet);

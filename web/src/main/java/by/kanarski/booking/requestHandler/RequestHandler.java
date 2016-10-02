@@ -20,7 +20,6 @@ public class RequestHandler {
         ICommand сommand = commandFactory.defineCommand(request);
         ServletAction servletAction = сommand.execute(request, response);
         String page = servletAction.getPage();
-        Map<String, String[]> parameterMap = request.getParameterMap();
         try {
             switch (servletAction) {
                 case FORWARD_PAGE: {
@@ -48,8 +47,4 @@ public class RequestHandler {
         }
 
     }
-
-
-    // TODO: 03.08.2016 времено
-
 }

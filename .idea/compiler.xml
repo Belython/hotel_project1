@@ -26,6 +26,7 @@
         <module name="dao" />
         <module name="entities" />
         <module name="i18n" />
+        <module name="mail" />
         <module name="services" />
         <module name="web" />
       </profile>
@@ -35,6 +36,8 @@
       <module name="dao" target="1.8" />
       <module name="entities" target="1.8" />
       <module name="i18n" target="1.8" />
+      <module name="mail" target="1.8" />
+      <module name="parser" target="1.8" />
       <module name="services" target="1.8" />
       <module name="web" target="1.8" />
     </bytecodeTargetLevel>
