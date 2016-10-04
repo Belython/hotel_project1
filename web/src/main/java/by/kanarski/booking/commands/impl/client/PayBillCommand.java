@@ -6,7 +6,7 @@ import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class PayBillCommand extends AbstractCommand {
 
@@ -34,11 +35,13 @@ public class PayBillCommand extends AbstractCommand {
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
             List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale);
             session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
-            request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.SUCCESS_OPERATION));
+            ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
+            String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
+            request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

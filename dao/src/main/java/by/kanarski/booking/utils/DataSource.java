@@ -1,6 +1,8 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.DaoMessages;
+import by.kanarski.booking.constants.DatabaseKeys;
+import by.kanarski.booking.managers.ResourceBuilder;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
@@ -27,16 +29,11 @@ public class DataSource {
     private DataSource() {
         cpds = new ComboPooledDataSource();
         try {
-            String parametersPath = "database";
-            String dataBasePath = "dataBasePath";
-            String userName = "userName";
-            String password = "password";
-            String jdbcDriverPath = "jdbcDriverPath";
-            ResourceBundle resourceBundle = ResourceBundle.getBundle(parametersPath);
-            cpds.setDriverClass(resourceBundle.getString(jdbcDriverPath));
-            cpds.setJdbcUrl(resourceBundle.getString(dataBasePath));
-            cpds.setUser(resourceBundle.getString(userName));
-            cpds.setPassword(resourceBundle.getString(password));
+            ResourceBundle bundle = ResourceBuilder.DATABASE.create();
+            cpds.setDriverClass(bundle.getString(DatabaseKeys.JDBC_DRIVER_PATH));
+            cpds.setJdbcUrl(bundle.getString(DatabaseKeys.DATABASE_PATH));
+            cpds.setUser(bundle.getString(DatabaseKeys.USER_NAME));
+            cpds.setPassword(bundle.getString(DatabaseKeys.PASSWORD));
             cpds.setMinPoolSize(5);
             cpds.setAcquireIncrement(5);
             cpds.setMaxPoolSize(20);

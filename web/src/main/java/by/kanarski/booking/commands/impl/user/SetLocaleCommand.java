@@ -18,17 +18,17 @@ public class SetLocaleCommand implements ICommand {
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
-        String pagePath;
+        String page;
         HttpSession session = request.getSession();
         Locale locale = RequestParser.parseLocale(request);
         session.setAttribute(Parameter.LOCALE, locale);
-        pagePath = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
-        Filler filler = FillerFactory.getInstance().defineFiller(pagePath);
+        page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
+        Filler filler = FillerFactory.getInstance().defineFiller(page);
         filler.fill(request);
-        servletAction.setPage(pagePath);
-        if (pagePath == null) {
-            pagePath = PagePath.INDEX_PAGE_PATH;
-            servletAction.setPage(pagePath);
+        servletAction.setPage(page);
+        if (page == null) {
+            page = PagePath.INDEX_PAGE_PATH;
+            servletAction.setPage(page);
         }
         return servletAction;
     }

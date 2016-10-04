@@ -1,21 +1,18 @@
 package by.kanarski.booking.filters;
 
-import by.kanarski.booking.constants.MessageKeys;
+import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
-import by.kanarski.booking.utils.BookingSystemLogger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class InitializationFilter implements Filter {
 
@@ -32,7 +29,7 @@ public class InitializationFilter implements Filter {
         if (currentPagePath.equals(PagePath.INDEX_PAGE_PATH)) {
             Object supportedHotels = session.getAttribute(Parameter.SUPPORTED_HOTELS);
             if (supportedHotels == null)  {
-                initialize(httpServletRequest, session);
+                initialize(httpServletRequest);
             }
         }
         filterChain.doFilter(request, response);
@@ -43,7 +40,8 @@ public class InitializationFilter implements Filter {
 
     }
 
-    private void initialize(HttpServletRequest request, HttpSession session) {
+    private void initialize(HttpServletRequest request) {
+        HttpSession session = request.getSession();
         Set<String> supportedHotels = new HashSet<>();
         Set<String> supportedCountries = new HashSet<>();
         Set<String> supportedCities = new HashSet<>();
@@ -58,9 +56,10 @@ public class InitializationFilter implements Filter {
                 supportedCities.add(city);
             }
         } catch (ServiceException e) {
-            String errorMessage = MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE);
+            Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+            ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
+            String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
             request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
-            BookingSystemLogger.getInstance().logError(getClass(), errorMessage, e);
         }
         session.setAttribute(Parameter.SUPPORTED_HOTELS, supportedHotels);
         session.setAttribute(Parameter.SUPPORTED_COUNTRIES, supportedCountries);

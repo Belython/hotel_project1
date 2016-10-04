@@ -30,8 +30,6 @@ public class SelectHotelCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         try {
             OrderDto order = RequestParser.parseOrder(request);
-            // TODO: 26.06.2016 ЭТО ВСЕ ВРЕМЕННО
-//            roomTypeFill();
             String hotelName = order.getHotel().getHotelName();
             if (!hotelName.equals(Value.HOTEL_ALL_HOTELS)) {
                 Hotel hotel = HotelServiceImpl.getInstance().getByHotelName(hotelName);
@@ -49,25 +47,13 @@ public class SelectHotelCommand extends AbstractCommand {
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             servletAction = ServletAction.REDIRECT_PAGE;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
-
         return servletAction;
     }
-
-//    private void roomTypeFill() throws ServiceException {
-//        List<RoomType> roomTypes = RoomTypeServiceImpl.getInstance().getAll();
-//        Set<String> facilities = new HashSet<>();
-//        facilities.add("wi-fi");
-//        facilities.add("safe");
-//        for (RoomType roomType : roomTypes) {
-//            roomType.setFacilities(facilities);
-//            RoomTypeServiceImpl.getInstance().update(roomType);
-//        }
-//    }
 
     private List<HotelDto> getHotelDtoList(List<Room> roomList) {
         List<HotelDto> hotelList = new ArrayList<>();

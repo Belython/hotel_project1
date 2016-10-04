@@ -164,7 +164,7 @@ public class RequestParser {
             }
         }
         List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, hotelDto.getRoomList());
-        int paymentAmount = calc(DateUtil.getDays(checkInDate, checkOutDate), selectedRooms);
+        int paymentAmount = calc(DateUtil.getBookedDays(checkInDate, checkOutDate), selectedRooms);
         Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
                 paymentAmount);
         return bill;
@@ -251,5 +251,4 @@ public class RequestParser {
         }
         return payment;
     }
-
 }

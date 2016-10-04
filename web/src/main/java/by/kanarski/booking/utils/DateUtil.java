@@ -31,10 +31,9 @@ public class DateUtil {
         return date;
     }
 
-    public static int getDays(long date1, long date2) {
+    public static int getBookedDays(long date1, long date2) {
         int days = Math.round((date2 - date1) / MILLISECONDS_IN_DAY);
         return days;
     }
-
 
 }

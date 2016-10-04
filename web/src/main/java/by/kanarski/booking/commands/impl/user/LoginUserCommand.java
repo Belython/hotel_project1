@@ -2,11 +2,11 @@ package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.constants.MessageKeys;
+import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.UserServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
@@ -23,6 +23,7 @@ public class LoginUserCommand extends AbstractCommand {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         String page = null;
         HttpSession session = request.getSession();
+        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         try {
             User user = RequestParser.parseUser(request);
             if (UserServiceImpl.getInstance().checkAuthorization(user.getLogin(), user.getPassword())) {
@@ -34,11 +35,13 @@ public class LoginUserCommand extends AbstractCommand {
                 }
             } else {
                 page = PagePath.INDEX_PAGE_PATH;
-                request.setAttribute(Parameter.ERROR_LOGIN_OR_PASSWORD, MessageManager.getInstance().getProperty(MessageKeys.WRONG_LOGIN_OR_PASSWORD));
+                ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
+                String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
+                request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

@@ -19,8 +19,8 @@
     <table class="hotelList" border="2px">
         <thead>
             <tr>
-                <th>${selectHotel_country}</th>
-                <th>${selectHotel_city}</th>
+                <th>${selectHotel_сountry}</th>
+                <th>${selectHotel_сity}</th>
                 <th>${selectHotel_hotelName}</th>
                 <th>${selectHotel_roomsAvailable}</th>
             </tr>

@@ -11,6 +11,7 @@
     <title>${roomsRedactor_roomsRedactor}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/admin.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/tablesorter/tablesorter/jquery.tablesorter.js"></script>
 </head>
 <body>
 <%@include file="../user/header/header.jsp"%>
@@ -119,7 +120,7 @@
     <input type="hidden" name="command" value="alterRooms"/>
     <input type="hidden" name="subCommand" value="changeExisting"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
-    <table class="existingEntities" border="2px">
+    <table id="mt" class="existingEntities  tablesorter" border="2px">
         <thead>
         <tr>
             <th>${roomsRedactor_roomHotel}</th>
@@ -142,14 +143,14 @@
                                     <option value="${hotel.hotelId}" selected="selected">
                                         ${roomsRedactor_country}: ${hotel.hotelLocation.country},
                                         ${roomsRedactor_city}: ${hotel.hotelLocation.city},
-                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}"
+                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}
                                     </option>
                                 </c:when>
                                 <c:otherwise>
                                     <option value="${hotel.hotelId}">
                                         ${roomsRedactor_country}: ${hotel.hotelLocation.country},
                                         ${roomsRedactor_city}: ${hotel.hotelLocation.city},
-                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}"
+                                        ${roomsRedactor_hotelName}: ${hotel.hotelName}
                                     </option>
                                 </c:otherwise>
                             </c:choose>

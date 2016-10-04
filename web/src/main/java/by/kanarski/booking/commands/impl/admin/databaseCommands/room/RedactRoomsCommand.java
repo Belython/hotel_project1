@@ -62,4 +62,9 @@ public class RedactRoomsCommand implements ICommand {
         return servletAction;
     }
 
+    private Map<String, Object> getColumnMap() {
+        Map<String, Object> columnMap = new LinkedHashMap<>();
+        columnMap.put()
+    }
+
 }

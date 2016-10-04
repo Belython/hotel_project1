@@ -6,14 +6,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/tcal/tcal.css"/>
 
 <html>
 <head>
     <title>${index_booking}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/script.js"></script>
+
+    <c:choose>
+        <c:when test="${locale eq 'ru_RU'}">
+            <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/tcal/tcal_ru.js"></script>
+        </c:when>
+         <c:when test="${locale eq 'en_US'}">
+            <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/tcal/tcal_en.js"></script>
+        </c:when>
+    </c:choose>
+
 </head>
 <body>
+
 <%@include file="header/header.jsp" %>
 ${index_searchParameters}
 <form name="findForm" method="POST" action="controller">
@@ -86,9 +98,9 @@ ${index_searchParameters}
     </select>
     <br/>
     <label for="checkInDate">${index_checkInDate}</label>
-    <input id="checkInDate" type="text" name="checkInDate" value=""/>
+    <input id="checkInDate" class="tcal" type="text" name="checkInDate" value=""/>
     <label for="checkOutDate">${index_checkOutDate}</label>
-    <input id="checkOutDate" type="text" name="checkOutDate" value=""/>
+    <input id="checkOutDate" class="tcal" type="text" name="checkOutDate" value=""/>
     <input type="submit" value="${index_searchRooms}">
 </form>
 

@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.ServiceMessages;
+import by.kanarski.booking.constants.ServiceMessageKeys;
 import by.kanarski.booking.dao.impl.UserDao;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.DaoException;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
             connection.setAutoCommit(false);
             UserDao.getInstance().add(user);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -51,7 +51,7 @@ public class UserServiceImpl implements IUserService {
                 users.add(user);
             }
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -66,7 +66,7 @@ public class UserServiceImpl implements IUserService {
             connection.setAutoCommit(false);
             user = UserDao.getInstance().getById(id);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -90,7 +90,7 @@ public class UserServiceImpl implements IUserService {
             connection.setAutoCommit(false);
             isAuthorized = UserDao.getInstance().isAuthorized(login, password);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -104,7 +104,7 @@ public class UserServiceImpl implements IUserService {
             connection.setAutoCommit(false);
             user = UserDao.getInstance().getByLogin(login);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -118,7 +118,7 @@ public class UserServiceImpl implements IUserService {
             connection.setAutoCommit(false);
             user = UserDao.getInstance().getByEmail(email);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -134,7 +134,7 @@ public class UserServiceImpl implements IUserService {
                 isNew = true;
             }
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -149,7 +149,7 @@ public class UserServiceImpl implements IUserService {
             user.setUserStatus("active");
             UserDao.getInstance().add(user);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }

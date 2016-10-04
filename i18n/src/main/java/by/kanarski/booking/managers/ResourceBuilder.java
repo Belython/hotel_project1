@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 public enum ResourceBuilder {
 
-    MESSAGES(ResourcePath.MESSAGES_SOURCE),
+    OPERATION_MESSAGES(ResourcePath.OPERATION_MESSAGES_SOURCE),
     JSP_TEXT(ResourcePath.TEXT_SOURCE),
     EXCEPTION(ResourcePath.EXCEPTION_MESSAGES_SOURCE),
     DATABASE(ResourcePath.DATABASE_SOURCE),

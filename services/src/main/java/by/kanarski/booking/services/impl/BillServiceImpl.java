@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.ServiceMessages;
+import by.kanarski.booking.constants.ServiceMessageKeys;
 import by.kanarski.booking.dao.impl.BillDao;
 import by.kanarski.booking.dao.impl.RoomDao;
 import by.kanarski.booking.entities.Bill;
@@ -40,7 +40,7 @@ public class BillServiceImpl implements IBillService {
             connection.setAutoCommit(false);
             BillDao.getInstance().add(bill);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -61,7 +61,7 @@ public class BillServiceImpl implements IBillService {
             List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
             bill = EntityBuilder.buildBill(bill, roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -75,7 +75,7 @@ public class BillServiceImpl implements IBillService {
             connection.setAutoCommit(false);
             BillDao.getInstance().update(bill);
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
@@ -99,7 +99,7 @@ public class BillServiceImpl implements IBillService {
                 newBills.add(bill);
             }
             connection.commit();
-            BookingSystemLogger.getInstance().logError(getClass(), ServiceMessages.TRANSACTION_SUCCEEDED);
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
         } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
