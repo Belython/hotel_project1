@@ -6,7 +6,7 @@ import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
@@ -24,15 +24,17 @@ public class RefuseBillCommand extends AbstractCommand{
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         String page = null;
         HttpSession session = request.getSession();
+        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
             Bill refusedBill = refuseBill(request);
             List<BillDto> newBillDtoList = getNewBillDtoList(session, refusedBill);
             session.setAttribute(Parameter.BILL_DTO_LIST, newBillDtoList);
-            request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.SUCCESS_OPERATION));
+            request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.SUCCESS_OPERATION));
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

@@ -5,7 +5,6 @@ import by.kanarski.booking.constants.*;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 
@@ -16,9 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Дмитрий on 01.09.2016.
- */
 public class GetHotelsCommand implements ICommand {
 
     @Override
@@ -58,7 +54,7 @@ public class GetHotelsCommand implements ICommand {
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
             servletAction = ServletAction.REDIRECT_PAGE;
-            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE));
+//            request.setAttribute(Parameter.ERROR_DATABASE, MessageManager.getInstance().getProperty(MessageKeys.ERROR_DATABASE));
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);

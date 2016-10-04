@@ -1,6 +1,6 @@
 package by.kanarski.booking.constants;
 
-public class MessageKeys {
+public class OperationMessageKeys {
     public static final String WRONG_LOGIN_OR_PASSWORD = "message.loginerror";
     public static final String USER_EXISTS = "message.userexsistserror";
     public static final String EMPTY_LIST = "message.emptylist";
@@ -14,7 +14,8 @@ public class MessageKeys {
     public static final String AUTHORIZATION_ERRON = "message.authorizationerror";
     public static final String DATABASE_CHANGE_SUCCES = "message.databaseChangeSucces";
     public static final String PASSWORD_SENT = "message.passwordSent";
+    public static final String LOW_ACCESS_LEVEL = "message.lowAccessLevel";
 
-    private MessageKeys() {
+    private OperationMessageKeys() {
     }
 }

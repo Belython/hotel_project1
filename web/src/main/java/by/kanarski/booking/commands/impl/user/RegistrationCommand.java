@@ -1,12 +1,12 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.MessageKeys;
+import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
-import by.kanarski.booking.managers.MessageManager;
+import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.UserServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
@@ -14,6 +14,8 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RegistrationCommand extends AbstractCommand {
     private User user;
@@ -23,33 +25,30 @@ public class RegistrationCommand extends AbstractCommand {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         String page = null;
         HttpSession session = request.getSession();
+        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
             user = RequestParser.parseUser(request);
             if (areFieldsFullStocked()) {
                 if (UserServiceImpl.getInstance().checkIsNewUser(user)) {
                     UserServiceImpl.getInstance().registrateUser(user);
                     page = PagePath.REGISTRATION_PAGE_PATH;
-                    request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.SUCCESS_OPERATION));
+                    request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.SUCCESS_OPERATION));
                 } else {
                     page = PagePath.REGISTRATION_PAGE_PATH;
-                    request.setAttribute(Parameter.ERROR_USER_EXISTS, MessageManager.getInstance().getProperty(MessageKeys.USER_EXISTS));
+                    request.setAttribute(Parameter.ERROR_USER_EXISTS, bundle.getString(OperationMessageKeys.USER_EXISTS));
                 }
             } else {
-                request.setAttribute(Parameter.OPERATION_MESSAGE, MessageManager.getInstance().getProperty(MessageKeys.EMPTY_FIELDS));
+                request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.EMPTY_FIELDS));
                 page = PagePath.REGISTRATION_PAGE_PATH;
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         } catch (NumberFormatException e) {
-            String exceptionMessage = MessageManager.getInstance().getProperty(MessageKeys.INVALID_NUMBER_FORMAT);
+            String exceptionMessage = bundle.getString(OperationMessageKeys.INVALID_NUMBER_FORMAT);
             request.setAttribute(Parameter.OPERATION_MESSAGE, exceptionMessage);
             page = PagePath.REGISTRATION_PAGE_PATH;
-        }
-        // TODO исправить
-        catch (NullPointerException e) {
-            page = PagePath.INDEX_PAGE_PATH;
-            e.printStackTrace();
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

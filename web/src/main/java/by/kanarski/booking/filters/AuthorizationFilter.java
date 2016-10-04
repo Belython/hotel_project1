@@ -1,7 +1,7 @@
 package by.kanarski.booking.filters;
 
 import by.kanarski.booking.commands.factory.CommandType;
-import by.kanarski.booking.constants.MessageKeys;
+import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.managers.ResourceBuilder;
@@ -36,8 +36,8 @@ public class AuthorizationFilter implements Filter {
 //        if ((page != null) && (page.equals(PagePath.SELECT_ROOM_PATH))) {
             user = (User) session.getAttribute(Parameter.USER);
             if (user == null) {
-                ResourceBundle bundle = ResourceBuilder.MESSAGES.setLocale(locale).create();
-                request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(MessageKeys.AUTHORIZATION_ERRON));
+                ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
+                request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.AUTHORIZATION_ERRON));
 //                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(PagePath.INDEX_PAGE_PATH);
 //                dispatcher.forward(request, response);
                 request.setAttribute(Parameter.COMMAND, "cancelAction");

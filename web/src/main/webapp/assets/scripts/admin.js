@@ -1,6 +1,23 @@
 function main() {
+
     $(".submitBtn").click(function (event) {
         alterEntity(event)
+    });
+
+    $(".addRowBtn").click(function () {
+        addRow()
+    });
+
+    $(".alterEntityBtn").click(function (event) {
+        alterEntity(event)
+    });
+
+    $(".addEntityBtn").click(function (event) {
+        alterEntity(event)
+    });
+
+    $(".removeRowBtn").click(function (event) {
+        removeRow(event)
     });
 
     function alterEntity(event) {
@@ -18,10 +35,6 @@ function main() {
         });
     }
 
-    $(".addRowBtn").click(function () {
-        addRow()
-    });
-
     function addRow() {
         var tableRow = $(".newEntity tr").last().clone();
         $(".newEntity tbody").append(tableRow);
@@ -33,22 +46,31 @@ function main() {
         });
     }
 
-    $(".alterEntityBtn").click(function (event) {
-        alterEntity(event)
-    });
-
-    $(".addEntityBtn").click(function (event) {
-        alterEntity(event)
-    });
-
-    $(".removeRowBtn").click(function (event) {
-        removeRow(event)
-    });
-
     function removeRow(event) {
         var button = event.target;
         var tableRow = $(button).parents().eq(1);
         tableRow.remove();
     }
+
+    var extractor = function (node) {
+        var child = $(node).children().first();
+        var childName = child.prop("tagName");
+        switch (childName) {
+            case "INPUT": 
+                // alert( child.attr("value") + " input");
+                return child.attr("value");
+            case "SELECT": 
+                // alert(child.children().filter("[selected]").eq(0).attr("value")+ " select");
+                return child.children().filter("[selected]").eq(0).attr("value");
+        }
+    };
+
+    // $("document").ready(function test() {
+    //     var node = $("[name='roomNumber']").eq(1);
+    //     var val = node.prop('tagName');
+    //     alert(val);
+    // });
+    
+    $("#mt").tablesorter({textExtraction: extractor});
 }
 $("document").ready(main);

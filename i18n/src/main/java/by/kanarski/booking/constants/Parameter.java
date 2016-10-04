@@ -32,6 +32,8 @@ public class Parameter {
 
     public static final String LOCATION_COUNTRY = "country";
     public static final String LOCATION_CITY = "city";
+    public static final String LOCATION_COUNTRY_SET = "countrySet";
+    public static final String LOCATION_CITY_SET = "citySet";
     public static final String SUPPORTED_COUNTRIES = "supportedCountries";
     public static final String SUPPORTED_CITIES = "supportedCities";
 
@@ -45,6 +47,7 @@ public class Parameter {
     public static final String HOTEL_STATUS = "hotelStatus";
     public static final String HOTEL_LIST = "hotelList";
     public static final String HOTEL_SET = "hotelSet";
+    public static final String HOTEL_NAME_SET = "hotelNameSet";
     public static final String HOTEL_SELECTED_HOTEL_DTO = "selectedHotelDto";
     public static final String SUPPORTED_HOTELS = "supportedHotels";
     public static final String HOTEL_DTO_LIST = "hotelDtoList";
@@ -64,6 +67,10 @@ public class Parameter {
     public static final String ROOM_TYPE_STATUS = "roomTypeStatus";
     public static final String ROOM_TYPE_LIST = "roomTypeList";
     public static final String ROOM_TYPE_SET = "roomTypeSet";
+    public static final String ROOM_TYPE_NAME_SET = "roomTypeNameSet";
+    public static final String ROOM_TYPE_MAX_PERSONS_SET = "maxPersonsSet";
+    public static final String ROOM_TYPE_PRICE_PER_NIGHT_SET = "pricePerNightSet";
+    public static final String ROOM_TYPE_FACILITIES_SET = "facilitiesSet";
 
     //Room parameters
 
@@ -94,6 +101,7 @@ public class Parameter {
     public static final String FILTER_PARAMETER_VALUE = "filterParameterValue";
     public static final String FIELD_VALUES_MAP = "fieldValuesMap";
     public static final String STATUS_LIST = "statusList";
+    public static final String DATA_MAP = "dataMap";
 
     //Sort parameters
 

@@ -42,7 +42,7 @@ public class AlterHotelsCommand extends AbstractCommand {
         } catch (ServiceException e) {
             servletAction = ServletAction.FORWARD_PAGE;
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         servletAction.setPage(page);
         return servletAction;

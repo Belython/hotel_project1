@@ -1,7 +1,7 @@
 package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.MessageKeys;
+import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
@@ -49,8 +49,8 @@ public class AlterRoomsCommand extends AbstractCommand {
             List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale);
             session.setAttribute(Parameter.ROOM_LIST, newRoomList);
             session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
-            ResourceBundle bundle = ResourceBuilder.MESSAGES.setLocale(locale).create();
-            String responseText = bundle.getString(MessageKeys.DATABASE_CHANGE_SUCCES);
+            ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
+            String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;
                 writeResponse(response, responseText);
@@ -63,7 +63,7 @@ public class AlterRoomsCommand extends AbstractCommand {
         } catch (ServiceException e) {
             servletAction = ServletAction.FORWARD_PAGE;
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

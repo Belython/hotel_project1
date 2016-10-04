@@ -1,21 +1,3 @@
-function calcul() {
-    var xhttp = new XMLHttpRequest();
-    var num1 = $("#num1").val();
-    var num2 = $("#num2").val();
-    var url = "controller?command=calcul&num1=" + num1 + "&num2=" + num2;
-    xhttp.onreadystatechange = function () {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            var rez = xhttp.responseText.valueOf();
-            var test = rez.length;
-            var rez2 = xhttp.responseType;
-            $("#rez").text(rez);
-            $("#tsst").text(rez2);
-        }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
-
 $(".payBillBtn").click(function (event) {
     payBill(event)
 });

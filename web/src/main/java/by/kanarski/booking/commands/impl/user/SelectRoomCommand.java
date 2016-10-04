@@ -42,7 +42,7 @@ public class SelectRoomCommand extends AbstractCommand {
             page = PagePath.SELECT_ROOM_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

@@ -38,27 +38,11 @@ public class GoToAccountCommand extends AbstractCommand {
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;
-            handleServiceException(request, e);
+            handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         servletAction.setPage(page);
         return servletAction;
-    }
-
-    public static void main(String[] args) throws ServiceException{
-        List<Room> rl = RoomServiceImpl.getInstance().getByHotelId(1);
-        for (Room room : rl) {
-            TreeMap<Long, Long> dd = room.getBookedDates();
-            if (dd != null) {
-                NavigableSet<Long> nks = dd.navigableKeySet();
-                for (Long k : nks) {
-                    Long k1 = dd.get(k);
-                    System.out.println("Start " + k + " end " + k1);
-                }
-            }
-        }
-
-        System.out.println("lool");
     }
 }
