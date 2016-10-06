@@ -2,6 +2,7 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
 
 import java.util.*;
@@ -11,6 +12,10 @@ public class DtoToEntityConverter {
     public static Room convertToRoom(RoomDto roomDto, Locale locale) {
         Room room = new Room();
         long roomId = roomDto.getRoomId();
+
+        String hotelCountry = roomDto.getHotelCountry();
+        String hotelCity = roomDto.getHotelCity();
+        String hotelName = roomDto.getHotelName();
         Hotel roomHotel = roomDto.getRoomHotel();
         RoomType roomType = roomDto.getRoomType();
         int roomNumber = roomDto.getRoomNumber();
@@ -90,7 +95,7 @@ public class DtoToEntityConverter {
         String checkOutDate = DateUtil.getFormattedDate(bill.getCheckOutDate(), locale);
         List<Room> bookedRoomList = bill.getBookedRoomList();
         Hotel bookedHotel = bookedRoomList.get(0).getRoomHotel();
-        int paymentAmount = bill.getPaymentAmount();
+        double paymentAmount = bill.getPaymentAmount();
         String billStatus = bill.getBillStatus();
         Map<RoomType, Integer> bookedRoomTypeMap = Counter.countRoomTypes(bookedRoomList);
         BillDto billDto = new BillDto(billId, client, totalPersons, checkInDate, checkOutDate, bookedHotel,
@@ -105,6 +110,29 @@ public class DtoToEntityConverter {
             billDtoList.add(billDto);
         }
         return billDtoList;
+    }
+
+    public static RoomTypeDto converToRoomTypeDto(RoomType rt) {
+        long rtId = rt.getRoomTypeId();
+        String rtName = rt.getRoomTypeName();
+        int maxPersons = rt.getMaxPersons();
+        double pricePerNight = rt.getPricePerNight();
+        Set<String> facilitiesSet = rt.getFacilities();
+        String facilities = String.join(", ", facilitiesSet);
+        String rtStatus = rt.getRoomTypeStatus();
+
+        RoomTypeDto roomTypeDto = new RoomTypeDto(rtId, rtName, maxPersons,
+                pricePerNight, facilities, rtStatus);
+        return roomTypeDto;
+    }
+
+    public static List<RoomTypeDto> convertToRoomTypeDtoList(List<RoomType> rtList) {
+        List<RoomTypeDto> rtDtoList = new ArrayList<>();
+        for (RoomType rt : rtList) {
+            RoomTypeDto rtDto = converToRoomTypeDto(rt);
+            rtDtoList.add(rtDto);
+        }
+        return rtDtoList;
     }
 
 }

@@ -3,6 +3,7 @@ package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
@@ -10,6 +11,7 @@ import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
+import by.kanarski.booking.utils.Constraint;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,59 +38,24 @@ public class RedactRoomsCommand implements ICommand {
                 List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale);
                 List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
+                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList);
 
-                Set<String> countrySet = new HashSet<>();
-                Set<String> citySet = new HashSet<>();
-                Set<String> hotelNameSet = new HashSet<>();
-
-                Set<String> roomTypeNameSet = new HashSet<>();
-                Set<Integer> maxPersonsSet = new HashSet<>();
-                Set<Integer> roomPricePerNightSet = new HashSet<>();
-                Set<String> facilitiesSet = new HashSet<>();
-
-                for (Hotel hotel : hotelList) {
-                    Location location = hotel.getHotelLocation();
-                    countrySet.add(location.getCountry());
-                    citySet.add(location.getCity());
-                    hotelNameSet.add(hotel.getHotelName());
+                Map<Long, Map<String, Object>> entityMap = new LinkedHashMap<>();
+                for (Room room: roomList) {
+                    Map<String, Object> dataMap = new LinkedHashMap<>();
+                    Constraint.byHotel(dataMap, room.getRoomHotel(), hotelList);
+                    Constraint.byRoomType(dataMap, room.getRoomType(), roomTypeList);
+                    dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
+                    dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
+                    entityMap.put(room.getRoomId(), dataMap);
                 }
 
-                for (RoomType roomType : roomTypeList) {
-                    roomTypeNameSet.add(roomType.getRoomTypeName());
-                    maxPersonsSet.add(roomType.getMaxPersons());
-                    roomPricePerNightSet.add(roomType.getRoomPricePerNight());
-                    Set<String> facilitiesList = roomType.getFacilities();
-                    String facilities = String.join(", ", facilitiesList);
-                    facilitiesSet.add(facilities);
-                }
-
-                Map<String, Object> dataMap = new LinkedHashMap<>();
-                dataMap.put(Parameter.HOTEL_COUNTRY, countrySet);
-                dataMap.put(Parameter.HOTEL_CITY, citySet);
-                dataMap.put(Parameter.HOTEL_NAME, hotelNameSet);
-                dataMap.put(Parameter.ROOM_TYPE_NAME, roomTypeNameSet);
-                dataMap.put(Parameter.ROOM_TYPE_MAX_PERSONS, maxPersonsSet);
-                dataMap.put(Parameter.ROOM_TYPE_PRICE_PER_NIGHT, roomPricePerNightSet);
-                dataMap.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesSet);
-                dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
-                dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
-
-//                for (Room room: roomList) {
-//                    Hotel hotel = room.getRoomHotel();
-//                    RoomType roomType = room.getRoomType();
-//                    hotelList.add(hotel);
-//                    roomTypeList.add(roomType);
-//                }
                 request.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
-//                request.setAttribute(Parameter.LOCATION_COUNTRY_SET, countrySet);
-//                request.setAttribute(Parameter.LOCATION_CITY_SET, citySet);
-//                request.setAttribute(Parameter.ROOM_TYPE_NAME_SET, roomTypeNameSet);
-//                request.setAttribute(Parameter.ROOM_TYPE_MAX_PERSONS_SET, maxPersonsSet);
-//                request.setAttribute(Parameter.ROOM_TYPE_FACILITIES_SET, facilitiesSet);
-                request.setAttribute(Parameter.DATA_MAP, dataMap);
+                request.setAttribute(Parameter.ENTITY_MAP, entityMap);
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
                 session.setAttribute(Parameter.ROOM_TYPE_LIST, roomTypeList);
+                session.setAttribute(Parameter.ROOM_TYPE_DTO_LIST, roomTypeDtoList);
                 session.setAttribute(Parameter.STATUS_LIST, FieldValue.STATUS_LIST);
             } else {
                 String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
@@ -106,4 +73,5 @@ public class RedactRoomsCommand implements ICommand {
         servletAction.setPage(page);
         return servletAction;
     }
+
 }

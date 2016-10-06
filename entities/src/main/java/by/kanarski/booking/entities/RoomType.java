@@ -7,7 +7,7 @@ public class RoomType {
     private long roomTypeId;
     private String roomTypeName;
     private int maxPersons;
-    private int roomPricePerNight;
+    private double pricePerNight;
     private Set<String> facilities;
     private String roomTypeStatus;
 
@@ -35,12 +35,12 @@ public class RoomType {
         this.maxPersons = maxPersons;
     }
 
-    public int getRoomPricePerNight() {
-        return roomPricePerNight;
+    public double getPricePerNight() {
+        return pricePerNight;
     }
 
-    public void setRoomPricePerNight(int roomPricePerNight) {
-        this.roomPricePerNight = roomPricePerNight;
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
     public Set<String> getFacilities() {
@@ -68,7 +68,7 @@ public class RoomType {
 
         if (roomTypeId != roomType.roomTypeId) return false;
         if (maxPersons != roomType.maxPersons) return false;
-        if (roomPricePerNight != roomType.roomPricePerNight) return false;
+        if (Double.compare(roomType.pricePerNight, pricePerNight) != 0) return false;
         if (!roomTypeName.equals(roomType.roomTypeName)) return false;
         if (!facilities.equals(roomType.facilities)) return false;
         return roomTypeStatus.equals(roomType.roomTypeStatus);
@@ -77,13 +77,15 @@ public class RoomType {
 
     @Override
     public int hashCode() {
-        int result = (int) (roomTypeId ^ (roomTypeId >>> 32));
+        int result;
+        long temp;
+        result = (int) (roomTypeId ^ (roomTypeId >>> 32));
         result = 31 * result + roomTypeName.hashCode();
         result = 31 * result + maxPersons;
-        result = 31 * result + roomPricePerNight;
+        temp = Double.doubleToLongBits(pricePerNight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + facilities.hashCode();
         result = 31 * result + roomTypeStatus.hashCode();
         return result;
     }
-
 }

@@ -42,7 +42,7 @@
                             <option value="${roomType.roomTypeId}">
                                 name ${roomType.roomTypeName}
                                 maxPersons ${roomType.maxPersons}
-                                price ${roomType.roomPricePerNight}
+                                price ${roomType.pricePerNight}
                             </option>
                         </c:forEach>
                     </select>
@@ -135,14 +135,14 @@
                                         <option value="${roomType.roomTypeId}" selected="selected">
                                             name ${roomType.roomTypeName}
                                             maxPersons ${roomType.maxPersons}
-                                            price ${roomType.roomPricePerNight}
+                                            price ${roomType.pricePerNight}
                                         </option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${roomType.roomTypeId}">
                                             name ${roomType.roomTypeName}
                                             maxPersons ${roomType.maxPersons}
-                                            price ${roomType.roomPricePerNight}
+                                            price ${roomType.pricePerNight}
                                         </option>
                                     </c:otherwise>
                                 </c:choose>

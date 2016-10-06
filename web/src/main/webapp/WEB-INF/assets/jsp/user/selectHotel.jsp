@@ -28,10 +28,10 @@
         <tbody>
         <c:forEach var="hotel" items="${hotelDtoList}">
             <%--<input type="hidden" name="hotelId" value="${hotel.hotelId}">--%>
-            <c:set var="location" value="${hotel.location}"/>
+            <c:set var="hotelLocation" value="${hotel.hotelLocation}"/>
             <tr>
-                <td>${location.country}</td>
-                <td>${location.city}</td>
+                <td>${hotelLocation.country}</td>
+                <td>${hotelLocation.city}</td>
                 <td>${hotel.hotelName}</td>
                 <td>${hotel.roomsAvailable}</td>
                 <td>

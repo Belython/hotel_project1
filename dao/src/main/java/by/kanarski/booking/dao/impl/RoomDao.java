@@ -4,13 +4,12 @@ import by.kanarski.booking.constants.DaoMessages;
 import by.kanarski.booking.dao.interfaces.IRoomDao;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Room;
+import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.*;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class RoomDao implements IRoomDao {
 
@@ -271,6 +270,16 @@ public class RoomDao implements IRoomDao {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
             throw new DaoException(DaoMessages.UPDATE_ROOM_EXCEPTION, e);
         }
+    }
+
+    public static void main(String[] args) throws DaoException{
+        Set<String> fac = new HashSet<>();
+        fac.add("safe");
+        fac.add("wi-fi");
+        fac.add("soap");
+        fac.add("shower");
+        RoomType rt = EntityBuilder.buildRoomType("Family", 3, 400, fac, "active");
+        RoomTypeDao.getInstance().add(rt);
     }
 
 }

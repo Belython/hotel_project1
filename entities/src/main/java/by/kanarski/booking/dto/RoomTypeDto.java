@@ -1,18 +1,23 @@
 package by.kanarski.booking.dto;
 
-import java.util.List;
-
-/**
- * Created by dkanarsky on 13.09.2016.
- */
 public class RoomTypeDto {
 
     private long roomTypeId;
     private String roomTypeName;
     private int maxPersons;
-    private int roomPricePerNight;
+    private double pricePerNight;
     private String facilities;
     private String roomTypeStatus;
+
+    public RoomTypeDto(long roomTypeId, String roomTypeName, int maxPersons,
+                       double pricePerNight, String facilities, String roomTypeStatus) {
+        this.roomTypeId = roomTypeId;
+        this.roomTypeName = roomTypeName;
+        this.maxPersons = maxPersons;
+        this.pricePerNight = pricePerNight;
+        this.facilities = facilities;
+        this.roomTypeStatus = roomTypeStatus;
+    }
 
     public long getRoomTypeId() {
         return roomTypeId;
@@ -38,12 +43,12 @@ public class RoomTypeDto {
         this.maxPersons = maxPersons;
     }
 
-    public int getRoomPricePerNight() {
-        return roomPricePerNight;
+    public double getPricePerNight() {
+        return pricePerNight;
     }
 
-    public void setRoomPricePerNight(int roomPricePerNight) {
-        this.roomPricePerNight = roomPricePerNight;
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
     public String getFacilities() {
@@ -61,6 +66,4 @@ public class RoomTypeDto {
     public void setRoomTypeStatus(String roomTypeStatus) {
         this.roomTypeStatus = roomTypeStatus;
     }
-
-
 }

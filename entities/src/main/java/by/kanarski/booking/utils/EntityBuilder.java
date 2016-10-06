@@ -98,35 +98,35 @@ public class EntityBuilder {
         return hotel;
     }
 
-    public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, int roomPricePerNight,
+    public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, double roomPricePerNight,
                                          Set<String> facilities, String roomTypeStatus) {
         RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
         roomType.setRoomTypeId(roomTypeId);
         roomType.setRoomTypeName(roomTypeName);
         roomType.setMaxPersons(maxPersons);
-        roomType.setRoomPricePerNight(roomPricePerNight);
+        roomType.setPricePerNight(roomPricePerNight);
         roomType.setFacilities(facilities);
         roomType.setRoomTypeStatus(roomTypeStatus);
         return roomType;
     }
 
-    public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
+    public static RoomType buildRoomType(String roomTypeName, int maxPersons, double roomPricePerNight,
                                          Set<String> facilities, String roomTypeStatus) {
         RoomType roomType = buildRoomType(roomTypeName, maxPersons, roomPricePerNight, facilities);
         roomType.setRoomTypeName(roomTypeName);
         roomType.setMaxPersons(maxPersons);
-        roomType.setRoomPricePerNight(roomPricePerNight);
+        roomType.setPricePerNight(roomPricePerNight);
         roomType.setFacilities(facilities);
         roomType.setRoomTypeStatus(roomTypeStatus);
         return roomType;
     }
 
-    public static RoomType buildRoomType(String roomTypeName, int maxPersons, int roomPricePerNight,
+    public static RoomType buildRoomType(String roomTypeName, int maxPersons, double roomPricePerNight,
                                          Set<String> facilities) {
         RoomType roomType = new RoomType();
         roomType.setRoomTypeName(roomTypeName);
         roomType.setMaxPersons(maxPersons);
-        roomType.setRoomPricePerNight(roomPricePerNight);
+        roomType.setPricePerNight(roomPricePerNight);
         roomType.setFacilities(facilities);
         return roomType;
     }
@@ -159,7 +159,7 @@ public class EntityBuilder {
 
 
     public static Bill buildBill(long billId, User user, int totalPersons, long checkInDate, long checkOutDate,
-                                 List<Long> roomIdList, int paymentAmount, String billStatus) {
+                                 List<Long> roomIdList, double paymentAmount, String billStatus) {
         Bill bill = buildBill(user, totalPersons, checkInDate, checkOutDate, roomIdList, paymentAmount);
         bill.setBillId(billId);
         bill.setBillStatus(billStatus);
@@ -167,7 +167,7 @@ public class EntityBuilder {
     }
 
     public static Bill buildBill(User user, int totalPersons, long checkInDate, long checkOutDate,
-                                 List<Long> roomIdList, int paymentAmount) {
+                                 List<Long> roomIdList, double paymentAmount) {
         Bill bill = new Bill();
         bill.setClient(user);
         bill.setTotalPersons(totalPersons);
@@ -184,7 +184,7 @@ public class EntityBuilder {
     }
 
     public static Bill buildNewBill(User user, int totalPersons, long checkInDate, long checkOutDate,
-                                    List<Room> roomList, int paymentAmount) {
+                                    List<Room> roomList, double paymentAmount) {
         Bill bill = new Bill();
         bill.setClient(user);
         bill.setTotalPersons(totalPersons);

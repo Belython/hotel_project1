@@ -71,6 +71,7 @@ public class Parameter {
     public static final String ROOM_TYPE_MAX_PERSONS_SET = "maxPersonsSet";
     public static final String ROOM_TYPE_PRICE_PER_NIGHT_SET = "pricePerNightSet";
     public static final String ROOM_TYPE_FACILITIES_SET = "facilitiesSet";
+    public static final String ROOM_TYPE_DTO_LIST = "roomTypeDtoList";
 
     //Room parameters
 
@@ -102,6 +103,7 @@ public class Parameter {
     public static final String FIELD_VALUES_MAP = "fieldValuesMap";
     public static final String STATUS_LIST = "statusList";
     public static final String DATA_MAP = "dataMap";
+    public static final String ENTITY_MAP = "entityMap";
 
     //Sort parameters
 

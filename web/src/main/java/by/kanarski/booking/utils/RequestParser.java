@@ -6,6 +6,7 @@ import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
@@ -54,8 +55,8 @@ public class RequestParser {
         if (request.getParameter(Parameter.HOTEL_ID) != null) {
             hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
         }
-        String country = request.getParameter(Parameter.LOCATION_COUNTRY);
-        String city = request.getParameter(Parameter.LOCATION_CITY);
+        String country = request.getParameter(Parameter.HOTEL_COUNTRY);
+        String city = request.getParameter(Parameter.HOTEL_CITY);
         String hotelName = request.getParameter(Parameter.HOTEL_NAME);
         Hotel hotel = EntityBuilder.buildHotel(hotelId, country, city, hotelName);
         return hotel;
@@ -164,7 +165,7 @@ public class RequestParser {
             }
         }
         List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, hotelDto.getRoomList());
-        int paymentAmount = calc(DateUtil.getBookedDays(checkInDate, checkOutDate), selectedRooms);
+        double paymentAmount = calc(DateUtil.getBookedDays(checkInDate, checkOutDate), selectedRooms);
         Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
                 paymentAmount);
         return bill;
@@ -224,14 +225,7 @@ public class RequestParser {
                 }
             }
             // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
-            TreeMap<String, String> bookedDates;
-            if (roomId != FieldValue.UNDEFINED_ID) {
-                Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-                Room room = RoomServiceImpl.getInstance().getById(roomId);
-                bookedDates = DtoToEntityConverter.localizeBookedDates(room.getBookedDates(), locale);
-            } else {
-                bookedDates = new TreeMap<>();
-            }
+            TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
             RoomDto roomDto = new RoomDto(roomId, requestedHotel, requestedRoomType, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
@@ -243,12 +237,49 @@ public class RequestParser {
         return isAjaxRequest;
     }
 
-    private static int calc(int days, List<Room> roomList) {
-        int payment = 0;
+    private static double calc(int days, List<Room> roomList) {
+        double payment = 0;
         for (Room room : roomList) {
-            int part = room.getRoomType().getRoomPricePerNight() * days;
+            double part = room.getRoomType().getPricePerNight() * days;
             payment += part;
         }
         return payment;
+    }
+
+    public static RoomTypeDto parseRoomTypeDto(HttpServletRequest request) {
+        long roomTypeId = Long.valueOf(request.getParameter(Parameter.ROOM_TYPE_ID));
+        String roomTypeName = request.getParameter(Parameter.ROOM_TYPE_NAME);
+        int maxPersons = Integer.valueOf(request.getParameter(Parameter.ROOM_TYPE_MAX_PERSONS));
+        double pricePerNight = Double.valueOf(request.getParameter(Parameter.ROOM_TYPE_PRICE_PER_NIGHT));
+        String facilities = request.getParameter(Parameter.ROOM_TYPE_FACILITIES);
+        String roomTypeStatus = request.getParameter(Parameter.ROOM_TYPE_STATUS);
+        RoomTypeDto roomTypeDto = new RoomTypeDto(roomTypeId, roomTypeName, maxPersons, pricePerNight,
+                facilities, roomTypeStatus);
+        return roomTypeDto;
+    }
+
+    public static RoomDto parseRoomDto(HttpServletRequest request) {
+        long roomId = request.getParameter(Parameter.ROOM_ID);
+        Hotel hotel = parseHotel(request);
+        RoomTypeDto roomTypeDto = parseRoomTypeDto(request);
+        int roomNumber = Integer.valueOf(request.getAttribute(Parameter.ROOM_NUMBER));
+        TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
+        String roomStatus = request.getParameter(Parameter.ROOM_STATUS);
+
+        RoomDto roomDto = new RoomDto()
+    }
+
+    //В UI не работаем с bookedDates, берем из базы данных
+    private static TreeMap<String, String> likeParseBookedDates(long roomId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        TreeMap<String, String> bookedDates;
+        if (roomId != FieldValue.UNDEFINED_ID) {
+            Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+            Room room = RoomServiceImpl.getInstance().getById(roomId);
+            bookedDates = DtoToEntityConverter.localizeBookedDates(room.getBookedDates(), locale);
+        } else {
+            bookedDates = new TreeMap<>();
+        }
+        return bookedDates;
     }
 }

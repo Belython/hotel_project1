@@ -18,11 +18,12 @@ public class BillDto {
     private String checkOutDate;
     private Hotel bookedHotel;
     private Map<RoomType, Integer> bookedRoomTypeMap;
-    private int paymentAmount;
+    private double paymentAmount;
     private String billStatus;
 
-    public BillDto(long billId, User client, int totalPersons, String checkInDate, String checkOutDate,
-                   Hotel bookedHotel, Map<RoomType, Integer> bookedRoomTypeMap, int paymentAmount, String billStatus) {
+    public BillDto(long billId, User client, int totalPersons, String checkInDate,
+                   String checkOutDate, Hotel bookedHotel, Map<RoomType, Integer> bookedRoomTypeMap,
+                   double paymentAmount, String billStatus) {
         this.billId = billId;
         this.client = client;
         this.totalPersons = totalPersons;
@@ -90,11 +91,11 @@ public class BillDto {
         this.bookedRoomTypeMap = bookedRoomTypeMap;
     }
 
-    public int getPaymentAmount() {
+    public double getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(int paymentAmount) {
+    public void setPaymentAmount(double paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 
@@ -104,5 +105,41 @@ public class BillDto {
 
     public void setBillStatus(String billStatus) {
         this.billStatus = billStatus;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BillDto billDto = (BillDto) o;
+
+        if (billId != billDto.billId) return false;
+        if (totalPersons != billDto.totalPersons) return false;
+        if (Double.compare(billDto.paymentAmount, paymentAmount) != 0) return false;
+        if (!client.equals(billDto.client)) return false;
+        if (!checkInDate.equals(billDto.checkInDate)) return false;
+        if (!checkOutDate.equals(billDto.checkOutDate)) return false;
+        if (!bookedHotel.equals(billDto.bookedHotel)) return false;
+        if (!bookedRoomTypeMap.equals(billDto.bookedRoomTypeMap)) return false;
+        return billStatus.equals(billDto.billStatus);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = (int) (billId ^ (billId >>> 32));
+        result = 31 * result + client.hashCode();
+        result = 31 * result + totalPersons;
+        result = 31 * result + checkInDate.hashCode();
+        result = 31 * result + checkOutDate.hashCode();
+        result = 31 * result + bookedHotel.hashCode();
+        result = 31 * result + bookedRoomTypeMap.hashCode();
+        temp = Double.doubleToLongBits(paymentAmount);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + billStatus.hashCode();
+        return result;
     }
 }

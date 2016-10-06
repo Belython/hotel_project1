@@ -23,7 +23,7 @@ public class RequestHandler {
         try {
             switch (servletAction) {
                 case FORWARD_PAGE: {
-                    RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(page);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(page);
                     dispatcher.forward(request, response);
                     break;
                 }

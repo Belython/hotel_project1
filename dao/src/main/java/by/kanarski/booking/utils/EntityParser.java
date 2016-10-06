@@ -55,7 +55,7 @@ public class EntityParser {
         long roomTypeId = rs.getLong(ColumnName.ROOM_TYPE_ID);
         String roomTypeName = rs.getString(ColumnName.ROOM_TYPE_NAME);
         int maxPersons = rs.getInt(ColumnName.ROOM_TYPE_MAX_PERSONS);
-        int roomPricePerNight = rs.getInt(ColumnName.ROOM_TYPE_PRICE_PER_NIGHT);
+        double roomPricePerNight = rs.getDouble(ColumnName.ROOM_TYPE_PRICE_PER_NIGHT);
         Set<String> facilities = null;
         Blob serializedFacilities = rs.getBlob(ColumnName.ROOM_TYPE_FACILITIES);
         facilities = SerializationUtil.deserialize(serializedFacilities, facilities);
@@ -86,7 +86,7 @@ public class EntityParser {
         long checkOutDate = rs.getLong(ColumnName.BILL_CHECK_OUT_DATE);
         List<Long> roomIdList = null;
         roomIdList = SerializationUtil.deserialize(rs.getBlob(ColumnName.BILL_ROOM_ID_LIST), roomIdList);
-        int paymenAmount = rs.getInt(ColumnName.BILL_PAYMENT_AMOUNT);
+        double paymenAmount = rs.getDouble(ColumnName.BILL_PAYMENT_AMOUNT);
         String billStatus = rs.getString(ColumnName.BILL_STATUS);
         Bill bill = EntityBuilder.buildBill(billId, user, totalPersons, checkInDate, checkOutDate, roomIdList,
                 paymenAmount, billStatus);

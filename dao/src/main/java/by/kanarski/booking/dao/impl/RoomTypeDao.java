@@ -42,7 +42,7 @@ public class RoomTypeDao implements IRoomTypeDao {
                 Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, roomType.getRoomTypeName());
             stm.setInt(2, roomType.getMaxPersons());
-            stm.setInt(3, roomType.getRoomPricePerNight());
+            stm.setDouble(3, roomType.getPricePerNight());
             stm.setBlob(4, SerializationUtil.serialize(roomType.getFacilities()));
             stm.setString(5, roomType.getRoomTypeStatus());
             stm.executeUpdate();
@@ -96,7 +96,7 @@ public class RoomTypeDao implements IRoomTypeDao {
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             stm.setString(1, roomType.getRoomTypeName());
             stm.setInt(2, roomType.getMaxPersons());
-            stm.setInt(3, roomType.getRoomPricePerNight());
+            stm.setDouble(3, roomType.getPricePerNight());
             stm.setBlob(4, SerializationUtil.serialize(roomType.getFacilities()));
             stm.setString(5, roomType.getRoomTypeStatus());
             stm.setLong(6, roomType.getRoomTypeId());

@@ -54,7 +54,7 @@ public class BillDao implements IBillDao {
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());
             stm.setBlob(5, SerializationUtil.serialize(bill.getBookedRoomIdList()));
-            stm.setInt(6, bill.getPaymentAmount());
+            stm.setDouble(6, bill.getPaymentAmount());
             stm.setString(7, bill.getBillStatus());
             stm.executeUpdate();
             resultSet = stm.getGeneratedKeys();
@@ -116,7 +116,7 @@ public class BillDao implements IBillDao {
             stm.setLong(3, bill.getCheckInDate());
             stm.setLong(4, bill.getCheckOutDate());
             stm.setBlob(5, SerializationUtil.serialize(bill.getBookedRoomIdList()));
-            stm.setInt(6, bill.getPaymentAmount());
+            stm.setDouble(6, bill.getPaymentAmount());
             stm.setString(7, bill.getBillStatus());
             stm.setLong(8, bill.getBillId());
             stm.executeUpdate();

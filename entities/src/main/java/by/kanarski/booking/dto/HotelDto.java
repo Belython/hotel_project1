@@ -7,23 +7,21 @@ import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.utils.Counter;
 import by.kanarski.booking.utils.EntityBuilder;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class HotelDto {
 
     private long hotelId;
-    private Location location;
+    private Location hotelLocation;
     private String hotelName;
     private List<Room> roomList;
     private Map<RoomType, Integer> roomTypesCount;
     private int roomsAvailable;
 
-    public HotelDto(long hotelId, Location location, String hotelName, List<Room> roomList) {
+    public HotelDto(long hotelId, Location hotelLocation, String hotelName, List<Room> roomList) {
         this.hotelId = hotelId;
-        this.location = location;
+        this.hotelLocation = hotelLocation;
         this.hotelName = hotelName;
         this.roomList = roomList;
         this.roomsAvailable = roomList.size();
@@ -38,12 +36,12 @@ public class HotelDto {
         this.hotelId = hotelId;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location getHotelLocation() {
+        return hotelLocation;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setHotelLocation(Location hotelLocation) {
+        this.hotelLocation = hotelLocation;
     }
 
     public String getHotelName() {
@@ -80,7 +78,7 @@ public class HotelDto {
     }
 
     public Hotel getHotel() {
-        Hotel hotel = EntityBuilder.buildHotel(location.getCountry(), location.getCity(), hotelName);
+        Hotel hotel = EntityBuilder.buildHotel(hotelLocation.getCountry(), hotelLocation.getCity(), hotelName);
         return hotel;
     }
 
@@ -93,7 +91,7 @@ public class HotelDto {
 
         if (hotelId != hotelDto.hotelId) return false;
         if (roomsAvailable != hotelDto.roomsAvailable) return false;
-        if (!location.equals(hotelDto.location)) return false;
+        if (!hotelLocation.equals(hotelDto.hotelLocation)) return false;
         if (!hotelName.equals(hotelDto.hotelName)) return false;
         if (!roomList.equals(hotelDto.roomList)) return false;
         return roomTypesCount.equals(hotelDto.roomTypesCount);
@@ -103,7 +101,7 @@ public class HotelDto {
     @Override
     public int hashCode() {
         int result = (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + location.hashCode();
+        result = 31 * result + hotelLocation.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + roomList.hashCode();
         result = 31 * result + roomTypesCount.hashCode();
