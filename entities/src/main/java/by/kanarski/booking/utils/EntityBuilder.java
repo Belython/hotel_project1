@@ -131,6 +131,17 @@ public class EntityBuilder {
         return roomType;
     }
 
+    public static RoomType buildRoomType(long roomTypeId, String roomTypeName, int maxPersons, double roomPricePerNight,
+                                         Set<String> facilities) {
+        RoomType roomType = new RoomType();
+        roomType.setRoomTypeId(roomTypeId);
+        roomType.setRoomTypeName(roomTypeName);
+        roomType.setMaxPersons(maxPersons);
+        roomType.setPricePerNight(roomPricePerNight);
+        roomType.setFacilities(facilities);
+        roomType.setRoomTypeStatus(FieldValue.STATUS_ACTIVE);
+        return roomType;
+    }
 
     public static Room buildRoom(long roomId, Hotel hotel, RoomType roomType, int roomNumber,
                                  TreeMap<Long, Long> bookedDates, String roomStatus) {

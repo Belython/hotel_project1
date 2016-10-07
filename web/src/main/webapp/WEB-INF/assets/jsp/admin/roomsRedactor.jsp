@@ -146,7 +146,14 @@
                     <td>
                         <c:choose>
                             <c:when test="${data.size() eq 0}">
-                                <input type="text" name="${field}" value="${room[field]}">
+                                <c:choose>
+                                    <c:when test="${field.contains('Id')}">
+                                        <input type="hidden" name="${field}" value="${room[field]}">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input type="text" name="${field}" value="${room[field]}">
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                             <c:when test="${data.size() > 0}">
                                 <select name="${field}">

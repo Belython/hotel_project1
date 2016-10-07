@@ -28,6 +28,7 @@ public class RedactRoomsCommand implements ICommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
             User admin = (User) session.getAttribute(Parameter.USER);
@@ -35,10 +36,10 @@ public class RedactRoomsCommand implements ICommand {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOMS_REDACTOR_PATH;
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
-                List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale);
+                List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale, currency);
                 List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
-                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList);
+                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
 
                 Map<Long, Map<String, Object>> entityMap = new LinkedHashMap<>();
                 for (Room room: roomList) {

@@ -56,6 +56,7 @@ public class Parameter {
 
     public static final String LOCALE_LIST = "localeList";
     public static final String LOCALE = "locale";
+    public static final String CURRENCY = "currency";
 
     //RoomType parameters
 
