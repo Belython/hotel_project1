@@ -59,6 +59,7 @@ public enum FillerManager {
         Map<String, List<String>> contentMap = new HashMap<>();
         contentMap.put(ContentName.STRING, PageTextContentKeys.HEADER);
         contentMap.put(ContentName.LOCALE_MAP, PageTextContentKeys.LOCALE_LIST);
+        contentMap.put(ContentName.CURRENCY_MAP, PageTextContentKeys.CURRENCY_LIST);
         return contentMap;
     }
 

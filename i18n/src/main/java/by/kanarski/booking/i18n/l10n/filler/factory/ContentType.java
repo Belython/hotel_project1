@@ -15,7 +15,8 @@ public class ContentType {
     public static final String LIST = "list";
 
     private static final List<String> MAP_CONTENT = Arrays.asList(
-            ContentName.LOCALE_MAP
+            ContentName.LOCALE_MAP,
+            ContentName.CURRENCY_MAP
     );
     private static final List<String> LIST_CONTENT = Arrays.asList();
 

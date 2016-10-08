@@ -32,6 +32,10 @@ public class RequestHandler {
                     break;
                 }
                 case NO_ACTION: {
+                    if (page != null) {
+                        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+                        dispatcher.forward(request, response);
+                    }
                     break;
                 }
                 case CALL_COMMAND: {

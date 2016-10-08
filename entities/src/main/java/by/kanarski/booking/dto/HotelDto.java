@@ -13,15 +13,33 @@ import java.util.Map;
 public class HotelDto {
 
     private long hotelId;
-    private Location hotelLocation;
+    private String hotelCountry;
+    private String hotelCity;
     private String hotelName;
+    private String hotelStatus;
+
     private List<Room> roomList;
     private Map<RoomType, Integer> roomTypesCount;
     private int roomsAvailable;
 
+    public HotelDto() {
+
+    }
+
+    public HotelDto(long hotelId, Location hotelLocation, String hotelName, String hotelStatus) {
+        this.hotelId = hotelId;
+        this.hotelCountry = hotelLocation.getCountry();
+        this.hotelCity = hotelLocation.getCity();
+        this.hotelName = hotelName;
+        this.roomList = roomList;
+        this.roomsAvailable = roomList.size();
+        this.roomTypesCount = Counter.countRoomTypes(roomList);
+    }
+
     public HotelDto(long hotelId, Location hotelLocation, String hotelName, List<Room> roomList) {
         this.hotelId = hotelId;
-        this.hotelLocation = hotelLocation;
+        this.hotelCountry = hotelLocation.getCountry();
+        this.hotelCity = hotelLocation.getCity();
         this.hotelName = hotelName;
         this.roomList = roomList;
         this.roomsAvailable = roomList.size();
@@ -36,12 +54,20 @@ public class HotelDto {
         this.hotelId = hotelId;
     }
 
-    public Location getHotelLocation() {
-        return hotelLocation;
+    public String getHotelCountry() {
+        return hotelCountry;
     }
 
-    public void setHotelLocation(Location hotelLocation) {
-        this.hotelLocation = hotelLocation;
+    public void setHotelCountry(String hotelCountry) {
+        this.hotelCountry = hotelCountry;
+    }
+
+    public String getHotelCity() {
+        return hotelCity;
+    }
+
+    public void setHotelCity(String hotelCity) {
+        this.hotelCity = hotelCity;
     }
 
     public String getHotelName() {
@@ -77,11 +103,6 @@ public class HotelDto {
         this.roomsAvailable = roomsAvailable;
     }
 
-    public Hotel getHotel() {
-        Hotel hotel = EntityBuilder.buildHotel(hotelLocation.getCountry(), hotelLocation.getCity(), hotelName);
-        return hotel;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,17 +112,18 @@ public class HotelDto {
 
         if (hotelId != hotelDto.hotelId) return false;
         if (roomsAvailable != hotelDto.roomsAvailable) return false;
-        if (!hotelLocation.equals(hotelDto.hotelLocation)) return false;
+        if (!hotelCountry.equals(hotelDto.hotelCountry)) return false;
+        if (!hotelCity.equals(hotelDto.hotelCity)) return false;
         if (!hotelName.equals(hotelDto.hotelName)) return false;
         if (!roomList.equals(hotelDto.roomList)) return false;
         return roomTypesCount.equals(hotelDto.roomTypesCount);
-
     }
 
     @Override
     public int hashCode() {
         int result = (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + hotelLocation.hashCode();
+        result = 31 * result + hotelCountry.hashCode();
+        result = 31 * result + hotelCity.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + roomList.hashCode();
         result = 31 * result + roomTypesCount.hashCode();

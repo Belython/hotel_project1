@@ -84,6 +84,7 @@ public class PageTextContentKeys {
             "header.goToAdminPage",
             "header.goToAccount",
             "header.selectLanguage",
+            "header.selectCurrency",
             "header.submit"
     );
 
@@ -128,6 +129,13 @@ public class PageTextContentKeys {
             "locale.ru_RU",
             "locale.en_US",
             "locale.en_EN"
+    );
+
+    public static final List<String> CURRENCY_LIST = Arrays.asList(
+            "currency.BYR",
+            "currency.RUB",
+            "currency.USD",
+            "currency.GBP"
     );
 
     public static final List<String> REMIND_PASSWORD = Arrays.asList(

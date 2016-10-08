@@ -19,10 +19,31 @@ function main() {
     $(".removeRowBtn").click(function (event) {
         removeRow(event)
     });
+    
+    $(".alterEntityForm select").change(function (event) {
+        constrainRow(event)
+    });
+
+    function getTableRow(event) {
+        var eventTarget = event.target;
+        var tableRow = $(eventTarget).parents().eq(1);
+        return tableRow;
+    }
+
+    function constrainRow(event) {
+        var tableRow = getTableRow(event);
+        var rowInputNodes = tableRow.find("input, select");
+        var rowParameters = rowInputNodes.serialize();
+        var command = "command=constrainRow";
+        var url = "controller?" + command + "&" + rowParameters;
+        $.get(url, function (data, status) {
+            tableRow.after(data);
+            tableRow.remove();
+        });
+    }
 
     function alterEntity(event) {
-        var button = event.target;
-        var tableRow = $(button).parents().eq(1);
+        var tableRow = getTableRow(event);
         var rowInputNodes = tableRow.find("input, select");
         var redactorForm = $(".redactorForm").has(tableRow);
         var command = redactorForm.children("[name='command']").serialize();
@@ -64,12 +85,6 @@ function main() {
                 return child.children().filter("[selected]").eq(0).attr("value");
         }
     };
-
-    // $("document").ready(function test() {
-    //     var node = $("[name='roomNumber']").eq(1);
-    //     var val = node.prop('tagName');
-    //     alert(val);
-    // });
     
     $("#mt").tablesorter({textExtraction: extractor});
 }

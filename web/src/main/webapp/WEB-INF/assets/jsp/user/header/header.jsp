@@ -43,6 +43,7 @@
             </c:choose>
         </ul>
     </div>
+    
     <div id="locale">
         <form name="langForm" method="POST" action="controller">
             <input type="hidden" name="command" value="setLocale"/>
@@ -56,6 +57,27 @@
                         </c:when>
                         <c:otherwise>
                             <option value="${localeElement}">${localeMap.get(localeElement)}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+            <input type="submit" value="${header_submit}">
+        </form>
+    </div>
+
+    <div id="currency">
+        <form name="currencyForm" method="POST" action="controller">
+            <input type="hidden" name="command" value="setCurrency"/>
+            <label for="currentCurrency">${header_selectCurrency}</label>
+            <select id="currentCurrency" name="currency">
+                <c:set var="currencySet" value="${currencyMap.keySet()}"/>
+                <c:forEach var="currencyElement" items="${currencySet}">
+                    <c:choose>
+                        <c:when test="${currency eq currencyElement}">
+                            <option value="${currencyElement}" selected="selected">${currencyMap.get(currencyElement)}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="${currencyElement}">${currencyMap.get(currencyElement)}</option>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>

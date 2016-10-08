@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -31,10 +32,11 @@ public class AlterRoomsCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         String subCommand = request.getParameter(Parameter.SUB_COMMAND);
         try {
             List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale);
+            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale, currency);
             switch (subCommand) {
                 case Value.ADD_NEW: {
                     RoomServiceImpl.getInstance().addList(roomList);
@@ -46,7 +48,7 @@ public class AlterRoomsCommand extends AbstractCommand {
                 }
             }
             List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
-            List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale);
+            List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale, currency);
             session.setAttribute(Parameter.ROOM_LIST, newRoomList);
             session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();

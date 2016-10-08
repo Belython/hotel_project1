@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Currency;
 import java.util.Locale;
 
 public class LocalizationFilter implements Filter {
@@ -24,6 +25,11 @@ public class LocalizationFilter implements Filter {
         if (locale == null) {
             locale = request.getLocale();
             session.setAttribute(Parameter.LOCALE, locale);
+        }
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
+        if (currency == null) {
+            currency = Currency.getInstance(locale);
+            session.setAttribute(Parameter.CURRENCY, currency);
         }
         String currentPagePath = (String) request.getAttribute(Parameter.CURRENT_PAGE_PATH);
         if (currentPagePath == null) {

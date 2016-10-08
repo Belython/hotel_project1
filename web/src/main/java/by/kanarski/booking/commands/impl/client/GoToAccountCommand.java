@@ -16,10 +16,7 @@ import by.kanarski.booking.utils.DtoToEntityConverter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Locale;
-import java.util.NavigableSet;
-import java.util.TreeMap;
+import java.util.*;
 
 public class GoToAccountCommand extends AbstractCommand {
 
@@ -29,11 +26,12 @@ public class GoToAccountCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale =(Locale) session.getAttribute(Parameter.LOCALE);
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         try {
 
             User user = (User) session.getAttribute(Parameter.USER);
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
-            List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale);
+            List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale, currency);
             session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {

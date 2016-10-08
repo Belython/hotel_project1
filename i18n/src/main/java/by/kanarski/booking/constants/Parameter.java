@@ -51,6 +51,7 @@ public class Parameter {
     public static final String HOTEL_SELECTED_HOTEL_DTO = "selectedHotelDto";
     public static final String SUPPORTED_HOTELS = "supportedHotels";
     public static final String HOTEL_DTO_LIST = "hotelDtoList";
+    public static final String HOTEL_ID_SET = "hotelIdSet";
 
     //Locale parameters
 
@@ -73,9 +74,11 @@ public class Parameter {
     public static final String ROOM_TYPE_PRICE_PER_NIGHT_SET = "pricePerNightSet";
     public static final String ROOM_TYPE_FACILITIES_SET = "facilitiesSet";
     public static final String ROOM_TYPE_DTO_LIST = "roomTypeDtoList";
+    public static final String ROOM_TYPE_ID_SET = "roomTypeIdSet";
 
     //Room parameters
 
+    public static final String ROOM = "room";
     public static final String ROOM_ID = "roomId";
     public static final String ROOM_HOTEL = "hotelRoom";
     public static final String ROOM_ROOM_TYPE = "roomType";

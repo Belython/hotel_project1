@@ -148,6 +148,18 @@ public class RequestParser {
         return locale;
     }
 
+    public static Currency parseCurrency(HttpServletRequest request) {
+        String currencyCode = request.getParameter(Parameter.CURRENCY);
+        Currency currency = null;
+        if (currencyCode == null) {
+            HttpSession session = request.getSession();
+            currency = (Currency) session.getAttribute(Parameter.CURRENCY);
+        } else {
+            currency = Currency.getInstance(currencyCode);
+        }
+        return currency;
+    }
+
     public static Bill parseBill(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Parameter.USER);
@@ -205,6 +217,7 @@ public class RequestParser {
             }
         }
         HttpSession session = request.getSession();
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         for (int i = 0; i < roomIdArray.length; i++) {
             Set<Hotel> hotelSet = (Set<Hotel>) session.getAttribute(Parameter.HOTEL_SET);
             Set<RoomType> roomTypeSet = (Set<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_SET);
@@ -222,11 +235,13 @@ public class RequestParser {
             for (RoomType roomType : roomTypeSet) {
                 if (roomType.getRoomTypeId() == roomTypelId) {
                     requestedRoomType = roomType;
+
                 }
             }
+            RoomTypeDto requestedRoomTypeDto = DtoToEntityConverter.converToRoomTypeDto(requestedRoomType, currency);
             // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
             TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
-            RoomDto roomDto = new RoomDto(roomId, requestedHotel, requestedRoomType, roomNumber, bookedDates, roomStatusArray[i]);
+            RoomDto roomDto = new RoomDto(roomId, requestedHotel, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
@@ -259,23 +274,30 @@ public class RequestParser {
     }
 
     public static RoomDto parseRoomDto(HttpServletRequest request) {
-        long roomId = request.getParameter(Parameter.ROOM_ID);
+        long roomId = Long.valueOf(request.getParameter(Parameter.ROOM_ID));
         Hotel hotel = parseHotel(request);
         RoomTypeDto roomTypeDto = parseRoomTypeDto(request);
-        int roomNumber = Integer.valueOf(request.getAttribute(Parameter.ROOM_NUMBER));
+        int roomNumber = Integer.valueOf(request.getParameter(Parameter.ROOM_NUMBER));
         TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
         String roomStatus = request.getParameter(Parameter.ROOM_STATUS);
 
-        RoomDto roomDto = new RoomDto()
+        RoomDto roomDto = new RoomDto(roomId, hotel, roomTypeDto, roomNumber, bookedDates, roomStatus);
+        return roomDto;
     }
 
     //В UI не работаем с bookedDates, берем из базы данных
-    private static TreeMap<String, String> likeParseBookedDates(long roomId, HttpServletRequest request) {
+    private static TreeMap<String, String> likeParseBookedDates(long roomId, HttpServletRequest request){
         HttpSession session = request.getSession();
         TreeMap<String, String> bookedDates;
         if (roomId != FieldValue.UNDEFINED_ID) {
             Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-            Room room = RoomServiceImpl.getInstance().getById(roomId);
+            Room room = null;
+            try {
+                room = RoomServiceImpl.getInstance().getById(roomId);
+            }
+            catch (ServiceException e) {
+                e.printStackTrace();
+            }
             bookedDates = DtoToEntityConverter.localizeBookedDates(room.getBookedDates(), locale);
         } else {
             bookedDates = new TreeMap<>();

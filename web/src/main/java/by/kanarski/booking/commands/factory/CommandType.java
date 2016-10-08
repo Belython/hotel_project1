@@ -6,6 +6,7 @@ import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.GetHotelsC
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.hotel.SortHotelsTableCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.AlterRoomsCommand;
+import by.kanarski.booking.commands.impl.admin.databaseCommands.room.ConstrainRowCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.RedactRoomsCommand;
 import by.kanarski.booking.commands.impl.admin.databaseCommands.room.SortRoomsCommand;
 import by.kanarski.booking.commands.impl.client.*;
@@ -14,11 +15,11 @@ import by.kanarski.booking.commands.impl.user.*;
 public enum CommandType {
     //user commands
     LOGIN, LOGOUT, REGISTRATION, GOTOREGISTRATION, GOTOMAIN, SELECTHOTEL, SELECTROOM, MAKEBILL, GOTOACCOUNT, PAYBILL,
-    SETLOCALE, CANCELACTION, REFUSEBILL, GOTOREMINDPASSWORD, REMINDPASSWORD,
+    SETLOCALE, CANCELACTION, REFUSEBILL, GOTOREMINDPASSWORD, REMINDPASSWORD, SETCURRENCY,
 
     //admin commands
     GOTOADMINPAGE, GETHOTELS, ALTERHOTELS, SORTHOTELSTABLE,
-    REDACTROOMS, ALTERROOMS, SORTROOMS;
+    REDACTROOMS, ALTERROOMS, SORTROOMS, CONSTRAINROW;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -87,6 +88,13 @@ public enum CommandType {
 
             case REMINDPASSWORD:
                 return new RemindPasswordCommand();
+
+            case SETCURRENCY:
+                return new SetCurrencyCommand();
+
+            case CONSTRAINROW:
+                return new ConstrainRowCommand();
+
 
             default:
                 throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

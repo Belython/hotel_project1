@@ -45,7 +45,7 @@ public class RedactRoomsCommand implements ICommand {
                 for (Room room: roomList) {
                     Map<String, Object> dataMap = new LinkedHashMap<>();
                     Constraint.byHotel(dataMap, room.getRoomHotel(), hotelList);
-                    Constraint.byRoomType(dataMap, room.getRoomType(), roomTypeList);
+                    Constraint.byRoomType(dataMap, room.getRoomType(), roomTypeList, currency);
                     dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
                     dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
                     entityMap.put(room.getRoomId(), dataMap);
@@ -75,9 +75,9 @@ public class RedactRoomsCommand implements ICommand {
         return servletAction;
     }
 
-    private Map<String, Object> getColumnMap() {
-        Map<String, Object> columnMap = new LinkedHashMap<>();
-        columnMap.put()
-    }
+//    private Map<String, Object> getColumnMap() {
+//        Map<String, Object> columnMap = new LinkedHashMap<>();
+//        columnMap.put()
+//    }
 
 }

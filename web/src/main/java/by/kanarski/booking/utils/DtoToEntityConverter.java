@@ -2,6 +2,7 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
@@ -148,6 +149,11 @@ public class DtoToEntityConverter {
             rtDtoList.add(rtDto);
         }
         return rtDtoList;
+    }
+
+    public static Hotel converToHotelDto(Hotel hotel) {
+        HotelDto hotelDto = new HotelDto();
+        String hotelCountry =
     }
 
 }

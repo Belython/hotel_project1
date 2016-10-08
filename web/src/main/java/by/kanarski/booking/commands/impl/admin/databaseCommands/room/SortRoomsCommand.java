@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Comparator;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,7 +31,8 @@ public class SortRoomsCommand extends AbstractCommand {
         Comparator<Room> sortBy = new SortBy(sortingOption, sortingDirection);
         roomList.sort(sortBy);
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-        List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale);
+        Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
+        List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale, currency);
         session.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
         String page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

@@ -116,7 +116,7 @@
 <%--</form>--%>
 
 
-<form class="redactorForm" name="alterRoomsForm" method="POST" action="controller">
+<form class="alterEntityForm" name="alterRoomsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="alterRooms"/>
     <input type="hidden" name="subCommand" value="changeExisting"/>
     <input type="hidden" name="isAjaxRequest" value="false"/>
@@ -143,34 +143,34 @@
                 <c:set var="fieldSet" value="${dataMap.keySet()}"/>
                 <c:forEach var="field" items="${fieldSet}">
                     <c:set var="data" value="${dataMap.get(field)}"/>
-                    <td>
-                        <c:choose>
-                            <c:when test="${data.size() eq 0}">
-                                <c:choose>
-                                    <c:when test="${field.contains('Id')}">
-                                        <input type="hidden" name="${field}" value="${room[field]}">
-                                    </c:when>
-                                    <c:otherwise>
+                    <c:choose>
+                        <c:when test="${field.contains('Id')}">
+                            <input type="hidden" name="${field}" value="${room[field]}">
+                        </c:when>
+                        <c:otherwise>
+                            <td>
+                                <c:if test="${data.size() eq 0}">
+                                    <c:if test="${not field.contains('Id')}">
                                         <input type="text" name="${field}" value="${room[field]}">
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:when>
-                            <c:when test="${data.size() > 0}">
-                                <select name="${field}">
-                                    <c:forEach var="fieldValue" items="${dataMap.get(field)}">
-                                        <c:choose>
-                                            <c:when test="${fieldValue eq room[field]}">
-                                                <option value="${fieldValue}" selected="selected">${fieldValue}</option>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <option value="${fieldValue}">${fieldValue}</option>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </c:forEach>
-                                </select>
-                            </c:when>
-                        </c:choose>
-                    </td>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${data.size() > 0}">
+                                    <select name="${field}">
+                                        <c:forEach var="fieldValue" items="${dataMap.get(field)}">
+                                            <c:choose>
+                                                <c:when test="${fieldValue eq room[field]}">
+                                                    <option value="${fieldValue}" selected="selected">${fieldValue}</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="${fieldValue}">${fieldValue}</option>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </select>
+                                </c:if>
+                            </td>
+                        </c:otherwise>
+                    </c:choose>
                 </c:forEach>
                 <td><button class="alterEntityBtn" type="button">${roomsRedactor_alterRoom}</button></td>
             </tr>
