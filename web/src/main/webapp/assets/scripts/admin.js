@@ -20,7 +20,7 @@ function main() {
         removeRow(event)
     });
     
-    $(".alterEntityForm select").change(function (event) {
+    $(".entityForm select").change(function (event) {
         constrainRow(event)
     });
 
@@ -30,27 +30,47 @@ function main() {
         return tableRow;
     }
 
+    function refresh() {
+        $(".addEntityBtn").bind("click", function (event) {
+            alterEntity(event)
+        });
+        $(".removeRowBtn").bind("click", function (event) {
+            removeRow(event)
+        });
+        $(".alterEntityBtn").bind("click", function (event) {
+            alterEntity(event)
+        });
+        $(".entityForm select").bind("change", function (event) {
+            constrainRow(event)
+        });
+    }
+    
     function constrainRow(event) {
         var tableRow = getTableRow(event);
+        var some = $("button");
+        var form = tableRow.parents("form").first();
+        var formName = form.attr("name");
+        var formNameParameter = "formName=" + formName;
         var rowInputNodes = tableRow.find("input, select");
         var rowParameters = rowInputNodes.serialize();
-        var command = "command=constrainRow";
-        var url = "controller?" + command + "&" + rowParameters;
+        var commandParameter = "command=constrainRow";
+        var url = "controller?" + commandParameter + "&" + formNameParameter + "&" + rowParameters;
         $.get(url, function (data, status) {
             tableRow.after(data);
             tableRow.remove();
         });
+        setTimeout(refresh, 1000);
     }
 
     function alterEntity(event) {
         var tableRow = getTableRow(event);
         var rowInputNodes = tableRow.find("input, select");
-        var redactorForm = $(".redactorForm").has(tableRow);
-        var command = redactorForm.children("[name='command']").serialize();
-        var subCommand = redactorForm.children("[name='subCommand']").serialize();
+        var form = $(".entityForm").has(tableRow);
+        var commandParameter = form.children("[name='command']").serialize();
+        var subCommandParameter = form.children("[name='subCommand']").serialize();
         var rowParameters = rowInputNodes.serialize();
-        var isAjaxRequest = "isAjaxRequest=true";
-        var url = "controller?" + command + "&" + subCommand + "&" + isAjaxRequest + "&" + rowParameters;
+        var isAjaxRequestParameter = "isAjaxRequest=true";
+        var url = "controller?" + commandParameter + "&" + subCommandParameter + "&" + isAjaxRequestParameter + "&" + rowParameters;
         $.get(url, function (data, status) {
             $("#operationMessage").text(data);
         });
@@ -59,12 +79,7 @@ function main() {
     function addRow() {
         var tableRow = $(".newEntity tr").last().clone();
         $(".newEntity tbody").append(tableRow);
-        $(".addEntityBtn").bind("click", function (event) {
-            alterEntity(event)
-        });
-        $(".removeRowBtn").bind("click", function (event) {
-            removeRow(event)
-        });
+        setTimeout(refresh, 1000);
     }
 
     function removeRow(event) {

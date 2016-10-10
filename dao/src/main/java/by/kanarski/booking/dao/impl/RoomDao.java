@@ -276,9 +276,10 @@ public class RoomDao implements IRoomDao {
         Set<String> fac = new HashSet<>();
         fac.add("safe");
         fac.add("wi-fi");
-        fac.add("soap");
-        fac.add("shower");
-        RoomType rt = EntityBuilder.buildRoomType("Family", 3, 400, fac, "active");
+        fac.add("profit");
+        fac.add("toilet");
+        fac.add("basik");
+        RoomType rt = EntityBuilder.buildRoomType("Family", 3, 500, fac, "active");
         RoomTypeDao.getInstance().add(rt);
     }
 

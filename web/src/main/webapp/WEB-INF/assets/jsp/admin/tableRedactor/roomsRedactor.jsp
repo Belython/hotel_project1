@@ -100,10 +100,10 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="room" items="${roomDtoList}">
+            <c:forEach var="entity" items="${roomDtoList}">
                 <tr>
-                    <input type="hidden" name="roomId" value="${room.roomId}">
-                    <c:set var="currentHotel" value="${room.roomHotel}"/>
+                    <input type="hidden" name="roomId" value="${entity.roomId}">
+                    <c:set var="currentHotel" value="${entity.roomHotel}"/>
                     <td>
                         <select name="hotelId">
                             <c:forEach var="hotel" items="${hotelSet}">
@@ -126,7 +126,7 @@
                             </c:forEach>
                         </select>
                     </td>
-                    <c:set var="currentRoomType" value="${room.roomType}"/>
+                    <c:set var="currentRoomType" value="${entity.roomType}"/>
                     <td>
                         <select name="roomTypeId">
                             <c:forEach var="roomType" items="${roomTypeSet}">
@@ -149,11 +149,11 @@
                             </c:forEach>
                         </select>
                     </td>
-                    <td><input type="text" name="roomNumber" value="${room.roomNumber}"></td>
-                    <td><input type="text" name="bookingStartDate" value="${room.bookingStartDate}"></td>
-                    <td><input type="text" name="bookingEndDate" value="${room.bookingEndDate}"></td>
+                    <td><input type="text" name="roomNumber" value="${entity.roomNumber}"></td>
+                    <td><input type="text" name="bookingStartDate" value="${entity.bookingStartDate}"></td>
+                    <td><input type="text" name="bookingEndDate" value="${entity.bookingEndDate}"></td>
                     <%--<td><input type="text" name="roomStatus" value="${room.roomStatus}"></td>--%>
-                    <c:set var="currentRoomStatus" value="${room.roomStatus}"/>
+                    <c:set var="currentRoomStatus" value="${entity.roomStatus}"/>
                     <td>
                         <select name="roomStatus">
                             <c:forEach var="status" items="${statusList}">

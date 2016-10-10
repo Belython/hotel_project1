@@ -46,12 +46,13 @@ public class DtoToEntityConverter {
     public static RoomDto convertToRoomDto(Room room, Locale locale, Currency currency) {
         long roomId = room.getRoomId();
         Hotel roomHotel = room.getRoomHotel();
+        HotelDto roomHotelDto = converToHotelDto(roomHotel);
         RoomType roomType = room.getRoomType();
         RoomTypeDto roomTypeDto = converToRoomTypeDto(roomType, currency);
         int roomNumber = room.getRoomNumber();
         TreeMap<String, String> bookedDates = localizeBookedDates(room.getBookedDates(), locale);
         String roomStatus = room.getRoomStatus();
-        RoomDto roomDto = new RoomDto(roomId, roomHotel, roomTypeDto, roomNumber, bookedDates, roomStatus);
+        RoomDto roomDto = new RoomDto(roomId, roomHotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
         return roomDto;
     }
 
@@ -151,9 +152,32 @@ public class DtoToEntityConverter {
         return rtDtoList;
     }
 
-    public static Hotel converToHotelDto(Hotel hotel) {
-        HotelDto hotelDto = new HotelDto();
-        String hotelCountry =
+    public static Hotel converToHotel(HotelDto hotelDto) {
+        long hotelId = hotelDto.getHotelId();
+        String hotelCountry = hotelDto.getHotelCountry();
+        String hotelCity = hotelDto.getHotelCity();
+        String hotelName = hotelDto.getHotelName();
+        String hotelStatus = hotelDto.getHotelStatus();
+        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName, hotelStatus);
+        return hotel;
+    }
+
+    public static HotelDto converToHotelDto(Hotel hotel) {
+        long hotelId = hotel.getHotelId();
+        Location hotelLocation = hotel.getHotelLocation();
+        String hotelName = hotel.getHotelName();
+        String hotelStatus = hotel.getHotelStatus();
+        HotelDto hotelDto = new HotelDto(hotelId, hotelLocation, hotelName, hotelStatus);
+        return hotelDto;
+    }
+
+    public static List<HotelDto> converToHotelDtoList(List<Hotel> hotelList) {
+        List<HotelDto> hotelDtoList = new ArrayList<>();
+        for (Hotel hotel : hotelList) {
+            HotelDto hotelDto = converToHotelDto(hotel);
+            hotelDtoList.add(hotelDto);
+        }
+        return hotelDtoList;
     }
 
 }

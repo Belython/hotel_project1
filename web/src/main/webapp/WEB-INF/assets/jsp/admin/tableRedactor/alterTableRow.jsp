@@ -3,26 +3,25 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <tr>
-    <input type="hidden" name="roomId" value="${room.roomId}">
     <c:set var="fieldSet" value="${dataMap.keySet()}"/>
     <c:forEach var="field" items="${fieldSet}">
         <c:set var="data" value="${dataMap.get(field)}"/>
         <c:choose>
             <c:when test="${field.contains('Id')}">
-                <input type="hidden" name="${field}" value="${room[field]}">
+                <input type="hidden" name="${field}" value="${entity[field]}">
             </c:when>
             <c:otherwise>
                 <td>
                     <c:if test="${data.size() eq 0}">
                         <c:if test="${not field.contains('Id')}">
-                            <input type="text" name="${field}" value="${room[field]}">
+                            <input type="text" name="${field}" value="${entity[field]}">
                         </c:if>
                     </c:if>
                     <c:if test="${data.size() > 0}">
                         <select name="${field}">
                             <c:forEach var="fieldValue" items="${dataMap.get(field)}">
                                 <c:choose>
-                                    <c:when test="${fieldValue eq room[field]}">
+                                    <c:when test="${fieldValue eq entity[field]}">
                                         <option value="${fieldValue}" selected="selected">${fieldValue}</option>
                                     </c:when>
                                     <c:otherwise>
@@ -36,5 +35,5 @@
             </c:otherwise>
         </c:choose>
     </c:forEach>
-    <td><button class="alterEntityBtn" type="button">${roomsRedactor_alterRoom}</button></td>
+    <td><button class="alterEntityBtn" type="button">${tableRedactor_alter}</button></td>
 </tr>

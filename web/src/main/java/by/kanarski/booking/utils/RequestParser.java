@@ -219,8 +219,8 @@ public class RequestParser {
         HttpSession session = request.getSession();
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         for (int i = 0; i < roomIdArray.length; i++) {
-            Set<Hotel> hotelSet = (Set<Hotel>) session.getAttribute(Parameter.HOTEL_SET);
-            Set<RoomType> roomTypeSet = (Set<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_SET);
+            List<Hotel> hotelSet = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
+            List<RoomType> roomTypeSet = (List<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_LIST);
             long roomId = Long.valueOf(roomIdArray[i]);
             long hotelId = Long.valueOf(hotelIdArray[i]);
             long roomTypelId = Long.valueOf(roomTypeIdArray[i]);
@@ -239,9 +239,10 @@ public class RequestParser {
                 }
             }
             RoomTypeDto requestedRoomTypeDto = DtoToEntityConverter.converToRoomTypeDto(requestedRoomType, currency);
+            HotelDto requestedHotelDto = DtoToEntityConverter.converToHotelDto(requestedHotel);
             // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
             TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
-            RoomDto roomDto = new RoomDto(roomId, requestedHotel, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
+            RoomDto roomDto = new RoomDto(roomId, requestedHotelDto, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
@@ -274,15 +275,28 @@ public class RequestParser {
     }
 
     public static RoomDto parseRoomDto(HttpServletRequest request) {
-        long roomId = Long.valueOf(request.getParameter(Parameter.ROOM_ID));
+        String strRoomId = request.getParameter(Parameter.ROOM_ID);
+        if ((strRoomId == null) || (strRoomId.isEmpty())) {
+            strRoomId = "-1";
+        }
+        long roomId = Long.valueOf(strRoomId);
         Hotel hotel = parseHotel(request);
         RoomTypeDto roomTypeDto = parseRoomTypeDto(request);
-        int roomNumber = Integer.valueOf(request.getParameter(Parameter.ROOM_NUMBER));
+        String strRoomNumber = request.getParameter(Parameter.ROOM_NUMBER);
+        if ((strRoomNumber == null) || (strRoomNumber.isEmpty())) {
+            strRoomNumber = "-1";
+        }
+        int roomNumber = Integer.valueOf(strRoomNumber);
         TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
         String roomStatus = request.getParameter(Parameter.ROOM_STATUS);
-
-        RoomDto roomDto = new RoomDto(roomId, hotel, roomTypeDto, roomNumber, bookedDates, roomStatus);
+        HotelDto hotelDto = DtoToEntityConverter.converToHotelDto(hotel);
+        RoomDto roomDto = new RoomDto(roomId, hotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
         return roomDto;
+    }
+
+    public static String parseFormName(HttpServletRequest request) {
+        String formName = request.getParameter(Parameter.FORM_NAME);
+        return formName;
     }
 
     //В UI не работаем с bookedDates, берем из базы данных

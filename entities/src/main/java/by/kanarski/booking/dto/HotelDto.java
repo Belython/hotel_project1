@@ -1,11 +1,9 @@
 package by.kanarski.booking.dto;
 
-import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Location;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.utils.Counter;
-import by.kanarski.booking.utils.EntityBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -26,14 +24,20 @@ public class HotelDto {
 
     }
 
+    public HotelDto(long hotelId, String hotelCountry, String hotelCity, String hotelName, String hotelStatus) {
+        this.hotelId = hotelId;
+        this.hotelCountry = hotelCountry;
+        this.hotelCity = hotelCity;
+        this.hotelName = hotelName;
+        this.hotelStatus = hotelStatus;
+    }
+
     public HotelDto(long hotelId, Location hotelLocation, String hotelName, String hotelStatus) {
         this.hotelId = hotelId;
         this.hotelCountry = hotelLocation.getCountry();
         this.hotelCity = hotelLocation.getCity();
         this.hotelName = hotelName;
-        this.roomList = roomList;
-        this.roomsAvailable = roomList.size();
-        this.roomTypesCount = Counter.countRoomTypes(roomList);
+        this.hotelStatus = hotelStatus;
     }
 
     public HotelDto(long hotelId, Location hotelLocation, String hotelName, List<Room> roomList) {
@@ -85,6 +89,14 @@ public class HotelDto {
     public void setRoomList(List<Room> roomList) {
         this.roomList = roomList;
         this.roomsAvailable = roomList.size();
+    }
+
+    public String getHotelStatus() {
+        return hotelStatus;
+    }
+
+    public void setHotelStatus(String hotelStatus) {
+        this.hotelStatus = hotelStatus;
     }
 
     public Map<RoomType, Integer> getRoomTypesCount() {

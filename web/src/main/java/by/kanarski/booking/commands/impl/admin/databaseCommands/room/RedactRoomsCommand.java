@@ -11,7 +11,7 @@ import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.Constraint;
+import by.kanarski.booking.utils.Constrain;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,18 +41,18 @@ public class RedactRoomsCommand implements ICommand {
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
                 List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
 
-                Map<Long, Map<String, Object>> entityMap = new LinkedHashMap<>();
-                for (Room room: roomList) {
+                Map<Object, Map<String, Object>> entityMap = new LinkedHashMap<>();
+                for (RoomDto roomDto: roomDtoList) {
                     Map<String, Object> dataMap = new LinkedHashMap<>();
-                    Constraint.byHotel(dataMap, room.getRoomHotel(), hotelList);
-                    Constraint.byRoomType(dataMap, room.getRoomType(), roomTypeList, currency);
+                    dataMap.put(Parameter.ROOM_ID, new HashSet<>());
+                    Constrain.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
+                    Constrain.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
                     dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
                     dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
-                    entityMap.put(room.getRoomId(), dataMap);
+                    entityMap.put(roomDto, dataMap);
                 }
 
-                request.setAttribute(Parameter.ROOM_DTO_LIST, roomDtoList);
-                request.setAttribute(Parameter.ENTITY_MAP, entityMap);
+                session.setAttribute(Parameter.ENTITY_MAP, entityMap);
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
                 session.setAttribute(Parameter.ROOM_TYPE_LIST, roomTypeList);

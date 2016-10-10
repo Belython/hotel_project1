@@ -144,8 +144,26 @@ public class PageTextContentKeys {
             "remindPassword.remindPassword"
     );
 
-    private PageTextContentKeys() {
+    public static final List<String> ROOM_COLUMN_LIST = Arrays.asList(
+            "entityField.hotelCountry",
+            "entityField.hotelCity",
+            "entityField.hotelName",
+            "entityField.roomTypeName",
+            "entityField.maxPersons",
+            "entityField.pricePerNight",
+            "entityField.facilities",
+            "entityField.roomNumber",
+            "entityField.roomStatus"
+    );
 
-    }
-
+    public static final List<String> TABLE_REDACTOR = Arrays.asList(
+            "tableRedactor.roomsRedactor",
+            "tableRedactor.alter",
+            "tableRedactor.alterAll",
+            "tableRedactor.add",
+            "tableRedactor.addAll",
+            "tableRedactor.create",
+            "tableRedactor.remove"
+    );
+    
 }

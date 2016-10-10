@@ -107,7 +107,8 @@ public enum FillerManager {
 
     public static Map<String, List<String>> getRoomsRedactor() {
         Map<String, List<String>> contentMap = new HashMap<>();
-        contentMap.put(ContentName.STRING, PageTextContentKeys.ROOMS_REDACTOR);
+        contentMap.put(ContentName.STRING, PageTextContentKeys.TABLE_REDACTOR);
+        contentMap.put(ContentName.COLUMN_NAME_LIST, PageTextContentKeys.ROOM_COLUMN_LIST);
         return contentMap;
     }
 

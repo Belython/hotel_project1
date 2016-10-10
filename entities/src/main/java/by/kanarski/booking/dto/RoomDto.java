@@ -14,12 +14,14 @@ public class RoomDto {
     private String hotelName;
     private String hotelCountry;
     private String hotelCity;
+    private String hotelStatus;
 
     private long roomTypeId;
     private String roomTypeName;
     private int maxPersons;
     private double pricePerNight;
     private String facilities;
+    private String roomTypeStatus;
 
     private int roomNumber;
     private TreeMap<String, String> bookedDates;
@@ -30,20 +32,22 @@ public class RoomDto {
 
     }
 
-    public RoomDto(long roomId, Hotel roomHotel, RoomTypeDto roomTypeDto, int roomNumber,
+    public RoomDto(long roomId, HotelDto roomHotelDto, RoomTypeDto roomTypeDto, int roomNumber,
                    TreeMap<String, String> bookedDates, String roomStatus) {
         this.roomId = roomId;
 
-        hotelId = roomHotel.getHotelId();
-        hotelName = roomHotel.getHotelName();
-        hotelCountry = roomHotel.getHotelLocation().getCountry();
-        hotelCity = roomHotel.getHotelLocation().getCity();
+        hotelId = roomHotelDto.getHotelId();
+        hotelName = roomHotelDto.getHotelName();
+        hotelCountry = roomHotelDto.getHotelCountry();
+        hotelCity = roomHotelDto.getHotelCity();
+        hotelStatus = roomHotelDto.getHotelStatus();
 
         roomTypeId = roomTypeDto.getRoomTypeId();
         roomTypeName = roomTypeDto.getRoomTypeName();
         maxPersons = roomTypeDto.getMaxPersons();
         pricePerNight = roomTypeDto.getPricePerNight();
         facilities = roomTypeDto.getFacilities();
+        roomTypeStatus = roomTypeDto.getRoomTypeStatus();
 
         this.roomNumber = roomNumber;
         this.bookedDates = bookedDates;
@@ -91,6 +95,14 @@ public class RoomDto {
         this.hotelCity = hotelCity;
     }
 
+    public String getHotelStatus() {
+        return hotelStatus;
+    }
+
+    public void setHotelStatus(String hotelStatus) {
+        this.hotelStatus = hotelStatus;
+    }
+
     public long getRoomTypeId() {
         return roomTypeId;
     }
@@ -131,6 +143,14 @@ public class RoomDto {
         this.facilities = facilities;
     }
 
+    public String getRoomTypeStatus() {
+        return roomTypeStatus;
+    }
+
+    public void setRoomTypeStatus(String roomTypeStatus) {
+        this.roomTypeStatus = roomTypeStatus;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -155,6 +175,34 @@ public class RoomDto {
         this.roomStatus = roomStatus;
     }
 
+    public HotelDto getHotelDto() {
+        HotelDto hotelDto = new HotelDto(hotelId, hotelCountry, hotelCity, hotelName, hotelStatus);
+        return  hotelDto;
+    }
+
+    public void setHotelDto(HotelDto hotelDto) {
+        this.hotelId = hotelDto.getHotelId();
+        this.hotelCountry = hotelDto.getHotelCountry();
+        this.hotelCity = hotelDto.getHotelCity();
+        this.hotelName = hotelDto.getHotelName();
+        this.hotelStatus = hotelDto.getHotelStatus();
+    }
+
+    public RoomTypeDto getRoomTypeDto() {
+        RoomTypeDto roomTypeDto = new RoomTypeDto(roomTypeId, roomTypeName, maxPersons,
+                pricePerNight, facilities, roomTypeStatus);
+        return roomTypeDto;
+    }
+
+    public void setRoomTypeDto(RoomTypeDto roomTypeDto) {
+        this.roomTypeId = roomTypeDto.getRoomTypeId();
+        this.roomTypeName = roomTypeDto.getRoomTypeName();
+        this.maxPersons = roomTypeDto.getMaxPersons();
+        this.pricePerNight = roomTypeDto.getPricePerNight();
+        this.facilities = roomTypeDto.getFacilities();
+        this.roomTypeStatus = roomTypeDto.getRoomTypeStatus();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -171,8 +219,10 @@ public class RoomDto {
         if (!hotelName.equals(roomDto.hotelName)) return false;
         if (!hotelCountry.equals(roomDto.hotelCountry)) return false;
         if (!hotelCity.equals(roomDto.hotelCity)) return false;
+        if (!hotelStatus.equals(roomDto.hotelStatus)) return false;
         if (!roomTypeName.equals(roomDto.roomTypeName)) return false;
         if (!facilities.equals(roomDto.facilities)) return false;
+        if (!roomTypeStatus.equals(roomDto.roomTypeStatus)) return false;
         if (!bookedDates.equals(roomDto.bookedDates)) return false;
         return roomStatus.equals(roomDto.roomStatus);
 
@@ -187,12 +237,14 @@ public class RoomDto {
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelCountry.hashCode();
         result = 31 * result + hotelCity.hashCode();
+        result = 31 * result + hotelStatus.hashCode();
         result = 31 * result + (int) (roomTypeId ^ (roomTypeId >>> 32));
         result = 31 * result + roomTypeName.hashCode();
         result = 31 * result + maxPersons;
         temp = Double.doubleToLongBits(pricePerNight);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + facilities.hashCode();
+        result = 31 * result + roomTypeStatus.hashCode();
         result = 31 * result + roomNumber;
         result = 31 * result + bookedDates.hashCode();
         result = 31 * result + roomStatus.hashCode();

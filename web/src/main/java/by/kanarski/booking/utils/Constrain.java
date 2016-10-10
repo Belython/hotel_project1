@@ -1,39 +1,47 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.Location;
 import by.kanarski.booking.entities.RoomType;
 
 
 import java.util.*;
 
-public class Constraint {
+// TODO: 09.09.2016 что-нибудь сделать с этим
+//Очень кривая реализация, стыд
 
-    public static Map<String, Object> byHotel(Map<String, Object> dataMap, Hotel selectedHotel,
+public class Constrain {
+
+    public static HotelDto byHotel(Map<String, Object> dataMap, HotelDto selectedHotelDto,
                                List<Hotel> hotelList) {
+        boolean badHotelDto = false;
+        List<HotelDto> hotelDtoList = DtoToEntityConverter.converToHotelDtoList(hotelList);
 
-        Location selectedHotelLocation = selectedHotel.getHotelLocation();
-        String selectedHotelCountry = selectedHotelLocation.getCountry();
-        String selectedHotelCity = selectedHotelLocation.getCity();
+        String selectedHotelCountry = selectedHotelDto.getHotelCountry();
+        String selectedHotelCity = selectedHotelDto.getHotelCity();
 
         Set<String> countrySet = new HashSet<>();
         Set<String> citySet = new HashSet<>();
         Set<String> hotelNameSet = new HashSet<>();
+        HotelDto resHotelDto = null;
 
-        for (Hotel hotel : hotelList) {
-            Location hotelLocation = hotel.getHotelLocation();
-            String hotelName = hotel.getHotelName();
-            String hotelCountry = hotelLocation.getCountry();
-            String hotelCity = hotelLocation.getCity();
+        for (HotelDto hotelDto : hotelDtoList) {
+            long hotelId = hotelDto.getHotelId();
+            String hotelCountry = hotelDto.getHotelCountry();
+            String hotelCity = hotelDto.getHotelCity();
+            String hotelName = hotelDto.getHotelName();
             if (hotelCountry.equals(selectedHotelCountry)) {
                 citySet.add(hotelCity);
                 if (hotelCity.equals(selectedHotelCity)) {
                     hotelNameSet.add(hotelName);
+                    selectedHotelDto.setHotelName(hotelName);
+                    selectedHotelDto.setHotelId(hotelId);
+                    resHotelDto = hotelDto;
                 }
             }
-            countrySet.add(hotelLocation.getCountry());
+            countrySet.add(hotelCountry);
         }
 
         dataMap.put(Parameter.HOTEL_ID, new HashSet<>());
@@ -42,16 +50,22 @@ public class Constraint {
         dataMap.put(Parameter.HOTEL_NAME, hotelNameSet);
 
         if (hotelNameSet.size() == 0) {
+            badHotelDto = true;
             String hotelCity = citySet.iterator().next();
-
+            selectedHotelDto.setHotelCity(hotelCity);
+            resHotelDto = byHotel(dataMap, selectedHotelDto, hotelList);
         }
-        return dataMap;
+//        if (badHotelDto) {
+//            return resHotelDto;
+//        } else {
+//            return selectedHotelDto;
+//        }
+        return selectedHotelDto;
     }
 
-    public static Map<String, Object> byRoomType(Map<String, Object> dataMap, RoomType selectedRT,
+    public static RoomTypeDto byRoomType(Map<String, Object> dataMap, RoomTypeDto selectedRTDto,
                                   List<RoomType> rTList, Currency currency) {
-
-        RoomTypeDto selectedRTDto = DtoToEntityConverter.converToRoomTypeDto(selectedRT, currency);
+        boolean badRTDto = false;
         List<RoomTypeDto> rTDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(rTList, currency);
 
         String selectedRTName = selectedRTDto.getRoomTypeName();
@@ -62,8 +76,10 @@ public class Constraint {
         Set<Integer> maxPersonsSet = new HashSet<>();
         Set<Double> pricePerNightSet = new HashSet<>();
         Set<String> facilitiesSet = new HashSet<>();
+        RoomTypeDto resRTDto = null;
 
         for (RoomTypeDto rTDto : rTDtoList) {
+            long roomTypeId = rTDto.getRoomTypeId();
             String roomTypeName = rTDto.getRoomTypeName();
             int maxPersons = rTDto.getMaxPersons();
             double pricePerNight = rTDto.getPricePerNight();
@@ -74,6 +90,9 @@ public class Constraint {
                     pricePerNightSet.add(pricePerNight);
                     if (pricePerNight == selectedRTPricePerNight) {
                         facilitiesSet.add(facilities);
+                        selectedRTDto.setFacilities(facilities);
+                        selectedRTDto.setRoomTypeId(roomTypeId);
+                        resRTDto = rTDto;
                     }
                 }
             }
@@ -87,18 +106,24 @@ public class Constraint {
         dataMap.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesSet);
 
         if (pricePerNightSet.size() == 0) {
+            badRTDto = true;
             int maxPersons = maxPersonsSet.iterator().next();
-            selectedRT.setMaxPersons(maxPersons);
-            byRoomType(dataMap, selectedRT, rTList, currency);
+            selectedRTDto.setMaxPersons(maxPersons);
+            resRTDto = byRoomType(dataMap, selectedRTDto, rTList, currency);
         }
-
         facilitiesSet = (Set<String>) dataMap.get(Parameter.ROOM_TYPE_FACILITIES);
         if (facilitiesSet.size() == 0) {
+            badRTDto = true;
             double pricePerNight = pricePerNightSet.iterator().next();
-            selectedRT.setPricePerNight(pricePerNight);
-            byRoomType(dataMap, selectedRT, rTList, currency);
+            selectedRTDto.setPricePerNight(pricePerNight);
+            resRTDto = byRoomType(dataMap, selectedRTDto, rTList, currency);
         }
-        return dataMap;
+//        if (badRTDto) {
+//            return resRTDto;
+//        } else {
+//            return selectedRTDto;
+//        }
+        return selectedRTDto;
     }
 
 }

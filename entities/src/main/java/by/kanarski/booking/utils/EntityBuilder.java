@@ -95,6 +95,7 @@ public class EntityBuilder {
         hotel.setHotelId(hotelId);
         hotel.setHotelLocation(location);
         hotel.setHotelName(hotelName);
+        hotel.setHotelStatus(FieldValue.STATUS_ACTIVE);
         return hotel;
     }
 

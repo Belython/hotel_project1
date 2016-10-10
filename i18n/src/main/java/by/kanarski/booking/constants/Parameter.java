@@ -107,7 +107,10 @@ public class Parameter {
     public static final String FIELD_VALUES_MAP = "fieldValuesMap";
     public static final String STATUS_LIST = "statusList";
     public static final String DATA_MAP = "dataMap";
+    public static final String ENTITY = "entity";
     public static final String ENTITY_MAP = "entityMap";
+    public static final String ENTITY_DTO_LIST = "entityDtoList";
+    public static final String FORM_NAME = "formName";
 
     //Sort parameters
 

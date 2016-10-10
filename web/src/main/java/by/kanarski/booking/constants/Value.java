@@ -29,6 +29,9 @@ public class Value {
 
     public static final String ROOM_REDACTOR = "roomRedactor";
 
+    public static final String NEW_ENTITY_FORM = "newEntityForm";
+    public static final String ALTER_ENTITY_FORM = "alterEntityForm";
+
 
 
 }

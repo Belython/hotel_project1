@@ -35,6 +35,11 @@ public class Filler {
                     }
                     case ContentType.MAP: {
                         fillMap(contentName, keyList, bundle, request);
+                        break;
+                    }
+                    case ContentType.LIST: {
+                        fillList(contentName, keyList, bundle, request);
+                        break;
                     }
                 }
             }
@@ -61,5 +66,14 @@ public class Filler {
             map.put(attributeName, text);
         }
         request.setAttribute(contentName, map);
+    }
+
+    private void fillList(String contentName, List<String> keyList, ResourceBundle bundle, HttpServletRequest request) {
+        List<String> list = new ArrayList<>();
+        for (String key : keyList) {
+            String text = bundle.getString(key);
+            list.add(text);
+        }
+        request.setAttribute(contentName, list);
     }
 }

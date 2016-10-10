@@ -17,8 +17,12 @@ public class ContentType {
     private static final List<String> MAP_CONTENT = Arrays.asList(
             ContentName.LOCALE_MAP,
             ContentName.CURRENCY_MAP
+//            ContentName.ENTITY_FIELD_MAP
+
     );
-    private static final List<String> LIST_CONTENT = Arrays.asList();
+    private static final List<String> LIST_CONTENT = Arrays.asList(
+            ContentName.COLUMN_NAME_LIST
+    );
 
 
     private ContentType() {
