@@ -27,7 +27,7 @@ public class SecurityFilter implements Filter {
                     chain.doFilter(request, response);
                 } else if (commandType == CommandType.GOTOREGISTRATION) {
                     chain.doFilter(request, response);
-                } else if (commandType == CommandType.REGISTRATION) {
+                } else if (commandType == CommandType.REGISTER) {
                     chain.doFilter(request, response);
                 } else {
                     String page = PagePath.INDEX_PAGE_PATH;

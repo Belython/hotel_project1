@@ -10,7 +10,7 @@
 <body>
 <%@include file="header/header.jsp"%>
 <form name="registrationForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="registration"/>
+    <input type="hidden" name="command" value="register"/>
     <p>${registration_enterYourData}:</p>
     <br/>
     <table>

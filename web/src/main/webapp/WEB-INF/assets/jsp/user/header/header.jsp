@@ -4,6 +4,7 @@
 
 <div id="header">
     <a href="controller?command=goToMain">${header_goToMain}</a>
+    <p class="message">${operationMessage}</p>
     <div id="uesrForm">
         <ul class="userCenterNav">
             <li class="userCenterLanguage"></li>
@@ -85,6 +86,5 @@
             <input type="submit" value="${header_submit}">
         </form>
     </div>
-    ${operationMessage}
 </div>
 

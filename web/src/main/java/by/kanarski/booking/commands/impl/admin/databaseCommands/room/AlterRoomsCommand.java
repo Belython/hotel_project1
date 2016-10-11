@@ -56,7 +56,6 @@ public class AlterRoomsCommand extends AbstractCommand {
             if (RequestParser.isAjaxRequest(request)) {
                 servletAction = ServletAction.NO_ACTION;
                 writeResponse(response, responseText);
-//                page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
             } else {
                 servletAction = ServletAction.FORWARD_PAGE;
                 request.setAttribute(Parameter.OPERATION_MESSAGE, responseText);

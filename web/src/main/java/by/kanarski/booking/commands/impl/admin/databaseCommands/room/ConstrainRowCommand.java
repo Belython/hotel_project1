@@ -8,7 +8,7 @@ import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.requestHandler.ServletAction;
-import by.kanarski.booking.utils.Constrain;
+import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +32,8 @@ public class ConstrainRowCommand extends AbstractCommand{
         List<Hotel> hotelList = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
         Map<String, Object> dataMap = new LinkedHashMap<>();
         dataMap.put(Parameter.ROOM_ID, new HashSet<>());
-        HotelDto newHotelDto = Constrain.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
-        RoomTypeDto newRoomTypeDto = Constrain.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
+        HotelDto newHotelDto = ConstrainUtil.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
+        RoomTypeDto newRoomTypeDto = ConstrainUtil.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
         roomDto.setHotelDto(newHotelDto);
         roomDto.setRoomTypeDto(newRoomTypeDto);
         dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());

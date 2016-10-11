@@ -1,4 +1,4 @@
-<project name="tablesorter" default="default" basedir=".">
+<project name="tablesorter" default="default" basedir="">
 
     <!-- SETUP -->
 	<property description="Files for parsing etc." name="BUILD_DIR" value="build" />

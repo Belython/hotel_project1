@@ -14,7 +14,7 @@
 <%@include file="header/header.jsp"%>
 
 <form name="selectHotelForm" method="POST" action="controller">
-    <input type="hidden" name="command" value="selectRoom"/>
+    <input type="hidden" name="command" value="goToSelectRooms"/>
 
     <table class="hotelList" border="2px">
         <thead>
@@ -27,17 +27,13 @@
         </thead>
         <tbody>
         <c:forEach var="hotel" items="${hotelDtoList}">
-            <%--<input type="hidden" name="hotelId" value="${hotel.hotelId}">--%>
-            <c:set var="hotelLocation" value="${hotel.hotelLocation}"/>
             <tr>
-                <td>${hotelLocation.country}</td>
-                <td>${hotelLocation.city}</td>
+                <td>${hotel.hotelCountry}</td>
+                <td>${hotel.hotelCity}</td>
                 <td>${hotel.hotelName}</td>
                 <td>${hotel.roomsAvailable}</td>
                 <td>
-                    <%--<input class="selectHotelBtn" type="button" name="hotelId" value="${hotel.hotelId}">${selectHotel_submitHotel}</input>--%>
-                    <%--<a href="controller?command=refuseBill&billId=${bill.billId}">${account_refuseBill}</a>--%>
-                    <a href="controller?command=selectRoom&hotelId=${hotel.hotelId}">${selectHotel_submitHotel}</a>
+                    <a href="controller?command=goToSelectRooms&hotelId=${hotel.hotelId}">${selectHotel_submitHotel}</a>
                 </td>
             </tr>
         </c:forEach>

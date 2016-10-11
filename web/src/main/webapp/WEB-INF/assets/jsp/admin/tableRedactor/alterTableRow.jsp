@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <tr>
+    <td></td>
     <c:set var="fieldSet" value="${dataMap.keySet()}"/>
     <c:forEach var="field" items="${fieldSet}">
         <c:set var="data" value="${dataMap.get(field)}"/>

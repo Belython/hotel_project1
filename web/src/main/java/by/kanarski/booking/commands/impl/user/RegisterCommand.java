@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class RegistrationCommand extends AbstractCommand {
+public class RegisterCommand extends AbstractCommand {
     private User user;
 
     @Override

@@ -238,3 +238,7 @@ fieldset {
     float: left;
     display: block;
 }
+
+.message {
+    color: red;
+}

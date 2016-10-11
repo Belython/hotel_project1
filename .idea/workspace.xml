@@ -11,34 +11,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e110ccad-4aba-4360-82d5-c851003833f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_Server.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_Server.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/tableRedactor.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/AlterHotelsCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/GetHotelsCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/hotel/SortHotelsTableCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/hotelsList.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/jquery-latest.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/jquery.metadata.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/jquery.tablesorter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/jquery.tablesorter.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/testfiles/json.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/GoToRoomsRedactor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegistrationCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegisterCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectHotelCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectRoomCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectRoomsCommand.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constrain.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ConstrainUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRoom.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRooms.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/css/tcal/tcal.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/cal.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/cal.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/next_mon.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/next_mon.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/next_year.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/next_year.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/no_cal.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/no_cal.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/prev_mon.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/prev_mon.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/img/tcal/prev_year.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/img/prev_year.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/jquery-latest.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/jquery-latest.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/jquery.metadata.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/jquery.metadata.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/jquery.tablesorter.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/jquery.tablesorter.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/jquery.tablesorter.min.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/jquery.tablesorter.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/addons/pager/jquery.tablesorter.pager.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/addons/pager/jquery.tablesorter.pager.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/addons/pager/jquery.tablesorter.pager.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/addons/pager/jquery.tablesorter.pager.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build.xml" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/ParseMaster.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/ParseMaster.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/jsmin.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/jsmin.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/min.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/pack.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/pack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/packer.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/packer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/build/writeFile.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/build/writeFile.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/changelog" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/changelog" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/assets/ajax-content.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/assets/ajax-content.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/css/jq.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/css/jq.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-ajax.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-ajax.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-empty-table.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-empty-table.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-extending-defaults.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-extending-defaults.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-meta-headers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-meta-headers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-meta-parsers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-meta-parsers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-meta-sort-list.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-meta-sort-list.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-debug.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-debug.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-digits.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-digits.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-sort-force.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-sort-force.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-sort-key.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-sort-key.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-sort-list.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-sort-list.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-sort-order.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-sort-order.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-option-text-extraction.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-option-text-extraction.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-options-headers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-options-headers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-pager.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-pager.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-parsers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-parsers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-trigger-sort.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-trigger-sort.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-triggers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-triggers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-update-cell.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-update-cell.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/example-widgets.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/example-widgets.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/img/external.png" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/img/external.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/index.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/js/docs.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/js/docs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/docs/js/examples.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/docs/js/examples.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/assets/ajax-content.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/assets/ajax-content.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/cell.metadata.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/cell.metadata.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/checkbox.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/checkbox.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/colspan.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/colspan.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/demo.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/demo.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/index.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/large.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/large.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/lockedOrder.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/lockedOrder.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/metadata.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/metadata.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/multiple-headers.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/multiple-headers.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/tests/pager.html" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/tests/pager.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/blue/asc.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/blue/asc.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/blue/bg.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/blue/bg.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/blue/blue.zip" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/blue/blue.zip" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/blue/desc.gif" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/blue/desc.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/blue/style.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/blue/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/green/asc.png" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/green/asc.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/green/bg.png" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/green/bg.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/green/desc.png" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/green/desc.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/green/green.zip" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/green/green.zip" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tablesorter/tablesorter/themes/green/style.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/tablesorter/tablesorter/themes/green/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tcal/tcal_en.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal_en.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tcal/tcal_ru.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal_ru.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/ContentName.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/ContentName.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/PageTextContentKeys.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/PageTextContentKeys.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/ContentType.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/ContentType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/SecurityFilter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/SecurityFilter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties" afterPath="$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/registration.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/registration.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/css/style.css" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" afterPath="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constraint.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constrain.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/tableRow.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp" />
     </list>
     <ignored path="hotel_project-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,63 +164,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RequestHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="roomsRedactor.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/controllers/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RequestParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlterRoomsCommand.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="273">
+              <caret line="162" column="20" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -143,46 +177,106 @@
       <file leaf-file-name="RoomServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1015">
-              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+            <state relative-caret-position="395">
+              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoomDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java">
+      <file leaf-file-name="MakeBillCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoToSelectHotelCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginUserCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bill.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
-                <marker date="1475964953591" expanded="true" signature="526:664" ph="INSERT INTO ROOMS... " />
-                <marker date="1475964953591" expanded="true" signature="711:1002" ph="SELECT R.*, ROOMS" />
-                <marker date="1475964953591" expanded="true" signature="1059:1474" ph="SELECT R.*, ROOMS" />
-                <marker date="1475964953591" expanded="true" signature="1527:1862" ph="SELECT R.*, ROOMS" />
-                <marker date="1475964953591" expanded="true" signature="2408:2542" ph="UPDATE ROOMS... " />
-                <marker date="1475964953591" expanded="true" signature="3029:3283" ph="SELECT R.*, ROOMS" />
-                <marker date="1475964953591" expanded="true" signature="3333:3384" ph="UPDATE ROOMS... " />
+                <element signature="imports" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#486#487#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#686#687#0" expanded="true" />
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#763#764#0" expanded="true" />
+                <element signature="e#792#793#0" expanded="true" />
+                <element signature="e#834#835#0" expanded="true" />
+                <element signature="e#870#871#0" expanded="true" />
+                <element signature="e#906#907#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
+                <element signature="e#1042#1043#0" expanded="true" />
+                <element signature="e#1078#1079#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
+                <element signature="e#1164#1165#0" expanded="true" />
+                <element signature="e#1210#1211#0" expanded="true" />
+                <element signature="e#1247#1248#0" expanded="true" />
+                <element signature="e#1282#1283#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1384#1385#0" expanded="true" />
+                <element signature="e#1429#1430#0" expanded="true" />
+                <element signature="e#1466#1467#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DtoToEntityConverter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
+      <file leaf-file-name="header.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="102">
+              <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-328">
-              <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="226" column="1" selection-start-line="226" selection-start-column="1" selection-end-line="226" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -194,13 +288,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Interface" />
         <option value="HTML File" />
         <option value="Tag Library Descriptor" />
         <option value="XML Properties File" />
         <option value="jsf" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Singleton" />
       </list>
     </option>
   </component>
@@ -227,32 +323,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js" />
-        <option value="$PROJECT_DIR$/mail/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RemindPasswordCommand.java" />
-        <option value="$PROJECT_DIR$/web/pom.xml" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constraints.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstraintTableCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomTypeDto.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/BillDto.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/RoomType.java" />
-        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/BillDao.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomTypeDao.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/CurrencyConverter.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetCurrencyCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RefuseBillCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/PayBillCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/GoToAccountCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/LocalizationFilter.java" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainTableCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/tableRow.jsp" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
@@ -261,23 +335,45 @@
         <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/ContentName.java" />
         <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/ContentType.java" />
         <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" />
-        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java" />
         <option value="$PROJECT_DIR$/web/src/main/resources/text_en_US.properties" />
-        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/PageTextContentKeys.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java" />
-        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constraint.java" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ConstrainUtil.java" />
+        <option value="$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties" />
+        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/PageTextContentKeys.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/include/tableSorter.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/include/tcal.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/tableRedactor.jsp" />
+        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/GoToRoomsRedactor.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectRoomCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToHotelRoomsCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegistrateCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/registration.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRooms.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp" />
+        <option value="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp" />
+        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/dfdf.java" />
+        <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" />
       </list>
     </option>
   </component>
@@ -285,11 +381,10 @@
     <exe-path />
     <config-path />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -613,9 +708,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -645,24 +737,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -860,6 +934,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -906,7 +1022,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tableRedactor" />
+              <option name="myItemId" value="sideBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -933,36 +1049,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1027,124 +1113,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tablesorter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1203,78 +1171,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tcal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resource Bundle 'text'" />
-              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1303,176 +1199,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="requestHandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1589,46 +1315,8 @@
               <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1671,60 +1359,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="databaseCommands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="room" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="databaseCommands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1776,174 +1410,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="factory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="entities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2009,273 +1475,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotel_project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="booking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2314,12 +1521,12 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\scripts\tcal" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\css\tcal" />
-      <recent name="E:\hotel\hotel_project1\mail\src\main\java\by\kanarski\booking\utils\properties" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\resources" />
-      <recent name="E:\hotel\hotel_project1\mail\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\WEB-INF\assets\jsp\admin\tableRedactor" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\plugins\simple-calendar" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\plugins" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\scripts\tablesorter" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\images\tcal" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="by.kanarski.booking.commands.impl.user" />
@@ -2328,12 +1535,12 @@
       <recent name="by.kanarski.booking.utils" />
       <recent name="by.kanarski.booking.dto" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\WEB-INF\assets\jsp\admin\tableRedactor" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\scripts\tablesorter" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\images\tcal" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\css" />
-      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\scripts" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\plugins" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\scripts\tcal" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\webapp\assets\css\tcal" />
+      <recent name="E:\hotel\hotel_project1\mail\src\main\java\by\kanarski\booking\utils\properties" />
+      <recent name="E:\hotel\hotel_project1\web\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat Server">
@@ -2354,26 +1561,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="web" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="SendMailSSL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="by.kanarski.booking.utils.properties.PropertiesManager" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.mail.send.SendMailSSL" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="mail" />
       <envs />
       <method />
     </configuration>
@@ -2417,14 +1604,34 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Constrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ConstrainUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="by.kanarski.booking.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.utils.Constrain" />
+      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.utils.ConstrainUtil" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="web" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="RequestParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="by.kanarski.booking.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="by.kanarski.booking.utils.RequestParser" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -3000,18 +2207,18 @@
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Unnamed" />
       <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 8.0.35" />
       <item index="3" class="java.lang.String" itemvalue="Application.CurrencyConverter" />
-      <item index="4" class="java.lang.String" itemvalue="Application.SendMailSSL" />
-      <item index="5" class="java.lang.String" itemvalue="Application.DateUtil" />
-      <item index="6" class="java.lang.String" itemvalue="Application.RoomDao" />
-      <item index="7" class="java.lang.String" itemvalue="Application.Constrain" />
+      <item index="4" class="java.lang.String" itemvalue="Application.DateUtil" />
+      <item index="5" class="java.lang.String" itemvalue="Application.RoomDao" />
+      <item index="6" class="java.lang.String" itemvalue="Application.ConstrainUtil" />
+      <item index="7" class="java.lang.String" itemvalue="Application.RequestParser" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.RoomDao" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Constrain" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CurrencyConverter" />
-        <item index="3" class="java.lang.String" itemvalue="Application.DateUtil" />
-        <item index="4" class="java.lang.String" itemvalue="Application.SendMailSSL" />
+        <item index="0" class="java.lang.String" itemvalue="Application.RequestParser" />
+        <item index="1" class="java.lang.String" itemvalue="Application.RoomDao" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ConstrainUtil" />
+        <item index="3" class="java.lang.String" itemvalue="Application.CurrencyConverter" />
+        <item index="4" class="java.lang.String" itemvalue="Application.DateUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -3153,14 +2360,12 @@
       <workItem from="1476015224466" duration="1057000" />
       <workItem from="1476016315434" duration="4627000" />
       <workItem from="1476024662753" duration="9404000" />
-      <workItem from="1476043031135" duration="13169000" />
-    </task>
-    <task id="LOCAL-00007" summary="First">
-      <created>1472926242562</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1472926242562</updated>
+      <workItem from="1476043031135" duration="13260000" />
+      <workItem from="1476076217965" duration="14177000" />
+      <workItem from="1476115755147" duration="1566000" />
+      <workItem from="1476122011782" duration="2817000" />
+      <workItem from="1476127085158" duration="6569000" />
+      <workItem from="1476164679720" duration="4547000" />
     </task>
     <task id="LOCAL-00008" summary="First">
       <created>1472995575172</created>
@@ -3498,7 +2703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1475957097570</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Рабочая версия 1.3">
+      <created>1476057685637</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1476057685638</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3534,7 +2746,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="872016000" />
+    <option name="totallyTimeSpent" value="901783000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -3547,7 +2759,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="6" side_tool="false" content_ui="tabs" />
@@ -3558,7 +2770,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3964365" sideWeight="0.5053305" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.49786323" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31403118" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3129176" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29398665" sideWeight="0.49520257" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -3570,7 +2782,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5077951" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30289534" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3964365" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3578,7 +2790,7 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3608,142 +2820,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="711" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>170</line>
-          <properties />
-          <option name="timeStamp" value="712" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>158</line>
-          <properties />
-          <option name="timeStamp" value="713" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>160</line>
-          <properties />
-          <option name="timeStamp" value="715" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>162</line>
-          <properties />
-          <option name="timeStamp" value="716" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>163</line>
-          <properties />
-          <option name="timeStamp" value="717" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>51</line>
-          <properties />
-          <option name="timeStamp" value="939" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="940" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="942" />
-        </line-breakpoint>
-        <line-breakpoint suspend="NONE" type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>41</line>
-          <properties />
-          <option name="timeStamp" value="945" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="958" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="959" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandFactory.java</url>
           <line>29</line>
           <properties />
           <option name="timeStamp" value="975" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="976" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java</url>
-          <line>220</line>
-          <properties />
-          <option name="timeStamp" value="978" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java</url>
-          <line>229</line>
-          <properties />
-          <option name="timeStamp" value="979" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="980" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="987" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java</url>
-          <line>35</line>
-          <properties />
-          <option name="timeStamp" value="988" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="989" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="990" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java</url>
-          <line>247</line>
-          <properties />
-          <option name="timeStamp" value="992" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="993" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java</url>
@@ -3757,23 +2837,35 @@
           <properties />
           <option name="timeStamp" value="997" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>217</line>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java</url>
+          <line>191</line>
           <properties />
-          <option name="timeStamp" value="998" />
+          <option name="timeStamp" value="1022" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java</url>
-          <line>219</line>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java</url>
+          <line>29</line>
           <properties />
-          <option name="timeStamp" value="999" />
+          <option name="timeStamp" value="1025" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="1026" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="1027" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1002" />
+      <option name="time" value="1029" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -3786,223 +2878,92 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/BillDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
-          <folding>
-            <marker date="1475782715828" expanded="true" signature="474:651" ph="INSERT INTO BILLS... " />
-            <marker date="1475782715828" expanded="true" signature="698:835" ph="SELECT B.*, BILLS" />
-            <marker date="1475782715828" expanded="true" signature="887:1024" ph="SELECT B.*, BILLS" />
-            <marker date="1475782715828" expanded="true" signature="1068:1277" ph="UPDATE BILLS... " />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/web/src/main/resources/text_ru_RU.properties">
+      <provider selected="true" editor-type-id="ResourceBundle">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/BillDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomTypeDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/Currency.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="96" column="19" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/CurrencyConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="97" selection-start-line="25" selection-start-column="97" selection-end-line="25" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetCurrencyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RefuseBillCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/PayBillCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="37" column="108" selection-start-line="37" selection-start-column="108" selection-end-line="37" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/GoToAccountCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/InitializationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/LocalizationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/Counter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectHotelCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SelectRoomCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/OperationMessageKeys.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/roomsRedactor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1938">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/SortRoomsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/ContentType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/ContentName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="109" column="77" selection-start-line="109" selection-start-column="77" selection-end-line="109" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/PageTextContentKeys.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="151" column="37" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="37" />
+        <state relative-caret-position="2431">
+          <caret line="144" column="6" selection-start-line="144" selection-start-column="6" selection-end-line="144" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/resources/text_en_US.properties">
-      <provider selected="true" editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/EntityParser.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/constants/FieldValue.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ConstrainUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/css/tcal/tcal.css" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tcal/tcal_en.js" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/tcal/tcal_ru.js" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal_ru.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/include/tcal.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal.js" />
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/plugins/calendar/tcal_en.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="95" column="58" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/tableRedactor.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11">
+          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -4010,60 +2971,224 @@
     <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/Value.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
+          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/constants/PagePath.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="92" selection-start-line="13" selection-start-column="92" selection-end-line="13" selection-end-column="92" />
+        <state relative-caret-position="68">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/adminMain.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/sideBar/sideBar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        <state relative-caret-position="85">
+          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
+        <state relative-caret-position="157">
+          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/Constrain.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/GoToRoomsRedactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RemindPasswordCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RefuseBillCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/PayBillCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/ChangePasswordCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectRoomsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegisterCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/registration.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
+        <state relative-caret-position="72">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/account.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="31" column="61" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
+          <folding>
+            <marker date="1476131800000" expanded="true" signature="2648:2662" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRooms.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3111">
+          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1475964954000" expanded="true" signature="526:664" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="711:1002" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="1059:1474" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="1527:1862" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="2408:2542" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="3029:3283" placeholder="..." />
+            <marker date="1475964954000" expanded="true" signature="3333:3384" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/factory/FillerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1168#1169#0" expanded="false" />
+            <element signature="e#1220#1221#0" expanded="false" />
+            <element signature="e#1254#1255#0" expanded="false" />
+            <element signature="e#1303#1304#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="162" column="20" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/scripts/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="226" column="1" selection-start-line="226" selection-start-column="1" selection-end-line="226" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/header/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
@@ -4071,125 +3196,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/ConstrainRowCommand.java">
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        <state relative-caret-position="395">
+          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/RedactRoomsCommand.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="46" column="21" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="68" />
+        <state relative-caret-position="136">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandFactory.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/factory/CommandType.java">
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/dfdf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/hfgdh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/hgfh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/jh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/controllers/Controller.java">
+    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-328">
-          <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
-          <folding>
-            <marker date="1475964953591" expanded="true" signature="526:664" ph="INSERT INTO ROOMS... " />
-            <marker date="1475964953591" expanded="true" signature="711:1002" ph="SELECT R.*, ROOMS" />
-            <marker date="1475964953591" expanded="true" signature="1059:1474" ph="SELECT R.*, ROOMS" />
-            <marker date="1475964953591" expanded="true" signature="1527:1862" ph="SELECT R.*, ROOMS" />
-            <marker date="1475964953591" expanded="true" signature="2408:2542" ph="UPDATE ROOMS... " />
-            <marker date="1475964953591" expanded="true" signature="3029:3283" ph="SELECT R.*, ROOMS" />
-            <marker date="1475964953591" expanded="true" signature="3333:3384" ph="UPDATE ROOMS... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="208" column="115" selection-start-line="208" selection-start-column="115" selection-end-line="208" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/requestHandler/RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="e#1429#1430#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1015">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/admin/roomsRedactor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/databaseCommands/room/AlterRoomsCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4248,7 +3351,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>entities</last-edited>
+          <last-edited>i18n</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -38,8 +38,8 @@ public class LoginUserCommand extends AbstractCommand {
             } else {
                 page = PagePath.INDEX_PAGE_PATH;
                 ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
-                String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
-                request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
+                String errorMessage = bundle.getString(OperationMessageKeys.WRONG_LOGIN_OR_PASSWORD);
+                request.setAttribute(Parameter.OPERATION_MESSAGE, errorMessage);
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

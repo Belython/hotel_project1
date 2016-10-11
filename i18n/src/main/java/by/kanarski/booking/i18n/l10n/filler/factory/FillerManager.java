@@ -22,7 +22,7 @@ public enum FillerManager {
     SELECTHOTEL (
         Arrays.asList(getSelectHotel(), getHeader())
     ),
-    SELECTROOM (
+    SELECTROOMS(
         Arrays.asList(getSelectRoom(), getHeader())
     ),
     ACCOUNT(

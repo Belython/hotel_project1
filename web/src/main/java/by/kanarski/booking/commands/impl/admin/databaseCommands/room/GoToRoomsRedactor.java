@@ -11,7 +11,7 @@ import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.Constrain;
+import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
-public class RedactRoomsCommand implements ICommand {
+public class GoToRoomsRedactor implements ICommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -45,13 +45,13 @@ public class RedactRoomsCommand implements ICommand {
                 for (RoomDto roomDto: roomDtoList) {
                     Map<String, Object> dataMap = new LinkedHashMap<>();
                     dataMap.put(Parameter.ROOM_ID, new HashSet<>());
-                    Constrain.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
-                    Constrain.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
+                    ConstrainUtil.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
+                    ConstrainUtil.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
                     dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
                     dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
                     entityMap.put(roomDto, dataMap);
                 }
-
+                session.setAttribute(Parameter.ALTER_TABLE, Value.ALTER_ROOMS);
                 session.setAttribute(Parameter.ENTITY_MAP, entityMap);
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
@@ -74,10 +74,5 @@ public class RedactRoomsCommand implements ICommand {
         servletAction.setPage(page);
         return servletAction;
     }
-
-//    private Map<String, Object> getColumnMap() {
-//        Map<String, Object> columnMap = new LinkedHashMap<>();
-//        columnMap.put()
-//    }
 
 }

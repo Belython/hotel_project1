@@ -93,6 +93,7 @@ public class Parameter {
 
     public static final String COMMAND = "command";
     public static final String SUB_COMMAND = "subCommand";
+    public static final String ALTER_TABLE = "alterTable";
 
     //General attributes
 

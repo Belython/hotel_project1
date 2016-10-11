@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectHotelCommand extends AbstractCommand {
+public class GoToSelectHotelCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -35,7 +35,7 @@ public class SelectHotelCommand extends AbstractCommand {
                 Hotel hotel = HotelServiceImpl.getInstance().getByHotelName(hotelName);
                 order.setHotel(hotel);
                 servletAction = ServletAction.CALL_COMMAND;
-                servletAction.setCommandName(CommandType.SELECTROOM.name());
+                servletAction.setCommandName(CommandType.GOTOSELECTROOMS.name());
             } else {
                 List<Room> availableRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
                 List<HotelDto> hotelDtoList = getHotelDtoList(availableRooms);

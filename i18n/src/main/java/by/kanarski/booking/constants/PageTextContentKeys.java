@@ -145,6 +145,7 @@ public class PageTextContentKeys {
     );
 
     public static final List<String> ROOM_COLUMN_LIST = Arrays.asList(
+            "tableRedactor.rowNumber",
             "entityField.hotelCountry",
             "entityField.hotelCity",
             "entityField.hotelName",

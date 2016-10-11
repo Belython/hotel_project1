@@ -31,23 +31,26 @@ function main() {
     }
 
     function refresh() {
-        $(".addEntityBtn").bind("click", function (event) {
-            alterEntity(event)
-        });
-        $(".removeRowBtn").bind("click", function (event) {
-            removeRow(event)
-        });
-        $(".alterEntityBtn").bind("click", function (event) {
-            alterEntity(event)
-        });
-        $(".entityForm select").bind("change", function (event) {
-            constrainRow(event)
-        });
+        setTimeout(function () {
+            $(".addEntityBtn").bind("click", function (event) {
+                alterEntity(event)
+            });
+            $(".removeRowBtn").bind("click", function (event) {
+                removeRow(event)
+            });
+            $(".alterEntityBtn").bind("click", function (event) {
+                alterEntity(event)
+            });
+            $(".entityForm select").bind("change", function (event) {
+                constrainRow(event)
+            });
+            $("#mt").trigger("update");
+        }, 1000);
     }
     
     function constrainRow(event) {
         var tableRow = getTableRow(event);
-        var some = $("button");
+        var rowNumber = tableRow.children("td").first().text();
         var form = tableRow.parents("form").first();
         var formName = form.attr("name");
         var formNameParameter = "formName=" + formName;
@@ -56,12 +59,24 @@ function main() {
         var commandParameter = "command=constrainRow";
         var url = "controller?" + commandParameter + "&" + formNameParameter + "&" + rowParameters;
         $.get(url, function (data, status) {
-            tableRow.after(data);
+            var newRow = $(data);
+            newRow.children("td").first().text(rowNumber);
+            tableRow.after(newRow);
             tableRow.remove();
         });
-        setTimeout(refresh, 1000);
+        refresh();
     }
 
+    function addRow() {
+        var tableRow = $(".newEntity tr").last();
+        var rowNumber = tableRow.children("td").first().text();
+        var newRowNumber = +rowNumber + 1;
+        var newTableRow = tableRow.clone();
+        newTableRow.children("td").first().text(newRowNumber);
+        $(".newEntity tbody").append(newTableRow);
+        refresh();
+    }
+    
     function alterEntity(event) {
         var tableRow = getTableRow(event);
         var rowInputNodes = tableRow.find("input, select");
@@ -76,12 +91,6 @@ function main() {
         });
     }
 
-    function addRow() {
-        var tableRow = $(".newEntity tr").last().clone();
-        $(".newEntity tbody").append(tableRow);
-        setTimeout(refresh, 1000);
-    }
-
     function removeRow(event) {
         var button = event.target;
         var tableRow = $(button).parents().eq(1);
@@ -92,15 +101,15 @@ function main() {
         var child = $(node).children().first();
         var childName = child.prop("tagName");
         switch (childName) {
-            case "INPUT": 
-                // alert( child.attr("value") + " input");
+            case "INPUT":
                 return child.attr("value");
-            case "SELECT": 
-                // alert(child.children().filter("[selected]").eq(0).attr("value")+ " select");
+            case "SELECT":
                 return child.children().filter("[selected]").eq(0).attr("value");
+            default:
+                return node.innerHTML;
         }
     };
     
-    $("#mt").tablesorter({textExtraction: extractor});
+    $("#mt").tablesorter({textExtraction: extractor})
 }
 $("document").ready(main);

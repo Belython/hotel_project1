@@ -6,6 +6,7 @@ import java.util.List;
 public class Bill {
 
     private long billId;
+    private long bookingDate;
     private User client;
     private int totalPersons;
     private long checkInDate;
@@ -21,6 +22,14 @@ public class Bill {
 
     public void setBillId(long billId) {
         this.billId = billId;
+    }
+
+    public long getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(long bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
     public User getClient() {
@@ -60,7 +69,12 @@ public class Bill {
     }
 
     public void setBookedRoomList(List<Room> bookedRoomList) {
+        List<Long> bookedRoomIdList = new ArrayList<>();
+        for (Room room : bookedRoomList) {
+            bookedRoomIdList.add(room.getRoomId());
+        }
         this.bookedRoomList = bookedRoomList;
+        this.bookedRoomIdList = bookedRoomIdList;
     }
 
     public List<Long> getBookedRoomIdList() {
