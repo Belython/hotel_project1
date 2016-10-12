@@ -12,6 +12,7 @@ import java.util.Map;
 public class BillDto {
 
     private long billId;
+    private String bookingDate;
     private User client;
     private int totalPersons;
     private String checkInDate;

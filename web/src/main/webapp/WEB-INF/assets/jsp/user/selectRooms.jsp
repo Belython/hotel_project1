@@ -19,6 +19,8 @@
         <thead>
         <tr>
             <th>${selectRoom_roomTypeName}</th>
+            <th>Макс. человек</th>
+            <th>Цена</th>
             <th>${selectRoom_available}</th>
             <th>${selectRoom_quantity}</th>
         </tr>
@@ -29,6 +31,8 @@
         <c:forEach var="roomType" items="${roomTypeSet}">
             <tr>
                 <td>${roomType.roomTypeName}</td>
+                <td>${roomType.maxPersons}</td>
+                <td>${roomType.pricePerNight}</td>
                 <td>${roomTypeMap.get(roomType)}</td>
                 <td>
                     <select name="${roomType.roomTypeName}">

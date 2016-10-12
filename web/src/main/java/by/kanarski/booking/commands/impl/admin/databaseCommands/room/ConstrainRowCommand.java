@@ -10,6 +10,8 @@ import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.RequestParser;
+import by.kanarski.booking.utils.field.Field;
+import by.kanarski.booking.utils.field.FieldBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,16 +32,24 @@ public class ConstrainRowCommand extends AbstractCommand{
 //        Room room = DtoToEntityConverter.convertToRoom(roomDto, locale, currency);
         List<RoomType> roomTypeList = (List<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_LIST);
         List<Hotel> hotelList = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
-        Map<String, Object> dataMap = new LinkedHashMap<>();
-        dataMap.put(Parameter.ROOM_ID, new HashSet<>());
-        HotelDto newHotelDto = ConstrainUtil.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
-        RoomTypeDto newRoomTypeDto = ConstrainUtil.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
-        roomDto.setHotelDto(newHotelDto);
-        roomDto.setRoomTypeDto(newRoomTypeDto);
-        dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
-        dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
-        request.setAttribute(Parameter.ENTITY, roomDto);
-        request.setAttribute(Parameter.DATA_MAP, dataMap);
+//        Map<String, Object> dataMap = new LinkedHashMap<>();
+
+        LinkedHashMap<String, Field> roomFields = new LinkedHashMap<>();
+        Field roomIdField = FieldBuilder.buildFreePrimitive();
+        Field<HotelDto> hotelDtoField = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
+        Field<RoomTypeDto> roomTypeDtoField = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeList, currency);
+        roomDto.setRoomHotel(hotelDtoField.getOwner());
+        roomDto.setRoomType(roomTypeDtoField.getOwner());
+        Field roomNumberField = FieldBuilder.buildFreePrimitive();
+        Field roomStatusField = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
+        roomFields.put(Parameter.ROOM_ID, roomIdField);
+        roomFields.put(Parameter.ROOM_HOTEL, hotelDtoField);
+        roomFields.put(Parameter.ROOM_TYPE, roomTypeDtoField);
+        roomFields.put(Parameter.ROOM_NUMBER, roomNumberField);
+        roomFields.put(Parameter.ROOM_STATUS, roomStatusField);
+        Field<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
+
+        request.setAttribute(Parameter.ENTITY, roomDtoEntity);
 
         String formName = RequestParser.parseFormName(request);
 

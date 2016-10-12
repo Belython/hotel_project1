@@ -1,9 +1,5 @@
 package by.kanarski.booking.dto;
 
-import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.RoomType;
-
-import java.util.Set;
 import java.util.TreeMap;
 
 public class RoomDto {
@@ -11,48 +7,25 @@ public class RoomDto {
     private long roomId;
 
     private long hotelId;
-    private String hotelName;
-    private String hotelCountry;
-    private String hotelCity;
-    private String hotelStatus;
-
-    private long roomTypeId;
-    private String roomTypeName;
-    private int maxPersons;
-    private double pricePerNight;
-    private String facilities;
-    private String roomTypeStatus;
-
+    private HotelDto roomHotel;
+    private RoomTypeDto roomType;
     private int roomNumber;
     private TreeMap<String, String> bookedDates;
     private String roomStatus;
-
 
     public RoomDto() {
 
     }
 
-    public RoomDto(long roomId, HotelDto roomHotelDto, RoomTypeDto roomTypeDto, int roomNumber,
-                   TreeMap<String, String> bookedDates, String roomStatus) {
+    public RoomDto(long roomId, long hotelId, HotelDto roomHotel, RoomTypeDto roomType,
+                   int roomNumber, TreeMap<String, String> bookedDates, String roomStatus) {
         this.roomId = roomId;
-
-        hotelId = roomHotelDto.getHotelId();
-        hotelName = roomHotelDto.getHotelName();
-        hotelCountry = roomHotelDto.getHotelCountry();
-        hotelCity = roomHotelDto.getHotelCity();
-        hotelStatus = roomHotelDto.getHotelStatus();
-
-        roomTypeId = roomTypeDto.getRoomTypeId();
-        roomTypeName = roomTypeDto.getRoomTypeName();
-        maxPersons = roomTypeDto.getMaxPersons();
-        pricePerNight = roomTypeDto.getPricePerNight();
-        facilities = roomTypeDto.getFacilities();
-        roomTypeStatus = roomTypeDto.getRoomTypeStatus();
-
+        this.hotelId = hotelId;
+        this.roomHotel = roomHotel;
+        this.roomType = roomType;
         this.roomNumber = roomNumber;
         this.bookedDates = bookedDates;
         this.roomStatus = roomStatus;
-
     }
 
     public long getRoomId() {
@@ -71,84 +44,20 @@ public class RoomDto {
         this.hotelId = hotelId;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public HotelDto getRoomHotel() {
+        return roomHotel;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+    public void setRoomHotel(HotelDto roomHotel) {
+        this.roomHotel = roomHotel;
     }
 
-    public String getHotelCountry() {
-        return hotelCountry;
+    public RoomTypeDto getRoomType() {
+        return roomType;
     }
 
-    public void setHotelCountry(String hotelCountry) {
-        this.hotelCountry = hotelCountry;
-    }
-
-    public String getHotelCity() {
-        return hotelCity;
-    }
-
-    public void setHotelCity(String hotelCity) {
-        this.hotelCity = hotelCity;
-    }
-
-    public String getHotelStatus() {
-        return hotelStatus;
-    }
-
-    public void setHotelStatus(String hotelStatus) {
-        this.hotelStatus = hotelStatus;
-    }
-
-    public long getRoomTypeId() {
-        return roomTypeId;
-    }
-
-    public void setRoomTypeId(long roomTypeId) {
-        this.roomTypeId = roomTypeId;
-    }
-
-    public String getRoomTypeName() {
-        return roomTypeName;
-    }
-
-    public void setRoomTypeName(String roomTypeName) {
-        this.roomTypeName = roomTypeName;
-    }
-
-    public int getMaxPersons() {
-        return maxPersons;
-    }
-
-    public void setMaxPersons(int maxPersons) {
-        this.maxPersons = maxPersons;
-    }
-
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setPricePerNight(double pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
-
-    public String getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
-    public String getRoomTypeStatus() {
-        return roomTypeStatus;
-    }
-
-    public void setRoomTypeStatus(String roomTypeStatus) {
-        this.roomTypeStatus = roomTypeStatus;
+    public void setRoomType(RoomTypeDto roomType) {
+        this.roomType = roomType;
     }
 
     public int getRoomNumber() {
@@ -175,34 +84,6 @@ public class RoomDto {
         this.roomStatus = roomStatus;
     }
 
-    public HotelDto getHotelDto() {
-        HotelDto hotelDto = new HotelDto(hotelId, hotelCountry, hotelCity, hotelName, hotelStatus);
-        return  hotelDto;
-    }
-
-    public void setHotelDto(HotelDto hotelDto) {
-        this.hotelId = hotelDto.getHotelId();
-        this.hotelCountry = hotelDto.getHotelCountry();
-        this.hotelCity = hotelDto.getHotelCity();
-        this.hotelName = hotelDto.getHotelName();
-        this.hotelStatus = hotelDto.getHotelStatus();
-    }
-
-    public RoomTypeDto getRoomTypeDto() {
-        RoomTypeDto roomTypeDto = new RoomTypeDto(roomTypeId, roomTypeName, maxPersons,
-                pricePerNight, facilities, roomTypeStatus);
-        return roomTypeDto;
-    }
-
-    public void setRoomTypeDto(RoomTypeDto roomTypeDto) {
-        this.roomTypeId = roomTypeDto.getRoomTypeId();
-        this.roomTypeName = roomTypeDto.getRoomTypeName();
-        this.maxPersons = roomTypeDto.getMaxPersons();
-        this.pricePerNight = roomTypeDto.getPricePerNight();
-        this.facilities = roomTypeDto.getFacilities();
-        this.roomTypeStatus = roomTypeDto.getRoomTypeStatus();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -212,17 +93,9 @@ public class RoomDto {
 
         if (roomId != roomDto.roomId) return false;
         if (hotelId != roomDto.hotelId) return false;
-        if (roomTypeId != roomDto.roomTypeId) return false;
-        if (maxPersons != roomDto.maxPersons) return false;
-        if (Double.compare(roomDto.pricePerNight, pricePerNight) != 0) return false;
         if (roomNumber != roomDto.roomNumber) return false;
-        if (!hotelName.equals(roomDto.hotelName)) return false;
-        if (!hotelCountry.equals(roomDto.hotelCountry)) return false;
-        if (!hotelCity.equals(roomDto.hotelCity)) return false;
-        if (!hotelStatus.equals(roomDto.hotelStatus)) return false;
-        if (!roomTypeName.equals(roomDto.roomTypeName)) return false;
-        if (!facilities.equals(roomDto.facilities)) return false;
-        if (!roomTypeStatus.equals(roomDto.roomTypeStatus)) return false;
+        if (!roomHotel.equals(roomDto.roomHotel)) return false;
+        if (!roomType.equals(roomDto.roomType)) return false;
         if (!bookedDates.equals(roomDto.bookedDates)) return false;
         return roomStatus.equals(roomDto.roomStatus);
 
@@ -230,21 +103,10 @@ public class RoomDto {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = (int) (roomId ^ (roomId >>> 32));
+        int result = (int) (roomId ^ (roomId >>> 32));
         result = 31 * result + (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + hotelName.hashCode();
-        result = 31 * result + hotelCountry.hashCode();
-        result = 31 * result + hotelCity.hashCode();
-        result = 31 * result + hotelStatus.hashCode();
-        result = 31 * result + (int) (roomTypeId ^ (roomTypeId >>> 32));
-        result = 31 * result + roomTypeName.hashCode();
-        result = 31 * result + maxPersons;
-        temp = Double.doubleToLongBits(pricePerNight);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + facilities.hashCode();
-        result = 31 * result + roomTypeStatus.hashCode();
+        result = 31 * result + roomHotel.hashCode();
+        result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;
         result = 31 * result + bookedDates.hashCode();
         result = 31 * result + roomStatus.hashCode();

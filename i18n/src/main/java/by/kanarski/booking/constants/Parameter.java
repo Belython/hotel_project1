@@ -41,6 +41,7 @@ public class Parameter {
 
     public static final String HOTEL = "hotel";
     public static final String HOTEL_ID = "hotelId";
+    public static final String HOTEL_LOCATION = "hotelLocatin";
     public static final String HOTEL_COUNTRY = "hotelCountry";
     public static final String HOTEL_CITY = "hotelCity";
     public static final String HOTEL_NAME = "hotelName";
@@ -61,6 +62,7 @@ public class Parameter {
 
     //RoomType parameters
 
+    public static final String ROOM_TYPE = "roomType";
     public static final String ROOM_TYPE_ID = "roomTypeId";
     public static final String ROOM_TYPE_NAME = "roomTypeName";
     public static final String ROOM_TYPE_MAX_PERSONS = "maxPersons";
@@ -93,7 +95,7 @@ public class Parameter {
 
     public static final String COMMAND = "command";
     public static final String SUB_COMMAND = "subCommand";
-    public static final String ALTER_TABLE = "alterTable";
+    public static final String ALTER_TABLE_COMMAND = "alterTable";
 
     //General attributes
 
@@ -113,14 +115,10 @@ public class Parameter {
     public static final String ENTITY_DTO_LIST = "entityDtoList";
     public static final String FORM_NAME = "formName";
 
-    //Sort parameters
-
-    public static final String SORTING_DIRECTION = "sortingDirection";
-    public static final String SORTING_OPTION = "sortingOption";
-
     //Database redactor parameters
 
     public static final String TABLE_REDACTOR_TYPE = "tableRedactorType";
+    public static final String FIELD_ORDER = "fieldOrder";
 
     //Localisation parameters
 

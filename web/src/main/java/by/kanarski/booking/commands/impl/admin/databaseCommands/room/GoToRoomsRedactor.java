@@ -2,6 +2,7 @@ package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
@@ -13,6 +14,8 @@ import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
 import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.DtoToEntityConverter;
+import by.kanarski.booking.utils.field.Field;
+import by.kanarski.booking.utils.field.FieldBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,17 +44,26 @@ public class GoToRoomsRedactor implements ICommand {
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
                 List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
 
-                Map<Object, Map<String, Object>> entityMap = new LinkedHashMap<>();
+                Map<Object, Field<RoomDto>> entityMap = new LinkedHashMap<>();
                 for (RoomDto roomDto: roomDtoList) {
-                    Map<String, Object> dataMap = new LinkedHashMap<>();
-                    dataMap.put(Parameter.ROOM_ID, new HashSet<>());
-                    ConstrainUtil.byHotel(dataMap, roomDto.getHotelDto(), hotelList);
-                    ConstrainUtil.byRoomType(dataMap, roomDto.getRoomTypeDto(), roomTypeList, currency);
-                    dataMap.put(Parameter.ROOM_NUMBER, new HashSet<>());
-                    dataMap.put(Parameter.ROOM_STATUS, FieldValue.STATUS_LIST);
-                    entityMap.put(roomDto, dataMap);
+                    LinkedHashMap<String, Field> roomFields = new LinkedHashMap<>();
+                    Field roomIdField = FieldBuilder.buildFreePrimitive();
+                    Field<HotelDto> hotelDtoField = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
+                    Field<RoomTypeDto> roomTypeDtoField = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeList, currency);
+                    roomDto.setRoomHotel(hotelDtoField.getOwner());
+                    roomDto.setRoomType(roomTypeDtoField.getOwner());
+                    Field roomNumberField = FieldBuilder.buildFreePrimitive();
+                    Field roomStatusField = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
+                    roomFields.put(Parameter.ROOM_ID, roomIdField);
+                    roomFields.put(Parameter.ROOM_HOTEL, hotelDtoField);
+                    roomFields.put(Parameter.ROOM_TYPE, roomTypeDtoField);
+                    roomFields.put(Parameter.ROOM_NUMBER, roomNumberField);
+                    roomFields.put(Parameter.ROOM_STATUS, roomStatusField);
+                    Field<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
+                    entityMap.put(roomDto, roomDtoEntity);
                 }
-                session.setAttribute(Parameter.ALTER_TABLE, Value.ALTER_ROOMS);
+
+                session.setAttribute(Parameter.ALTER_TABLE_COMMAND, Value.ALTER_ROOMS);
                 session.setAttribute(Parameter.ENTITY_MAP, entityMap);
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
