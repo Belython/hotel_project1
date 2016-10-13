@@ -3,11 +3,12 @@ package by.kanarski.booking.utils.field;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Field<T> {
 
     private String fieldType;
-    private List<T> allowedValues;
+    private Iterable<T> allowedValues;
     private LinkedHashMap<String, Field> fieldMap;
     private T owner;
 
@@ -19,11 +20,11 @@ public class Field<T> {
         this.fieldType = fieldType;
     }
 
-    public List<T> getAllowedValues() {
+    public Iterable<T> getAllowedValues() {
         return allowedValues;
     }
 
-    public void setAllowedValues(List<T> allowedValues) {
+    public void setAllowedValues(Iterable<T> allowedValues) {
         this.allowedValues = allowedValues;
     }
 

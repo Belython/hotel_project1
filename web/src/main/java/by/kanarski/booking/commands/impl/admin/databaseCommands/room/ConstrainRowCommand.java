@@ -49,7 +49,7 @@ public class ConstrainRowCommand extends AbstractCommand{
         roomFields.put(Parameter.ROOM_STATUS, roomStatusField);
         Field<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
 
-        request.setAttribute(Parameter.ENTITY, roomDtoEntity);
+        request.setAttribute(Parameter.DESCRIPTOR, roomDtoEntity);
 
         String formName = RequestParser.parseFormName(request);
 

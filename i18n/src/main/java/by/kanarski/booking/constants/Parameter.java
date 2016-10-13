@@ -82,7 +82,7 @@ public class Parameter {
 
     public static final String ROOM = "room";
     public static final String ROOM_ID = "roomId";
-    public static final String ROOM_HOTEL = "hotelRoom";
+    public static final String ROOM_HOTEL = "roomHotel";
     public static final String ROOM_ROOM_TYPE = "roomType";
     public static final String ROOM_NUMBER = "roomNumber";
     public static final String ROOM_BOOKING_START_DATE = "bookingStartDate";
@@ -115,6 +115,7 @@ public class Parameter {
     public static final String ENTITY_LIST = "entityList";
     public static final String ENTITY_DTO_LIST = "entityDtoList";
     public static final String FORM_NAME = "formName";
+    public static final String DESCRIPTOR = "descriptor";
 
     //Database redactor parameters
 

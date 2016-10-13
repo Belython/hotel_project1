@@ -11,7 +11,7 @@
     <title>${tableRedactor_roomsRedactor}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/admin.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/tablesorter/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/tablesorter/tablesorter/jquery.tablesorter.min.js"></script>
 </head>
     <body>
         <%@include file="../user/header/header.jsp"%>

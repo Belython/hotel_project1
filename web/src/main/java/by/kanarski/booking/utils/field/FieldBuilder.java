@@ -2,10 +2,7 @@ package by.kanarski.booking.utils.field;
 
 import by.kanarski.booking.entities.Hotel;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FieldBuilder {
 
@@ -14,7 +11,7 @@ public class FieldBuilder {
     public static final String ITERABLE = "iterable";
     public static final String ENTITY = "entity";
 
-    public static <T> Field<T> buildPrimitive(List<T> allowedValues) {
+    public static <T> Field<T> buildPrimitive(Iterable<T> allowedValues) {
         Field<T> field = new Field<>();
         field.setFieldType(PRIMITIVE);
         field.setAllowedValues(allowedValues);

@@ -16,7 +16,7 @@
         <c:otherwise>
             <c:if test="${fieldType.equals('freePrimitive')}">
                 <td>
-                    <input type="text" name="${fieldName}" value="${entity[fieldName]}">
+                    <input type="text" name="${fieldName}">
                 </td>
             </c:if>
             <c:if test="${fieldType.equals('primitive')}">

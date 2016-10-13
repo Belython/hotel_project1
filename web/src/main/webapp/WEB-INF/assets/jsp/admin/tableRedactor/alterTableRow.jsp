@@ -3,38 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <tr>
-    <td></td>
-    <c:set var="fieldSet" value="${dataMap.keySet()}"/>
-    <c:forEach var="field" items="${fieldSet}">
-        <c:set var="data" value="${dataMap.get(field)}"/>
-        <c:choose>
-            <c:when test="${field.contains('Id')}">
-                <input type="hidden" name="${field}" value="${entity[field]}">
-            </c:when>
-            <c:otherwise>
-                <td>
-                    <c:if test="${data.size() eq 0}">
-                        <c:if test="${not field.contains('Id')}">
-                            <input type="text" name="${field}" value="${entity[field]}">
-                        </c:if>
-                    </c:if>
-                    <c:if test="${data.size() > 0}">
-                        <select name="${field}">
-                            <c:forEach var="fieldValue" items="${dataMap.get(field)}">
-                                <c:choose>
-                                    <c:when test="${fieldValue eq entity[field]}">
-                                        <option value="${fieldValue}" selected="selected">${fieldValue}</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="${fieldValue}">${fieldValue}</option>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </select>
-                    </c:if>
-                </td>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-    <td><button class="alterEntityBtn" type="button">${tableRedactor_alter}</button></td>
+    <td>${loop.index + 1}</td>
+    <c:set var="descriptor" value="${descriptor}" scope="request"/>
+    <jsp:include page="import.jsp" flush="true"/>
+    <td>
+        <button class="alterEntityBtn" type="button">${tableRedactor_alter}</button>
+    </td>
 </tr>

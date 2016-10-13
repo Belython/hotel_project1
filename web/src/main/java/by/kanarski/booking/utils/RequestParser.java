@@ -55,8 +55,8 @@ public class RequestParser {
         if (request.getParameter(Parameter.HOTEL_ID) != null) {
             hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
         }
-        String country = request.getParameter(Parameter.HOTEL_COUNTRY);
-        String city = request.getParameter(Parameter.HOTEL_CITY);
+        String country = request.getParameter(Parameter.LOCATION_COUNTRY);
+        String city = request.getParameter(Parameter.LOCATION_CITY);
         String hotelName = request.getParameter(Parameter.HOTEL_NAME);
         Hotel hotel = EntityBuilder.buildHotel(hotelId, country, city, hotelName);
         return hotel;

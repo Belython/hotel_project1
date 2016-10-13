@@ -24,9 +24,9 @@ public class ConstrainUtil {
         String selectedHotelCity = selectedHotelDto.getHotelLocation().getCity();
         String selectedHotelName = selectedHotelDto.getHotelName();
 
-        List<String> countryList = new ArrayList<>();
-        List<String> cityList = new ArrayList<>();
-        List<String> hotelNameList = new ArrayList<>();
+        Set<String> countrySet = new HashSet<>();
+        Set<String> citySet = new HashSet<>();
+        Set<String> hotelNameSet = new HashSet<>();
         HotelDto resHotelDto = null;
 
         for (HotelDto hotelDto : hotelDtoList) {
@@ -35,39 +35,39 @@ public class ConstrainUtil {
             String hotelCity = hotelDto.getHotelLocation().getCity();
             String hotelName = hotelDto.getHotelName();
             if (hotelCountry.equals(selectedHotelCountry)) {
-                cityList.add(hotelCity);
+                citySet.add(hotelCity);
                 if (hotelCity.equals(selectedHotelCity)) {
-                    if (hotelNameList.isEmpty()) {
+                    if (hotelNameSet.isEmpty()) {
                         resHotelDto = hotelDto;
                     }
                     if (hotelName.equals(selectedHotelName)) {
                         selectedHotelDto.setHotelId(hotelId);
                     }
-                    hotelNameList.add(hotelName);
+                    hotelNameSet.add(hotelName);
                 }
             }
-            countryList.add(hotelCountry);
+            countrySet.add(hotelCountry);
         }
-        if (!(hotelNameList.contains(selectedHotelName)) && resHotelDto != null) {
+        if (!(hotelNameSet.contains(selectedHotelName)) && resHotelDto != null) {
             selectedHotelDto.setHotelName(resHotelDto.getHotelName());
             selectedHotelDto.setHotelId(resHotelDto.getHotelId());
         }
 
         LinkedHashMap<String, Field> locationFields = new LinkedHashMap<>();
-        locationFields.put(Parameter.LOCATION_COUNTRY, FieldBuilder.buildPrimitive(countryList));
-        locationFields.put(Parameter.LOCATION_COUNTRY, FieldBuilder.buildPrimitive(cityList));
+        locationFields.put(Parameter.LOCATION_COUNTRY, FieldBuilder.buildPrimitive(countrySet));
+        locationFields.put(Parameter.LOCATION_CITY, FieldBuilder.buildPrimitive(citySet));
 
         Field hotelIdPrimitive = FieldBuilder.buildFreePrimitive();
         Field<Location> locationEntity = FieldBuilder.buildEntity(locationFields, selectedHotelDto.getHotelLocation());
-        Field hotelNamePrimitive = FieldBuilder.buildPrimitive(hotelNameList);
+        Field hotelNamePrimitive = FieldBuilder.buildPrimitive(hotelNameSet);
         LinkedHashMap<String, Field> hotelFields = new LinkedHashMap<>();
         hotelFields.put(Parameter.HOTEL_ID, hotelIdPrimitive);
         hotelFields.put(Parameter.HOTEL_LOCATION, locationEntity);
         hotelFields.put(Parameter.HOTEL_NAME, hotelNamePrimitive);
         Field<HotelDto> hotelEntity = FieldBuilder.buildEntity(hotelFields, selectedHotelDto);
 
-        if (hotelNameList.isEmpty()) {
-            String hotelCity = cityList.iterator().next();
+        if (hotelNameSet.isEmpty()) {
+            String hotelCity = citySet.iterator().next();
             Location location = selectedHotelDto.getHotelLocation();
             location.setCity(hotelCity);
             selectedHotelDto.setHotelLocation(location);
@@ -85,10 +85,10 @@ public class ConstrainUtil {
         double selectedRTPricePerNight = selectedRTDto.getPricePerNight();
         String selectedFacilities = selectedRTDto.getFacilities();
 
-        List<String> rTNameList = new ArrayList<>();
-        List<Integer> maxPersonsList = new ArrayList<>();
-        List<Double> pricePerNightList = new ArrayList<>();
-        List<String> facilitiesList = new ArrayList<>();
+        Set<String> rTNameSet = new HashSet<>();
+        Set<Integer> maxPersonsSet = new HashSet<>();
+        Set<Double> pricePerNightSet = new HashSet<>();
+        Set<String> facilitiesSet = new HashSet<>();
         RoomTypeDto resRTDto = null;
 
         for (RoomTypeDto rTDto : rTDtoList) {
@@ -98,33 +98,33 @@ public class ConstrainUtil {
             double pricePerNight = rTDto.getPricePerNight();
             String facilities = rTDto.getFacilities();
             if (roomTypeName.equals(selectedRTName)) {
-                maxPersonsList.add(maxPersons);
+                maxPersonsSet.add(maxPersons);
                 if (maxPersons == selectedRTmaxPersons) {
-                    pricePerNightList.add(pricePerNight);
+                    pricePerNightSet.add(pricePerNight);
                     if (pricePerNight == selectedRTPricePerNight) {
-                        if (facilitiesList.isEmpty()) {
+                        if (facilitiesSet.isEmpty()) {
                             resRTDto = rTDto;
                         }
                         if (facilities.equals(selectedFacilities)) {
                             selectedRTDto.setRoomTypeId(roomTypeId);
                         }
-                        facilitiesList.add(facilities);
+                        facilitiesSet.add(facilities);
                     }
                 }
             }
-            rTNameList.add(roomTypeName);
+            rTNameSet.add(roomTypeName);
         }
-        if ((!facilitiesList.contains(selectedFacilities)) && (resRTDto != null)) {
+        if ((!facilitiesSet.contains(selectedFacilities)) && (resRTDto != null)) {
             selectedRTDto.setFacilities(resRTDto.getFacilities());
             selectedRTDto.setRoomTypeId(resRTDto.getRoomTypeId());
         }
 
         LinkedHashMap<String, Field> roomTypeFields = new LinkedHashMap<>();
         Field<Long> roomTypeIdField = FieldBuilder.buildFreePrimitive();
-        Field<String> roomTypeNameField = FieldBuilder.buildPrimitive(rTNameList);
-        Field<Integer> maxPersonsField = FieldBuilder.buildPrimitive(maxPersonsList);
-        Field<Double> pricePerNightField = FieldBuilder.buildPrimitive(pricePerNightList);
-        Field<String> facilitiesField = FieldBuilder.buildPrimitive(facilitiesList);
+        Field<String> roomTypeNameField = FieldBuilder.buildPrimitive(rTNameSet);
+        Field<Integer> maxPersonsField = FieldBuilder.buildPrimitive(maxPersonsSet);
+        Field<Double> pricePerNightField = FieldBuilder.buildPrimitive(pricePerNightSet);
+        Field<String> facilitiesField = FieldBuilder.buildPrimitive(facilitiesSet);
         roomTypeFields.put(Parameter.ROOM_TYPE_ID, roomTypeIdField);
         roomTypeFields.put(Parameter.ROOM_TYPE_NAME, roomTypeNameField);
         roomTypeFields.put(Parameter.ROOM_TYPE_MAX_PERSONS, maxPersonsField);
@@ -132,16 +132,16 @@ public class ConstrainUtil {
         roomTypeFields.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesField);
         Field<RoomTypeDto> roomTypeEntity = FieldBuilder.buildEntity(roomTypeFields, selectedRTDto);
 
-        if (pricePerNightList.isEmpty()) {
-            int maxPersons = maxPersonsList.iterator().next();
+        if (pricePerNightSet.isEmpty()) {
+            int maxPersons = maxPersonsSet.iterator().next();
             selectedRTDto.setMaxPersons(maxPersons);
             roomTypeEntity = byRoomType(selectedRTDto, rTList, currency);
         }
         roomTypeFields = roomTypeEntity.getFieldMap();
         facilitiesField = roomTypeFields.get(Parameter.ROOM_TYPE_FACILITIES);
-        facilitiesList = facilitiesField.getAllowedValues();
-        if (facilitiesList.isEmpty()) {
-            double pricePerNight = pricePerNightList.iterator().next();
+        facilitiesSet = (Set<String>) facilitiesField.getAllowedValues();
+        if (facilitiesSet.isEmpty()) {
+            double pricePerNight = pricePerNightSet.iterator().next();
             selectedRTDto.setPricePerNight(pricePerNight);
             roomTypeEntity = byRoomType(selectedRTDto, rTList, currency);
         }
