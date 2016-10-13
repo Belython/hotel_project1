@@ -44,7 +44,8 @@ public class GoToRoomsRedactor implements ICommand {
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
                 List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
 
-                Map<Object, Field<RoomDto>> entityMap = new LinkedHashMap<>();
+//                Map<Object, Field<RoomDto>> entityMap = new LinkedHashMap<>();
+                List<Field<RoomDto>> entityList = new ArrayList<>();
                 for (RoomDto roomDto: roomDtoList) {
                     LinkedHashMap<String, Field> roomFields = new LinkedHashMap<>();
                     Field roomIdField = FieldBuilder.buildFreePrimitive();
@@ -60,11 +61,12 @@ public class GoToRoomsRedactor implements ICommand {
                     roomFields.put(Parameter.ROOM_NUMBER, roomNumberField);
                     roomFields.put(Parameter.ROOM_STATUS, roomStatusField);
                     Field<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
-                    entityMap.put(roomDto, roomDtoEntity);
+//                    entityMap.put(roomDto, roomDtoEntity);
+                    entityList.add(roomDtoEntity);
                 }
 
                 session.setAttribute(Parameter.ALTER_TABLE_COMMAND, Value.ALTER_ROOMS);
-                session.setAttribute(Parameter.ENTITY_MAP, entityMap);
+                session.setAttribute(Parameter.ENTITY_LIST, entityList);
                 session.setAttribute(Parameter.ROOM_LIST, roomList);
                 session.setAttribute(Parameter.HOTEL_LIST, hotelList);
                 session.setAttribute(Parameter.ROOM_TYPE_LIST, roomTypeList);

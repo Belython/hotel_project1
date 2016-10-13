@@ -3,6 +3,7 @@ package by.kanarski.booking.utils.field;
 import by.kanarski.booking.entities.Hotel;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,8 @@ public class FieldBuilder {
     public static final String ITERABLE = "iterable";
     public static final String ENTITY = "entity";
 
-    public static Field buildPrimitive(List<?> allowedValues) {
-        Field field = new Field();
+    public static <T> Field<T> buildPrimitive(List<T> allowedValues) {
+        Field<T> field = new Field<>();
         field.setFieldType(PRIMITIVE);
         field.setAllowedValues(allowedValues);
         return field;
@@ -33,7 +34,7 @@ public class FieldBuilder {
         return field;
     }
 
-    public static <T> Field<T> buildEntity(Map<String, Field> fieldMap, T owner) {
+    public static <T> Field<T> buildEntity(LinkedHashMap<String, Field> fieldMap, T owner) {
         Field<T> field = new Field<>();
         field.setFieldType(ENTITY);
         field.setFieldMap(fieldMap);

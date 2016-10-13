@@ -6,7 +6,6 @@ public class RoomDto {
 
     private long roomId;
 
-    private long hotelId;
     private HotelDto roomHotel;
     private RoomTypeDto roomType;
     private int roomNumber;
@@ -17,10 +16,9 @@ public class RoomDto {
 
     }
 
-    public RoomDto(long roomId, long hotelId, HotelDto roomHotel, RoomTypeDto roomType,
+    public RoomDto(long roomId, HotelDto roomHotel, RoomTypeDto roomType,
                    int roomNumber, TreeMap<String, String> bookedDates, String roomStatus) {
         this.roomId = roomId;
-        this.hotelId = hotelId;
         this.roomHotel = roomHotel;
         this.roomType = roomType;
         this.roomNumber = roomNumber;
@@ -34,14 +32,6 @@ public class RoomDto {
 
     public void setRoomId(long roomId) {
         this.roomId = roomId;
-    }
-
-    public long getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(long hotelId) {
-        this.hotelId = hotelId;
     }
 
     public HotelDto getRoomHotel() {
@@ -92,7 +82,6 @@ public class RoomDto {
         RoomDto roomDto = (RoomDto) o;
 
         if (roomId != roomDto.roomId) return false;
-        if (hotelId != roomDto.hotelId) return false;
         if (roomNumber != roomDto.roomNumber) return false;
         if (!roomHotel.equals(roomDto.roomHotel)) return false;
         if (!roomType.equals(roomDto.roomType)) return false;
@@ -104,7 +93,6 @@ public class RoomDto {
     @Override
     public int hashCode() {
         int result = (int) (roomId ^ (roomId >>> 32));
-        result = 31 * result + (int) (hotelId ^ (hotelId >>> 32));
         result = 31 * result + roomHotel.hashCode();
         result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;

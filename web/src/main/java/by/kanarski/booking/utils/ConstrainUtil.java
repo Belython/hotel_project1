@@ -120,11 +120,11 @@ public class ConstrainUtil {
         }
 
         LinkedHashMap<String, Field> roomTypeFields = new LinkedHashMap<>();
-        Field roomTypeIdField = FieldBuilder.buildFreePrimitive();
-        Field roomTypeNameField = FieldBuilder.buildPrimitive(rTNameList);
-        Field maxPersonsField = FieldBuilder.buildPrimitive(maxPersonsList);
-        Field pricePerNightField = FieldBuilder.buildPrimitive(pricePerNightList);
-        Field facilitiesField = FieldBuilder.buildPrimitive(facilitiesList);
+        Field<Long> roomTypeIdField = FieldBuilder.buildFreePrimitive();
+        Field<String> roomTypeNameField = FieldBuilder.buildPrimitive(rTNameList);
+        Field<Integer> maxPersonsField = FieldBuilder.buildPrimitive(maxPersonsList);
+        Field<Double> pricePerNightField = FieldBuilder.buildPrimitive(pricePerNightList);
+        Field<String> facilitiesField = FieldBuilder.buildPrimitive(facilitiesList);
         roomTypeFields.put(Parameter.ROOM_TYPE_ID, roomTypeIdField);
         roomTypeFields.put(Parameter.ROOM_TYPE_NAME, roomTypeNameField);
         roomTypeFields.put(Parameter.ROOM_TYPE_MAX_PERSONS, maxPersonsField);
@@ -132,13 +132,14 @@ public class ConstrainUtil {
         roomTypeFields.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesField);
         Field<RoomTypeDto> roomTypeEntity = FieldBuilder.buildEntity(roomTypeFields, selectedRTDto);
 
-
         if (pricePerNightList.isEmpty()) {
             int maxPersons = maxPersonsList.iterator().next();
             selectedRTDto.setMaxPersons(maxPersons);
             roomTypeEntity = byRoomType(selectedRTDto, rTList, currency);
         }
-        facilitiesList = (List<String>) roomTypeFields.get(Parameter.ROOM_TYPE_FACILITIES);
+        roomTypeFields = roomTypeEntity.getFieldMap();
+        facilitiesField = roomTypeFields.get(Parameter.ROOM_TYPE_FACILITIES);
+        facilitiesList = facilitiesField.getAllowedValues();
         if (facilitiesList.isEmpty()) {
             double pricePerNight = pricePerNightList.iterator().next();
             selectedRTDto.setPricePerNight(pricePerNight);

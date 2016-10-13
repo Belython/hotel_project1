@@ -34,8 +34,8 @@ public class RoomDtoT {
 
         hotelId = roomHotelDto.getHotelId();
         hotelName = roomHotelDto.getHotelName();
-        hotelCountry = roomHotelDto.getHotelCountry();
-        hotelCity = roomHotelDto.getHotelCity();
+//        hotelCountry = roomHotelDto.getHotelCountry();
+//        hotelCity = roomHotelDto.getHotelCity();
         hotelStatus = roomHotelDto.getHotelStatus();
 
         roomTypeId = roomTypeDto.getRoomTypeId();
@@ -178,8 +178,8 @@ public class RoomDtoT {
 
     public void setHotelDto(HotelDto hotelDto) {
         this.hotelId = hotelDto.getHotelId();
-        this.hotelCountry = hotelDto.getHotelCountry();
-        this.hotelCity = hotelDto.getHotelCity();
+//        this.hotelCountry = hotelDto.getHotelCountry();
+//        this.hotelCity = hotelDto.getHotelCity();
         this.hotelName = hotelDto.getHotelName();
         this.hotelStatus = hotelDto.getHotelStatus();
     }

@@ -1,13 +1,14 @@
 package by.kanarski.booking.utils.field;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Field<T> {
 
     private String fieldType;
-    private List<?> allowedValues;
-    private Map<String, Field> fieldMap;
+    private List<T> allowedValues;
+    private LinkedHashMap<String, Field> fieldMap;
     private T owner;
 
     public String getFieldType() {
@@ -18,19 +19,19 @@ public class Field<T> {
         this.fieldType = fieldType;
     }
 
-    public List<?> getAllowedValues() {
+    public List<T> getAllowedValues() {
         return allowedValues;
     }
 
-    public void setAllowedValues(List<?> allowedValues) {
+    public void setAllowedValues(List<T> allowedValues) {
         this.allowedValues = allowedValues;
     }
 
-    public Map<String, Field> getFieldMap() {
+    public LinkedHashMap<String, Field> getFieldMap() {
         return fieldMap;
     }
 
-    public void setFieldMap(Map<String, Field> fieldMap) {
+    public void setFieldMap(LinkedHashMap<String, Field> fieldMap) {
         this.fieldMap = fieldMap;
     }
 

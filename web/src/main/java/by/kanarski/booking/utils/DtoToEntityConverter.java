@@ -12,34 +12,31 @@ import java.util.*;
 public class DtoToEntityConverter {
 
     public static Room convertToRoom(RoomDto roomDto, Locale locale, Currency currency) {
-        Room room = new Room();
         long roomId = roomDto.getRoomId();
+        Hotel roomHotel = DtoToEntityConverter.converToHotel(roomDto.getRoomHotel());
+        RoomType roomType = DtoToEntityConverter.converToRoomType(roomDto.getRoomType(), currency);
 
-        long hotelId = roomDto.getHotelId();
-        String hotelCountry = roomDto.getHotelCountry();
-        String hotelCity = roomDto.getHotelCity();
-        String hotelName = roomDto.getHotelName();
-        Hotel roomHotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName);
-
-        long roomTypeId = roomDto.getRoomTypeId();
-        String roomTypeName = roomDto.getRoomTypeName();
-        String[] facilitiesArray = roomDto.getFacilities().split(", ");
-        Set<String> facilities = new HashSet<>();
-        Collections.addAll(facilities, facilitiesArray);
-        double pricePerNight = CurrencyConverter.convertToUSD(roomDto.getPricePerNight(), currency);
-        int maxPersons = roomDto.getMaxPersons();
-        RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName,
-                maxPersons, pricePerNight, facilities);
-
+//
+//        long hotelId = roomDto.getHotelId();
+//        String hotelCountry = roomDto.getHotelCountry();
+//        String hotelCity = roomDto.getHotelCity();
+//        String hotelName = roomDto.getHotelName();
+//        Hotel roomHotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName);
+//
+//        long roomTypeId = roomDto.getRoomTypeId();
+//        String roomTypeName = roomDto.getRoomTypeName();
+//        String[] facilitiesArray = roomDto.getFacilities().split(", ");
+//        Set<String> facilities = new HashSet<>();
+//        Collections.addAll(facilities, facilitiesArray);
+//        double pricePerNight = CurrencyConverter.convertToUSD(roomDto.getPricePerNight(), currency);
+//        int maxPersons = roomDto.getMaxPersons();
+//        RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName,
+//                maxPersons, pricePerNight, facilities);
         int roomNumber = roomDto.getRoomNumber();
         TreeMap<Long, Long> boodedDates = delocalizeBookedDates(roomDto.getBookedDates(), locale);
         String roomStatus = roomDto.getRoomStatus();
-        room.setRoomId(roomId);
-        room.setRoomHotel(roomHotel);
-        room.setRoomType(roomType);
-        room.setRoomNumber(roomNumber);
-        room.setBookedDates(boodedDates);
-        room.setRoomStatus(roomStatus);
+
+        Room room = EntityBuilder.buildRoom(roomId, roomHotel, roomType, roomNumber, boodedDates, roomStatus);
         return room;
     }
 
@@ -152,13 +149,30 @@ public class DtoToEntityConverter {
         return rtDtoList;
     }
 
+    public static RoomType converToRoomType(RoomTypeDto roomTypeDto, Currency currency) {
+        long roomTypeId = roomTypeDto.getRoomTypeId();
+        String roomTypeName = roomTypeDto.getRoomTypeName();
+        int maxPersons = roomTypeDto.getMaxPersons();
+        double pricePerNight = roomTypeDto.getPricePerNight();
+        double pricePerNightUSD = CurrencyConverter.convertToUSD(pricePerNight, currency);
+        String facilities = roomTypeDto.getFacilities();
+        Set<String> facilitiesSet = new TreeSet<>();
+        Collections.addAll(facilitiesSet, facilities.split(","));
+        String roomTypeStatus = roomTypeDto.getRoomTypeStatus();
+
+        RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName, maxPersons, pricePerNightUSD,
+                facilitiesSet, roomTypeStatus);
+        return roomType;
+    }
+
     public static Hotel converToHotel(HotelDto hotelDto) {
         long hotelId = hotelDto.getHotelId();
-        String hotelCountry = hotelDto.getHotelCountry();
-        String hotelCity = hotelDto.getHotelCity();
+//        String hotelCountry = hotelDto.getHotelCountry();
+//        String hotelCity = hotelDto.getHotelCity();
+        Location hotelLocation = hotelDto.getHotelLocation();
         String hotelName = hotelDto.getHotelName();
         String hotelStatus = hotelDto.getHotelStatus();
-        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName, hotelStatus);
+        Hotel hotel = EntityBuilder.buildHotel(hotelId, hotelLocation, hotelName, hotelStatus);
         return hotel;
     }
 
