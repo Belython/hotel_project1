@@ -157,6 +157,15 @@ public class PageTextContentKeys {
             "entityField.roomStatus"
     );
 
+    public static final List<String> ROOM_TYPE_COLUMN_LIST = Arrays.asList(
+            "tableRedactor.rowNumber",
+            "entityField.roomTypeName",
+            "entityField.maxPersons",
+            "entityField.pricePerNight",
+            "entityField.facilities",
+            "entityField.roomTypeStatus"
+    );
+
     public static final List<String> TABLE_REDACTOR = Arrays.asList(
             "tableRedactor.roomsRedactor",
             "tableRedactor.alter",

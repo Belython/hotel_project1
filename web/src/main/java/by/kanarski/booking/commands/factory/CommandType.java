@@ -2,9 +2,11 @@ package by.kanarski.booking.commands.factory;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.room.AlterRoomsCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.room.ConstrainRowCommand;
-import by.kanarski.booking.commands.impl.admin.databaseCommands.room.GoToRoomsRedactor;
+import by.kanarski.booking.commands.impl.admin.database.room.AlterRoomsCommand;
+import by.kanarski.booking.commands.impl.admin.database.ConstrainRowCommand;
+import by.kanarski.booking.commands.impl.admin.database.room.GoToRoomsRedactorCommand;
+import by.kanarski.booking.commands.impl.admin.database.roomType.AlterRoomTypeCommand;
+import by.kanarski.booking.commands.impl.admin.database.roomType.GoToRoomTypeRedactorCommand;
 import by.kanarski.booking.commands.impl.client.*;
 import by.kanarski.booking.commands.impl.user.*;
 
@@ -15,7 +17,9 @@ public enum CommandType {
 
     //admin commands
     GOTOADMINPAGE,
-    GOTOROOMSREDACTOR, ALTERROOMS, CONSTRAINROW;
+    GOTOROOMSREDACTOR, ALTERROOMS,
+    GOTOROOMTYPEREDACTOR, ALTERROOMTYPE,
+    CONSTRAINROW;
 
     public ICommand getCurrentCommand() throws EnumConstantNotPresentException {
         switch (this) {
@@ -59,7 +63,7 @@ public enum CommandType {
                 return new GoToAdminPageCommand();
 
             case GOTOROOMSREDACTOR:
-                return new GoToRoomsRedactor();
+                return new GoToRoomsRedactorCommand();
 
             case ALTERROOMS:
                 return new AlterRoomsCommand();
@@ -79,6 +83,11 @@ public enum CommandType {
             case CONSTRAINROW:
                 return new ConstrainRowCommand();
 
+            case GOTOROOMTYPEREDACTOR:
+                return new GoToRoomTypeRedactorCommand();
+
+            case ALTERROOMTYPE:
+                return new AlterRoomTypeCommand();
 
             default:
                 throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

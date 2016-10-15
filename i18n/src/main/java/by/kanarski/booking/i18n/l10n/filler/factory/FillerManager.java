@@ -34,6 +34,9 @@ public enum FillerManager {
     ROOMSREDACTOR(
         Arrays.asList(getRoomsRedactor(), getSideBar(), getHeader())
     ),
+    ROOMTYPEREDACTOR(
+            Arrays.asList(getRoomTypeRedactor(), getSideBar(), getHeader())
+    ),
     REMINDPASSWORD(
         Arrays.asList(getRemindPassword(), getHeader())
     );
@@ -112,7 +115,14 @@ public enum FillerManager {
         return contentMap;
     }
 
-     public static Map<String, List<String>> getRemindPassword() {
+    public static Map<String, List<String>> getRoomTypeRedactor() {
+        Map<String, List<String>> contentMap = new HashMap<>();
+        contentMap.put(ContentName.STRING, PageTextContentKeys.TABLE_REDACTOR);
+        contentMap.put(ContentName.COLUMN_NAME_LIST, PageTextContentKeys.ROOM_TYPE_COLUMN_LIST);
+        return contentMap;
+    }
+
+    public static Map<String, List<String>> getRemindPassword() {
         Map<String, List<String>> contentMap = new HashMap<>();
         contentMap.put(ContentName.STRING, PageTextContentKeys.REMIND_PASSWORD);
         return contentMap;

@@ -43,10 +43,23 @@ public class DataSource {
         }
     }
 
+
+
     public static synchronized DataSource getInstance() throws IOException, SQLException {
         if (datasource == null) {
             datasource = new DataSource();
         }
+        return datasource;
+    }
+
+    /**
+     * Used for unit tests. Sets active database to TEST_BOOKING
+     * @return datasource
+     */
+
+    public DataSource test() {
+        ResourceBundle bundle = ResourceBuilder.DATABASE.create();
+        cpds.setJdbcUrl(bundle.getString(DatabaseKeys.TEST_DATABASE_PATH));
         return datasource;
     }
 

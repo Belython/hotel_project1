@@ -248,6 +248,58 @@ public class RequestParser {
         return roomDtoList;
     }
 
+    public static List<RoomTypeDto> parseRoomTypeDtoList(HttpServletRequest request) throws ServiceException{
+        List<RoomTypeDto> roomTypeDtoList = new ArrayList<>();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Set<String> parameterSet = parameterMap.keySet();
+        String[] roomTypeIdArray = null;
+        String[] roomTypeNameArray = null;
+        String[] maxPersonsArray = null;
+        String[] pricePerNightArray = null;
+        String[] facilitiesArray = null;
+        String[] roomTypeStatusArray = null;
+        for (String parameter : parameterSet) {
+            switch (parameter) {
+                case Parameter.ROOM_TYPE_ID: {
+                    roomTypeIdArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.ROOM_TYPE_NAME: {
+                    roomTypeNameArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.ROOM_TYPE_MAX_PERSONS: {
+                    maxPersonsArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.ROOM_TYPE_PRICE_PER_NIGHT: {
+                    pricePerNightArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.ROOM_TYPE_FACILITIES: {
+                    facilitiesArray = parameterMap.get(parameter);
+                    break;
+                }
+                case Parameter.ROOM_TYPE_STATUS: {
+                    roomTypeStatusArray = parameterMap.get(parameter);
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < roomTypeIdArray.length; i++) {
+            long roomTypeId = Long.valueOf(roomTypeIdArray[i]);
+            String roomTypeName = roomTypeNameArray[i];
+            int maxPersons = Integer.valueOf(maxPersonsArray[i]);
+            double pricePerNight = Double.valueOf(pricePerNightArray[i]);
+            String facilities = facilitiesArray[i];
+            String roomTypeStatus = roomTypeStatusArray[i];
+            RoomTypeDto roomTypeDto = new RoomTypeDto(roomTypeId, roomTypeName, maxPersons, pricePerNight,
+                    facilities, roomTypeStatus);
+            roomTypeDtoList.add(roomTypeDto);
+        }
+        return roomTypeDtoList;
+    }
+
     public static boolean isAjaxRequest(HttpServletRequest request) {String stringValue = request.getParameter(Parameter.IS_AJAX_REQUEST);
         boolean isAjaxRequest = Boolean.parseBoolean(stringValue);
         return isAjaxRequest;

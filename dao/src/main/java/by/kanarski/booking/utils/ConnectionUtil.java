@@ -34,4 +34,20 @@ public class ConnectionUtil {
         }
         return connection.get();
     }
+
+    public static Connection getTestConnection() {
+        try {
+            if (instance == null) {
+                instance = DataSource.getInstance().test();
+            }
+            if (connection.get() == null) {
+                connection.set(instance.getConnection());
+            }
+        } catch (IOException e) {
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.INPUT_ERROR + e);
+        } catch (SQLException e) {
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.DATABASE_CONNECTION_ERROR + e);
+        }
+        return connection.get();
+    }
 }

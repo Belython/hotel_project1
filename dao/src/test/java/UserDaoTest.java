@@ -1,6 +1,7 @@
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.dao.impl.UserDao;
 import by.kanarski.booking.entities.User;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.EntityBuilder;
 import org.junit.After;
 import org.junit.Assert;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoTest extends Assert{
+
+    UserDao useDao = UserDao.getInstance();
 
     private User expectedUser;
     private List<User> expectedUserList;
@@ -84,13 +87,13 @@ public class UserDaoTest extends Assert{
         assertTrue(isNewUser);
     }
 
-//    @Test
-//    public void testDelete() throws Exception {
-//        User newUser = UserDao.getInstance().add(getNewUser());
-//        UserDao.getInstance().delete(newUser);
-//        User deletedUser = UserDao.getInstance().getById(newUser.getUserId());
-//        assertNull(deletedUser);
-//    }
+    @Test(expected = DaoException.class)
+    public void testDelete() throws Exception {
+        User newUser = UserDao.getInstance().add(getNewUser());
+        UserDao.getInstance().delete(newUser);
+        User deletedUser = UserDao.getInstance().getById(newUser.getUserId());
+        assertNull(deletedUser);
+    }
 
     private User getNewUser() {
         User newUser = EntityBuilder.buildUser("testFirstNameNew", "testLastNameNew", "tesNew@test.com",

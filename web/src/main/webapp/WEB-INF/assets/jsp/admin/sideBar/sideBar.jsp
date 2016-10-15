@@ -9,7 +9,7 @@
     <br/>
     <input type="radio" name="command" value="goToUsersRedactor" > ${sideBar_redactUsers}
     <br/>
-    <input type="radio" name="command" value="goToRoomTypesRedactor" > ${sideBar_redactRoomTypes}
+    <input type="radio" name="command" value="goToRoomTypeRedactor" > ${sideBar_redactRoomTypes}
     <br/>
     <input type="radio" name="command" value="goToRoomsRedactor" > ${sideBar_redactRooms}
     <br/>

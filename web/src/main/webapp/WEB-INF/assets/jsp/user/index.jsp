@@ -31,13 +31,13 @@ ${index_searchParameters}
 <form name="findForm" method="POST" action="controller">
     <input type="hidden" name="command" value="goToSelectHotel"/>
     <label for="country">${index_country}</label>
-    <select id="country" name="hotelCountry">
+    <select id="country" name="country">
         <c:forEach var="country" items="${supportedCountries}">
             <option value="${country}">${country}</option>
         </c:forEach>
     </select>
     <label for="city">${index_city}</label>
-    <select id="city" name="hotelCity">
+    <select id="city" name="city">
         <c:forEach var="city" items="${supportedCities}">
             <option value="${city}">${city}</option>
         </c:forEach>

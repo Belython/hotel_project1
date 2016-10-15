@@ -32,14 +32,10 @@ public class AuthorizationFilter implements Filter {
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         CommandType commandType = RequestParser.parseCommandType(httpServletRequest);
         if (commandType.name().equals(commandType.MAKEBILL.toString())) {
-//        page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
-//        if ((page != null) && (page.equals(PagePath.SELECT_ROOM_PATH))) {
             user = (User) session.getAttribute(Parameter.USER);
             if (user == null) {
                 ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
                 request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.AUTHORIZATION_ERRON));
-//                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(PagePath.INDEX_PAGE_PATH);
-//                dispatcher.forward(request, response);
                 request.setAttribute(Parameter.COMMAND, "cancelAction");
             }
         }

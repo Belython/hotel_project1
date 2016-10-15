@@ -1,7 +1,9 @@
 package by.kanarski.booking.services.impl;
 
 import by.kanarski.booking.constants.ServiceMessageKeys;
+import by.kanarski.booking.dao.impl.RoomDao;
 import by.kanarski.booking.dao.impl.RoomTypeDao;
+import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.exceptions.ServiceException;
@@ -68,5 +70,29 @@ public class RoomTypeServiceImpl implements IRoomTypeService {
     @Override
     public void delete(long id) throws ServiceException {
 
+    }
+
+    public void updateList(List<RoomType> roomTypeList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            RoomTypeDao.getInstance().updateList(roomTypeList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+    }
+
+    public void addList(List<RoomType> roomTypeList) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            RoomTypeDao.getInstance().addList(roomTypeList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
     }
 }

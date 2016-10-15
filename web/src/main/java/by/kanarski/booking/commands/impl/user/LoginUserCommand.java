@@ -31,7 +31,7 @@ public class LoginUserCommand extends AbstractCommand {
             if (UserServiceImpl.getInstance().checkAuthorization(user.getLogin(), user.getPassword())) {
                 user = UserServiceImpl.getInstance().getByLogin(user.getLogin());
                 session.setAttribute(Parameter.USER, user);
-                page = RequestParser.parsePagePath(request);
+                page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
                 if (page == null) {
                     page = PagePath.INDEX_PAGE_PATH;
                 }

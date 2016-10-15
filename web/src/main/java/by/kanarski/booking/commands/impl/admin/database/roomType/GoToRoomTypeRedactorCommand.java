@@ -1,11 +1,14 @@
-package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
+package by.kanarski.booking.commands.impl.admin.database.roomType;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.*;
+import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.entities.Room;
+import by.kanarski.booking.entities.RoomType;
+import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
@@ -14,8 +17,8 @@ import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
 import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.DtoToEntityConverter;
-import by.kanarski.booking.utils.field.Field;
 import by.kanarski.booking.utils.field.FieldBuilder;
+import by.kanarski.booking.utils.field.FieldDescriptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +26,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
-public class GoToRoomsRedactor implements ICommand {
+public class GoToRoomTypeRedactorCommand implements ICommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -37,40 +40,32 @@ public class GoToRoomsRedactor implements ICommand {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
-                page = PagePath.ROOMS_REDACTOR_PATH;
-                List<Room> roomList = RoomServiceImpl.getInstance().getAll();
-                List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale, currency);
-                List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
+                page = PagePath.ROOM_TYPE_REDACTOR_PATH;
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
                 List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
 
-//                Map<Object, Field<RoomDto>> entityMap = new LinkedHashMap<>();
-                List<Field<RoomDto>> entityList = new ArrayList<>();
-                for (RoomDto roomDto: roomDtoList) {
-                    LinkedHashMap<String, Field> roomFields = new LinkedHashMap<>();
-                    Field roomIdField = FieldBuilder.buildFreePrimitive();
-                    Field<HotelDto> hotelDtoField = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
-                    Field<RoomTypeDto> roomTypeDtoField = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeList, currency);
-                    roomDto.setRoomHotel(hotelDtoField.getOwner());
-                    roomDto.setRoomType(roomTypeDtoField.getOwner());
-                    Field roomNumberField = FieldBuilder.buildFreePrimitive();
-                    Field roomStatusField = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
-                    roomFields.put(Parameter.ROOM_ID, roomIdField);
-                    roomFields.put(Parameter.ROOM_HOTEL, hotelDtoField);
-                    roomFields.put(Parameter.ROOM_TYPE, roomTypeDtoField);
-                    roomFields.put(Parameter.ROOM_NUMBER, roomNumberField);
-                    roomFields.put(Parameter.ROOM_STATUS, roomStatusField);
-                    Field<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
-//                    entityMap.put(roomDto, roomDtoEntity);
-                    entityList.add(roomDtoEntity);
+                List<FieldDescriptor<RoomTypeDto>> descriptorList = new ArrayList<>();
+                for (RoomTypeDto roomTypeDto: roomTypeDtoList) {
+                    LinkedHashMap<String, FieldDescriptor> roomTypeDescriptors = new LinkedHashMap<>();
+                    FieldDescriptor roomTypeIdDescriptor = FieldBuilder.buildFreePrimitive();
+                    FieldDescriptor roomTypeNameDescriptor = FieldBuilder.buildFreePrimitive();
+                    FieldDescriptor maxPersonsDescriptor = FieldBuilder.buildFreePrimitive();
+                    FieldDescriptor pricePerNightDescriptor = FieldBuilder.buildFreePrimitive();
+                    FieldDescriptor facilitiesDescriptor = FieldBuilder.buildFreePrimitive();
+                    FieldDescriptor roomTypeStatusDescriptor = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_ID, roomTypeIdDescriptor);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_NAME, roomTypeNameDescriptor);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_MAX_PERSONS, maxPersonsDescriptor);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_PRICE_PER_NIGHT, pricePerNightDescriptor);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesDescriptor);
+                    roomTypeDescriptors.put(Parameter.ROOM_TYPE_STATUS, roomTypeStatusDescriptor);
+                    FieldDescriptor<RoomTypeDto> roomTypeDtoDescriptor = FieldBuilder.buildEntity(roomTypeDescriptors, roomTypeDto);
+                    descriptorList.add(roomTypeDtoDescriptor);
                 }
 
-                session.setAttribute(Parameter.ALTER_TABLE_COMMAND, Value.ALTER_ROOMS);
-                session.setAttribute(Parameter.ENTITY_LIST, entityList);
-                session.setAttribute(Parameter.ROOM_LIST, roomList);
-                session.setAttribute(Parameter.HOTEL_LIST, hotelList);
-                session.setAttribute(Parameter.ROOM_TYPE_LIST, roomTypeList);
-                session.setAttribute(Parameter.ROOM_TYPE_DTO_LIST, roomTypeDtoList);
+                session.setAttribute(Parameter.ALTER_TABLE_COMMAND, Value.ALTER_ROOM_TYPE);
+                session.setAttribute(Parameter.DESCRIPTOR_LIST, descriptorList);
+                session.setAttribute(Parameter.ROOM_TYPE_LIST, roomTypeDtoList);
                 session.setAttribute(Parameter.STATUS_LIST, FieldValue.STATUS_LIST);
             } else {
                 String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
@@ -88,5 +83,6 @@ public class GoToRoomsRedactor implements ICommand {
         servletAction.setPage(page);
         return servletAction;
     }
+
 
 }

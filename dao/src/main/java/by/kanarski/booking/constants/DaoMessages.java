@@ -33,6 +33,10 @@ public class DaoMessages {
     public static final String INPUT_ERROR = "Input error ";
     public static final String DATABASE_CONNECTION_ERROR = "Database connection error ";
 
+    public static final String ADD_ROOM_TYPE_EXCEPTION = "Unable to add the roomType ";
+    public static final String GET_ROOM_TYPE_EXCEPTION = "Unable to get the roomType ";
+    public static final String UPDATE_ROOM_TYPE_EXCEPTION = "Unable to update the roomType ";
+
     private DaoMessages() {
     }
 }

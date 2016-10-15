@@ -1,4 +1,4 @@
-package by.kanarski.booking.commands.impl.admin.databaseCommands.room;
+package by.kanarski.booking.commands.impl.admin.database.roomType;
 
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.OperationMessageKeys;
@@ -6,11 +6,14 @@ import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Room;
+import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
+import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.RequestParser;
 
@@ -24,7 +27,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class AlterRoomsCommand extends AbstractCommand {
+public class AlterRoomTypeCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -35,22 +38,28 @@ public class AlterRoomsCommand extends AbstractCommand {
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         String subCommand = request.getParameter(Parameter.SUB_COMMAND);
         try {
-            List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale, currency);
+            List<RoomTypeDto> roomTypeDtoList = RequestParser.parseRoomTypeDtoList(request);
+            for (int i = 0; i < roomTypeDtoList.size(); i++) {
+                RoomTypeDto roomTypeDto = roomTypeDtoList.get(i);
+                if (roomTypeDto == null || roomTypeDto.getRoomTypeName() == null) {
+                    roomTypeDtoList.remove(i);
+                }
+            }
+            List<RoomType> roomTypeList = DtoToEntityConverter.convertToRoomTypeList(roomTypeDtoList, currency);
             switch (subCommand) {
                 case Value.ADD_NEW: {
-                    RoomServiceImpl.getInstance().addList(roomList);
+                    RoomTypeServiceImpl.getInstance().addList(roomTypeList);
                     break;
                 }
                 case Value.CHANGE_EXISTING: {
-                    RoomServiceImpl.getInstance().updateList(roomList);
+                    RoomTypeServiceImpl.getInstance().updateList(roomTypeList);
                     break;
                 }
             }
-            List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
-            List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale, currency);
-            session.setAttribute(Parameter.ROOM_LIST, newRoomList);
-            session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
+            List<RoomType> newRoomTypeList = RoomTypeServiceImpl.getInstance().getAll();
+            List<RoomTypeDto> newRoomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
+            session.setAttribute(Parameter.ROOM_TYPE_LIST, newRoomTypeList);
+            session.setAttribute(Parameter.ROOM_TYPE_DTO_LIST, newRoomTypeDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);
             if (RequestParser.isAjaxRequest(request)) {

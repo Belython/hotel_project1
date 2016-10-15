@@ -16,22 +16,6 @@ public class DtoToEntityConverter {
         Hotel roomHotel = DtoToEntityConverter.converToHotel(roomDto.getRoomHotel());
         RoomType roomType = DtoToEntityConverter.converToRoomType(roomDto.getRoomType(), currency);
 
-//
-//        long hotelId = roomDto.getHotelId();
-//        String hotelCountry = roomDto.getHotelCountry();
-//        String hotelCity = roomDto.getHotelCity();
-//        String hotelName = roomDto.getHotelName();
-//        Hotel roomHotel = EntityBuilder.buildHotel(hotelId, hotelCountry, hotelCity, hotelName);
-//
-//        long roomTypeId = roomDto.getRoomTypeId();
-//        String roomTypeName = roomDto.getRoomTypeName();
-//        String[] facilitiesArray = roomDto.getFacilities().split(", ");
-//        Set<String> facilities = new HashSet<>();
-//        Collections.addAll(facilities, facilitiesArray);
-//        double pricePerNight = CurrencyConverter.convertToUSD(roomDto.getPricePerNight(), currency);
-//        int maxPersons = roomDto.getMaxPersons();
-//        RoomType roomType = EntityBuilder.buildRoomType(roomTypeId, roomTypeName,
-//                maxPersons, pricePerNight, facilities);
         int roomNumber = roomDto.getRoomNumber();
         TreeMap<Long, Long> boodedDates = delocalizeBookedDates(roomDto.getBookedDates(), locale);
         String roomStatus = roomDto.getRoomStatus();
@@ -192,6 +176,15 @@ public class DtoToEntityConverter {
             hotelDtoList.add(hotelDto);
         }
         return hotelDtoList;
+    }
+
+    public static List<RoomType> convertToRoomTypeList(List<RoomTypeDto> roomTypeDtoList, Currency currency) {
+        List<RoomType> roomTypeList = new ArrayList<>();
+        for (RoomTypeDto roomTypeDto : roomTypeDtoList) {
+            RoomType roomType = converToRoomType(roomTypeDto, currency);
+            roomTypeList.add(roomType);
+        }
+        return roomTypeList;
     }
 
 }

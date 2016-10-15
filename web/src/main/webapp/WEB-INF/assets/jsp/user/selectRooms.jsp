@@ -15,6 +15,7 @@
 
 <form name="selectRoomsForm" method="POST" action="controller">
     <input type="hidden" name="command" value="makeBill"/>
+    <input type="hidden" name="isAjaxRequest" value="false"/>
     <table class="roomList" border="2px">
         <thead>
         <tr>

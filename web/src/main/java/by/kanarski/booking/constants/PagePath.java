@@ -19,6 +19,7 @@ public class PagePath {
     public static final String ADMIN_MAIN_PAGE_PATH = "/WEB-INF/assets/jsp/admin/adminMain.jsp";
     public static final String HOTEL_LIST_PAGE_PATH = "/WEB-INF/assets/jsp/admin/hotelsList.jsp";
     public static final String ROOMS_REDACTOR_PATH = "/WEB-INF/assets/jsp/admin/roomsRedactor.jsp";
+    public static final String ROOM_TYPE_REDACTOR_PATH = "/WEB-INF/assets/jsp/admin/roomTypeRedactor.jsp";
     public static final String ALTER_TABLE_ROW_PATH = "/WEB-INF/assets/jsp/admin/tableRedactor/alterTableRow.jsp";
     public static final String NEW_TABLE_ROW_PATH = "/WEB-INF/assets/jsp/admin/tableRedactor/newTableRow.jsp";
 
