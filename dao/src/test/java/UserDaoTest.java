@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserDaoTest extends Assert{
 
-    UserDao useDao = UserDao.getInstance();
+    UserDao userDao = UserDao.getTestInstance();
 
     private User expectedUser;
     private List<User> expectedUserList;
@@ -46,52 +46,62 @@ public class UserDaoTest extends Assert{
     @Test
     public void testAdd() throws Exception {
         User newUser = getNewUser();
-        User expected = UserDao.getInstance().add(newUser);
-        User actual = UserDao.getInstance().getById(expected.getUserId());
-        UserDao.getInstance().delete(expected);
+        User expected = userDao.add(newUser);
+        User actual = userDao.getById(expected.getUserId());
+        userDao.delete(expected);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testGetById() throws Exception {
-        User actual = UserDao.getInstance().getById(expectedUser.getUserId());
-        assertEquals(expectedUser, actual);
+        try {
+            User actual = userDao.getById(expectedUser.getUserId());
+            assertEquals(expectedUser, actual);
+        } catch (DaoException e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testGetAll() throws Exception {
+        List<User> actual = userDao.getAll();
+        assertEquals(expectedUserList, actual);
     }
 
     @Test
     public void testGetByLogin() throws Exception {
-        User actual = UserDao.getInstance().getByLogin(expectedUser.getLogin());
+        User actual = userDao.getByLogin(expectedUser.getLogin());
         assertEquals(expectedUser, actual);
     }
 
     @Test
     public void testUpdate() throws Exception {
-        UserDao.getInstance().update(updatedUser);
-        User actual = UserDao.getInstance().getById(updatedUser.getUserId());
+        userDao.update(updatedUser);
+        User actual = userDao.getById(updatedUser.getUserId());
         assertEquals(updatedUser, actual);
-        UserDao.getInstance().update(expectedUser);
+        userDao.update(expectedUser);
     }
 
     @Test
     public void testIsAuthorized() throws Exception {
         String login = expectedUser.getLogin();
         String password = expectedUser.getPassword();
-        boolean isAuthorized = UserDao.getInstance().isAuthorized(login, password);
+        boolean isAuthorized = userDao.isAuthorized(login, password);
         assertTrue(isAuthorized);
     }
 
     @Test
     public void testIsNewUser() throws Exception {
         String login = newUser.getLogin();
-        boolean isNewUser = UserDao.getInstance().isNewUser(login);
+        boolean isNewUser = userDao.isNewUser(login);
         assertTrue(isNewUser);
     }
 
     @Test(expected = DaoException.class)
     public void testDelete() throws Exception {
-        User newUser = UserDao.getInstance().add(getNewUser());
-        UserDao.getInstance().delete(newUser);
-        User deletedUser = UserDao.getInstance().getById(newUser.getUserId());
+        User newUser = userDao.add(getNewUser());
+        userDao.delete(newUser);
+        User deletedUser = userDao.getById(newUser.getUserId());
         assertNull(deletedUser);
     }
 
@@ -102,8 +112,9 @@ public class UserDaoTest extends Assert{
     }
     
     private User getUpdatedUser() {
-        User updatedUser = EntityBuilder.buildUser(1, "testFirstNameUpdated", "testLastNameUpdated", "tesUpdated@test.com",
-                "testLoginUpdated", "testPasswordUpdated", FieldValue.ROLE_CLIENT, FieldValue.STATUS_ACTIVE);
+        User updatedUser = EntityBuilder.buildUser(expectedUser.getUserId(), "testFirstNameUpdated",
+                "testLastNameUpdated", "tesUpdated@test.com", "testLoginUpdated", "testPasswordUpdated",
+                FieldValue.ROLE_CLIENT, FieldValue.STATUS_ACTIVE);
         return updatedUser;
     }
 
@@ -113,7 +124,7 @@ public class UserDaoTest extends Assert{
             long testId = i;
             String testFirstName = "testFirstName" + i;
             String testLastName = "testLastName" + i;
-            String testEmail = "test" + i + "@test.com";
+            String testEmail = "test" + i + "@gmail.com";
             String testLogin = "testLogin" + i;
             String testPassword = "testPassword" + i;
             String role = FieldValue.ROLE_CLIENT;

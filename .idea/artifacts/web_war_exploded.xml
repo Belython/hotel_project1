@@ -1,33 +1,34 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="web:war exploded">
-    <output-path>$PROJECT_DIR$/web/target/booking</output-path>
+    <output-path>$PROJECT_DIR$/web/target/web-1.0</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="web" />
-          <element id="module-output" name="entities" />
-          <element id="module-output" name="dao" />
-          <element id="module-output" name="services" />
-          <element id="module-output" name="i18n" />
-          <element id="module-output" name="booking" />
-          <element id="module-output" name="mail" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="c3p0-0.9.5.2" />
-          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
+          <element id="archive" name="services-1.0.jar">
+            <element id="module-output" name="services" />
+          </element>
+          <element id="archive" name="dao-1.0.jar">
+            <element id="module-output" name="dao" />
+          </element>
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
-          <element id="library" level="project" name="Maven: javax.json:javax.json-api:1.0" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
-          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
-          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
-          <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.4" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
+          <element id="archive" name="entities-1.0.jar">
+            <element id="module-output" name="entities" />
+          </element>
+          <element id="archive" name="i18n-1.0.jar">
+            <element id="module-output" name="i18n" />
+          </element>
+          <element id="archive" name="mail-1.0.jar">
+            <element id="module-output" name="mail" />
+          </element>
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
-          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

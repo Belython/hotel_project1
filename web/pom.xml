@@ -12,69 +12,109 @@
     <groupId>by.kanarski.booking</groupId>
     <artifactId>web</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <dependencies>
-
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>services</artifactId>
             <version>1.0</version>
         </dependency>
-
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>entities</artifactId>
             <version>1.0</version>
         </dependency>
-
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>i18n</artifactId>
             <version>1.0</version>
         </dependency>
-
         <dependency>
             <groupId>by.kanarski.booking</groupId>
             <artifactId>mail</artifactId>
             <version>1.0</version>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.json/javax.json-api -->
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.glassfish/javax.json -->
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.0.4</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.7</version>
-        </dependency>
-
-
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>myBuild</id>
+            <activation>
+                <property>
+                    <name>myBuild</name>
+                </property>
+            </activation>
+            <build>
+                <finalName>${project.parent.name}</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.10</version>
+                        <executions>
+                            <execution>
+                                <id>copy-dependencies</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>false</overWriteSnapshots>
+                                    <overWriteIfNewer>true</overWriteIfNewer>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>by.kanarski.booking</groupId>
+                                            <artifactId>dao</artifactId>
+                                            <version>1.0</version>
+                                            <type>jar</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                            <destFileName>dao</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <!--<includes>**/*.java</includes>-->
+                                    <!--<excludes>**/*.properties</excludes>-->
+                                    <!--<outputDirectory>${project.build.directory}/wars</outputDirectory>-->
+                                    <!--<overWriteReleases>false</overWriteReleases>-->
+                                    <!--<overWriteSnapshots>true</overWriteSnapshots>-->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.3</version>
+                        <configuration>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <name>web</name>
     <url>http://maven.apache.org</url>

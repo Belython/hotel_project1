@@ -23,6 +23,7 @@ import java.util.List;
 public class UserDao implements IUserDao {
 
     private static UserDao instance = null;
+    private static Connection connection;
 
     /**
      * SQL queries
@@ -46,13 +47,22 @@ public class UserDao implements IUserDao {
     public static UserDao getInstance() {
         if (instance == null) {
             instance = new UserDao();
+            connection = ConnectionUtil.getConnection();
+        }
+        return instance;
+    }
+
+    public static UserDao getTestInstance() {
+        if (instance == null) {
+            instance = new UserDao();
+            connection = ConnectionUtil.getTestConnection();
         }
         return instance;
     }
 
     @Override
     public User add(User user) throws DaoException {
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -79,7 +89,7 @@ public class UserDao implements IUserDao {
     @Override
     public User getById(long id) throws DaoException {
         User user = null;
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_ID_QUERY)) {
             stm.setLong(1, id);
@@ -98,14 +108,12 @@ public class UserDao implements IUserDao {
     @Override
     public List<User> getAll() throws DaoException {
         List<User> list = new ArrayList<>();
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_ALL_QUERY)) {
             resultSet = stm.executeQuery();
             while (resultSet.next()) {
-                User user = new User();
-                user.setFirstName(resultSet.getString(ColumnName.USER_FIRST_NAME));
-                user.setLastName(resultSet.getString(ColumnName.USER_LAST_NAME));
+                User user = EntityParser.parseUser(resultSet);
                 list.add(user);
             }
         } catch (SQLException e) {
@@ -119,7 +127,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public void update(User user) throws DaoException {
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             stm.setString(1, user.getFirstName());
             stm.setString(2, user.getLastName());
@@ -137,7 +145,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public void delete(User user) throws DaoException {
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(DELETE_QUERY)) {
             stm.setLong(1, user.getUserId());
             stm.executeUpdate();
@@ -156,7 +164,7 @@ public class UserDao implements IUserDao {
 
     public User getByLogin(String login) throws DaoException {
         User user = null;
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_LOGIN_QUERY)) {
             stm.setString(1, login);
@@ -174,7 +182,7 @@ public class UserDao implements IUserDao {
 
     public User getByEmail(String email) throws DaoException {
         User user = null;
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_EMAIL_QUERY)) {
             stm.setString(1, email);
@@ -191,7 +199,7 @@ public class UserDao implements IUserDao {
     }
 
     public boolean isAuthorized(String login, String password) throws DaoException {
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         boolean isLogIn = false;
         try (PreparedStatement stm = connection.prepareStatement(CHECK_AUTHORIZATION_QUERY)) {
@@ -211,7 +219,7 @@ public class UserDao implements IUserDao {
     }
 
     public boolean isNewUser(String login) throws DaoException {
-        Connection connection = ConnectionUtil.getConnection();
+//        Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         boolean isNew = true;
         try (PreparedStatement stm = connection.prepareStatement(CHECK_LOGIN_QUERY)) {
