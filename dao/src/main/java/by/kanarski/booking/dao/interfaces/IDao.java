@@ -1,6 +1,6 @@
 package by.kanarski.booking.dao.interfaces;
 
-import by.kanarski.booking.exceptions.DaoException;
+import by.kanarski.booking.exceptions.LocalisationException;
 import java.util.List;
 
 /**
@@ -16,41 +16,41 @@ public interface IDao<T> {
      * Appends entity in the database
      * @param t entity to be appended to database
      * @return added entity with the assigned id
-     * @throws DaoException
+     * @throws LocalisationException
      */
 
-    T add(T t) throws DaoException;
+    T add(T t) throws LocalisationException;
 
     /**
      * Recives entity from databse by id
      * @param id the entity id
      * @return entity with the corresponding id
-     * @throws DaoException
+     * @throws LocalisationException
      */
 
-    T getById(long id) throws DaoException;
+    T getById(long id) throws LocalisationException;
 
     /**
      * Recives all entities from database
      * @return all entities
-     * @throws DaoException
+     * @throws LocalisationException
      */
 
-    List<T> getAll() throws DaoException;
+    List<T> getAll() throws LocalisationException;
 
     /**
      * Updates entity in database
      * @param t entity to be update
-     * @throws DaoException
+     * @throws LocalisationException
      */
 
-    void update(T t) throws DaoException;
+    void update(T t) throws LocalisationException;
 
     /**
      * Deletes entity in database
      * @param t entity to be delete
-     * @throws DaoException
+     * @throws LocalisationException
      */
 
-    void delete(T t) throws DaoException;
+    void delete(T t) throws LocalisationException;
 }

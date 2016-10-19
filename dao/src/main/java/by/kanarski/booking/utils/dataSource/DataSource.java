@@ -1,8 +1,9 @@
-package by.kanarski.booking.utils;
+package by.kanarski.booking.utils.dataSource;
 
-import by.kanarski.booking.constants.DaoMessages;
+import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.constants.DatabaseKeys;
 import by.kanarski.booking.managers.ResourceBuilder;
+import by.kanarski.booking.utils.BookingSystemLogger;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
@@ -39,11 +40,9 @@ public class DataSource {
             cpds.setMaxPoolSize(20);
             cpds.setMaxStatements(180);
         } catch (PropertyVetoException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.WRONG_DATASOURCE_SETTINGS + e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.WRONG_DATASOURCE_SETTINGS + e);
         }
     }
-
-
 
     public static synchronized DataSource getInstance() throws IOException, SQLException {
         if (datasource == null) {

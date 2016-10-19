@@ -1,16 +1,19 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.ServiceMessageKeys;
+import by.kanarski.booking.constants.ServiceMessage;
 import by.kanarski.booking.dao.impl.RoomDao;
+import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.dto.OrderDto;
+import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.exceptions.DaoException;
+import by.kanarski.booking.entities.User;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IRoomService;
-import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.ConnectionUtil;
-import by.kanarski.booking.utils.ExceptionHandler;
+import by.kanarski.booking.utils.*;
+import sun.util.locale.LocaleUtils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,6 +21,9 @@ import java.util.*;
 
 public class RoomServiceImpl implements IRoomService {
     private static RoomServiceImpl instance;
+    private RoomDao roomDao = RoomDao.getInstance();
+    private Locale basicLocale = DateUtil.LOCALE_EN_US;
+    private Currency basicCurrency = CurrencyUtil.CURRENCY_USD;
 
     private RoomServiceImpl() {
     }
@@ -30,49 +36,50 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-    public void add(Room entity) throws ServiceException {
+    public void add(RoomDto roomDto) throws ServiceException {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<Room> getAll() throws ServiceException {
+    public RoomDto getById(long id) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Room> rooms = null;
+        RoomDto roomDto = null;
         try {
             connection.setAutoCommit(false);
-            rooms = RoomDao.getInstance().getAll();
+            Room room = roomDao.getById(id);
+            roomDto = convertToRoomDto(room);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return rooms;
+        return roomDto;
     }
 
     @Override
-    public Room getById(long id) throws ServiceException {
+    public List<RoomDto> getAll() throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        Room room = null;
+        List<RoomDto> roomDtoList = null;
         try {
             connection.setAutoCommit(false);
-            room = RoomDao.getInstance().getById(id);
+            List<Room> roomList = roomDao.getAll();
+            roomDtoList = convertToRoomDtoList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return room;
+        return roomDtoList;
     }
 
     @Override
-    public void update(Room room) throws ServiceException {
+    public void update(RoomDto roomDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
+            Room room = converToRoom(roomDto);
             connection.setAutoCommit(false);
-            RoomDao.getInstance().update(room);
+            roomDao.update(room);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -82,18 +89,20 @@ public class RoomServiceImpl implements IRoomService {
 
     }
 
-    public List<Room> getAvailableRooms(OrderDto orderDto) throws ServiceException {
+    public List<RoomDto> getAvailableRooms(OrderDto orderDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Room> rooms = new ArrayList<>();
+        List<RoomDto> roomDtoList = null;
         long checkInDate = orderDto.getCheckInDate();
         long checkOutDate = orderDto.getCheckOutDate();
         try {
+
             connection.setAutoCommit(false);
-            List<Room> roomsForAllDates = RoomDao.getInstance().getAvailableRooms(orderDto);
+            List<Room> roomsForAllDates = roomDao.getAvailableRooms(orderDto);
+            List<Room> roomList = new ArrayList<>();
             for (Room room : roomsForAllDates) {
                 TreeMap<Long, Long> bookedDates = room.getBookedDates();
                 if ((bookedDates == null) || (bookedDates.size() == 0)) {
-                    rooms.add(room);
+                    roomList.add(room);
                 } else {
                     NavigableSet<Long> bookingStartSet = bookedDates.navigableKeySet();
                     Long bookingStart = bookingStartSet.ceiling(checkOutDate);
@@ -101,61 +110,64 @@ public class RoomServiceImpl implements IRoomService {
                         Long lowerBookingStart = bookingStartSet.floor(checkOutDate);
                         Long lowerBookingEnd = bookedDates.get(lowerBookingStart);
                         if (lowerBookingEnd < checkInDate) {
-                            rooms.add(room);
+                            roomList.add(room);
                         }
                     } else {
                         Long prevBookingStart = bookedDates.lowerKey(bookingStart);
                         Long prevBookingEnd = bookedDates.get(prevBookingStart);
                         if (prevBookingEnd < checkInDate) {
-                            rooms.add(room);
+                            roomList.add(room);
                         }
                     }
                 }
             }
+            roomDtoList = convertToRoomDtoList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return rooms;
+        return roomDtoList;
     }
 
-    public List<Room> getByHotelId(long hotelId) throws ServiceException {
+    public List<RoomDto> getByHotelId(long hotelId) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Room> rooms = null;
+        List<RoomDto> roomDtoList = null;
         try {
             connection.setAutoCommit(false);
-            rooms = RoomDao.getInstance().getByHotelId(hotelId);
+            List<Room> roomList = roomDao.getByHotelId(hotelId);
+            roomDtoList = convertToRoomDtoList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return rooms;
+        return roomDtoList;
     }
 
-    public List<Room> getByBill(Bill bill) throws ServiceException {
+    public List<RoomDto> getByBill(BillDto billDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Room> roomList = null;
+        List<RoomDto> roomDtoList = null;
+        Bill bill = DtoToEntityConverter.tobill
         try {
             connection.setAutoCommit(false);
-            roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
+            List<Room> roomList = roomDao.getByIdList(billDto.getBookedRoomIdList());
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return roomList;
+        return roomDtoList;
     }
 
     public void updateList(List<Room> roomList) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            RoomDao.getInstance().updateList(roomList);
+            roomDao.updateList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -164,10 +176,10 @@ public class RoomServiceImpl implements IRoomService {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            RoomDao.getInstance().addList(roomList);
+            roomDao.addList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -176,10 +188,10 @@ public class RoomServiceImpl implements IRoomService {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            RoomDao.getInstance().reserveRoomList(roomList);
+            roomDao.reserveRoomList(roomList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -189,13 +201,33 @@ public class RoomServiceImpl implements IRoomService {
         List<Room> rooms = null;
         try {
             connection.setAutoCommit(false);
-            rooms = RoomDao.getInstance().getByIdList(roomIdList);
+            rooms = roomDao.getByIdList(roomIdList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return rooms;
+    }
+
+    private Room converToRoom(RoomDto roomDto) throws LocalisationException {
+        Room room = DtoToEntityConverter.toRoom(roomDto, basicLocale, basicCurrency);
+        return room;
+    }
+
+    private List<Room> roomList(List<RoomDto> roomDtoList) throws LocalisationException {
+        List<Room> roomList = DtoToEntityConverter.toRoomList(roomDtoList, basicLocale, basicCurrency);
+        return roomList;
+    }
+
+    private RoomDto convertToRoomDto(Room room) throws LocalisationException {
+        RoomDto roomDto = DtoToEntityConverter.toRoomDto(room, basicLocale, basicCurrency);
+        return  roomDto;
+    }
+    
+    private List<RoomDto> convertToRoomDtoList(List<Room> roomList) throws LocalisationException {
+        List<RoomDto> roomDtoList = DtoToEntityConverter.toRoomDtoList(roomList, basicLocale, basicCurrency);
+        return roomDtoList;
     }
 
 }

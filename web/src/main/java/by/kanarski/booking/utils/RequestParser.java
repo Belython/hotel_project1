@@ -4,7 +4,7 @@ import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.RoomDto;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
@@ -166,9 +166,9 @@ public class RequestParser {
         OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER_DTO);
         long checkInDate = orderDto.getCheckInDate();
         long checkOutDate = orderDto.getCheckOutDate();
-        HotelDto hotelDto = (HotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO);
+        GlobalHotelDto globalHotelDto = (GlobalHotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO);
         int totalPersons = orderDto.getTotalPersons();
-        Set<RoomType> roomTypeSet = hotelDto.getRoomTypesCount().keySet();
+        Set<RoomType> roomTypeSet = globalHotelDto.getRoomTypesCount().keySet();
         HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();
         for (RoomType roomType : roomTypeSet) {
             int roomTypeCount = Integer.valueOf(request.getParameter(roomType.getRoomTypeName()));
@@ -176,11 +176,19 @@ public class RequestParser {
                 selectedRoomTypes.put(roomType, roomTypeCount);
             }
         }
-        List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, hotelDto.getRoomList());
-        double paymentAmount = calc(DateUtil.getBookedDays(checkInDate, checkOutDate), selectedRooms);
+        List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, globalHotelDto.getRoomList());
+        double paymentAmount = calc(getBookedDays(checkInDate, checkOutDate), selectedRooms);
         Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
                 paymentAmount);
         return bill;
+    }
+
+    // TODO: 19.10.2016 куда-нибудь скомпоновать
+
+    private static int getBookedDays(long date1, long date2) {
+        final long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
+        int days = Math.round((date2 - date1) / MILLISECONDS_IN_DAY);
+        return days;
     }
 
     public static List<RoomDto> parseRoomDtoList(HttpServletRequest request) throws ServiceException{
@@ -238,11 +246,11 @@ public class RequestParser {
 
                 }
             }
-            RoomTypeDto requestedRoomTypeDto = DtoToEntityConverter.converToRoomTypeDto(requestedRoomType, currency);
-            HotelDto requestedHotelDto = DtoToEntityConverter.converToHotelDto(requestedHotel);
+            RoomTypeDto requestedRoomTypeDto = DtoToEntityConverter.toRoomTypeDto(requestedRoomType, currency);
+            GlobalHotelDto requestedGlobalHotelDto = DtoToEntityConverter.toHotelDto(requestedHotel);
             // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
             TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
-            RoomDto roomDto = new RoomDto(roomId, requestedHotelDto, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
+            RoomDto roomDto = new RoomDto(roomId, requestedGlobalHotelDto, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
@@ -341,8 +349,8 @@ public class RequestParser {
         int roomNumber = Integer.valueOf(strRoomNumber);
         TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
         String roomStatus = request.getParameter(Parameter.ROOM_STATUS);
-        HotelDto hotelDto = DtoToEntityConverter.converToHotelDto(hotel);
-        RoomDto roomDto = new RoomDto(roomId, hotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
+        GlobalHotelDto globalHotelDto = DtoToEntityConverter.toHotelDto(hotel);
+        RoomDto roomDto = new RoomDto(roomId, globalHotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
         return roomDto;
     }
 

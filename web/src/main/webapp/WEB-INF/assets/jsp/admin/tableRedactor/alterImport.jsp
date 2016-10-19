@@ -37,7 +37,7 @@
             </c:if>
             <c:if test="${fieldType.equals('entity')}">
                 <c:set var="descriptor" value="${fieldDescriptor}" scope="request"/>
-                <jsp:include page="import.jsp" flush="true"/>
+                <jsp:include page="/WEB-INF/assets/jsp/admin/tableRedactor/alterImport.jsp" flush="true"/>
             </c:if>
         </c:otherwise>
     </c:choose>

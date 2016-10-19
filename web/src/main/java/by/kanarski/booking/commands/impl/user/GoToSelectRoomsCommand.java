@@ -4,7 +4,7 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
@@ -37,8 +37,8 @@ public class GoToSelectRoomsCommand extends AbstractCommand {
                 session.setAttribute(Parameter.ORDER_DTO, order);
             }
             hotelRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
-            HotelDto selectedHotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);
-            session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO, selectedHotelDto);
+            GlobalHotelDto selectedGlobalHotelDto = new GlobalHotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);
+            session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO, selectedGlobalHotelDto);
             page = PagePath.SELECT_ROOM_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

@@ -5,8 +5,8 @@ import by.kanarski.booking.commands.impl.admin.GoToAdminPageCommand;
 import by.kanarski.booking.commands.impl.admin.database.room.AlterRoomsCommand;
 import by.kanarski.booking.commands.impl.admin.database.ConstrainRowCommand;
 import by.kanarski.booking.commands.impl.admin.database.room.GoToRoomsRedactorCommand;
-import by.kanarski.booking.commands.impl.admin.database.roomType.AlterRoomTypeCommand;
-import by.kanarski.booking.commands.impl.admin.database.roomType.GoToRoomTypeRedactorCommand;
+import by.kanarski.booking.commands.impl.admin.database.roomType.AlterRoomTypesCommand;
+import by.kanarski.booking.commands.impl.admin.database.roomType.GoToRoomTypesRedactorCommand;
 import by.kanarski.booking.commands.impl.client.*;
 import by.kanarski.booking.commands.impl.user.*;
 
@@ -84,10 +84,10 @@ public enum CommandType {
                 return new ConstrainRowCommand();
 
             case GOTOROOMTYPEREDACTOR:
-                return new GoToRoomTypeRedactorCommand();
+                return new GoToRoomTypesRedactorCommand();
 
             case ALTERROOMTYPE:
-                return new AlterRoomTypeCommand();
+                return new AlterRoomTypesCommand();
 
             default:
                 throw new EnumConstantNotPresentException(this.getDeclaringClass(), this.name());

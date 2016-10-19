@@ -1,7 +1,6 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.RequestParser;
@@ -18,7 +17,7 @@ public class CancelActionCommand extends AbstractCommand {
         ServletAction servletAction;
         boolean isAjaxRequest = RequestParser.isAjaxRequest(request);
         if (isAjaxRequest) {
-            servletAction = ServletAction.NO_ACTION;
+            servletAction = ServletAction.AJAX_REQUEST;
         } else {
             servletAction = ServletAction.FORWARD_PAGE;
             String page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);

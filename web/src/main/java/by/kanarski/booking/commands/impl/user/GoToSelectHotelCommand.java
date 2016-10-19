@@ -5,7 +5,7 @@ import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Room;
@@ -38,8 +38,8 @@ public class GoToSelectHotelCommand extends AbstractCommand {
                 servletAction.setCommandName(CommandType.GOTOSELECTROOMS.name());
             } else {
                 List<Room> availableRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
-                List<HotelDto> hotelDtoList = getHotelDtoList(availableRooms);
-                session.setAttribute(Parameter.HOTEL_DTO_LIST, hotelDtoList);
+                List<GlobalHotelDto> globalHotelDtoList = getHotelDtoList(availableRooms);
+                session.setAttribute(Parameter.HOTEL_DTO_LIST, globalHotelDtoList);
                 page = PagePath.SELECT_HOTEL_PATH;
                 servletAction = ServletAction.FORWARD_PAGE;
             }
@@ -55,8 +55,8 @@ public class GoToSelectHotelCommand extends AbstractCommand {
         return servletAction;
     }
 
-    private List<HotelDto> getHotelDtoList(List<Room> roomList) {
-        List<HotelDto> hotelList = new ArrayList<>();
+    private List<GlobalHotelDto> getHotelDtoList(List<Room> roomList) {
+        List<GlobalHotelDto> hotelList = new ArrayList<>();
         int separator = 0;
         for (int i = 0; i < roomList.size(); i++) {
             if (i < (roomList.size() - 1)) {
@@ -64,16 +64,16 @@ public class GoToSelectHotelCommand extends AbstractCommand {
                 String nextHotelName = roomList.get(i + 1).getRoomHotel().getHotelName();
                 if (!curHotelName.equals(nextHotelName)) {
                     Hotel hotel = roomList.get(i).getRoomHotel();
-                    HotelDto hotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
+                    GlobalHotelDto globalHotelDto = new GlobalHotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                             roomList.subList(separator, i + 1));
-                    hotelList.add(hotelDto);
+                    hotelList.add(globalHotelDto);
                     separator = i + 1;
                 }
             } else {
                 Hotel hotel = roomList.get(i).getRoomHotel();
-                HotelDto hotelDto = new HotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
+                GlobalHotelDto globalHotelDto = new GlobalHotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(),
                         roomList.subList(separator, i + 1));
-                hotelList.add(hotelDto);
+                hotelList.add(globalHotelDto);
                 separator = i + 1;
             }
         }

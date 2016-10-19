@@ -2,7 +2,7 @@ package by.kanarski.booking.commands.impl.admin.database.room;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.*;
@@ -39,7 +39,7 @@ public class GoToRoomsRedactorCommand implements ICommand {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOMS_REDACTOR_PATH;
                 List<Room> roomList = RoomServiceImpl.getInstance().getAll();
-                List<RoomDto> roomDtoList = DtoToEntityConverter.covertToRoomDtoList(roomList, locale, currency);
+                List<RoomDto> roomDtoList = DtoToEntityConverter.toRoomDtoList(roomList, locale, currency);
                 List<Hotel> hotelList = HotelServiceImpl.getInstance().getAll();
                 List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
 
@@ -47,7 +47,7 @@ public class GoToRoomsRedactorCommand implements ICommand {
                 for (RoomDto roomDto: roomDtoList) {
                     LinkedHashMap<String, FieldDescriptor> roomFields = new LinkedHashMap<>();
                     FieldDescriptor roomIdFieldDescriptor = FieldBuilder.buildFreePrimitive();
-                    FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
+                    FieldDescriptor<GlobalHotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
                     FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeList, currency);
                     roomDto.setRoomHotel(hotelDtoFieldDescriptor.getOwner());
                     roomDto.setRoomType(roomTypeDtoFieldDescriptor.getOwner());
@@ -71,7 +71,7 @@ public class GoToRoomsRedactorCommand implements ICommand {
             } else {
                 String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
                 request.setAttribute(Parameter.OPERATION_MESSAGE, opertaionMessage);
-                servletAction = ServletAction.NO_ACTION;
+                servletAction = ServletAction.AJAX_REQUEST;
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

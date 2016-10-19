@@ -1,7 +1,7 @@
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.dao.impl.UserDao;
 import by.kanarski.booking.entities.User;
-import by.kanarski.booking.exceptions.DaoException;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.utils.EntityBuilder;
 import org.junit.After;
 import org.junit.Assert;
@@ -57,7 +57,7 @@ public class UserDaoTest extends Assert{
         try {
             User actual = userDao.getById(expectedUser.getUserId());
             assertEquals(expectedUser, actual);
-        } catch (DaoException e) {
+        } catch (LocalisationException e) {
             fail();
         }
     }
@@ -97,7 +97,7 @@ public class UserDaoTest extends Assert{
         assertTrue(isNewUser);
     }
 
-    @Test(expected = DaoException.class)
+    @Test(expected = LocalisationException.class)
     public void testDelete() throws Exception {
         User newUser = userDao.add(getNewUser());
         userDao.delete(newUser);

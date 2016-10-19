@@ -1,7 +1,7 @@
 package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Hotel;
 import by.kanarski.booking.entities.Location;
@@ -17,40 +17,40 @@ import java.util.*;
 
 public class ConstrainUtil {
 
-    public static FieldDescriptor<HotelDto> byHotel(HotelDto selectedHotelDto, List<Hotel> hotelList) {
-        List<HotelDto> hotelDtoList = DtoToEntityConverter.converToHotelDtoList(hotelList);
+    public static FieldDescriptor<GlobalHotelDto> byHotel(GlobalHotelDto selectedGlobalHotelDto, List<Hotel> hotelList) {
+        List<GlobalHotelDto> globalHotelDtoList = DtoToEntityConverter.converToHotelDtoList(hotelList);
 
-        String selectedHotelCountry = selectedHotelDto.getHotelLocation().getCountry();
-        String selectedHotelCity = selectedHotelDto.getHotelLocation().getCity();
-        String selectedHotelName = selectedHotelDto.getHotelName();
+        String selectedHotelCountry = selectedGlobalHotelDto.getHotelLocation().getCountry();
+        String selectedHotelCity = selectedGlobalHotelDto.getHotelLocation().getCity();
+        String selectedHotelName = selectedGlobalHotelDto.getHotelName();
 
         Set<String> countrySet = new HashSet<>();
         Set<String> citySet = new HashSet<>();
         Set<String> hotelNameSet = new HashSet<>();
-        HotelDto resHotelDto = null;
+        GlobalHotelDto resGlobalHotelDto = null;
 
-        for (HotelDto hotelDto : hotelDtoList) {
-            long hotelId = hotelDto.getHotelId();
-            String hotelCountry = hotelDto.getHotelLocation().getCountry();
-            String hotelCity = hotelDto.getHotelLocation().getCity();
-            String hotelName = hotelDto.getHotelName();
+        for (GlobalHotelDto globalHotelDto : globalHotelDtoList) {
+            long hotelId = globalHotelDto.getHotelId();
+            String hotelCountry = globalHotelDto.getHotelLocation().getCountry();
+            String hotelCity = globalHotelDto.getHotelLocation().getCity();
+            String hotelName = globalHotelDto.getHotelName();
             if (hotelCountry.equals(selectedHotelCountry)) {
                 citySet.add(hotelCity);
                 if (hotelCity.equals(selectedHotelCity)) {
                     if (hotelNameSet.isEmpty()) {
-                        resHotelDto = hotelDto;
+                        resGlobalHotelDto = globalHotelDto;
                     }
                     if (hotelName.equals(selectedHotelName)) {
-                        selectedHotelDto.setHotelId(hotelId);
+                        selectedGlobalHotelDto.setHotelId(hotelId);
                     }
                     hotelNameSet.add(hotelName);
                 }
             }
             countrySet.add(hotelCountry);
         }
-        if (!(hotelNameSet.contains(selectedHotelName)) && resHotelDto != null) {
-            selectedHotelDto.setHotelName(resHotelDto.getHotelName());
-            selectedHotelDto.setHotelId(resHotelDto.getHotelId());
+        if (!(hotelNameSet.contains(selectedHotelName)) && resGlobalHotelDto != null) {
+            selectedGlobalHotelDto.setHotelName(resGlobalHotelDto.getHotelName());
+            selectedGlobalHotelDto.setHotelId(resGlobalHotelDto.getHotelId());
         }
 
         LinkedHashMap<String, FieldDescriptor> locationFields = new LinkedHashMap<>();
@@ -58,27 +58,27 @@ public class ConstrainUtil {
         locationFields.put(Parameter.LOCATION_CITY, FieldBuilder.buildPrimitive(citySet));
 
         FieldDescriptor hotelIdPrimitive = FieldBuilder.buildFreePrimitive();
-        FieldDescriptor<Location> locationEntity = FieldBuilder.buildEntity(locationFields, selectedHotelDto.getHotelLocation());
+        FieldDescriptor<Location> locationEntity = FieldBuilder.buildEntity(locationFields, selectedGlobalHotelDto.getHotelLocation());
         FieldDescriptor hotelNamePrimitive = FieldBuilder.buildPrimitive(hotelNameSet);
         LinkedHashMap<String, FieldDescriptor> hotelFields = new LinkedHashMap<>();
         hotelFields.put(Parameter.HOTEL_ID, hotelIdPrimitive);
         hotelFields.put(Parameter.HOTEL_LOCATION, locationEntity);
         hotelFields.put(Parameter.HOTEL_NAME, hotelNamePrimitive);
-        FieldDescriptor<HotelDto> hotelEntity = FieldBuilder.buildEntity(hotelFields, selectedHotelDto);
+        FieldDescriptor<GlobalHotelDto> hotelEntity = FieldBuilder.buildEntity(hotelFields, selectedGlobalHotelDto);
 
         if (hotelNameSet.isEmpty()) {
             String hotelCity = citySet.iterator().next();
-            Location location = selectedHotelDto.getHotelLocation();
+            Location location = selectedGlobalHotelDto.getHotelLocation();
             location.setCity(hotelCity);
-            selectedHotelDto.setHotelLocation(location);
-            hotelEntity = byHotel(selectedHotelDto, hotelList);
+            selectedGlobalHotelDto.setHotelLocation(location);
+            hotelEntity = byHotel(selectedGlobalHotelDto, hotelList);
         }
-        hotelEntity.setOwner(selectedHotelDto);
+        hotelEntity.setOwner(selectedGlobalHotelDto);
         return hotelEntity;
     }
 
     public static FieldDescriptor<RoomTypeDto> byRoomType(RoomTypeDto selectedRTDto, List<RoomType> rTList, Currency currency) {
-        List<RoomTypeDto> rTDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(rTList, currency);
+        List<RoomTypeDto> rTDtoList = DtoToEntityConverter.toRoomTypeDtoList(rTList, currency);
 
         String selectedRTName = selectedRTDto.getRoomTypeName();
         int selectedRTmaxPersons = selectedRTDto.getMaxPersons();

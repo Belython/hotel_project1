@@ -1,53 +1,16 @@
 package by.kanarski.booking.dto;
 
 import by.kanarski.booking.entities.Location;
-import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.entities.RoomType;
-import by.kanarski.booking.utils.Counter;
 
-import java.util.List;
-import java.util.Map;
-
+/**
+ * Created by Дмитрий on 19.10.2016.
+ */
 public class HotelDto {
 
     private long hotelId;
     private Location hotelLocation;
     private String hotelName;
     private String hotelStatus;
-
-    private List<Room> roomList;
-    private Map<RoomType, Integer> roomTypesCount;
-    private int roomsAvailable;
-
-    public HotelDto() {
-
-    }
-
-    public HotelDto(long hotelId, String hotelCountry, String hotelCity, String hotelName, String hotelStatus) {
-        this.hotelId = hotelId;
-        Location location = new Location();
-        location.setCountry(hotelCountry);
-        location.setCity(hotelCity);
-        this.hotelLocation = location;
-        this.hotelName = hotelName;
-        this.hotelStatus = hotelStatus;
-    }
-
-    public HotelDto(long hotelId, Location hotelLocation, String hotelName, String hotelStatus) {
-        this.hotelId = hotelId;
-        this.hotelLocation = hotelLocation;
-        this.hotelName = hotelName;
-        this.hotelStatus = hotelStatus;
-    }
-
-    public HotelDto(long hotelId, Location hotelLocation, String hotelName, List<Room> roomList) {
-        this.hotelId = hotelId;
-        this.hotelLocation = hotelLocation;
-        this.hotelName = hotelName;
-        this.roomList = roomList;
-        this.roomsAvailable = roomList.size();
-        this.roomTypesCount = Counter.countRoomTypes(roomList);
-    }
 
     public long getHotelId() {
         return hotelId;
@@ -73,37 +36,12 @@ public class HotelDto {
         this.hotelName = hotelName;
     }
 
-    public List<Room> getRoomList() {
-        return roomList;
-    }
-
-    public void setRoomList(List<Room> roomList) {
-        this.roomList = roomList;
-        this.roomsAvailable = roomList.size();
-    }
-
     public String getHotelStatus() {
         return hotelStatus;
     }
 
     public void setHotelStatus(String hotelStatus) {
         this.hotelStatus = hotelStatus;
-    }
-
-    public Map<RoomType, Integer> getRoomTypesCount() {
-        return roomTypesCount;
-    }
-
-    public void setRoomTypesCount(Map<RoomType, Integer> roomTypesCount) {
-        this.roomTypesCount = roomTypesCount;
-    }
-
-    public int getRoomsAvailable() {
-        return roomsAvailable;
-    }
-
-    public void setRoomsAvailable(int roomsAvailable) {
-        this.roomsAvailable = roomsAvailable;
     }
 
     @Override
@@ -114,12 +52,9 @@ public class HotelDto {
         HotelDto hotelDto = (HotelDto) o;
 
         if (hotelId != hotelDto.hotelId) return false;
-        if (roomsAvailable != hotelDto.roomsAvailable) return false;
         if (!hotelLocation.equals(hotelDto.hotelLocation)) return false;
         if (!hotelName.equals(hotelDto.hotelName)) return false;
-        if (!hotelStatus.equals(hotelDto.hotelStatus)) return false;
-        if (!roomList.equals(hotelDto.roomList)) return false;
-        return roomTypesCount.equals(hotelDto.roomTypesCount);
+        return hotelStatus.equals(hotelDto.hotelStatus);
 
     }
 
@@ -129,9 +64,6 @@ public class HotelDto {
         result = 31 * result + hotelLocation.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelStatus.hashCode();
-        result = 31 * result + roomList.hashCode();
-        result = 31 * result + roomTypesCount.hashCode();
-        result = 31 * result + roomsAvailable;
         return result;
     }
 }

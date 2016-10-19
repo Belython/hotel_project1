@@ -1,6 +1,7 @@
 package by.kanarski.booking.utils;
 
-import by.kanarski.booking.constants.DaoMessages;
+import by.kanarski.booking.constants.DaoMessage;
+import by.kanarski.booking.utils.dataSource.DataSource;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -28,9 +29,9 @@ public class ConnectionUtil {
                 connection.set(instance.getConnection());
             }
         } catch (IOException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.INPUT_ERROR + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessage.INPUT_ERROR + e);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.DATABASE_CONNECTION_ERROR + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessage.DATABASE_CONNECTION_ERROR + e);
         }
         return connection.get();
     }
@@ -44,9 +45,9 @@ public class ConnectionUtil {
                 connection.set(instance.getConnection());
             }
         } catch (IOException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.INPUT_ERROR + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessage.INPUT_ERROR + e);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessages.DATABASE_CONNECTION_ERROR + e);
+            BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessage.DATABASE_CONNECTION_ERROR + e);
         }
         return connection.get();
     }

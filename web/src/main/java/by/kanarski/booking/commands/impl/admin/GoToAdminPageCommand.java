@@ -28,7 +28,7 @@ public class GoToAdminPageCommand implements ICommand {
         } else {
             String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
             request.setAttribute(Parameter.OPERATION_MESSAGE, opertaionMessage);
-            servletAction = ServletAction.NO_ACTION;
+            servletAction = ServletAction.AJAX_REQUEST;
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

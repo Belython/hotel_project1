@@ -9,7 +9,10 @@ import java.util.Locale;
  * @version 1.0
  */
 
-public class CurrencyConverter {
+public class CurrencyUtil {
+
+    public static final Currency CURRENCY_USD = Currency.getInstance("USD");
+    public static final Currency CURRENCY_BYR = Currency.getInstance("BYR");
 
     public static double convert(double amount, Currency from, Currency to) {
         double exchangeRate = getExchangeRate(from, to);

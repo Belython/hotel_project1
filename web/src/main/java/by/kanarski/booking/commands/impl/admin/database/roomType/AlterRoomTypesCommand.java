@@ -5,14 +5,11 @@ import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
-import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
-import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.RequestParser;
@@ -27,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class AlterRoomTypeCommand extends AbstractCommand {
+public class AlterRoomTypesCommand extends AbstractCommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -57,14 +54,15 @@ public class AlterRoomTypeCommand extends AbstractCommand {
                 }
             }
             List<RoomType> newRoomTypeList = RoomTypeServiceImpl.getInstance().getAll();
-            List<RoomTypeDto> newRoomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
+            List<RoomTypeDto> newRoomTypeDtoList = DtoToEntityConverter.toRoomTypeDtoList(roomTypeList, currency);
             session.setAttribute(Parameter.ROOM_TYPE_LIST, newRoomTypeList);
             session.setAttribute(Parameter.ROOM_TYPE_DTO_LIST, newRoomTypeDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);
             if (RequestParser.isAjaxRequest(request)) {
-                servletAction = ServletAction.NO_ACTION;
+                servletAction = ServletAction.AJAX_REQUEST;
                 writeResponse(response, responseText);
+                page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
             } else {
                 servletAction = ServletAction.FORWARD_PAGE;
                 request.setAttribute(Parameter.OPERATION_MESSAGE, responseText);

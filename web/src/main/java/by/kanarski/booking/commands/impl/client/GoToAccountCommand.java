@@ -5,12 +5,10 @@ import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
-import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
-import by.kanarski.booking.services.impl.RoomServiceImpl;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +29,7 @@ public class GoToAccountCommand extends AbstractCommand {
 
             User user = (User) session.getAttribute(Parameter.USER);
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
-            List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale, currency);
+            List<BillDto> billDtoList = DtoToEntityConverter.toBillDtoList(billList, locale, currency);
             session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
