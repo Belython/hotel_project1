@@ -1,11 +1,11 @@
 package by.kanarski.booking.dao.impl;
 
-import by.kanarski.booking.constants.DaoMessages;
+import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.dao.interfaces.IRoomDao;
 import by.kanarski.booking.dto.OrderDto;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
-import by.kanarski.booking.exceptions.DaoException;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.utils.*;
 
 import java.sql.*;
@@ -72,7 +72,7 @@ public class RoomDao implements IRoomDao {
     }
 
     @Override
-    public Room add(Room room) throws DaoException {
+    public Room add(Room room) throws LocalisationException {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
@@ -88,8 +88,8 @@ public class RoomDao implements IRoomDao {
             resultSet.next();
             room.setRoomId(resultSet.getLong(1));
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.ADD_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.ADD_ROOM_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -97,7 +97,7 @@ public class RoomDao implements IRoomDao {
     }
 
     @Override
-    public Room getById(long id) throws DaoException {
+    public Room getById(long id) throws LocalisationException {
         Room room = null;
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_ID_QUERY)) {
@@ -106,14 +106,14 @@ public class RoomDao implements IRoomDao {
             resultSet.next();
             room = EntityParser.parseRoom(resultSet);
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.GET_ROOM_EXCEPTION, e);
         }
         return room;
     }
 
     @Override
-    public List<Room> getAll() throws DaoException {
+    public List<Room> getAll() throws LocalisationException {
         List<Room> roomList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_ALL)) {
@@ -122,14 +122,14 @@ public class RoomDao implements IRoomDao {
                 roomList.add(EntityParser.parseRoom(resultSet));
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.GET_ROOM_EXCEPTION, e);
         }
         return roomList;
     }
 
     @Override
-    public void update(Room room) throws DaoException {
+    public void update(Room room) throws LocalisationException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             stm.setLong(1, room.getRoomHotel().getHotelId());
@@ -141,17 +141,17 @@ public class RoomDao implements IRoomDao {
             stm.setLong(6, room.getRoomId());
             stm.executeUpdate();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.UPDATE_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.UPDATE_ROOM_EXCEPTION, e);
         }
     }
 
     @Override
-    public void delete(Room room) throws DaoException {
+    public void delete(Room room) throws LocalisationException {
 
     }
 
-    public List<Room> getAvailableRooms(OrderDto orderDto) throws DaoException {
+    public List<Room> getAvailableRooms(OrderDto orderDto) throws LocalisationException {
         List<Room> rooms = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_AVAILABLE_ROOMS_QUERY)) {
@@ -165,13 +165,13 @@ public class RoomDao implements IRoomDao {
                 rooms.add(EntityParser.parseRoom(resultSet));
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.GET_ROOM_EXCEPTION, e);
         }
         return rooms;
     }
 
-    public List<Room> getByHotelId(long hotelId) throws DaoException {
+    public List<Room> getByHotelId(long hotelId) throws LocalisationException {
         List<Room> rooms = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_HOTEL_ID_QUERY)) {
@@ -181,13 +181,13 @@ public class RoomDao implements IRoomDao {
                 rooms.add(EntityParser.parseRoom(resultSet));
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.GET_ROOM_EXCEPTION, e);
         }
         return rooms;
     }
 
-    public List<Room> getByIdList(List<Long> idList) throws DaoException {
+    public List<Room> getByIdList(List<Long> idList) throws LocalisationException {
         List<Room> roomList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         final String GET_BY_LIST_ID_FINISHED_QUERY = getFinishedQuery(GET_BY_LIST_ID_QUERY, idList);
@@ -198,13 +198,13 @@ public class RoomDao implements IRoomDao {
                 roomList.add(room);
             }
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.GET_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.GET_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.GET_ROOM_EXCEPTION, e);
         }
         return roomList;
     }
 
-    public void updateList(List<Room> roomList) throws DaoException {
+    public void updateList(List<Room> roomList) throws LocalisationException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             for (Room room : roomList) {
@@ -219,12 +219,12 @@ public class RoomDao implements IRoomDao {
             }
             stm.executeBatch();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.UPDATE_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.UPDATE_ROOM_EXCEPTION, e);
         }
     }
 
-    public void addList(List<Room> roomList) throws DaoException {
+    public void addList(List<Room> roomList) throws LocalisationException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -239,8 +239,8 @@ public class RoomDao implements IRoomDao {
             }
             stm.executeBatch();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.ADD_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.ADD_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.ADD_ROOM_EXCEPTION, e);
         }
     }
 
@@ -256,7 +256,7 @@ public class RoomDao implements IRoomDao {
         return finishedQuery;
     }
 
-    public void reserveRoomList(List<Room> roomList) throws DaoException {
+    public void reserveRoomList(List<Room> roomList) throws LocalisationException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(RESERVE_ROOM_QUERY)) {
             for (Room room : roomList) {
@@ -267,12 +267,12 @@ public class RoomDao implements IRoomDao {
             }
             stm.executeBatch();
         } catch (SQLException e) {
-            BookingSystemLogger.getInstance().logError(getClass(), DaoMessages.UPDATE_ROOM_EXCEPTION);
-            throw new DaoException(DaoMessages.UPDATE_ROOM_EXCEPTION, e);
+            BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_ROOM_EXCEPTION);
+            throw new LocalisationException(DaoMessage.UPDATE_ROOM_EXCEPTION, e);
         }
     }
 
-    public static void main(String[] args) throws DaoException{
+    public static void main(String[] args) throws LocalisationException {
         Set<String> fac = new HashSet<>();
         fac.add("safe");
         fac.add("wi-fi");

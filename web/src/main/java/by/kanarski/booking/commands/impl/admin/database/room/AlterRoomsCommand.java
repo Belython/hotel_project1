@@ -36,7 +36,7 @@ public class AlterRoomsCommand extends AbstractCommand {
         String subCommand = request.getParameter(Parameter.SUB_COMMAND);
         try {
             List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-            List<Room> roomList = DtoToEntityConverter.convertToRoomList(roomDtoList, locale, currency);
+            List<Room> roomList = DtoToEntityConverter.toRoomList(roomDtoList, locale, currency);
             switch (subCommand) {
                 case Value.ADD_NEW: {
                     RoomServiceImpl.getInstance().addList(roomList);
@@ -48,14 +48,15 @@ public class AlterRoomsCommand extends AbstractCommand {
                 }
             }
             List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
-            List<RoomDto> newRoomDtoList = DtoToEntityConverter.covertToRoomDtoList(newRoomList, locale, currency);
+            List<RoomDto> newRoomDtoList = DtoToEntityConverter.toRoomDtoList(newRoomList, locale, currency);
             session.setAttribute(Parameter.ROOM_LIST, newRoomList);
             session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);
             if (RequestParser.isAjaxRequest(request)) {
-                servletAction = ServletAction.NO_ACTION;
+                servletAction = ServletAction.AJAX_REQUEST;
                 writeResponse(response, responseText);
+                page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
             } else {
                 servletAction = ServletAction.FORWARD_PAGE;
                 request.setAttribute(Parameter.OPERATION_MESSAGE, responseText);

@@ -2,7 +2,7 @@ package by.kanarski.booking.commands.impl.admin.database;
 
 import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.*;
-import by.kanarski.booking.dto.HotelDto;
+import by.kanarski.booking.dto.GlobalHotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Hotel;
@@ -48,14 +48,13 @@ public class ConstrainRowCommand extends AbstractCommand{
                 break;
             }
         }
-        servletAction = ServletAction.NO_ACTION;
+        servletAction = ServletAction.AJAX_REQUEST;
         servletAction.setPage(page);
         return servletAction;
     }
 
     private void constrainRoom(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
 
         RoomDto roomDto = RequestParser.parseRoomDto(request);
@@ -64,7 +63,7 @@ public class ConstrainRowCommand extends AbstractCommand{
 
         LinkedHashMap<String, FieldDescriptor> roomFields = new LinkedHashMap<>();
         FieldDescriptor roomIdFieldDescriptor = FieldBuilder.buildFreePrimitive();
-        FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
+        FieldDescriptor<GlobalHotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getRoomHotel(), hotelList);
         FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeList, currency);
         roomDto.setRoomHotel(hotelDtoFieldDescriptor.getOwner());
         roomDto.setRoomType(roomTypeDtoFieldDescriptor.getOwner());
@@ -75,12 +74,29 @@ public class ConstrainRowCommand extends AbstractCommand{
         roomFields.put(Parameter.ROOM_TYPE, roomTypeDtoFieldDescriptor);
         roomFields.put(Parameter.ROOM_NUMBER, roomNumberFieldDescriptor);
         roomFields.put(Parameter.ROOM_STATUS, roomStatusFieldDescriptor);
-        FieldDescriptor<RoomDto> roomDtoEntity = FieldBuilder.buildEntity(roomFields, roomDto);
+        FieldDescriptor<RoomDto> roomDtoDescriptor = FieldBuilder.buildEntity(roomFields, roomDto);
 
-        request.setAttribute(Parameter.DESCRIPTOR, roomDtoEntity);
+        request.setAttribute(Parameter.DESCRIPTOR, roomDtoDescriptor);
     }
 
     private void constrainRoomType(HttpServletRequest request) {
+        RoomTypeDto roomTypeDto = RequestParser.parseRoomTypeDto(request);
 
+        LinkedHashMap<String, FieldDescriptor> roomTypeDescriptors = new LinkedHashMap<>();
+        FieldDescriptor roomTypeIdDescriptor = FieldBuilder.buildFreePrimitive();
+        FieldDescriptor roomTypeNameDescriptor = FieldBuilder.buildFreePrimitive();
+        FieldDescriptor maxPersonsDescriptor = FieldBuilder.buildFreePrimitive();
+        FieldDescriptor pricePerNightDescriptor = FieldBuilder.buildFreePrimitive();
+        FieldDescriptor facilitiesDescriptor = FieldBuilder.buildFreePrimitive();
+        FieldDescriptor roomTypeStatusDescriptor = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_ID, roomTypeIdDescriptor);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_NAME, roomTypeNameDescriptor);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_MAX_PERSONS, maxPersonsDescriptor);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_PRICE_PER_NIGHT, pricePerNightDescriptor);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_FACILITIES, facilitiesDescriptor);
+        roomTypeDescriptors.put(Parameter.ROOM_TYPE_STATUS, roomTypeStatusDescriptor);
+        FieldDescriptor<RoomTypeDto> roomTypeDtoDescriptor = FieldBuilder.buildEntity(roomTypeDescriptors, roomTypeDto);
+
+        request.setAttribute(Parameter.DESCRIPTOR, roomTypeDtoDescriptor);
     }
 }

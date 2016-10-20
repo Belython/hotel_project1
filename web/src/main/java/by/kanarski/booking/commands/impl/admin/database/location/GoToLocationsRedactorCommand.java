@@ -1,21 +1,13 @@
-package by.kanarski.booking.commands.impl.admin.database.roomType;
+package by.kanarski.booking.commands.impl.admin.database.location;
 
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
-import by.kanarski.booking.dto.HotelDto;
-import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.entities.RoomType;
+import by.kanarski.booking.entities.Location;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
-import by.kanarski.booking.services.impl.HotelServiceImpl;
-import by.kanarski.booking.services.impl.RoomServiceImpl;
-import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.ConstrainUtil;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.field.FieldBuilder;
 import by.kanarski.booking.utils.field.FieldDescriptor;
@@ -26,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
-public class GoToRoomTypeRedactorCommand implements ICommand {
+public class GoToLocationsRedactorCommand implements ICommand {
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
@@ -40,9 +32,9 @@ public class GoToRoomTypeRedactorCommand implements ICommand {
             User admin = (User) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
-                page = PagePath.ROOM_TYPE_REDACTOR_PATH;
-                List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
-                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.convertToRoomTypeDtoList(roomTypeList, currency);
+                page = PagePath.LOCATIONS_REDACTOR_PATH;
+                List<Location> locationList = LocationS.getInstance().getAll();
+                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.toRoomTypeDtoList(roomTypeList, currency);
 
                 List<FieldDescriptor<RoomTypeDto>> descriptorList = new ArrayList<>();
                 for (RoomTypeDto roomTypeDto: roomTypeDtoList) {
@@ -70,7 +62,7 @@ public class GoToRoomTypeRedactorCommand implements ICommand {
             } else {
                 String opertaionMessage = bundle.getString(OperationMessageKeys.LOW_ACCESS_LEVEL);
                 request.setAttribute(Parameter.OPERATION_MESSAGE, opertaionMessage);
-                servletAction = ServletAction.NO_ACTION;
+                servletAction = ServletAction.AJAX_REQUEST;
             }
         } catch (ServiceException e) {
             page = PagePath.ERROR_PAGE_PATH;

@@ -168,6 +168,7 @@ public class PageTextContentKeys {
 
     public static final List<String> TABLE_REDACTOR = Arrays.asList(
             "tableRedactor.roomsRedactor",
+            "tableRedactor.roomTypeRedactor",
             "tableRedactor.alter",
             "tableRedactor.alterAll",
             "tableRedactor.add",

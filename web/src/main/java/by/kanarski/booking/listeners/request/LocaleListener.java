@@ -1,4 +1,4 @@
-package by.kanarski.booking.listeners;
+package by.kanarski.booking.listeners.request;
 
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.i18n.l10n.filler.Filler;

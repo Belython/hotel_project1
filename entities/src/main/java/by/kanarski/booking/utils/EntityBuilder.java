@@ -169,10 +169,17 @@ public class EntityBuilder {
         return room;
     }
 
-
     public static Bill buildBill(long billId, User user, int totalPersons, long checkInDate, long checkOutDate,
                                  List<Long> roomIdList, double paymentAmount, String billStatus) {
         Bill bill = buildBill(user, totalPersons, checkInDate, checkOutDate, roomIdList, paymentAmount);
+        bill.setBillId(billId);
+        bill.setBillStatus(billStatus);
+        return bill;
+    }
+
+    public static Bill buildBill(long billId, User user, int totalPersons, long checkInDate, long checkOutDate,
+                                 List<Room> roomList, double paymentAmount, String billStatus) {
+        Bill bill = buildBill(user, totalPersons, checkInDate, checkOutDate, roomList, paymentAmount);
         bill.setBillId(billId);
         bill.setBillStatus(billStatus);
         return bill;
@@ -186,6 +193,18 @@ public class EntityBuilder {
         bill.setCheckInDate(checkInDate);
         bill.setCheckOutDate(checkOutDate);
         bill.setBookedRoomIdList(roomIdList);
+        bill.setPaymentAmount(paymentAmount);
+        return bill;
+    }
+
+    public static Bill buildBill(User user, int totalPersons, long checkInDate, long checkOutDate,
+                                 List<Room> roomList, double paymentAmount) {
+        Bill bill = new Bill();
+        bill.setClient(user);
+        bill.setTotalPersons(totalPersons);
+        bill.setCheckInDate(checkInDate);
+        bill.setCheckOutDate(checkOutDate);
+        bill.setBookedRoomList(roomList);
         bill.setPaymentAmount(paymentAmount);
         return bill;
     }

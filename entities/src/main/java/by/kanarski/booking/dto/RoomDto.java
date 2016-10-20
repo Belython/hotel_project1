@@ -6,7 +6,7 @@ public class RoomDto {
 
     private long roomId;
 
-    private HotelDto roomHotel;
+    private GlobalHotelDto roomHotel;
     private RoomTypeDto roomType;
     private int roomNumber;
     private TreeMap<String, String> bookedDates;
@@ -16,7 +16,7 @@ public class RoomDto {
 
     }
 
-    public RoomDto(long roomId, HotelDto roomHotel, RoomTypeDto roomType,
+    public RoomDto(long roomId, GlobalHotelDto roomHotel, RoomTypeDto roomType,
                    int roomNumber, TreeMap<String, String> bookedDates, String roomStatus) {
         this.roomId = roomId;
         this.roomHotel = roomHotel;
@@ -34,11 +34,11 @@ public class RoomDto {
         this.roomId = roomId;
     }
 
-    public HotelDto getRoomHotel() {
+    public GlobalHotelDto getRoomHotel() {
         return roomHotel;
     }
 
-    public void setRoomHotel(HotelDto roomHotel) {
+    public void setRoomHotel(GlobalHotelDto roomHotel) {
         this.roomHotel = roomHotel;
     }
 

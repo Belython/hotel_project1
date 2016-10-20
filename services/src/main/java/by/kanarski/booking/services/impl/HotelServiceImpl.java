@@ -1,9 +1,9 @@
 package by.kanarski.booking.services.impl;
 
-import by.kanarski.booking.constants.ServiceMessageKeys;
+import by.kanarski.booking.constants.ServiceMessage;
 import by.kanarski.booking.dao.impl.HotelDao;
 import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.exceptions.DaoException;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IHotelService;
 import by.kanarski.booking.utils.BookingSystemLogger;
@@ -44,8 +44,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getAll();
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotelList;
@@ -59,8 +59,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotel = HotelDao.getInstance().getById(id);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotel;
@@ -83,8 +83,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotel = HotelDao.getInstance().getByHotelName(hotelName);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotel;
@@ -96,8 +96,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             HotelDao.getInstance().updateList(hotelList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -108,8 +108,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             HotelDao.getInstance().addList(hotelList);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -121,8 +121,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getByCountry(country);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotelList;
@@ -135,8 +135,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             hotelList = HotelDao.getInstance().getByCity(city);
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return hotelList;
@@ -149,8 +149,8 @@ public class HotelServiceImpl implements IHotelService {
             connection.setAutoCommit(false);
             fieldsValuesMap = HotelDao.getInstance().getFieldsValues();
             connection.commit();
-            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessageKeys.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | DaoException e) {
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return fieldsValuesMap;

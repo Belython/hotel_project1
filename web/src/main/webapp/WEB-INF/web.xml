@@ -63,7 +63,7 @@
     <!--</filter-mapping>-->
 
     <listener>
-        <listener-class>by.kanarski.booking.listeners.LocaleListener</listener-class>
+        <listener-class>by.kanarski.booking.listeners.request.LocaleListener</listener-class>
     </listener>
 
     <error-page>

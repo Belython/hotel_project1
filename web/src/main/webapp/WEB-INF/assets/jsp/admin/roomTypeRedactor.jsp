@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <html>
 <head>
-    <title>${tableRedactor_roomsRedactor}</title>
+    <title>${tableRedactor_roomTypeRedactor}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/admin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/tablesorter/tablesorter/jquery.tablesorter.min.js"></script>

@@ -1,5 +1,7 @@
 package by.kanarski.booking.utils;
 
+import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 
@@ -12,10 +14,25 @@ import java.util.Map;
  */
 public class Counter {
 
-    public static Map<RoomType, Integer> countRoomTypes(List<Room> roomList) {
-        Map<RoomType, Integer> roomTypeMap = new HashMap<>();
-        for (Room room : roomList) {
-            RoomType roomType = room.getRoomType();
+//    public static Map<RoomType, Integer> countRoomTypes(List<Room> roomList) {
+//        Map<RoomType, Integer> roomTypeMap = new HashMap<>();
+//        for (Room room : roomList) {
+//            RoomType roomType = room.getRoomType();
+//            Integer roomTypeCount = roomTypeMap.get(roomType);
+//            if (roomTypeCount == null) {
+//                roomTypeCount = 1;
+//            } else {
+//                roomTypeCount++;
+//            }
+//            roomTypeMap.put(roomType, roomTypeCount);
+//        }
+//        return roomTypeMap;
+//    }
+
+    public static Map<RoomTypeDto, Integer> countRoomTypes(List<RoomDto> roomDtoList) {
+        Map<RoomTypeDto, Integer> roomTypeMap = new HashMap<>();
+        for (RoomDto roomDto : roomDtoList) {
+            RoomTypeDto roomType = roomDto.getRoomType();
             Integer roomTypeCount = roomTypeMap.get(roomType);
             if (roomTypeCount == null) {
                 roomTypeCount = 1;

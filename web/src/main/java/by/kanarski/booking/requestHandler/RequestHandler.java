@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 public class RequestHandler {
     private RequestHandler() {
@@ -31,7 +30,7 @@ public class RequestHandler {
                     response.sendRedirect(request.getContextPath() + page);
                     break;
                 }
-                case NO_ACTION: {
+                case AJAX_REQUEST: {
                     if (page != null) {
                         RequestDispatcher dispatcher = request.getRequestDispatcher(page);
                         dispatcher.forward(request, response);

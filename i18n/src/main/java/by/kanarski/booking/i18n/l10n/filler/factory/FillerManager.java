@@ -47,7 +47,6 @@ public enum FillerManager {
         this.pageDescriptor = pageDescriptor;
     }
 
-
     public Filler getFiller() {
         return new Filler(pageDescriptor);
     }

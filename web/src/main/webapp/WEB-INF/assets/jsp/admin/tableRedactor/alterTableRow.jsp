@@ -5,7 +5,7 @@
 <tr>
     <td>${loop.index + 1}</td>
     <c:set var="descriptor" value="${descriptor}" scope="request"/>
-    <jsp:include page="alterImport.jsp" flush="true"/>
+    <jsp:include page="/WEB-INF/assets/jsp/admin/tableRedactor/alterImport.jsp" flush="true"/>
     <td>
         <button class="alterEntityBtn" type="button">${tableRedactor_alter}</button>
     </td>

@@ -35,7 +35,7 @@ public class PayBillCommand extends AbstractCommand {
             billToPay.setBillStatus(FieldValue.STATUS_PAID);
             BillServiceImpl.getInstance().update(billToPay);
             List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
-            List<BillDto> billDtoList = DtoToEntityConverter.convertToBillDtoList(billList, locale, currency);
+            List<BillDto> billDtoList = DtoToEntityConverter.toBillDtoList(billList, locale, currency);
             session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
