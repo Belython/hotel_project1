@@ -3,8 +3,9 @@ package by.kanarski.booking.dao.impl;
 import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.dao.interfaces.ILocationDao;
 import by.kanarski.booking.entities.Location;
-import by.kanarski.booking.exceptions.LocalisationException;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.*;
+import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class LocationDao implements ILocationDao {
     }
 
     @Override
-    public Location add(Location location) throws LocalisationException {
+    public Location add(Location location) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
@@ -49,7 +50,7 @@ public class LocationDao implements ILocationDao {
             location.setLocationId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.ADD_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.ADD_LOCATION_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -57,7 +58,7 @@ public class LocationDao implements ILocationDao {
     }
 
     @Override
-    public Location getById(long id) throws LocalisationException {
+    public Location getById(long id) throws DaoException {
         Location location = null;
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_ID_QUERY)) {
@@ -67,13 +68,13 @@ public class LocationDao implements ILocationDao {
             location = EntityParser.parseLocation(resultSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_LOCATION_EXCEPTION, e);
         }
         return location;
     }
 
     @Override
-    public List<Location> getAll() throws LocalisationException {
+    public List<Location> getAll() throws DaoException {
         List<Location> locations = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_ALL_QUERY)) {
@@ -83,13 +84,13 @@ public class LocationDao implements ILocationDao {
             }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_LOCATION_EXCEPTION, e);
         }
         return locations;
     }
 
     @Override
-    public void update(Location location) throws LocalisationException {
+    public void update(Location location) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             stm.setString(1, location.getCountry());
@@ -99,16 +100,16 @@ public class LocationDao implements ILocationDao {
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.UPDATE_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.UPDATE_LOCATION_EXCEPTION, e);
         }
     }
 
     @Override
-    public void delete(Location location) throws LocalisationException {
+    public void delete(Location location) throws DaoException {
 
     }
 
-    public void updateList(List<Location> locationList) throws LocalisationException {
+    public void updateList(List<Location> locationList) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             for (Location location : locationList) {
@@ -121,11 +122,11 @@ public class LocationDao implements ILocationDao {
             stm.executeBatch();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.UPDATE_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.UPDATE_LOCATION_EXCEPTION, e);
         }
     }
 
-    public void addList(List<Location> locationList) throws LocalisationException {
+    public void addList(List<Location> locationList) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -138,7 +139,7 @@ public class LocationDao implements ILocationDao {
             stm.executeBatch();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_LOCATION_EXCEPTION);
-            throw new LocalisationException(DaoMessage.ADD_LOCATION_EXCEPTION, e);
+            throw new DaoException(DaoMessage.ADD_LOCATION_EXCEPTION, e);
         }
     }
 }

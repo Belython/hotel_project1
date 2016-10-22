@@ -1,5 +1,7 @@
 package by.kanarski.booking.dto;
 
+import by.kanarski.booking.constants.FieldValue;
+
 import java.util.Currency;
 import java.util.Locale;
 
@@ -39,6 +41,17 @@ public class UserDto {
 
     public UserDto(long userId, String firstName, String lastName, String email, String login, String password, String role, String userStatus) {
         this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.userStatus = userStatus;
+    }
+
+    public UserDto(String firstName, String lastName, String email, String login, String password, String role, String userStatus) {
+        this.userId = FieldValue.UNDEFINED_ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -13,12 +13,13 @@ public class Parameter {
     public static final String USER_PASSWORD = "password";
     public static final String USER_ROLE = "role";
     public static final String USER_STATUS = "userStatus";
+    public static final String USER_DTO = "userDto";
 
     //Bill parameters
 
     public static final String BILL_LIST = "billList";
     public static final String BILL_TO_PAY = "billToPay";
-    public static final String BILL_DTO_LIST = "billDtoList";
+//    public static final String BILL_DTO_LIST = "billDtoList";
     public static final String BILL_TO_REFUSE = "billToRefuse";
 
     //Orrder parameters
@@ -26,7 +27,7 @@ public class Parameter {
     public static final String ORDER_TOTAL_PERSONS = "totalPersons";
     public static final String ORDER_CHECK_IN_DATE = "checkInDate";
     public static final String ORDER_CHECK_OUT_DATE = "checkOutDate";
-    public static final String ORDER_DTO = "order";
+    public static final String ORDER = "order";
 
     //Location parameters
 
@@ -49,10 +50,11 @@ public class Parameter {
     public static final String HOTEL_LIST = "hotelList";
     public static final String HOTEL_SET = "hotelSet";
     public static final String HOTEL_NAME_SET = "hotelNameSet";
-    public static final String HOTEL_SELECTED_HOTEL_DTO = "selectedHotelDto";
+    public static final String SELECTED_HOTEL = "selectedHotelDto";
     public static final String SUPPORTED_HOTELS = "supportedHotels";
     public static final String HOTEL_DTO_LIST = "hotelDtoList";
     public static final String HOTEL_ID_SET = "hotelIdSet";
+    public static final String GLOBAL_HOTEL_DTO_LIST = "globalHotelDtoList";
 
     //Locale parameters
 

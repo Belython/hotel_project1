@@ -5,10 +5,10 @@ import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.constants.FieldName;
 import by.kanarski.booking.dao.interfaces.IHotelDao;
 import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.exceptions.LocalisationException;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.BookingSystemLogger;
 import by.kanarski.booking.utils.ClosingUtil;
-import by.kanarski.booking.utils.ConnectionUtil;
+import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
 import by.kanarski.booking.utils.EntityParser;
 
 import java.sql.*;
@@ -51,7 +51,7 @@ public class HotelDao implements IHotelDao {
     }
 
     @Override
-    public Hotel add(Hotel hotel) throws LocalisationException {
+    public Hotel add(Hotel hotel) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
@@ -66,7 +66,7 @@ public class HotelDao implements IHotelDao {
             hotel.setHotelId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.ADD_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.ADD_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -74,7 +74,7 @@ public class HotelDao implements IHotelDao {
     }
 
     @Override
-    public Hotel getById(long id) throws LocalisationException {
+    public Hotel getById(long id) throws DaoException {
         Hotel hotel = null;
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -85,7 +85,7 @@ public class HotelDao implements IHotelDao {
             hotel = EntityParser.parseHotel(resultSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -93,16 +93,16 @@ public class HotelDao implements IHotelDao {
     }
 
     @Override
-    public void update(Hotel hotel) throws LocalisationException {
+    public void update(Hotel hotel) throws DaoException {
 
     }
 
     @Override
-    public void delete(Hotel hotel) throws LocalisationException {
+    public void delete(Hotel hotel) throws DaoException {
 
     }
 
-    public void updateList(List<Hotel> hotelList) throws LocalisationException {
+    public void updateList(List<Hotel> hotelList) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_HOTEL_QUERY)) {
             for (Hotel hotel : hotelList) {
@@ -114,12 +114,12 @@ public class HotelDao implements IHotelDao {
             stm.executeBatch();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.UPDATE_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.UPDATE_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.UPDATE_HOTEL_EXCEPTION, e);
         }
     }
 
     @Override
-    public List<Hotel> getAll() throws LocalisationException {
+    public List<Hotel> getAll() throws DaoException {
         List<Hotel> hotelList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -130,14 +130,14 @@ public class HotelDao implements IHotelDao {
             }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
         return hotelList;
     }
 
-    public Hotel getByHotelName(String hotelName) throws LocalisationException {
+    public Hotel getByHotelName(String hotelName) throws DaoException {
         Hotel hotel = null;
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -148,14 +148,14 @@ public class HotelDao implements IHotelDao {
             hotel = EntityParser.parseHotel(resultSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
         return hotel;
     }
 
-    public List<Hotel> getByCountry(String country) throws LocalisationException {
+    public List<Hotel> getByCountry(String country) throws DaoException {
         List<Hotel> hotelList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -167,14 +167,14 @@ public class HotelDao implements IHotelDao {
             }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
         return hotelList;
     }
 
-    public List<Hotel> getByCity(String city) throws LocalisationException {
+    public List<Hotel> getByCity(String city) throws DaoException {
         List<Hotel> hotelList = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -186,14 +186,14 @@ public class HotelDao implements IHotelDao {
             }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
         return hotelList;
     }
 
-    public void addList(List<Hotel> hotelList) throws LocalisationException {
+    public void addList(List<Hotel> hotelList) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -207,11 +207,11 @@ public class HotelDao implements IHotelDao {
             stm.executeBatch();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.ADD_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.ADD_HOTEL_EXCEPTION, e);
         }
     }
 
-    public HashMap<String, Set<String>> getFieldsValues() throws LocalisationException {
+    public HashMap<String, Set<String>> getFieldsValues() throws DaoException {
         HashMap<String, Set<String>> fieldsValuesMap = new HashMap<>();
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
@@ -230,7 +230,7 @@ public class HotelDao implements IHotelDao {
             fieldsValuesMap.put(FieldName.HOTEL_NAME, nameSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_HOTEL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_HOTEL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_HOTEL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }

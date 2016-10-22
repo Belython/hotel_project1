@@ -3,11 +3,8 @@ package by.kanarski.booking.utils;
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.dto.RoomDto;
-import by.kanarski.booking.dto.GlobalHotelDto;
-import by.kanarski.booking.dto.OrderDto;
-import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.*;
+import by.kanarski.booking.dto.*;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
 
@@ -22,85 +19,44 @@ public class RequestParser {
     private RequestParser() {
     }
 
-    public static User parseUser(ServletRequest request) {
-//        long id = -1;
-//        if (request.getParameter(Parameter.USER_ID) != null) {
-//            id = Long.valueOf(request.getParameter(Parameter.USER_ID));
-//        }
+    public static UserDto parseUserDto(ServletRequest request) {
+        long userId = FieldValue.UNDEFINED_ID;
+        if (request.getParameter(Parameter.USER_ID) != null) {
+            userId = Long.valueOf(request.getParameter(Parameter.USER_ID));
+        }
         String firstName = request.getParameter(Parameter.USER_FIRST_NAME);
         String lastName = request.getParameter(Parameter.USER_LAST_NAME);
         String email = request.getParameter(Parameter.USER_EMAIL);
         String login = request.getParameter(Parameter.USER_LOGIN);
         String password = request.getParameter(Parameter.USER_PASSWORD);
         String role = request.getParameter(Parameter.USER_ROLE);
-//        String status = request.getParameter(Parameter.USER_STATUS);
-        User user = EntityBuilder.buildUser(firstName, lastName, email, login, password, role);
-        return user;
+        String userStatus = request.getParameter(Parameter.USER_STATUS);
+        UserDto userDto = new UserDto(userId, firstName, lastName, email, login, password, role, userStatus);
+        return userDto;
     }
 
-    public static OrderDto parseOrder(HttpServletRequest request) {
+    public static OrderDto parseOrderDto(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Locale currentLocale = (Locale) session.getAttribute(Parameter.LOCALE);
-        User user = (User) session.getAttribute(Parameter.USER);
+        UserDto userDto = (UserDto) session.getAttribute(Parameter.USER);
         int totalPersons = Integer.valueOf(request.getParameter(Parameter.ORDER_TOTAL_PERSONS));
-        Hotel hotel = parseHotel(request);
-        long checkInDate = DateUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_IN_DATE), currentLocale);
-        long checkOutDate = DateUtil.parseDate(request.getParameter(Parameter.ORDER_CHECK_OUT_DATE), currentLocale);
-        OrderDto orderDto = new OrderDto(user, hotel, totalPersons, checkInDate, checkOutDate);
+        HotelDto hotelDto = parseHotelDto(request);
+        String checkInDate = request.getParameter(Parameter.ORDER_CHECK_IN_DATE);
+        String checkOutDate = request.getParameter(Parameter.ORDER_CHECK_OUT_DATE);
+        OrderDto orderDto = new OrderDto(userDto, hotelDto, totalPersons, checkInDate, checkOutDate);
         return orderDto;
     }
 
-    public static Hotel parseHotel(ServletRequest request) {
+    public static HotelDto parseHotelDto(ServletRequest request) {
         long hotelId = FieldValue.UNDEFINED_ID;
         if (request.getParameter(Parameter.HOTEL_ID) != null) {
             hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
         }
         String country = request.getParameter(Parameter.LOCATION_COUNTRY);
         String city = request.getParameter(Parameter.LOCATION_CITY);
+        LocationDto locationDto = new LocationDto(country, city);
         String hotelName = request.getParameter(Parameter.HOTEL_NAME);
-        Hotel hotel = EntityBuilder.buildHotel(hotelId, country, city, hotelName);
-        return hotel;
-    }
-
-    public static List<Hotel> parseHotelList(ServletRequest request) {
-        List<Hotel> hotelList = new ArrayList<>();
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        Set<String> parameterSet = parameterMap.keySet();
-        String[] hotelIdArray = null;
-        String[] hotelNameArray = null;
-        String[] hotelStatusArray = null;
-        String[] hotelCityArray = null;
-        String[] hotelCountryArray = null;
-        for (String parameter : parameterSet) {
-            switch (parameter) {
-                case Parameter.HOTEL_ID: {
-                    hotelIdArray = parameterMap.get(parameter);
-                    break;
-                }
-                case Parameter.HOTEL_NAME: {
-                    hotelNameArray = parameterMap.get(parameter);
-                    break;
-                }
-                case Parameter.HOTEL_STATUS: {
-                    hotelStatusArray = parameterMap.get(parameter);
-                    break;
-                }
-                case Parameter.HOTEL_CITY: {
-                    hotelCityArray = parameterMap.get(parameter);
-                    break;
-                }
-                case Parameter.HOTEL_COUNTRY: {
-                    hotelCountryArray = parameterMap.get(parameter);
-                    break;
-                }
-            }
-        }
-        for (int i = 0; i < hotelIdArray.length; i++) {
-            Hotel hotel = EntityBuilder.buildHotel(Long.valueOf(hotelIdArray[i]), hotelCountryArray[i], hotelCityArray[i], hotelNameArray[i], hotelStatusArray[i]);
-            hotelList.add(hotel);
-        }
-
-        return hotelList;
+        HotelDto hotelDto = new HotelDto(hotelId, locationDto, hotelName);
+        return hotelDto;
     }
 
     public static String parsePagePath(ServletRequest request) {
@@ -160,36 +116,32 @@ public class RequestParser {
         return currency;
     }
 
-    public static Bill parseBill(HttpServletRequest request) {
+    public static BillDto parseBillDto(HttpServletRequest request) throws LocalisationException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(Parameter.USER);
-        OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER_DTO);
-        long checkInDate = orderDto.getCheckInDate();
-        long checkOutDate = orderDto.getCheckOutDate();
-        GlobalHotelDto globalHotelDto = (GlobalHotelDto) session.getAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO);
+        OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
+        UserDto userDto = orderDto.getUserDto();
+        String checkInDate = orderDto.getCheckInDate();
+        String checkOutDate = orderDto.getCheckOutDate();
+        GlobalHotelDto selectedGlobalHotelDto = (GlobalHotelDto) session.getAttribute(Parameter.SELECTED_HOTEL);
+        HotelDto selectedHotelDto = DtoToEntityConverter.toHotelDto(selectedGlobalHotelDto);
         int totalPersons = orderDto.getTotalPersons();
-        Set<RoomType> roomTypeSet = globalHotelDto.getRoomTypesCount().keySet();
-        HashMap<RoomType, Integer> selectedRoomTypes = new HashMap<>();
-        for (RoomType roomType : roomTypeSet) {
-            int roomTypeCount = Integer.valueOf(request.getParameter(roomType.getRoomTypeName()));
+        Set<RoomTypeDto> roomTypeDtoSet = selectedGlobalHotelDto.getRoomTypeCount().keySet();
+        HashMap<RoomTypeDto, Integer> selectedRoomTypes = new HashMap<>();
+        for (RoomTypeDto roomTypeDto : roomTypeDtoSet) {
+            int roomTypeCount = Integer.valueOf(request.getParameter(roomTypeDto.getRoomTypeName()));
             if (roomTypeCount != 0) {
-                selectedRoomTypes.put(roomType, roomTypeCount);
+                selectedRoomTypes.put(roomTypeDto, roomTypeCount);
             }
         }
-        List<Room> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, globalHotelDto.getRoomList());
-        double paymentAmount = calc(getBookedDays(checkInDate, checkOutDate), selectedRooms);
-        Bill bill = EntityBuilder.buildNewBill(user, totalPersons, checkInDate, checkOutDate, selectedRooms,
-                paymentAmount);
-        return bill;
+        List<RoomDto> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, selectedGlobalHotelDto.getRoomDtoList());
+        int bookedDays = BillUtil.getBookedDays(checkInDate, checkOutDate);
+        double paymentAmount = BillUtil.getPaymentAmount(bookedDays, selectedRooms);
+        BillDto billDto = new BillDto(userDto, totalPersons, checkInDate, checkOutDate, selectedHotelDto,
+                selectedRoomTypes, paymentAmount);
+        return billDto;
     }
 
-    // TODO: 19.10.2016 куда-нибудь скомпоновать
 
-    private static int getBookedDays(long date1, long date2) {
-        final long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
-        int days = Math.round((date2 - date1) / MILLISECONDS_IN_DAY);
-        return days;
-    }
 
     public static List<RoomDto> parseRoomDtoList(HttpServletRequest request) throws ServiceException{
         List<RoomDto> roomDtoList = new ArrayList<>();
@@ -227,30 +179,28 @@ public class RequestParser {
         HttpSession session = request.getSession();
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         for (int i = 0; i < roomIdArray.length; i++) {
-            List<Hotel> hotelSet = (List<Hotel>) session.getAttribute(Parameter.HOTEL_LIST);
-            List<RoomType> roomTypeSet = (List<RoomType>) session.getAttribute(Parameter.ROOM_TYPE_LIST);
+            List<HotelDto> hotelDtoList = (List<HotelDto>) session.getAttribute(Parameter.HOTEL_LIST);
+            List<RoomTypeDto> roomTypeDtoList = (List<RoomTypeDto>) session.getAttribute(Parameter.ROOM_TYPE_LIST);
             long roomId = Long.valueOf(roomIdArray[i]);
             long hotelId = Long.valueOf(hotelIdArray[i]);
             long roomTypelId = Long.valueOf(roomTypeIdArray[i]);
             int roomNumber = Integer.valueOf(roomNumberArray[i]);
-            Hotel requestedHotel = null;
-            RoomType requestedRoomType = null;
-            for (Hotel hotel : hotelSet) {
-                if (hotel.getHotelId() == hotelId) {
-                    requestedHotel = hotel;
+            HotelDto requestedHotelDto = null;
+            RoomTypeDto requestedRoomTypeDto = null;
+            for (HotelDto hotelDto : hotelDtoList) {
+                if (hotelDto.getHotelId() == hotelId) {
+                    requestedHotelDto = hotelDto;
                 }
             }
-            for (RoomType roomType : roomTypeSet) {
-                if (roomType.getRoomTypeId() == roomTypelId) {
-                    requestedRoomType = roomType;
+            for (RoomTypeDto roomTypeDto : roomTypeDtoList) {
+                if (roomTypeDto.getRoomTypeId() == roomTypelId) {
+                    requestedRoomTypeDto = roomTypeDto;
 
                 }
             }
-            RoomTypeDto requestedRoomTypeDto = DtoToEntityConverter.toRoomTypeDto(requestedRoomType, currency);
-            GlobalHotelDto requestedGlobalHotelDto = DtoToEntityConverter.toHotelDto(requestedHotel);
             // TODO: 25.09.2016 Не хочу заморачиваться с датами номера, буду получать их из базы данных
             TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
-            RoomDto roomDto = new RoomDto(roomId, requestedGlobalHotelDto, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
+            RoomDto roomDto = new RoomDto(roomId, requestedHotelDto, requestedRoomTypeDto, roomNumber, bookedDates, roomStatusArray[i]);
             roomDtoList.add(roomDto);
         }
         return roomDtoList;
@@ -313,15 +263,6 @@ public class RequestParser {
         return isAjaxRequest;
     }
 
-    private static double calc(int days, List<Room> roomList) {
-        double payment = 0;
-        for (Room room : roomList) {
-            double part = room.getRoomType().getPricePerNight() * days;
-            payment += part;
-        }
-        return payment;
-    }
-
     public static RoomTypeDto parseRoomTypeDto(HttpServletRequest request) {
         long roomTypeId = Long.valueOf(request.getParameter(Parameter.ROOM_TYPE_ID));
         String roomTypeName = request.getParameter(Parameter.ROOM_TYPE_NAME);
@@ -340,7 +281,7 @@ public class RequestParser {
             strRoomId = "-1";
         }
         long roomId = Long.valueOf(strRoomId);
-        Hotel hotel = parseHotel(request);
+        HotelDto hotelDto = parseHotelDto(request);
         RoomTypeDto roomTypeDto = parseRoomTypeDto(request);
         String strRoomNumber = request.getParameter(Parameter.ROOM_NUMBER);
         if ((strRoomNumber == null) || (strRoomNumber.isEmpty())) {
@@ -349,8 +290,7 @@ public class RequestParser {
         int roomNumber = Integer.valueOf(strRoomNumber);
         TreeMap<String, String> bookedDates = likeParseBookedDates(roomId, request);
         String roomStatus = request.getParameter(Parameter.ROOM_STATUS);
-        GlobalHotelDto globalHotelDto = DtoToEntityConverter.toHotelDto(hotel);
-        RoomDto roomDto = new RoomDto(roomId, globalHotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
+        RoomDto roomDto = new RoomDto(roomId, hotelDto, roomTypeDto, roomNumber, bookedDates, roomStatus);
         return roomDto;
     }
 
@@ -365,14 +305,14 @@ public class RequestParser {
         TreeMap<String, String> bookedDates;
         if (roomId != FieldValue.UNDEFINED_ID) {
             Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
-            Room room = null;
+            RoomDto roomDto = null;
             try {
-                room = RoomServiceImpl.getInstance().getById(roomId);
+                roomDto = RoomServiceImpl.getInstance().getById(roomId);
             }
             catch (ServiceException e) {
                 e.printStackTrace();
             }
-            bookedDates = DtoToEntityConverter.localizeBookedDates(room.getBookedDates(), locale);
+            bookedDates = roomDto.getBookedDates();
         } else {
             bookedDates = new TreeMap<>();
         }

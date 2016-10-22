@@ -3,7 +3,7 @@ package by.kanarski.booking.filters;
 import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.entities.Hotel;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
@@ -46,11 +46,11 @@ public class InitializationFilter implements Filter {
         Set<String> supportedCountries = new HashSet<>();
         Set<String> supportedCities = new HashSet<>();
         try {
-            List<Hotel> allHotels = HotelServiceImpl.getInstance().getAll();
-            for (Hotel hotel : allHotels) {
-                String hotelName = hotel.getHotelName();
-                String country = hotel.getHotelLocation().getCountry();
-                String city = hotel.getHotelLocation().getCity();
+            List<HotelDto> allHotelDtos = HotelServiceImpl.getInstance().getAll();
+            for (HotelDto hotelDto : allHotelDtos) {
+                String hotelName = hotelDto.getHotelName();
+                String country = hotelDto.getLocationDto().getCountry();
+                String city = hotelDto.getLocationDto().getCity();
                 supportedHotels.add(hotelName);
                 supportedCountries.add(country);
                 supportedCities.add(city);

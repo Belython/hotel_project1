@@ -1,6 +1,6 @@
 package by.kanarski.booking.services.interfaces;
 
-import by.kanarski.booking.entities.Bill;
+import by.kanarski.booking.dto.BillDto;
 
-public interface IBillService extends IService<Bill> {
+public interface IBillService extends IService<BillDto> {
 }

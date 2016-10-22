@@ -5,9 +5,8 @@ import java.util.TreeMap;
 public class RoomDto {
 
     private long roomId;
-
-    private GlobalHotelDto roomHotel;
-    private RoomTypeDto roomType;
+    private HotelDto hotelDto;
+    private RoomTypeDto roomTypeDto;
     private int roomNumber;
     private TreeMap<String, String> bookedDates;
     private String roomStatus;
@@ -16,11 +15,11 @@ public class RoomDto {
 
     }
 
-    public RoomDto(long roomId, GlobalHotelDto roomHotel, RoomTypeDto roomType,
+    public RoomDto(long roomId, HotelDto hotelDto, RoomTypeDto roomTypeDto,
                    int roomNumber, TreeMap<String, String> bookedDates, String roomStatus) {
         this.roomId = roomId;
-        this.roomHotel = roomHotel;
-        this.roomType = roomType;
+        this.hotelDto = hotelDto;
+        this.roomTypeDto = roomTypeDto;
         this.roomNumber = roomNumber;
         this.bookedDates = bookedDates;
         this.roomStatus = roomStatus;
@@ -34,20 +33,20 @@ public class RoomDto {
         this.roomId = roomId;
     }
 
-    public GlobalHotelDto getRoomHotel() {
-        return roomHotel;
+    public HotelDto getHotelDto() {
+        return hotelDto;
     }
 
-    public void setRoomHotel(GlobalHotelDto roomHotel) {
-        this.roomHotel = roomHotel;
+    public void setHotelDto(HotelDto hotelDto) {
+        this.hotelDto = hotelDto;
     }
 
-    public RoomTypeDto getRoomType() {
-        return roomType;
+    public RoomTypeDto getRoomTypeDto() {
+        return roomTypeDto;
     }
 
-    public void setRoomType(RoomTypeDto roomType) {
-        this.roomType = roomType;
+    public void setRoomTypeDto(RoomTypeDto roomTypeDto) {
+        this.roomTypeDto = roomTypeDto;
     }
 
     public int getRoomNumber() {
@@ -83,8 +82,8 @@ public class RoomDto {
 
         if (roomId != roomDto.roomId) return false;
         if (roomNumber != roomDto.roomNumber) return false;
-        if (!roomHotel.equals(roomDto.roomHotel)) return false;
-        if (!roomType.equals(roomDto.roomType)) return false;
+        if (!hotelDto.equals(roomDto.hotelDto)) return false;
+        if (!roomTypeDto.equals(roomDto.roomTypeDto)) return false;
         if (!bookedDates.equals(roomDto.bookedDates)) return false;
         return roomStatus.equals(roomDto.roomStatus);
 
@@ -93,8 +92,8 @@ public class RoomDto {
     @Override
     public int hashCode() {
         int result = (int) (roomId ^ (roomId >>> 32));
-        result = 31 * result + roomHotel.hashCode();
-        result = 31 * result + roomType.hashCode();
+        result = 31 * result + hotelDto.hashCode();
+        result = 31 * result + roomTypeDto.hashCode();
         result = 31 * result + roomNumber;
         result = 31 * result + bookedDates.hashCode();
         result = 31 * result + roomStatus.hashCode();

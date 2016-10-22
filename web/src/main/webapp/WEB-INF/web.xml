@@ -65,6 +65,9 @@
     <listener>
         <listener-class>by.kanarski.booking.listeners.request.LocaleListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>by.kanarski.booking.listeners.request.ThreadLocalListener</listener-class>
+    </listener>
 
     <error-page>
         <location>/WEB-INF/assets/jsp/error/error.jsp</location>

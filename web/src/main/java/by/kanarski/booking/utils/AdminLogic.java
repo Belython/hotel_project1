@@ -1,28 +1,30 @@
 package by.kanarski.booking.utils;
 
-import by.kanarski.booking.entities.Room;
-import by.kanarski.booking.entities.RoomType;
+import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.dto.RoomTypeDto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class AdminLogic {
 
-    public static List<Room> chooseRoomList(HashMap<RoomType, Integer> selectedRoomTypes, List<Room> roomList) {
-        List<Room> selectedRoomList = new ArrayList<>();
-        Set<RoomType> roomTypeSet = selectedRoomTypes.keySet();
-        Iterator<RoomType> roomTypeIterator = roomTypeSet.iterator();
-        for (RoomType nextRoomType : roomTypeSet) {
-            int roomsAmount = selectedRoomTypes.get(nextRoomType);
+    public static List<RoomDto> chooseRoomList(HashMap<RoomTypeDto, Integer> selectedRoomTypes,
+                                               List<RoomDto> roomDtoList) {
+        List<RoomDto> selectedRoomList = new ArrayList<>();
+        Set<RoomTypeDto> roomTypeDtoSet = selectedRoomTypes.keySet();
+        for (RoomTypeDto roomTypeDto : roomTypeDtoSet) {
+            int roomsAmount = selectedRoomTypes.get(roomTypeDto);
             int i = 0;
             while (roomsAmount > 0) {
-                Room room = roomList.get(i);
-                if (room.getRoomType().equals(nextRoomType)) {
-                    selectedRoomList.add(room);
+                RoomDto roomDto = roomDtoList.get(i);
+                if (roomDto.getRoomTypeDto().equals(roomTypeDto)) {
+                    selectedRoomList.add(roomDto);
                     roomsAmount--;
                 }
                 i++;
             }
-            i = 0;
         }
         return selectedRoomList;
     }

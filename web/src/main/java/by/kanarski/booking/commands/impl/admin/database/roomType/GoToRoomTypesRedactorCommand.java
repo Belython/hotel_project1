@@ -3,13 +3,11 @@ package by.kanarski.booking.commands.impl.admin.database.roomType;
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.field.FieldBuilder;
 import by.kanarski.booking.utils.field.FieldDescriptor;
 
@@ -34,8 +32,7 @@ public class GoToRoomTypesRedactorCommand implements ICommand {
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOM_TYPE_REDACTOR_PATH;
-                List<RoomType> roomTypeList = RoomTypeServiceImpl.getInstance().getAll();
-                List<RoomTypeDto> roomTypeDtoList = DtoToEntityConverter.toRoomTypeDtoList(roomTypeList, currency);
+                List<RoomTypeDto> roomTypeDtoList = RoomTypeServiceImpl.getInstance().getAll();
 
                 List<FieldDescriptor<RoomTypeDto>> descriptorList = new ArrayList<>();
                 for (RoomTypeDto roomTypeDto: roomTypeDtoList) {
@@ -66,7 +63,7 @@ public class GoToRoomTypesRedactorCommand implements ICommand {
                 servletAction = ServletAction.AJAX_REQUEST;
             }
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             servletAction = ServletAction.FORWARD_PAGE;
             String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
             request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);

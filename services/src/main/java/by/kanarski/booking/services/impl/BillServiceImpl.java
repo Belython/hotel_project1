@@ -3,15 +3,15 @@ package by.kanarski.booking.services.impl;
 import by.kanarski.booking.constants.ServiceMessage;
 import by.kanarski.booking.dao.impl.BillDao;
 import by.kanarski.booking.dao.impl.RoomDao;
+import by.kanarski.booking.dto.BillDto;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.entities.Room;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IBillService;
-import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.ConnectionUtil;
-import by.kanarski.booking.utils.EntityBuilder;
-import by.kanarski.booking.utils.ExceptionHandler;
+import by.kanarski.booking.utils.*;
+import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,6 +22,7 @@ import java.util.List;
 public class BillServiceImpl implements IBillService {
 
     private static BillServiceImpl instance;
+    private static BillDao billDao = BillDao.getInstance();
 
     private BillServiceImpl() {
     }
@@ -34,49 +35,52 @@ public class BillServiceImpl implements IBillService {
     }
 
     @Override
-    public void add(Bill bill) throws ServiceException {
+    public void add(BillDto billDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            BillDao.getInstance().add(bill);
+            Bill bill = DtoToEntityConverter.toBill(billDto);
+            billDao.add(bill);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException e) {
+        } catch (SQLException | LocalisationException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
 
     @Override
-    public List<Bill> getAll() throws ServiceException {
+    public List<BillDto> getAll() throws ServiceException {
         return null;
     }
 
     @Override
-    public Bill getById(long billId) throws ServiceException {
+    public BillDto getById(long billId) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        Bill bill = null;
+        BillDto billDto = null;
         try {
             connection.setAutoCommit(false);
-            bill = BillDao.getInstance().getById(billId);
+            Bill bill = billDao.getById(billId);
             List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
             bill = EntityBuilder.buildBill(bill, roomList);
+            billDto = DtoToEntityConverter.toBillDto(bill);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException e) {
+        } catch (SQLException | LocalisationException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return bill;
+        return billDto;
     }
 
     @Override
-    public void update(Bill bill) throws ServiceException {
+    public void update(BillDto billDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            BillDao.getInstance().update(bill);
+            Bill bill = DtoToEntityConverter.toBill(billDto);
+            billDao.update(bill);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException e) {
+        } catch (SQLException | LocalisationException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
@@ -86,24 +90,24 @@ public class BillServiceImpl implements IBillService {
 
     }
 
-    public List<Bill> getByUserId(long userId) throws ServiceException {
+    public List<BillDto> getByUserId(long userId) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<Bill> bills = null;
-        List<Bill> newBills = new ArrayList<>();
+        List<BillDto> billDtList = new ArrayList<>();
         try {
             connection.setAutoCommit(false);
-            bills = BillDao.getInstance().getByUserId(userId);
-            for (Bill bill : bills) {
+            List<Bill> billList = billDao.getByUserId(userId);
+            for (Bill bill : billList) {
                 List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
                 bill.setBookedRoomList(roomList);
-                newBills.add(bill);
+                BillDto billDto = DtoToEntityConverter.toBillDto(bill);
+                billDtList.add(billDto);
             }
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException e) {
+        } catch (SQLException | LocalisationException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return newBills;
+        return billDtList;
     }
 
 

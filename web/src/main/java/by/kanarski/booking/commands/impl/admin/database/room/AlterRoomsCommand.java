@@ -64,7 +64,7 @@ public class AlterRoomsCommand extends AbstractCommand {
             }
         } catch (ServiceException e) {
             servletAction = ServletAction.FORWARD_PAGE;
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

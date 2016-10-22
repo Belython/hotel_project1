@@ -3,8 +3,9 @@ package by.kanarski.booking.dao.impl;
 import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.dao.interfaces.IBillDao;
 import by.kanarski.booking.entities.Bill;
-import by.kanarski.booking.exceptions.LocalisationException;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.*;
+import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class BillDao implements IBillDao {
     }
 
     @Override
-    public Bill add(Bill bill) throws LocalisationException {
+    public Bill add(Bill bill) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY, Statement.RETURN_GENERATED_KEYS)) {
@@ -62,7 +63,7 @@ public class BillDao implements IBillDao {
             bill.setBillId(resultSet.getLong(1));
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.ADD_BILL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.ADD_BILL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.ADD_BILL_EXCEPTION, e);
         } finally {
             ClosingUtil.close(resultSet);
         }
@@ -70,7 +71,7 @@ public class BillDao implements IBillDao {
     }
 
     @Override
-    public Bill getById(long id) throws LocalisationException {
+    public Bill getById(long id) throws DaoException {
         Bill bill = null;
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_ID_QUERY)) {
@@ -80,18 +81,18 @@ public class BillDao implements IBillDao {
             bill = EntityParser.parseBill(resultSet);
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_BILL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_BILL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_BILL_EXCEPTION, e);
         }
         return bill;
     }
 
     @Override
-    public List<Bill> getAll() throws LocalisationException {
+    public List<Bill> getAll() throws DaoException {
 
         return new ArrayList<>();
     }
 
-    public List<Bill> getByUserId(long userId) throws LocalisationException {
+    public List<Bill> getByUserId(long userId) throws DaoException {
         List<Bill> bills = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_BY_USER_ID_QUERY)) {
@@ -102,13 +103,13 @@ public class BillDao implements IBillDao {
             }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_BILL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_BILL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_BILL_EXCEPTION, e);
         }
         return bills;
     }
 
     @Override
-    public void update(Bill bill) throws LocalisationException {
+    public void update(Bill bill) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             stm.setLong(1, bill.getClient().getUserId());
@@ -122,12 +123,12 @@ public class BillDao implements IBillDao {
             stm.executeUpdate();
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(getClass(), DaoMessage.GET_BILL_EXCEPTION);
-            throw new LocalisationException(DaoMessage.GET_BILL_EXCEPTION, e);
+            throw new DaoException(DaoMessage.GET_BILL_EXCEPTION, e);
         }
     }
 
     @Override
-    public void delete(Bill bill) throws LocalisationException {
+    public void delete(Bill bill) throws DaoException {
 
     }
 }

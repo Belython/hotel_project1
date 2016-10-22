@@ -6,12 +6,10 @@ import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomTypeServiceImpl;
-import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,20 +40,19 @@ public class AlterRoomTypesCommand extends AbstractCommand {
                     roomTypeDtoList.remove(i);
                 }
             }
-            List<RoomType> roomTypeList = DtoToEntityConverter.convertToRoomTypeList(roomTypeDtoList, currency);
+//            List<RoomType> roomTypeList = DtoToEntityConverter.convertToRoomTypeList(roomTypeDtoList, currency);
             switch (subCommand) {
                 case Value.ADD_NEW: {
-                    RoomTypeServiceImpl.getInstance().addList(roomTypeList);
+                    RoomTypeServiceImpl.getInstance().addList(roomTypeDtoList);
                     break;
                 }
                 case Value.CHANGE_EXISTING: {
-                    RoomTypeServiceImpl.getInstance().updateList(roomTypeList);
+                    RoomTypeServiceImpl.getInstance().updateList(roomTypeDtoList);
                     break;
                 }
             }
-            List<RoomType> newRoomTypeList = RoomTypeServiceImpl.getInstance().getAll();
-            List<RoomTypeDto> newRoomTypeDtoList = DtoToEntityConverter.toRoomTypeDtoList(roomTypeList, currency);
-            session.setAttribute(Parameter.ROOM_TYPE_LIST, newRoomTypeList);
+            List<RoomTypeDto> newRoomTypeDtoList = RoomTypeServiceImpl.getInstance().getAll();
+            session.setAttribute(Parameter.ROOM_TYPE_LIST, newRoomTypeDtoList);
             session.setAttribute(Parameter.ROOM_TYPE_DTO_LIST, newRoomTypeDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);
@@ -70,7 +67,7 @@ public class AlterRoomTypesCommand extends AbstractCommand {
             }
         } catch (ServiceException e) {
             servletAction = ServletAction.FORWARD_PAGE;
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

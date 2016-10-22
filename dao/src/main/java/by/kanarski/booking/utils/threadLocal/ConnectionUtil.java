@@ -1,11 +1,9 @@
-package by.kanarski.booking.utils;
+package by.kanarski.booking.utils.threadLocal;
 
 import by.kanarski.booking.constants.DaoMessage;
-import by.kanarski.booking.exceptions.DaoException;
-import by.kanarski.booking.utils.dataSource.DataSource;
-import by.kanarski.booking.utils.threadLocal.ThreadLocalUtil;
+import by.kanarski.booking.utils.BookingSystemLogger;
+import by.kanarski.booking.utils.DataSource;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 

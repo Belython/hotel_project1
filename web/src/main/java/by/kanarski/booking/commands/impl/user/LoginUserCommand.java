@@ -4,7 +4,7 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
@@ -14,8 +14,6 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 
 public class LoginUserCommand extends AbstractCommand {
@@ -27,8 +25,9 @@ public class LoginUserCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         try {
-            User user = RequestParser.parseUser(request);
-            if (UserServiceImpl.getInstance().checkAuthorization(user.getLogin(), user.getPassword())) {
+            UserDto user = RequestParser.parseUserDto(request);
+            boolean isAuthorised = UserServiceImpl.getInstance().checkAuthorization(user.getLogin(), user.getPassword());
+            if (isAuthorised) {
                 user = UserServiceImpl.getInstance().getByLogin(user.getLogin());
                 session.setAttribute(Parameter.USER, user);
                 page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
@@ -42,7 +41,7 @@ public class LoginUserCommand extends AbstractCommand {
                 request.setAttribute(Parameter.OPERATION_MESSAGE, errorMessage);
             }
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

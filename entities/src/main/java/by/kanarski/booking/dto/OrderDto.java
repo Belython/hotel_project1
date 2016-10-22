@@ -5,34 +5,34 @@ import by.kanarski.booking.entities.User;
 
 public class OrderDto {
 
-    private User user;
-    private Hotel hotel;
+    private UserDto userDto;
+    private HotelDto hotelDto;
     private int totalPersons;
-    private long checkInDate;
-    private long checkOutDate;
+    private String checkInDate;
+    private String checkOutDate;
 
-    public OrderDto(User user, Hotel hotel, int totalPersons, long checkInDate, long checkOutDate) {
-        this.user = user;
-        this.hotel = hotel;
+    public OrderDto(UserDto userDto, HotelDto hotelDto, int totalPersons, String checkInDate, String checkOutDate) {
+        this.userDto = userDto;
+        this.hotelDto = hotelDto;
         this.totalPersons = totalPersons;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
     }
 
-    public User getUser() {
-        return user;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public HotelDto getHotelDto() {
+        return hotelDto;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setHotelDto(HotelDto hotelDto) {
+        this.hotelDto = hotelDto;
     }
 
     public int getTotalPersons() {
@@ -43,19 +43,19 @@ public class OrderDto {
         this.totalPersons = totalPersons;
     }
 
-    public long getCheckInDate() {
+    public String getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(long checkInDate) {
+    public void setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public long getCheckOutDate() {
+    public String getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(long checkOutDate) {
+    public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 }

@@ -38,6 +38,7 @@ public class LocaleListener implements ServletRequestAttributeListener {
                 String pagePath = (String) request.getAttribute(attributeName);
                 Filler filler = FillerFactory.getInstance().defineFiller(pagePath);
                 filler.fill(request);
+                break;
             }
         }
     }

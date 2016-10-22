@@ -4,12 +4,13 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.UserServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
+import by.kanarski.booking.utils.threadLocal.UserPreferences;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,20 +19,20 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RegisterCommand extends AbstractCommand {
-    private User user;
 
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
         ServletAction servletAction = ServletAction.FORWARD_PAGE;
         String page = null;
         HttpSession session = request.getSession();
-        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+//        Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+        Locale locale = UserPreferences.getLocale();
         ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
-            user = RequestParser.parseUser(request);
-            if (areFieldsFullStocked()) {
-                if (UserServiceImpl.getInstance().checkIsNewUser(user)) {
-                    UserServiceImpl.getInstance().registrateUser(user);
+            UserDto userDto = RequestParser.parseUserDto(request);
+            if (areFieldsFullStocked(userDto)) {
+                if (UserServiceImpl.getInstance().checkIsNewUser(userDto)) {
+                    UserServiceImpl.getInstance().registrateUser(userDto);
                     page = PagePath.REGISTRATION_PAGE_PATH;
                     request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.SUCCESS_OPERATION));
                 } else {
@@ -43,7 +44,7 @@ public class RegisterCommand extends AbstractCommand {
                 page = PagePath.REGISTRATION_PAGE_PATH;
             }
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         } catch (NumberFormatException e) {
             String exceptionMessage = bundle.getString(OperationMessageKeys.INVALID_NUMBER_FORMAT);
@@ -57,14 +58,14 @@ public class RegisterCommand extends AbstractCommand {
     }
 
     // TODO javascript???
-    private boolean areFieldsFullStocked() {
+    private boolean areFieldsFullStocked(UserDto userDto) {
 
         boolean isFullStocked = false;
-        if (!user.getFirstName().isEmpty()
-                & !user.getLastName().isEmpty()
-                & !user.getLogin().isEmpty()
-                & !user.getPassword().isEmpty()
-                & !user.getEmail().isEmpty()) {
+        if (!userDto.getFirstName().isEmpty()
+                & !userDto.getLastName().isEmpty()
+                & !userDto.getLogin().isEmpty()
+                & !userDto.getPassword().isEmpty()
+                & !userDto.getEmail().isEmpty()) {
             isFullStocked = true;
         }
         return isFullStocked;

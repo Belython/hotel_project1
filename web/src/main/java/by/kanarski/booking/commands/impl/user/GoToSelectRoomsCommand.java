@@ -5,18 +5,16 @@ import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.GlobalHotelDto;
+import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.OrderDto;
-import by.kanarski.booking.entities.Hotel;
-import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
+import by.kanarski.booking.services.impl.GlobalHotelServiceImpl;
 import by.kanarski.booking.services.impl.HotelServiceImpl;
-import by.kanarski.booking.services.impl.RoomServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class GoToSelectRoomsCommand extends AbstractCommand {
 
@@ -26,22 +24,20 @@ public class GoToSelectRoomsCommand extends AbstractCommand {
         String page;
         HttpSession session = request.getSession();
         try {
-            List<Room> hotelRooms;
-            OrderDto order = (OrderDto) session.getAttribute(Parameter.ORDER_DTO);
-            Hotel hotel = order.getHotel();
-            long hotelId = hotel.getHotelId();
+            OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
+            HotelDto hotelDto = orderDto.getHotelDto();
+            long hotelId = hotelDto.getHotelId();
             if (hotelId == FieldValue.UNDEFINED_ID) {
                 hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
-                hotel = HotelServiceImpl.getInstance().getById(hotelId);
-                order.setHotel(hotel);
-                session.setAttribute(Parameter.ORDER_DTO, order);
+                hotelDto = HotelServiceImpl.getInstance().getById(hotelId);
+                orderDto.setHotelDto(hotelDto);
+                session.setAttribute(Parameter.ORDER, orderDto);
             }
-            hotelRooms = RoomServiceImpl.getInstance().getAvailableRooms(order);
-            GlobalHotelDto selectedGlobalHotelDto = new GlobalHotelDto(hotel.getHotelId(), hotel.getHotelLocation(), hotel.getHotelName(), hotelRooms);
-            session.setAttribute(Parameter.HOTEL_SELECTED_HOTEL_DTO, selectedGlobalHotelDto);
+            GlobalHotelDto selectedGlobalHotelDto = GlobalHotelServiceImpl.getInstance().getById(hotelId);
+            session.setAttribute(Parameter.SELECTED_HOTEL, selectedGlobalHotelDto);
             page = PagePath.SELECT_ROOM_PATH;
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

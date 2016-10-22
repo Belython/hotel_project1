@@ -7,6 +7,7 @@ import by.kanarski.booking.i18n.l10n.filler.Filler;
 import by.kanarski.booking.i18n.l10n.filler.factory.FillerFactory;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.RequestParser;
+import by.kanarski.booking.utils.threadLocal.UserPreferences;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ public class SetLocaleCommand implements ICommand {
         HttpSession session = request.getSession();
         Locale locale = RequestParser.parseLocale(request);
         session.setAttribute(Parameter.LOCALE, locale);
+        UserPreferences.setLocale(locale);
         page = (String) session.getAttribute(Parameter.CURRENT_PAGE_PATH);
         Filler filler = FillerFactory.getInstance().defineFiller(page);
         filler.fill(request);

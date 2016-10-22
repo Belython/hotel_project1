@@ -5,11 +5,11 @@ import by.kanarski.booking.dao.impl.UserDao;
 import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.entities.User;
 import by.kanarski.booking.exceptions.DaoException;
-import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IUserService;
 import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.ConnectionUtil;
+import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.ExceptionHandler;
 
 import java.sql.Connection;
@@ -17,7 +17,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements IUserService {
+    
     private static UserServiceImpl instance;
+    private static UserDao userDao = UserDao.getInstance();
 
     private UserServiceImpl() {
     }
@@ -33,52 +35,62 @@ public class UserServiceImpl implements IUserService {
     public void add(UserDto userDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
-
+            User user = DtoToEntityConverter.toUser(userDto);
             connection.setAutoCommit(false);
-            UserDao.getInstance().add(user);
+            userDao.add(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }
 
     @Override
-    public List<User> getAll() throws ServiceException {
+    public UserDto getById(long id) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<User> users = null;
+        UserDto userDto = null;
         try {
             connection.setAutoCommit(false);
-            users = UserDao.getInstance().getAll();
-            for (User user : users) {
-                users.add(user);
-            }
+            User user = userDao.getById(id);
+            userDto = DtoToEntityConverter.toUserDto(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return users;
+        return userDto;
     }
 
     @Override
-    public User getById(long id) throws ServiceException {
+    public List<UserDto> getAll() throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        User user = null;
+        List<UserDto> userDtoList = null;
         try {
             connection.setAutoCommit(false);
-            user = UserDao.getInstance().getById(id);
+            List<User> userList = userDao.getAll();
+            userDtoList = DtoToEntityConverter.toUserDtoList(userList);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return user;
+        return userDtoList;
     }
 
-    @Override
-    public void update(User entity) throws ServiceException {
 
+
+    @Override
+    public void update(UserDto userDto) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            User user = DtoToEntityConverter.toUser(userDto);
+            userDao.update(user);
+            connection.commit();
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
     }
 
     @Override
@@ -91,69 +103,69 @@ public class UserServiceImpl implements IUserService {
         boolean isAuthorized = false;
         try {
             connection.setAutoCommit(false);
-            isAuthorized = UserDao.getInstance().isAuthorized(login, password);
+            isAuthorized = userDao.isAuthorized(login, password);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return isAuthorized;
     }
 
-    public User getByLogin(String login) throws ServiceException {
+    public UserDto getByLogin(String login) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        User user = null;
+        UserDto userDto = null;
         try {
             connection.setAutoCommit(false);
-            user = UserDao.getInstance().getByLogin(login);
+            User user = userDao.getByLogin(login);
+            userDto = DtoToEntityConverter.toUserDto(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return user;
+        return userDto;
     }
 
-    public User getByEmail(String email) throws ServiceException {
+    public UserDto getByEmail(String email) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        User user = null;
+        UserDto userDto = null;
         try {
             connection.setAutoCommit(false);
-            user = UserDao.getInstance().getByEmail(email);
+            User user = userDao.getByEmail(email);
+            userDto = DtoToEntityConverter.toUserDto(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return user;
+        return userDto;
     }
 
-    public boolean checkIsNewUser(User user) throws ServiceException {
+    public boolean checkIsNewUser(UserDto userDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         boolean isNew = false;
         try {
             connection.setAutoCommit(false);
-            if (UserDao.getInstance().isNewUser(user.getLogin())) {
-                isNew = true;
-            }
+            User user = DtoToEntityConverter.toUser(userDto);
+            isNew = userDao.isNewUser(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return isNew;
     }
 
-    public void registrateUser(User user) throws ServiceException {
+    public void registrateUser(UserDto userDto) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
         try {
             connection.setAutoCommit(false);
-            user.setRole("client");
-            user.setUserStatus("active");
-            UserDao.getInstance().add(user);
+            User user = DtoToEntityConverter.toUser(userDto);
+            userDao.add(user);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
-        } catch (SQLException | LocalisationException | DaoException e) {
+        } catch (SQLException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
     }

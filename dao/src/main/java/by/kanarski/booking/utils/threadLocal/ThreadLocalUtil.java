@@ -1,11 +1,11 @@
 package by.kanarski.booking.utils.threadLocal;
 
-import java.util.HashMap;
 
 public enum  ThreadLocalUtil {
-    CONNECTION();
+    CONNECTION, LOCALE, CURRENCY;
 
     private final static ThreadLocal<ThreadVariables> THREAD_VARIABLES = new ThreadLocal<ThreadVariables>() {
+
         @Override
         protected ThreadVariables initialValue() {
             return new ThreadVariables();
@@ -29,7 +29,8 @@ public enum  ThreadLocalUtil {
         }
     }
 
-    public void set(String name, Object value) {
+    public void set(Object value) {
+        String name = this.name();
         THREAD_VARIABLES.get().put(name, value);
     }
 

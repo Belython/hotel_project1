@@ -1,10 +1,11 @@
 package by.kanarski.booking.commands.impl.client;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.PagePath;
-import by.kanarski.booking.entities.Bill;
-import by.kanarski.booking.entities.Room;
+import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.dto.BillDto;
+import by.kanarski.booking.dto.RoomDto;
+import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
@@ -14,7 +15,8 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.List;
+import java.util.TreeMap;
 
 public class MakeBillCommand extends AbstractCommand {
 
@@ -24,26 +26,23 @@ public class MakeBillCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         try {
-            Bill bill = RequestParser.parseBill(request);
-            long checkInDate = bill.getCheckInDate();
-            long checkOutDate = bill.getCheckOutDate();
-            List<Long> requestedRoomIdList = bill.getBookedRoomIdList();
-            List<Room> requestedRoomList = RoomServiceImpl.getInstance().getByIdList(requestedRoomIdList);
-            List<Room> bookedRoomList = new ArrayList<>();
-            for (Room room : requestedRoomList) {
-                TreeMap<Long, Long> bookedDates = room.getBookedDates();
+            BillDto billDto = RequestParser.parseBillDto(request);
+            String checkInDate = billDto.getCheckInDate();
+            String checkOutDate = billDto.getCheckOutDate();
+            List<RoomDto> requestedRoomList = billDto.getBookedRoomDtoList();
+            for (RoomDto roomDto : requestedRoomList) {
+                TreeMap<String, String> bookedDates = roomDto.getBookedDates();
                 if (bookedDates == null) {
                     bookedDates = new TreeMap<>();
                 }
                 bookedDates.put(checkInDate, checkOutDate);
-                room.setBookedDates(bookedDates);
-                bookedRoomList.add(room);
+                roomDto.setBookedDates(bookedDates);
             }
-            RoomServiceImpl.getInstance().reserveRoomList(bookedRoomList);
-            BillServiceImpl.getInstance().add(bill);
+            RoomServiceImpl.getInstance().reserveRoomList(requestedRoomList);
+            BillServiceImpl.getInstance().add(billDto);
             page = PagePath.INDEX_PAGE_PATH;
-        } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+        } catch (ServiceException | LocalisationException e) {
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

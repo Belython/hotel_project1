@@ -6,7 +6,7 @@ public class PagePath {
 
     public static final String INDEX_PAGE_PATH = "/WEB-INF/assets/jsp/user/index.jsp";
     public static final String REGISTRATION_PAGE_PATH = "/WEB-INF/assets/jsp/user/registration.jsp";
-    public static final String SELECT_HOTEL_PATH = "/WEB-INF/assets/jsp/user/selectHotel.jsp";
+    public static final String SELECT_HOTEL = "/WEB-INF/assets/jsp/user/selectHotel.jsp";
     public static final String SELECT_ROOM_PATH = "/WEB-INF/assets/jsp/user/selectRooms.jsp";
 
     //Client pages
@@ -26,7 +26,7 @@ public class PagePath {
 
     //Error page
 
-    public static final String ERROR_PAGE_PATH = "/WEB-INF/assets/jsp/error/error.jsp";
+    public static final String ERROR = "/WEB-INF/assets/jsp/error/error.jsp";
 
     private PagePath() {
 

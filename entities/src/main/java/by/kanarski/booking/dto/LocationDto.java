@@ -1,13 +1,27 @@
 package by.kanarski.booking.dto;
 
-import by.kanarski.booking.entities.Location;
-
 public class LocationDto {
 
     private long locationId;
     private String country;
     private String city;
     private String locationStatus;
+
+    public LocationDto(long locationId, String country, String city, String locationStatus) {
+        this.locationId = locationId;
+        this.country = country;
+        this.city = city;
+        this.locationStatus = locationStatus;
+    }
+
+    public LocationDto(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
+
+    public LocationDto() {
+
+    }
 
     public long getLocationId() {
         return locationId;

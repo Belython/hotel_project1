@@ -3,7 +3,7 @@ package by.kanarski.booking.filters;
 import by.kanarski.booking.commands.factory.CommandType;
 import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.utils.RequestParser;
 
@@ -16,8 +16,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class AuthorizationFilter implements Filter {
-    String page;
-    User user;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -32,8 +30,8 @@ public class AuthorizationFilter implements Filter {
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         CommandType commandType = RequestParser.parseCommandType(httpServletRequest);
         if (commandType.name().equals(commandType.MAKEBILL.toString())) {
-            user = (User) session.getAttribute(Parameter.USER);
-            if (user == null) {
+            UserDto userDto = (UserDto) session.getAttribute(Parameter.USER);
+            if (userDto == null) {
                 ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
                 request.setAttribute(Parameter.OPERATION_MESSAGE, bundle.getString(OperationMessageKeys.AUTHORIZATION_ERRON));
                 request.setAttribute(Parameter.COMMAND, "cancelAction");

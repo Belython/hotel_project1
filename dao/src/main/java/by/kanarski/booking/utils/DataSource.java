@@ -1,13 +1,11 @@
-package by.kanarski.booking.utils.dataSource;
+package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.DaoMessage;
 import by.kanarski.booking.constants.DatabaseKeys;
 import by.kanarski.booking.managers.ResourceBuilder;
-import by.kanarski.booking.utils.BookingSystemLogger;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -50,17 +48,6 @@ public class DataSource {
         }
         return datasource;
     }
-
-//    /**
-//     * Used for unit tests. Sets active database to TEST_BOOKING
-//     * @return datasource
-//     */
-//
-//    public DataSource test() {
-//        ResourceBundle bundle = ResourceBuilder.DATABASE.create();
-//        cpds.setJdbcUrl(bundle.getString(DatabaseKeys.TEST_DATABASE_PATH));
-//        return datasource;
-//    }
 
     /**
      * Gives one of connectons from pool

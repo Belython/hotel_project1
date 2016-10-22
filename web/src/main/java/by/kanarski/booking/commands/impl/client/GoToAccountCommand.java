@@ -4,17 +4,17 @@ import by.kanarski.booking.commands.AbstractCommand;
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
-import by.kanarski.booking.entities.Bill;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
-import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.Currency;
+import java.util.List;
+import java.util.Locale;
 
 public class GoToAccountCommand extends AbstractCommand {
 
@@ -26,14 +26,12 @@ public class GoToAccountCommand extends AbstractCommand {
         Locale locale =(Locale) session.getAttribute(Parameter.LOCALE);
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         try {
-
-            User user = (User) session.getAttribute(Parameter.USER);
-            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
-            List<BillDto> billDtoList = DtoToEntityConverter.toBillDtoList(billList, locale, currency);
-            session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
+            UserDto userDto = (UserDto) session.getAttribute(Parameter.USER);
+            List<BillDto> billDtoList = BillServiceImpl.getInstance().getByUserId(userDto.getUserId());
+            session.setAttribute(Parameter.BILL_LIST, billDtoList);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

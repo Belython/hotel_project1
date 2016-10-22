@@ -42,7 +42,7 @@ public class PayBillCommand extends AbstractCommand {
             request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);
             page = PagePath.ACCOUNT_PAGE_PATH;
         } catch (ServiceException e) {
-            page = PagePath.ERROR_PAGE_PATH;
+            page = PagePath.ERROR;
             handleServiceException(request);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

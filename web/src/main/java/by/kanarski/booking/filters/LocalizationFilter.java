@@ -2,6 +2,7 @@ package by.kanarski.booking.filters;
 
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.utils.threadLocal.UserPreferences;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +26,13 @@ public class LocalizationFilter implements Filter {
         if (locale == null) {
             locale = request.getLocale();
             session.setAttribute(Parameter.LOCALE, locale);
+            UserPreferences.setLocale(locale);
         }
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         if (currency == null) {
             currency = Currency.getInstance(locale);
             session.setAttribute(Parameter.CURRENCY, currency);
+            UserPreferences.setCurrency(currency);
         }
         String currentPagePath = (String) request.getAttribute(Parameter.CURRENT_PAGE_PATH);
         if (currentPagePath == null) {
