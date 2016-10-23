@@ -7,7 +7,7 @@ import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.entities.RoomType;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.*;
-import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.ConnectionUtil;
 
 import java.sql.*;
 import java.util.*;
@@ -78,7 +78,7 @@ public class RoomDao implements IRoomDao {
         ResultSet resultSet = null;
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
-            stm.setLong(1, room.getRoomHotel().getHotelId());
+            stm.setLong(1, room.getHotel().getHotelId());
             stm.setLong(2, room.getRoomType().getRoomTypeId());
             stm.setInt(3, room.getRoomNumber());
             Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
@@ -133,7 +133,7 @@ public class RoomDao implements IRoomDao {
     public void update(Room room) throws DaoException {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
-            stm.setLong(1, room.getRoomHotel().getHotelId());
+            stm.setLong(1, room.getHotel().getHotelId());
             stm.setLong(2, room.getRoomType().getRoomTypeId());
             stm.setInt(3, room.getRoomNumber());
             Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
@@ -156,8 +156,8 @@ public class RoomDao implements IRoomDao {
         List<Room> rooms = new ArrayList<>();
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(GET_AVAILABLE_ROOMS_QUERY)) {
-            stm.setString(1, orderDto.getHotel().getHotelLocation().getCountry());
-            stm.setString(2, orderDto.getHotel().getHotelLocation().getCity());
+            stm.setString(1, orderDto.getHotel().getLocation().getCountry());
+            stm.setString(2, orderDto.getHotel().getLocation().getCity());
             stm.setString(3, orderDto.getHotel().getHotelName());
             stm.setString(4, orderDto.getHotel().getHotelName());
             stm.setInt(5, orderDto.getTotalPersons());
@@ -209,7 +209,7 @@ public class RoomDao implements IRoomDao {
         Connection connection = ConnectionUtil.getConnection();
         try (PreparedStatement stm = connection.prepareStatement(UPDATE_QUERY)) {
             for (Room room : roomList) {
-                stm.setLong(1, room.getRoomHotel().getHotelId());
+                stm.setLong(1, room.getHotel().getHotelId());
                 stm.setLong(2, room.getRoomType().getRoomTypeId());
                 stm.setInt(3, room.getRoomNumber());
                 Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());
@@ -230,7 +230,7 @@ public class RoomDao implements IRoomDao {
         try (PreparedStatement stm = connection.prepareStatement(ADD_QUERY,
                 Statement.RETURN_GENERATED_KEYS)) {
             for (Room room : roomList) {
-                stm.setLong(1, room.getRoomHotel().getHotelId());
+                stm.setLong(1, room.getHotel().getHotelId());
                 stm.setLong(2, room.getRoomType().getRoomTypeId());
                 stm.setInt(3, room.getRoomNumber());
                 Blob serializedBookedDates = SerializationUtil.serialize(room.getBookedDates());

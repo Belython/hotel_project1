@@ -5,27 +5,27 @@ import by.kanarski.booking.constants.FieldValue;
 public class HotelDto {
 
     private long hotelId;
-    private LocationDto locationDto;
+    private LocationDto location;
     private String hotelName;
     private String hotelStatus;
 
-    public HotelDto(long hotelId, LocationDto locationDto, String hotelName, String hotelStatus) {
+    public HotelDto(long hotelId, LocationDto location, String hotelName, String hotelStatus) {
         this.hotelId = hotelId;
-        this.locationDto = locationDto;
+        this.location = location;
         this.hotelName = hotelName;
         this.hotelStatus = hotelStatus;
     }
 
-    public HotelDto(long hotelId, LocationDto locationDto, String hotelName) {
+    public HotelDto(long hotelId, LocationDto location, String hotelName) {
         this.hotelId =hotelId;
-        this.locationDto = locationDto;
+        this.location = location;
         this.hotelName = hotelName;
         this.hotelStatus = FieldValue.STATUS_ACTIVE;
     }
 
-    public HotelDto(LocationDto locationDto, String hotelName) {
+    public HotelDto(LocationDto location, String hotelName) {
         this.hotelId = FieldValue.UNDEFINED_ID;
-        this.locationDto = locationDto;
+        this.location = location;
         this.hotelName = hotelName;
         this.hotelStatus = FieldValue.STATUS_ACTIVE;
     }
@@ -38,12 +38,12 @@ public class HotelDto {
         this.hotelId = hotelId;
     }
 
-    public LocationDto getLocationDto() {
-        return locationDto;
+    public LocationDto getLocation() {
+        return location;
     }
 
-    public void setLocationDto(LocationDto locationDto) {
-        this.locationDto = locationDto;
+    public void setLocation(LocationDto location) {
+        this.location = location;
     }
 
     public String getHotelName() {
@@ -70,7 +70,7 @@ public class HotelDto {
         HotelDto hotelDto = (HotelDto) o;
 
         if (hotelId != hotelDto.hotelId) return false;
-        if (!locationDto.equals(hotelDto.locationDto)) return false;
+        if (!location.equals(hotelDto.location)) return false;
         if (!hotelName.equals(hotelDto.hotelName)) return false;
         return hotelStatus.equals(hotelDto.hotelStatus);
 
@@ -79,7 +79,7 @@ public class HotelDto {
     @Override
     public int hashCode() {
         int result = (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + locationDto.hashCode();
+        result = 31 * result + location.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelStatus.hashCode();
         return result;

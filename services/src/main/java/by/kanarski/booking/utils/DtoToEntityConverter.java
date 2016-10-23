@@ -1,7 +1,5 @@
 package by.kanarski.booking.utils;
 
-import by.kanarski.booking.constants.BookingSystemCurrency;
-import by.kanarski.booking.constants.BookingSystemLocale;
 import by.kanarski.booking.dto.*;
 import by.kanarski.booking.entities.*;
 import by.kanarski.booking.exceptions.LocalisationException;
@@ -10,13 +8,13 @@ import java.util.*;
 
 public class DtoToEntityConverter {
 
-    private static Locale defaultLocale = BookingSystemLocale.DEFAULT;
-    private static Currency defaultCurrency = BookingSystemCurrency.DEFAULT;
+    private static Locale defaultLocale = UserPreferences.getLocale();
+    private static Currency defaultCurrency = UserPreferences.getCurrency();
 
     public static Room toRoom(RoomDto roomDto, Locale locale, Currency currency) throws LocalisationException {
         long roomId = roomDto.getRoomId();
-        Hotel roomHotel = toHotel(roomDto.getHotelDto());
-        RoomType roomType = toRoomType(roomDto.getRoomTypeDto(), currency);
+        Hotel roomHotel = toHotel(roomDto.getHotel());
+        RoomType roomType = toRoomType(roomDto.getRoomType(), currency);
 
         int roomNumber = roomDto.getRoomNumber();
         TreeMap<Long, Long> boodedDates = DateUtil.delocalizeBookedDates(roomDto.getBookedDates(), locale);
@@ -28,7 +26,7 @@ public class DtoToEntityConverter {
 
     public static RoomDto toRoomDto(Room room, Locale locale, Currency currency) throws LocalisationException {
         long roomId = room.getRoomId();
-        Hotel roomHotel = room.getRoomHotel();
+        Hotel roomHotel = room.getHotel();
         HotelDto roomHotelDto = toHotelDto(roomHotel);
         RoomType roomType = room.getRoomType();
         RoomTypeDto roomTypeDto = toRoomTypeDto(roomType, currency);
@@ -60,16 +58,15 @@ public class DtoToEntityConverter {
         return roomDtoList;
     }
 
-    public static BillDto toBillDto(Bill bill, Locale locale, Currency currency) throws LocalisationException {
+    public static BillDto toBillDto(Bill bill, List<Room> bookedRoomList, Locale locale, Currency currency) throws LocalisationException {
         long billId = bill.getBillId();
         User client = bill.getClient();
         UserDto clientDto = toUserDto(client);
         int totalPersons = bill.getTotalPersons();
         String checkInDate = DateUtil.getFormattedDate(bill.getCheckInDate(), locale);
         String checkOutDate = DateUtil.getFormattedDate(bill.getCheckOutDate(), locale);
-        List<Room> bookedRoomList = bill.getBookedRoomList();
         List<RoomDto> bookedRoomDtoList = toRoomDtoList(bookedRoomList, locale, currency);
-        Hotel bookedHotel = bookedRoomList.get(0).getRoomHotel();
+        Hotel bookedHotel = bookedRoomList.get(0).getHotel();
         HotelDto bookedHotelDto = DtoToEntityConverter.toHotelDto(bookedHotel);
         double paymentAmountUSD = bill.getPaymentAmount();
         double paymentAmount = CurrencyUtil.convertFromUSD(paymentAmountUSD, currency);
@@ -79,15 +76,15 @@ public class DtoToEntityConverter {
         return billDto;
     }
 
-    public static List<BillDto> toBillDtoList(List<Bill> billList, Locale locale, Currency currency)
-            throws LocalisationException {
-        List<BillDto> billDtoList = new ArrayList<>();
-        for (Bill bill : billList) {
-            BillDto billDto = toBillDto(bill, locale, currency);
-            billDtoList.add(billDto);
-        }
-        return billDtoList;
-    }
+//    public static List<BillDto> toBillDtoList(List<Bill> billList, Locale locale, Currency currency)
+//            throws LocalisationException {
+//        List<BillDto> billDtoList = new ArrayList<>();
+//        for (Bill bill : billList) {
+//            BillDto billDto = toBillDto(bill, locale, currency);
+//            billDtoList.add(billDto);
+//        }
+//        return billDtoList;
+//    }
 
     public static RoomTypeDto toRoomTypeDto(RoomType roomType, Currency currency) {
         long rtId = roomType.getRoomTypeId();
@@ -133,7 +130,7 @@ public class DtoToEntityConverter {
         long hotelId = hotelDto.getHotelId();
 //        String hotelCountry = hotelDto.getHotelCountry();
 //        String hotelCity = hotelDto.getHotelCity();
-        LocationDto locationDto = hotelDto.getLocationDto();
+        LocationDto locationDto = hotelDto.getLocation();
         Location location = toLocation(locationDto);
         String hotelName = hotelDto.getHotelName();
         String hotelStatus = hotelDto.getHotelStatus();
@@ -143,7 +140,7 @@ public class DtoToEntityConverter {
 
     public static HotelDto toHotelDto(Hotel hotel) {
         long hotelId = hotel.getHotelId();
-        Location location = hotel.getHotelLocation();
+        Location location = hotel.getLocation();
         LocationDto locationDto = toLocationDto(location);
         String hotelName = hotel.getHotelName();
         String hotelStatus = hotel.getHotelStatus();
@@ -171,17 +168,21 @@ public class DtoToEntityConverter {
 
     public static Bill toBill(BillDto billDto, Locale locale, Currency currency) throws LocalisationException {
         long billId = billDto.getBillId();
-        UserDto clientDto = billDto.getUserDto();
+        UserDto clientDto = billDto.getUser();
         User user = toUser(clientDto);
         int totalPersons = billDto.getTotalPersons();
         long checkInDate = DateUtil.parseDate(billDto.getCheckInDate(), locale);
         long checkOutDate = DateUtil.parseDate(billDto.getCheckOutDate(), locale);
-        List<RoomDto> bookedRoomDtoList = billDto.getBookedRoomDtoList();
-        List<Room> bookedRoomList = toRoomList(bookedRoomDtoList, locale, currency);
+        List<RoomDto> bookedRoomDtoList = billDto.getBookedRoomList();
+//        List<Room> bookedRoomList = toRoomList(bookedRoomDtoList, locale, currency);
+        List<Long> bookedRoomIdList = new ArrayList<>();
+        for (RoomDto bookedRoomDto : bookedRoomDtoList) {
+            bookedRoomIdList.add(bookedRoomDto.getRoomId());
+        }
         double paymentAmount = billDto.getPaymentAmount();
         double paymentAmountUSD = CurrencyUtil.convertToUSD(paymentAmount, currency);
         String billStatus = billDto.getBillStatus();
-        Bill bill = EntityBuilder.buildBill(billId, user, totalPersons, checkInDate, checkOutDate, bookedRoomList,
+        Bill bill = EntityBuilder.buildBill(billId, user, totalPersons, checkInDate, checkOutDate, bookedRoomIdList,
                 paymentAmountUSD, billStatus);
         return bill;
     }
@@ -271,15 +272,15 @@ public class DtoToEntityConverter {
         return hotelList;
     }
 
-    public static BillDto toBillDto(Bill bill) throws LocalisationException {
-        BillDto billDto = toBillDto(bill, defaultLocale, defaultCurrency);
+    public static BillDto toBillDto(Bill bill, List<Room> bookedRoomList) throws LocalisationException {
+        BillDto billDto = toBillDto(bill, bookedRoomList, defaultLocale, defaultCurrency);
         return billDto;
     }
 
-    public static List<BillDto> billDtoList(List<Bill> billList) throws LocalisationException {
-        List<BillDto> billDtoList = toBillDtoList(billList, defaultLocale, defaultCurrency);
-        return billDtoList;
-    }
+//    public static List<BillDto> billDtoList(List<Bill> billList) throws LocalisationException {
+//        List<BillDto> billDtoList = toBillDtoList(billList, defaultLocale, defaultCurrency);
+//        return billDtoList;
+//    }
 
     public static GlobalHotelDto toGlobalHotelDto(Hotel hotel, List<Room> roomList) throws LocalisationException {
         HotelDto hotelDto = toHotelDto(hotel);
@@ -290,7 +291,7 @@ public class DtoToEntityConverter {
 
     public static Hotel toHotel(GlobalHotelDto globalHotelDto) {
         long hotelId = globalHotelDto.getHotelId();
-        LocationDto locationDto = globalHotelDto.getLocationDto();
+        LocationDto locationDto = globalHotelDto.getLocation();
         Location location = toLocation(locationDto);
         String hotelName = globalHotelDto.getHotelName();
         String hotelStatus = globalHotelDto.getHotelStatus();
@@ -325,9 +326,10 @@ public class DtoToEntityConverter {
         return location;
     }
 
+    // TODO: 22.10.2016 Исправить
     public static HotelDto toHotelDto(GlobalHotelDto globalHotelDto) {
         long hotelId = globalHotelDto.getHotelId();
-        LocationDto locationDto = globalHotelDto.getLocationDto();
+        LocationDto locationDto = globalHotelDto.getLocation();
         String hotelName = globalHotelDto.getHotelName();
         String hotelStatus = globalHotelDto.getHotelStatus();
         HotelDto hotelDto = new HotelDto(hotelId, locationDto, hotelName, hotelStatus);

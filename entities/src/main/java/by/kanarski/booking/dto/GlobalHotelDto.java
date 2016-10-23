@@ -8,11 +8,11 @@ import java.util.Map;
 public class GlobalHotelDto {
 
     private long hotelId;
-    private LocationDto locationDto;
+    private LocationDto location;
     private String hotelName;
     private String hotelStatus;
-    private List<RoomDto> roomDtoList;
-    private Map<RoomTypeDto, Integer> roomTypeCount;
+    private List<RoomDto> roomList;
+    private Map<RoomTypeDto, Integer> roomTypesCount;
     private int roomsAvailable;
 
     public GlobalHotelDto() {
@@ -21,34 +21,35 @@ public class GlobalHotelDto {
 
     public GlobalHotelDto(long hotelId, String country, String city, String hotelName, String hotelStatus) {
         this.hotelId = hotelId;
-        this.locationDto = new LocationDto(country, city);
+        this.location = new LocationDto(country, city);
         this.hotelName = hotelName;
         this.hotelStatus = hotelStatus;
     }
 
-    public GlobalHotelDto(long hotelId, LocationDto locationDto, String hotelName, String hotelStatus) {
+    public GlobalHotelDto(long hotelId, LocationDto location, String hotelName, String hotelStatus) {
         this.hotelId = hotelId;
-        this.locationDto = locationDto;
+        this.location = location;
         this.hotelName = hotelName;
         this.hotelStatus = hotelStatus;
     }
 
-    public GlobalHotelDto(long hotelId, LocationDto locationDto, String hotelName, List<RoomDto> roomDtoList) {
+    public GlobalHotelDto(long hotelId, LocationDto location, String hotelName, List<RoomDto> roomList) {
         this.hotelId = hotelId;
-        this.locationDto = locationDto;
+        this.location = location;
         this.hotelName = hotelName;
-        this.roomDtoList = roomDtoList;
-        this.roomsAvailable = roomDtoList.size();
-        this.roomTypeCount = Counter.countRoomTypeDto(roomDtoList);
+        this.roomList = roomList;
+        this.roomsAvailable = roomList.size();
+        this.roomTypesCount = Counter.countRoomTypeDto(roomList);
     }
 
-    public GlobalHotelDto(HotelDto hotel, List<RoomDto> roomDtoList) {
+    public GlobalHotelDto(HotelDto hotel, List<RoomDto> roomList) {
         this.hotelId = hotel.getHotelId();
-        this.locationDto = hotel.getLocationDto();
+        this.location = hotel.getLocation();
+        this.hotelName = hotel.getHotelName();
         this.hotelStatus = hotel.getHotelStatus();
-        this.roomDtoList = roomDtoList;
-        this.roomTypeCount = Counter.countRoomTypeDto(this.roomDtoList);
-        this.roomsAvailable = this.roomDtoList.size();
+        this.roomList = roomList;
+        this.roomTypesCount = Counter.countRoomTypeDto(this.roomList);
+        this.roomsAvailable = this.roomList.size();
     }
 
     public long getHotelId() {
@@ -59,12 +60,12 @@ public class GlobalHotelDto {
         this.hotelId = hotelId;
     }
 
-    public LocationDto getLocationDto() {
-        return locationDto;
+    public LocationDto getLocation() {
+        return location;
     }
 
-    public void setLocationDto(LocationDto locationDto) {
-        this.locationDto = locationDto;
+    public void setLocation(LocationDto location) {
+        this.location = location;
     }
 
     public String getHotelName() {
@@ -75,14 +76,14 @@ public class GlobalHotelDto {
         this.hotelName = hotelName;
     }
 
-    public List<RoomDto> getRoomDtoList() {
-        return roomDtoList;
+    public List<RoomDto> getRoomList() {
+        return roomList;
     }
 
-    public void setRoomDtoList(List<RoomDto> roomDtoList) {
-        this.roomDtoList = roomDtoList;
-        this.roomTypeCount = Counter.countRoomTypeDto(roomDtoList);
-        this.roomsAvailable = roomDtoList.size();
+    public void setRoomList(List<RoomDto> roomList) {
+        this.roomList = roomList;
+        this.roomTypesCount = Counter.countRoomTypeDto(roomList);
+        this.roomsAvailable = roomList.size();
     }
 
     public String getHotelStatus() {
@@ -93,12 +94,12 @@ public class GlobalHotelDto {
         this.hotelStatus = hotelStatus;
     }
 
-    public Map<RoomTypeDto, Integer> getRoomTypeCount() {
-        return roomTypeCount;
+    public Map<RoomTypeDto, Integer> getRoomTypesCount() {
+        return roomTypesCount;
     }
 
-    public void setRoomTypeCount(Map<RoomTypeDto, Integer> roomTypeCount) {
-        this.roomTypeCount = roomTypeCount;
+    public void setRoomTypesCount(Map<RoomTypeDto, Integer> roomTypesCount) {
+        this.roomTypesCount = roomTypesCount;
     }
 
     public int getRoomsAvailable() {
@@ -118,22 +119,22 @@ public class GlobalHotelDto {
 
         if (hotelId != globalHotelDto.hotelId) return false;
         if (roomsAvailable != globalHotelDto.roomsAvailable) return false;
-        if (!locationDto.equals(globalHotelDto.locationDto)) return false;
+        if (!location.equals(globalHotelDto.location)) return false;
         if (!hotelName.equals(globalHotelDto.hotelName)) return false;
         if (!hotelStatus.equals(globalHotelDto.hotelStatus)) return false;
-        if (!roomDtoList.equals(globalHotelDto.roomDtoList)) return false;
-        return roomTypeCount.equals(globalHotelDto.roomTypeCount);
+        if (!roomList.equals(globalHotelDto.roomList)) return false;
+        return roomTypesCount.equals(globalHotelDto.roomTypesCount);
 
     }
 
     @Override
     public int hashCode() {
         int result = (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + locationDto.hashCode();
+        result = 31 * result + location.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelStatus.hashCode();
-        result = 31 * result + roomDtoList.hashCode();
-        result = 31 * result + roomTypeCount.hashCode();
+        result = 31 * result + roomList.hashCode();
+        result = 31 * result + roomTypesCount.hashCode();
         result = 31 * result + roomsAvailable;
         return result;
     }

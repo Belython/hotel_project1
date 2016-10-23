@@ -66,10 +66,10 @@ public class ConstrainRowCommand extends AbstractCommand{
 
         LinkedHashMap<String, FieldDescriptor> roomFields = new LinkedHashMap<>();
         FieldDescriptor roomIdFieldDescriptor = FieldBuilder.buildFreePrimitive();
-        FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getHotelDto(), hotelDtoList);
-        FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomTypeDto(), roomTypeDtoList, currency);
-        roomDto.setHotelDto(hotelDtoFieldDescriptor.getOwner());
-        roomDto.setRoomTypeDto(roomTypeDtoFieldDescriptor.getOwner());
+        FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getHotel(), hotelDtoList);
+        FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeDtoList, currency);
+        roomDto.setHotel(hotelDtoFieldDescriptor.getOwner());
+        roomDto.setRoomType(roomTypeDtoFieldDescriptor.getOwner());
         FieldDescriptor roomNumberFieldDescriptor = FieldBuilder.buildFreePrimitive();
         FieldDescriptor roomStatusFieldDescriptor = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
         roomFields.put(Parameter.ROOM_ID, roomIdFieldDescriptor);

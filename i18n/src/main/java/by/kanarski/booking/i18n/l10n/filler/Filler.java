@@ -1,7 +1,6 @@
 package by.kanarski.booking.i18n.l10n.filler;
 
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.constants.ResourcePath;
 import by.kanarski.booking.i18n.l10n.filler.factory.ContentType;
 import by.kanarski.booking.managers.ResourceBuilder;
 
@@ -22,6 +21,7 @@ public class Filler {
     public void fill (HttpServletRequest request) {
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+//        Locale locale = UserPreferences.getLocale();
         ResourceBundle bundle = ResourceBuilder.JSP_TEXT.setLocale(locale).create();
         for (Map<String, List<String>> contentMap : pageDescriptor) {
             Set<String> contentNames = contentMap.keySet();

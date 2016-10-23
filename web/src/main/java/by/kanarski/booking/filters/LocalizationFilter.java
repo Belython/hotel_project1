@@ -2,7 +2,7 @@ package by.kanarski.booking.filters;
 
 import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
-import by.kanarski.booking.utils.threadLocal.UserPreferences;
+import by.kanarski.booking.utils.UserPreferences;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

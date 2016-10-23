@@ -1,8 +1,7 @@
-package by.kanarski.booking.utils.threadLocal;
+package by.kanarski.booking.utils;
 
 import by.kanarski.booking.constants.DaoMessage;
-import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.DataSource;
+import by.kanarski.booking.utils.threadLocal.ThreadLocalUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,15 +13,19 @@ import java.sql.SQLException;
  */
 
 public class ConnectionUtil {
-    private static Connection connection;
     private static DataSource dataSource = DataSource.getInstance();
 
     private ConnectionUtil() {
     }
 
     public static Connection getConnection() {
+        Connection connection = null;
         try {
-            connection = (Connection) ThreadLocalUtil.CONNECTION.get(dataSource.getConnection());
+            Connection newConnection = dataSource.getConnection();
+            connection = (Connection) ThreadLocalUtil.CONNECTION.get(newConnection);
+            if (!connection.equals(newConnection)) {
+                newConnection.close();
+            }
         } catch (SQLException e) {
             BookingSystemLogger.getInstance().logError(ConnectionUtil.class, DaoMessage.INPUT_ERROR, e);
         }

@@ -2,7 +2,6 @@ package by.kanarski.booking.utils;
 
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.exceptions.LocalisationException;
-import by.kanarski.booking.utils.threadLocal.UserPreferences;
 
 import java.util.List;
 import java.util.Locale;
@@ -12,7 +11,7 @@ public class BillUtil {
     public static double getPaymentAmount(int bookedDays, List<RoomDto> roomDtoList) {
         double payment = 0;
         for (RoomDto roomDto : roomDtoList) {
-            double part = roomDto.getRoomTypeDto().getPricePerNight() * bookedDays;
+            double part = roomDto.getRoomType().getPricePerNight() * bookedDays;
             payment += part;
         }
         return payment;

@@ -19,7 +19,7 @@ public class AdminLogic {
             int i = 0;
             while (roomsAmount > 0) {
                 RoomDto roomDto = roomDtoList.get(i);
-                if (roomDto.getRoomTypeDto().equals(roomTypeDto)) {
+                if (roomDto.getRoomType().equals(roomTypeDto)) {
                     selectedRoomList.add(roomDto);
                     roomsAmount--;
                 }

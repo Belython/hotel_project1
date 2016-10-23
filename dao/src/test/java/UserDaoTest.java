@@ -1,7 +1,7 @@
 import by.kanarski.booking.constants.FieldValue;
 import by.kanarski.booking.dao.impl.UserDao;
 import by.kanarski.booking.entities.User;
-import by.kanarski.booking.exceptions.LocalisationException;
+import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.EntityBuilder;
 import org.junit.After;
 import org.junit.Assert;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserDaoTest extends Assert{
 
-    UserDao userDao = UserDao.getTestInstance();
+    UserDao userDao = UserDao.getInstance();
 
     private User expectedUser;
     private List<User> expectedUserList;
@@ -57,7 +57,7 @@ public class UserDaoTest extends Assert{
         try {
             User actual = userDao.getById(expectedUser.getUserId());
             assertEquals(expectedUser, actual);
-        } catch (LocalisationException e) {
+        } catch (DaoException e) {
             fail();
         }
     }
@@ -92,12 +92,11 @@ public class UserDaoTest extends Assert{
 
     @Test
     public void testIsNewUser() throws Exception {
-        String login = newUser.getLogin();
-        boolean isNewUser = userDao.isNewUser(login);
+        boolean isNewUser = userDao.isNewUser(newUser);
         assertTrue(isNewUser);
     }
 
-    @Test(expected = LocalisationException.class)
+    @Test(expected = DaoException.class)
     public void testDelete() throws Exception {
         User newUser = userDao.add(getNewUser());
         userDao.delete(newUser);

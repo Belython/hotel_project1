@@ -10,7 +10,7 @@ import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.UserServiceImpl;
 import by.kanarski.booking.utils.RequestParser;
-import by.kanarski.booking.utils.threadLocal.UserPreferences;
+import by.kanarski.booking.utils.UserPreferences;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

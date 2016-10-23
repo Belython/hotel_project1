@@ -10,13 +10,13 @@ public class BillDto {
 
     private long billId;
 //    private String bookingDate;
-    private UserDto userDto;
+    private UserDto user;
     private int totalPersons;
     private String checkInDate;
     private String checkOutDate;
-    private HotelDto bookedHotelDto;
-    private Map<RoomTypeDto, Integer> bookedRoomTypeDtoMap;
-    private List<RoomDto> bookedRoomDtoList;
+    private HotelDto bookedHotel;
+    private Map<RoomTypeDto, Integer> bookedRoomTypeMap;
+    private List<RoomDto> bookedRoomList;
     private double paymentAmount;
     private String billStatus;
 
@@ -24,44 +24,59 @@ public class BillDto {
 
     }
 
-    public BillDto(long billId, UserDto userDto, int totalPersons, String checkInDate,
-                   String checkOutDate, HotelDto bookedHotelDto, List<RoomDto> bookedRoomDtoList,
+    public BillDto(long billId, UserDto user, int totalPersons, String checkInDate,
+                   String checkOutDate, HotelDto bookedHotel, List<RoomDto> bookedRoomList,
                    double paymentAmount, String billStatus) {
         this.billId = billId;
-        this.userDto = userDto;
+        this.user = user;
         this.totalPersons = totalPersons;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.bookedHotelDto = bookedHotelDto;
-        this.bookedRoomTypeDtoMap = Counter.countRoomTypeDto(bookedRoomDtoList);
-        this.bookedRoomDtoList = bookedRoomDtoList;
+        this.bookedHotel = bookedHotel;
+        this.bookedRoomTypeMap = Counter.countRoomTypeDto(bookedRoomList);
+        this.bookedRoomList = bookedRoomList;
         this.paymentAmount = paymentAmount;
         this.billStatus = billStatus;
     }
 
-    public BillDto(long billId, UserDto userDto, int totalPersons, String checkInDate,
-                   String checkOutDate, HotelDto bookedHotelDto, Map<RoomTypeDto, Integer> bookedRoomTypeDtoMap,
-                   double paymentAmount, String billStatus) {
-        this.billId = billId;
-        this.userDto = userDto;
-        this.totalPersons = totalPersons;
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
-        this.bookedHotelDto = bookedHotelDto;
-        this.bookedRoomTypeDtoMap = bookedRoomTypeDtoMap;
-        this.paymentAmount = paymentAmount;
-        this.billStatus = billStatus;
-    }
-
-    public BillDto(UserDto userDto, int totalPersons, String checkInDate, String checkOutDate,
-                   HotelDto bookedHotelDto, Map<RoomTypeDto, Integer> bookedRoomTypeDtoMap, double paymentAmount) {
+    public BillDto(UserDto user, int totalPersons, String checkInDate,
+                   String checkOutDate, HotelDto bookedHotel, List<RoomDto> bookedRoomList,
+                   double paymentAmount) {
         this.billId = FieldValue.UNDEFINED_ID;
-        this.userDto = userDto;
+        this.user = user;
         this.totalPersons = totalPersons;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.bookedHotelDto = bookedHotelDto;
-        this.bookedRoomTypeDtoMap = bookedRoomTypeDtoMap;
+        this.bookedHotel = bookedHotel;
+        this.bookedRoomTypeMap = Counter.countRoomTypeDto(bookedRoomList);
+        this.bookedRoomList = bookedRoomList;
+        this.paymentAmount = paymentAmount;
+        this.billStatus = FieldValue.STATUS_NOT_PAID;
+    }
+
+    public BillDto(long billId, UserDto user, int totalPersons, String checkInDate,
+                   String checkOutDate, HotelDto bookedHotel, Map<RoomTypeDto, Integer> bookedRoomTypeMap,
+                   double paymentAmount, String billStatus) {
+        this.billId = billId;
+        this.user = user;
+        this.totalPersons = totalPersons;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.bookedHotel = bookedHotel;
+        this.bookedRoomTypeMap = bookedRoomTypeMap;
+        this.paymentAmount = paymentAmount;
+        this.billStatus = billStatus;
+    }
+
+    public BillDto(UserDto user, int totalPersons, String checkInDate, String checkOutDate,
+                   HotelDto bookedHotel, Map<RoomTypeDto, Integer> bookedRoomTypeMap, double paymentAmount) {
+        this.billId = FieldValue.UNDEFINED_ID;
+        this.user = user;
+        this.totalPersons = totalPersons;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.bookedHotel = bookedHotel;
+        this.bookedRoomTypeMap = bookedRoomTypeMap;
         this.paymentAmount = paymentAmount;
         this.billStatus = FieldValue.STATUS_NOT_PAID;
     }
@@ -74,12 +89,12 @@ public class BillDto {
         this.billId = billId;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 
     public int getTotalPersons() {
@@ -106,29 +121,29 @@ public class BillDto {
         this.checkOutDate = checkOutDate;
     }
 
-    public HotelDto getBookedHotelDto() {
-        return bookedHotelDto;
+    public HotelDto getBookedHotel() {
+        return bookedHotel;
     }
 
-    public void setBookedHotelDto(HotelDto bookedHotelDto) {
-        this.bookedHotelDto = bookedHotelDto;
+    public void setBookedHotel(HotelDto bookedHotel) {
+        this.bookedHotel = bookedHotel;
     }
 
-    public Map<RoomTypeDto, Integer> getBookedRoomTypeDtoMap() {
-        return bookedRoomTypeDtoMap;
+    public Map<RoomTypeDto, Integer> getBookedRoomTypeMap() {
+        return bookedRoomTypeMap;
     }
 
-    public void setBookedRoomTypeDtoMap(Map<RoomTypeDto, Integer> bookedRoomTypeDtoMap) {
-        this.bookedRoomTypeDtoMap = bookedRoomTypeDtoMap;
+    public void setBookedRoomTypeMap(Map<RoomTypeDto, Integer> bookedRoomTypeMap) {
+        this.bookedRoomTypeMap = bookedRoomTypeMap;
     }
 
-    public List<RoomDto> getBookedRoomDtoList() {
-        return bookedRoomDtoList;
+    public List<RoomDto> getBookedRoomList() {
+        return bookedRoomList;
     }
 
-    public void setBookedRoomDtoList(List<RoomDto> bookedRoomDtoList) {
-        this.bookedRoomTypeDtoMap = Counter.countRoomTypeDto(bookedRoomDtoList);
-        this.bookedRoomDtoList = bookedRoomDtoList;
+    public void setBookedRoomList(List<RoomDto> bookedRoomList) {
+        this.bookedRoomTypeMap = Counter.countRoomTypeDto(bookedRoomList);
+        this.bookedRoomList = bookedRoomList;
     }
 
     public double getPaymentAmount() {
@@ -157,12 +172,12 @@ public class BillDto {
         if (billId != billDto.billId) return false;
         if (totalPersons != billDto.totalPersons) return false;
         if (Double.compare(billDto.paymentAmount, paymentAmount) != 0) return false;
-        if (!userDto.equals(billDto.userDto)) return false;
+        if (!user.equals(billDto.user)) return false;
         if (!checkInDate.equals(billDto.checkInDate)) return false;
         if (!checkOutDate.equals(billDto.checkOutDate)) return false;
-        if (!bookedHotelDto.equals(billDto.bookedHotelDto)) return false;
-        if (!bookedRoomTypeDtoMap.equals(billDto.bookedRoomTypeDtoMap)) return false;
-        if (!bookedRoomDtoList.equals(billDto.bookedRoomDtoList)) return false;
+        if (!bookedHotel.equals(billDto.bookedHotel)) return false;
+        if (!bookedRoomTypeMap.equals(billDto.bookedRoomTypeMap)) return false;
+        if (!bookedRoomList.equals(billDto.bookedRoomList)) return false;
         return billStatus.equals(billDto.billStatus);
 
     }
@@ -172,13 +187,13 @@ public class BillDto {
         int result;
         long temp;
         result = (int) (billId ^ (billId >>> 32));
-        result = 31 * result + userDto.hashCode();
+        result = 31 * result + user.hashCode();
         result = 31 * result + totalPersons;
         result = 31 * result + checkInDate.hashCode();
         result = 31 * result + checkOutDate.hashCode();
-        result = 31 * result + bookedHotelDto.hashCode();
-        result = 31 * result + bookedRoomTypeDtoMap.hashCode();
-        result = 31 * result + bookedRoomDtoList.hashCode();
+        result = 31 * result + bookedHotel.hashCode();
+        result = 31 * result + bookedRoomTypeMap.hashCode();
+        result = 31 * result + bookedRoomList.hashCode();
         temp = Double.doubleToLongBits(paymentAmount);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + billStatus.hashCode();

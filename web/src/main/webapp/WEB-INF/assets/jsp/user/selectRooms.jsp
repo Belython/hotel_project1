@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:set var="roomTypeMap" value="${selectedHotelDto.roomTypesCount}"/>
+        <c:set var="roomTypeMap" value="${selectedGlobalHotel.roomTypesCount}"/>
         <c:set var="roomTypeSet" value="${roomTypeMap.keySet()}"/>
         <c:forEach var="roomType" items="${roomTypeSet}">
             <tr>

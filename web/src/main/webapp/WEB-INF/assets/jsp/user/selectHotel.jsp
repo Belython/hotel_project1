@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-        <c:forEach var="hotel" items="${hotelDtoList}">
+        <c:forEach var="hotel" items="${hotelList}">
             <c:set var="hotelLocation" value="${hotel.hotelLocation}"/>
             <tr>
                 <td>${hotelLocation.country}</td>

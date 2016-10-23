@@ -17,8 +17,8 @@ public class ConstrainUtil {
     public static FieldDescriptor<HotelDto> byHotel(HotelDto selectedHotelDto, 
                                                           List<HotelDto> hotelDtoList) {
 
-        String selectedHotelCountry = selectedHotelDto.getLocationDto().getCountry();
-        String selectedHotelCity = selectedHotelDto.getLocationDto().getCity();
+        String selectedHotelCountry = selectedHotelDto.getLocation().getCountry();
+        String selectedHotelCity = selectedHotelDto.getLocation().getCity();
         String selectedHotelName = selectedHotelDto.getHotelName();
 
         Set<String> countrySet = new HashSet<>();
@@ -28,8 +28,8 @@ public class ConstrainUtil {
 
         for (HotelDto hotelDto : hotelDtoList) {
             long hotelId = hotelDto.getHotelId();
-            String hotelCountry = hotelDto.getLocationDto().getCountry();
-            String hotelCity = hotelDto.getLocationDto().getCity();
+            String hotelCountry = hotelDto.getLocation().getCountry();
+            String hotelCity = hotelDto.getLocation().getCity();
             String hotelName = hotelDto.getHotelName();
             if (hotelCountry.equals(selectedHotelCountry)) {
                 citySet.add(hotelCity);
@@ -55,7 +55,7 @@ public class ConstrainUtil {
         locationFields.put(Parameter.LOCATION_CITY, FieldBuilder.buildPrimitive(citySet));
 
         FieldDescriptor hotelIdPrimitive = FieldBuilder.buildFreePrimitive();
-        FieldDescriptor<LocationDto> locationEntity = FieldBuilder.buildEntity(locationFields, selectedHotelDto.getLocationDto());
+        FieldDescriptor<LocationDto> locationEntity = FieldBuilder.buildEntity(locationFields, selectedHotelDto.getLocation());
         FieldDescriptor hotelNamePrimitive = FieldBuilder.buildPrimitive(hotelNameSet);
         LinkedHashMap<String, FieldDescriptor> hotelFields = new LinkedHashMap<>();
         hotelFields.put(Parameter.HOTEL_ID, hotelIdPrimitive);
@@ -65,9 +65,9 @@ public class ConstrainUtil {
 
         if (hotelNameSet.isEmpty()) {
             String hotelCity = citySet.iterator().next();
-            LocationDto location = selectedHotelDto.getLocationDto();
+            LocationDto location = selectedHotelDto.getLocation();
             location.setCity(hotelCity);
-            selectedHotelDto.setLocationDto(location);
+            selectedHotelDto.setLocation(location);
             hotelEntity = byHotel(selectedHotelDto, hotelDtoList);
         }
         hotelEntity.setOwner(selectedHotelDto);

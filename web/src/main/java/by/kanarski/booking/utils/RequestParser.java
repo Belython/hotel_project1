@@ -119,13 +119,13 @@ public class RequestParser {
     public static BillDto parseBillDto(HttpServletRequest request) throws LocalisationException {
         HttpSession session = request.getSession();
         OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
-        UserDto userDto = orderDto.getUserDto();
+        UserDto userDto = orderDto.getUser();
         String checkInDate = orderDto.getCheckInDate();
         String checkOutDate = orderDto.getCheckOutDate();
-        GlobalHotelDto selectedGlobalHotelDto = (GlobalHotelDto) session.getAttribute(Parameter.SELECTED_HOTEL);
+        GlobalHotelDto selectedGlobalHotelDto = (GlobalHotelDto) session.getAttribute(Parameter.SELECTED_GLOBAL_HOTEL);
         HotelDto selectedHotelDto = DtoToEntityConverter.toHotelDto(selectedGlobalHotelDto);
         int totalPersons = orderDto.getTotalPersons();
-        Set<RoomTypeDto> roomTypeDtoSet = selectedGlobalHotelDto.getRoomTypeCount().keySet();
+        Set<RoomTypeDto> roomTypeDtoSet = selectedGlobalHotelDto.getRoomTypesCount().keySet();
         HashMap<RoomTypeDto, Integer> selectedRoomTypes = new HashMap<>();
         for (RoomTypeDto roomTypeDto : roomTypeDtoSet) {
             int roomTypeCount = Integer.valueOf(request.getParameter(roomTypeDto.getRoomTypeName()));
@@ -133,11 +133,11 @@ public class RequestParser {
                 selectedRoomTypes.put(roomTypeDto, roomTypeCount);
             }
         }
-        List<RoomDto> selectedRooms = AdminLogic.chooseRoomList(selectedRoomTypes, selectedGlobalHotelDto.getRoomDtoList());
+        List<RoomDto> selectedRoomList = AdminLogic.chooseRoomList(selectedRoomTypes, selectedGlobalHotelDto.getRoomList());
         int bookedDays = BillUtil.getBookedDays(checkInDate, checkOutDate);
-        double paymentAmount = BillUtil.getPaymentAmount(bookedDays, selectedRooms);
+        double paymentAmount = BillUtil.getPaymentAmount(bookedDays, selectedRoomList);
         BillDto billDto = new BillDto(userDto, totalPersons, checkInDate, checkOutDate, selectedHotelDto,
-                selectedRoomTypes, paymentAmount);
+                selectedRoomList, paymentAmount);
         return billDto;
     }
 

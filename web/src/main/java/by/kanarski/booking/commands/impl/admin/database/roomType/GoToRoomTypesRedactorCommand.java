@@ -3,7 +3,7 @@ package by.kanarski.booking.commands.impl.admin.database.roomType;
 import by.kanarski.booking.commands.ICommand;
 import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
@@ -28,7 +28,7 @@ public class GoToRoomTypesRedactorCommand implements ICommand {
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
-            User admin = (User) session.getAttribute(Parameter.USER);
+            UserDto admin = (UserDto) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOM_TYPE_REDACTOR_PATH;

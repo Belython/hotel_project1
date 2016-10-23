@@ -29,7 +29,7 @@ public class MakeBillCommand extends AbstractCommand {
             BillDto billDto = RequestParser.parseBillDto(request);
             String checkInDate = billDto.getCheckInDate();
             String checkOutDate = billDto.getCheckOutDate();
-            List<RoomDto> requestedRoomList = billDto.getBookedRoomDtoList();
+            List<RoomDto> requestedRoomList = billDto.getBookedRoomList();
             for (RoomDto roomDto : requestedRoomList) {
                 TreeMap<String, String> bookedDates = roomDto.getBookedDates();
                 if (bookedDates == null) {
@@ -43,7 +43,7 @@ public class MakeBillCommand extends AbstractCommand {
             page = PagePath.INDEX_PAGE_PATH;
         } catch (ServiceException | LocalisationException e) {
             page = PagePath.ERROR;
-            handleServiceException(request);
+            handleServiceException(request, e);
         }
         session.setAttribute(Parameter.CURRENT_PAGE_PATH, page);
         request.setAttribute(Parameter.CURRENT_PAGE_PATH, page);

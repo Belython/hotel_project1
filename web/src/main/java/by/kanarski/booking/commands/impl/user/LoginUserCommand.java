@@ -1,9 +1,9 @@
 package by.kanarski.booking.commands.impl.user;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.OperationMessageKeys;
 import by.kanarski.booking.constants.PagePath;
+import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
@@ -14,7 +14,8 @@ import by.kanarski.booking.utils.RequestParser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginUserCommand extends AbstractCommand {
 
@@ -24,6 +25,7 @@ public class LoginUserCommand extends AbstractCommand {
         String page = null;
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
+//        Locale locale = UserPreferences.getLocale();
         try {
             UserDto user = RequestParser.parseUserDto(request);
             boolean isAuthorised = UserServiceImpl.getInstance().checkAuthorization(user.getLogin(), user.getPassword());

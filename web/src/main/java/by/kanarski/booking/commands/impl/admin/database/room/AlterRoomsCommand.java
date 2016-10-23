@@ -6,12 +6,10 @@ import by.kanarski.booking.constants.PagePath;
 import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.constants.Value;
 import by.kanarski.booking.dto.RoomDto;
-import by.kanarski.booking.entities.Room;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.RoomServiceImpl;
-import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.RequestParser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,20 +34,19 @@ public class AlterRoomsCommand extends AbstractCommand {
         String subCommand = request.getParameter(Parameter.SUB_COMMAND);
         try {
             List<RoomDto> roomDtoList = RequestParser.parseRoomDtoList(request);
-            List<Room> roomList = DtoToEntityConverter.toRoomList(roomDtoList, locale, currency);
+//            List<Room> roomList = DtoToEntityConverter.toRoomList(roomDtoList, locale, currency);
             switch (subCommand) {
                 case Value.ADD_NEW: {
-                    RoomServiceImpl.getInstance().addList(roomList);
+                    RoomServiceImpl.getInstance().addList(roomDtoList);
                     break;
                 }
                 case Value.CHANGE_EXISTING: {
-                    RoomServiceImpl.getInstance().updateList(roomList);
+                    RoomServiceImpl.getInstance().updateList(roomDtoList);
                     break;
                 }
             }
-            List<Room> newRoomList = RoomServiceImpl.getInstance().getAll();
-            List<RoomDto> newRoomDtoList = DtoToEntityConverter.toRoomDtoList(newRoomList, locale, currency);
-            session.setAttribute(Parameter.ROOM_LIST, newRoomList);
+            List<RoomDto> newRoomDtoList = RoomServiceImpl.getInstance().getAll();
+            session.setAttribute(Parameter.ROOM_LIST, newRoomDtoList);
             session.setAttribute(Parameter.ROOM_DTO_LIST, newRoomDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String responseText = bundle.getString(OperationMessageKeys.DATABASE_CHANGE_SUCCES);

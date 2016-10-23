@@ -11,7 +11,7 @@ import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IBillService;
 import by.kanarski.booking.utils.*;
-import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -61,8 +61,8 @@ public class BillServiceImpl implements IBillService {
             connection.setAutoCommit(false);
             Bill bill = billDao.getById(billId);
             List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
-            bill = EntityBuilder.buildBill(bill, roomList);
-            billDto = DtoToEntityConverter.toBillDto(bill);
+//            bill = EntityBuilder.buildBill(bill, roomList);
+            billDto = DtoToEntityConverter.toBillDto(bill, roomList);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
         } catch (SQLException | LocalisationException | DaoException e) {
@@ -92,22 +92,22 @@ public class BillServiceImpl implements IBillService {
 
     public List<BillDto> getByUserId(long userId) throws ServiceException {
         Connection connection = ConnectionUtil.getConnection();
-        List<BillDto> billDtList = new ArrayList<>();
+        List<BillDto> billDtoList = new ArrayList<>();
         try {
             connection.setAutoCommit(false);
             List<Bill> billList = billDao.getByUserId(userId);
             for (Bill bill : billList) {
                 List<Room> roomList = RoomDao.getInstance().getByIdList(bill.getBookedRoomIdList());
-                bill.setBookedRoomList(roomList);
-                BillDto billDto = DtoToEntityConverter.toBillDto(bill);
-                billDtList.add(billDto);
+//                bill.setBookedRoomList(roomList);
+                BillDto billDto = DtoToEntityConverter.toBillDto(bill, roomList);
+                billDtoList.add(billDto);
             }
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
         } catch (SQLException | LocalisationException | DaoException e) {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
-        return billDtList;
+        return billDtoList;
     }
 
 

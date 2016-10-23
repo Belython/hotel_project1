@@ -3,7 +3,7 @@ package by.kanarski.booking.entities;
 public class Hotel {
 
     private long hotelId;
-    private Location hotelLocation;
+    private Location location;
     private String hotelName;
     private String hotelStatus;
 
@@ -15,12 +15,12 @@ public class Hotel {
         this.hotelId = hotelId;
     }
 
-    public Location getHotelLocation() {
-        return hotelLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setHotelLocation(Location hotelLocation) {
-        this.hotelLocation = hotelLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getHotelName() {
@@ -45,7 +45,7 @@ public class Hotel {
         if (o == null || getClass() != o.getClass()) return false;
         Hotel hotel = (Hotel) o;
         if (hotelId != hotel.hotelId) return false;
-        if (!hotelLocation.equals(hotel.hotelLocation)) return false;
+        if (!location.equals(hotel.location)) return false;
         if (!hotelName.equals(hotel.hotelName)) return false;
         return hotelStatus.equals(hotel.hotelStatus);
 
@@ -54,7 +54,7 @@ public class Hotel {
     @Override
     public int hashCode() {
         int result = (int) (hotelId ^ (hotelId >>> 32));
-        result = 31 * result + hotelLocation.hashCode();
+        result = 31 * result + location.hashCode();
         result = 31 * result + hotelName.hashCode();
         result = 31 * result + hotelStatus.hashCode();
         return result;

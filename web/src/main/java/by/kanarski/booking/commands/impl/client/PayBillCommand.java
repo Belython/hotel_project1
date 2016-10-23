@@ -1,15 +1,16 @@
 package by.kanarski.booking.commands.impl.client;
 
 import by.kanarski.booking.commands.AbstractCommand;
-import by.kanarski.booking.constants.*;
+import by.kanarski.booking.constants.FieldValue;
+import by.kanarski.booking.constants.OperationMessageKeys;
+import by.kanarski.booking.constants.PagePath;
+import by.kanarski.booking.constants.Parameter;
 import by.kanarski.booking.dto.BillDto;
-import by.kanarski.booking.entities.Bill;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.services.impl.BillServiceImpl;
-import by.kanarski.booking.utils.DtoToEntityConverter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,14 +30,13 @@ public class PayBillCommand extends AbstractCommand {
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         try {
-            User user = (User) session.getAttribute(Parameter.USER);
+            UserDto user = (UserDto) session.getAttribute(Parameter.USER);
             long billId = Long.valueOf(request.getParameter(Parameter.BILL_TO_PAY));
-            Bill billToPay = BillServiceImpl.getInstance().getById(billId);
+            BillDto billToPay = BillServiceImpl.getInstance().getById(billId);
             billToPay.setBillStatus(FieldValue.STATUS_PAID);
             BillServiceImpl.getInstance().update(billToPay);
-            List<Bill> billList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
-            List<BillDto> billDtoList = DtoToEntityConverter.toBillDtoList(billList, locale, currency);
-            session.setAttribute(Parameter.BILL_DTO_LIST, billDtoList);
+            List<BillDto> billDtoList = BillServiceImpl.getInstance().getByUserId(user.getUserId());
+            session.setAttribute(Parameter.BILL_LIST, billDtoList);
             ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
             String errorMessage = bundle.getString(OperationMessageKeys.ERROR_DATABASE);
             request.setAttribute(Parameter.ERROR_DATABASE, errorMessage);

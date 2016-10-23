@@ -7,7 +7,7 @@ import by.kanarski.booking.i18n.l10n.filler.Filler;
 import by.kanarski.booking.i18n.l10n.filler.factory.FillerFactory;
 import by.kanarski.booking.requestHandler.ServletAction;
 import by.kanarski.booking.utils.RequestParser;
-import by.kanarski.booking.utils.threadLocal.UserPreferences;
+import by.kanarski.booking.utils.UserPreferences;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

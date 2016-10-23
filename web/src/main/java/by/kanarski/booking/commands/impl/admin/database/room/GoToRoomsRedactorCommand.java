@@ -5,7 +5,7 @@ import by.kanarski.booking.constants.*;
 import by.kanarski.booking.dto.HotelDto;
 import by.kanarski.booking.dto.RoomDto;
 import by.kanarski.booking.dto.RoomTypeDto;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
@@ -33,7 +33,7 @@ public class GoToRoomsRedactorCommand implements ICommand {
         Currency currency = (Currency) session.getAttribute(Parameter.CURRENCY);
         ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
         try {
-            User admin = (User) session.getAttribute(Parameter.USER);
+            UserDto admin = (UserDto) session.getAttribute(Parameter.USER);
             if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
                 servletAction = ServletAction.FORWARD_PAGE;
                 page = PagePath.ROOMS_REDACTOR_PATH;
@@ -45,10 +45,10 @@ public class GoToRoomsRedactorCommand implements ICommand {
                 for (RoomDto roomDto: roomDtoList) {
                     LinkedHashMap<String, FieldDescriptor> roomFields = new LinkedHashMap<>();
                     FieldDescriptor roomIdFieldDescriptor = FieldBuilder.buildFreePrimitive();
-                    FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getHotelDto(), hotelDtoList);
-                    FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomTypeDto(), roomTypeDtoList, currency);
-                    roomDto.setHotelDto(hotelDtoFieldDescriptor.getOwner());
-                    roomDto.setRoomTypeDto(roomTypeDtoFieldDescriptor.getOwner());
+                    FieldDescriptor<HotelDto> hotelDtoFieldDescriptor = ConstrainUtil.byHotel(roomDto.getHotel(), hotelDtoList);
+                    FieldDescriptor<RoomTypeDto> roomTypeDtoFieldDescriptor = ConstrainUtil.byRoomType(roomDto.getRoomType(), roomTypeDtoList, currency);
+                    roomDto.setHotel(hotelDtoFieldDescriptor.getOwner());
+                    roomDto.setRoomType(roomTypeDtoFieldDescriptor.getOwner());
                     FieldDescriptor roomNumberFieldDescriptor = FieldBuilder.buildFreePrimitive();
                     FieldDescriptor roomStatusFieldDescriptor = FieldBuilder.buildPrimitive(FieldValue.STATUS_LIST);
                     roomFields.put(Parameter.ROOM_ID, roomIdFieldDescriptor);

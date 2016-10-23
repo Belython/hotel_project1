@@ -54,7 +54,9 @@ public class Parameter {
     public static final String SUPPORTED_HOTELS = "supportedHotels";
     public static final String HOTEL_DTO_LIST = "hotelDtoList";
     public static final String HOTEL_ID_SET = "hotelIdSet";
-    public static final String GLOBAL_HOTEL_DTO_LIST = "globalHotelDtoList";
+    public static final String SELECTED_GLOBAL_HOTEL = "selectedGlobalHotel";
+    public static final String SELECTED_GLOBAL_HOTEL_LIST = "selectedGlobalHotelList";
+
 
     //Locale parameters
 

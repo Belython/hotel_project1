@@ -21,8 +21,6 @@ import java.util.List;
 
 public class GoToSelectHotelCommand extends AbstractCommand {
 
-    // TODO: 21.10.2016 Проверить
-
     @Override
     public ServletAction execute(HttpServletRequest request, HttpServletResponse response) {
         ServletAction servletAction;
@@ -30,15 +28,15 @@ public class GoToSelectHotelCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         try {
             OrderDto orderDto = RequestParser.parseOrderDto(request);
-            String hotelName = orderDto.getHotelDto().getHotelName();
+            String hotelName = orderDto.getHotel().getHotelName();
             if (!hotelName.equals(Value.HOTEL_ALL_HOTELS)) {
                 HotelDto hotelDto = HotelServiceImpl.getInstance().getByHotelName(hotelName);
-                orderDto.setHotelDto(hotelDto);
+                orderDto.setHotel(hotelDto);
                 servletAction = ServletAction.CALL_COMMAND;
                 servletAction.setCommandName(CommandType.GOTOSELECTROOMS.name());
             } else {
                 List<GlobalHotelDto> globalHotelDtoList = GlobalHotelServiceImpl.getInstance().getByOrder(orderDto);
-                session.setAttribute(Parameter.GLOBAL_HOTEL_DTO_LIST, globalHotelDtoList);
+                session.setAttribute(Parameter.SELECTED_GLOBAL_HOTEL_LIST, globalHotelDtoList);
                 page = PagePath.SELECT_HOTEL;
                 servletAction = ServletAction.FORWARD_PAGE;
             }

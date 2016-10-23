@@ -49,7 +49,7 @@ public class RefuseBillCommand extends AbstractCommand{
         String checkInDate = refusedBillDto.getCheckInDate();
 //        List<Long> roomIdList = refusedBillDto.getBookedRoomIdList();
 //        List<Room> roomList = RoomServiceImpl.getInstance().getByIdList(roomIdList);
-        List<RoomDto> refusedRoomDtoList = refusedBillDto.getBookedRoomDtoList();
+        List<RoomDto> refusedRoomDtoList = refusedBillDto.getBookedRoomList();
         for (RoomDto roomDto : refusedRoomDtoList) {
             TreeMap<String, String> bookedDates = roomDto.getBookedDates();
             if (bookedDates != null) {

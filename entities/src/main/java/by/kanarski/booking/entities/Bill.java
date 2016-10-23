@@ -1,6 +1,5 @@
 package by.kanarski.booking.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
@@ -11,7 +10,7 @@ public class Bill {
     private int totalPersons;
     private long checkInDate;
     private long checkOutDate;
-    private List<Room> bookedRoomList;
+//    private List<Room> bookedRoomList;
     private List<Long> bookedRoomIdList;
     private double paymentAmount;
     private String billStatus;
@@ -64,19 +63,6 @@ public class Bill {
         this.checkOutDate = checkOutDate;
     }
 
-    public List<Room> getBookedRoomList() {
-        return bookedRoomList;
-    }
-
-    public void setBookedRoomList(List<Room> bookedRoomList) {
-        List<Long> bookedRoomIdList = new ArrayList<>();
-        for (Room room : bookedRoomList) {
-            bookedRoomIdList.add(room.getRoomId());
-        }
-        this.bookedRoomList = bookedRoomList;
-        this.bookedRoomIdList = bookedRoomIdList;
-    }
-
     public List<Long> getBookedRoomIdList() {
         return bookedRoomIdList;
     }
@@ -114,7 +100,6 @@ public class Bill {
         if (checkOutDate != bill.checkOutDate) return false;
         if (Double.compare(bill.paymentAmount, paymentAmount) != 0) return false;
         if (!client.equals(bill.client)) return false;
-        if (!bookedRoomList.equals(bill.bookedRoomList)) return false;
         if (!bookedRoomIdList.equals(bill.bookedRoomIdList)) return false;
         return billStatus.equals(bill.billStatus);
 
@@ -129,7 +114,6 @@ public class Bill {
         result = 31 * result + totalPersons;
         result = 31 * result + (int) (checkInDate ^ (checkInDate >>> 32));
         result = 31 * result + (int) (checkOutDate ^ (checkOutDate >>> 32));
-        result = 31 * result + bookedRoomList.hashCode();
         result = 31 * result + bookedRoomIdList.hashCode();
         temp = Double.doubleToLongBits(paymentAmount);
         result = 31 * result + (int) (temp ^ (temp >>> 32));

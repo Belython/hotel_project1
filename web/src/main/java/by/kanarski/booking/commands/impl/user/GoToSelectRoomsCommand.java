@@ -25,16 +25,16 @@ public class GoToSelectRoomsCommand extends AbstractCommand {
         HttpSession session = request.getSession();
         try {
             OrderDto orderDto = (OrderDto) session.getAttribute(Parameter.ORDER);
-            HotelDto hotelDto = orderDto.getHotelDto();
+            HotelDto hotelDto = orderDto.getHotel();
             long hotelId = hotelDto.getHotelId();
             if (hotelId == FieldValue.UNDEFINED_ID) {
                 hotelId = Long.valueOf(request.getParameter(Parameter.HOTEL_ID));
                 hotelDto = HotelServiceImpl.getInstance().getById(hotelId);
-                orderDto.setHotelDto(hotelDto);
+                orderDto.setHotel(hotelDto);
                 session.setAttribute(Parameter.ORDER, orderDto);
             }
-            GlobalHotelDto selectedGlobalHotelDto = GlobalHotelServiceImpl.getInstance().getById(hotelId);
-            session.setAttribute(Parameter.SELECTED_HOTEL, selectedGlobalHotelDto);
+            GlobalHotelDto selectedGlobalHotelDto = GlobalHotelServiceImpl.getInstance().getByOrder1(orderDto);
+            session.setAttribute(Parameter.SELECTED_GLOBAL_HOTEL, selectedGlobalHotelDto);
             page = PagePath.SELECT_ROOM_PATH;
         } catch (ServiceException e) {
             page = PagePath.ERROR;

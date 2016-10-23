@@ -49,8 +49,8 @@ public class InitializationFilter implements Filter {
             List<HotelDto> allHotelDtos = HotelServiceImpl.getInstance().getAll();
             for (HotelDto hotelDto : allHotelDtos) {
                 String hotelName = hotelDto.getHotelName();
-                String country = hotelDto.getLocationDto().getCountry();
-                String city = hotelDto.getLocationDto().getCity();
+                String country = hotelDto.getLocation().getCountry();
+                String city = hotelDto.getLocation().getCity();
                 supportedHotels.add(hotelName);
                 supportedCountries.add(country);
                 supportedCities.add(city);

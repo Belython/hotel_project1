@@ -1,8 +1,11 @@
 package by.kanarski.booking.commands.impl.admin;
 
 import by.kanarski.booking.commands.ICommand;
-import by.kanarski.booking.constants.*;
-import by.kanarski.booking.entities.User;
+import by.kanarski.booking.constants.FieldValue;
+import by.kanarski.booking.constants.OperationMessageKeys;
+import by.kanarski.booking.constants.PagePath;
+import by.kanarski.booking.constants.Parameter;
+import by.kanarski.booking.dto.UserDto;
 import by.kanarski.booking.managers.ResourceBuilder;
 import by.kanarski.booking.requestHandler.ServletAction;
 
@@ -21,7 +24,7 @@ public class GoToAdminPageCommand implements ICommand {
         HttpSession session = request.getSession();
         Locale locale = (Locale) session.getAttribute(Parameter.LOCALE);
         ResourceBundle bundle = ResourceBuilder.OPERATION_MESSAGES.setLocale(locale).create();
-        User admin = (User) session.getAttribute(Parameter.USER);
+        UserDto admin = (UserDto) session.getAttribute(Parameter.USER);
         if (admin.getRole().equals(FieldValue.ROLE_ADMIN)) {
             servletAction = ServletAction.FORWARD_PAGE;
             page = PagePath.ADMIN_MAIN_PAGE_PATH;

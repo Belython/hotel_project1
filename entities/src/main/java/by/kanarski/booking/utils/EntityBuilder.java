@@ -62,7 +62,7 @@ public class EntityBuilder {
     public static Hotel buildHotel(long hotelId, Location hotelLocation, String hotelName, String hotelStatus) {
         Hotel hotel = new Hotel();
         hotel.setHotelId(hotelId);
-        hotel.setHotelLocation(hotelLocation);
+        hotel.setLocation(hotelLocation);
         hotel.setHotelName(hotelName);
         hotel.setHotelStatus(hotelStatus);
         return hotel;
@@ -84,7 +84,7 @@ public class EntityBuilder {
     public static Hotel buildHotel(String hotelCountry, String hotelCity, String hotelName) {
         Location location = buildLocation(hotelCountry, hotelCity);
         Hotel hotel = new Hotel();
-        hotel.setHotelLocation(location);
+        hotel.setLocation(location);
         hotel.setHotelName(hotelName);
         return hotel;
     }
@@ -93,7 +93,7 @@ public class EntityBuilder {
         Location location = buildLocation(hotelCountry, hotelCity);
         Hotel hotel = new Hotel();
         hotel.setHotelId(hotelId);
-        hotel.setHotelLocation(location);
+        hotel.setLocation(location);
         hotel.setHotelName(hotelName);
         hotel.setHotelStatus(FieldValue.STATUS_ACTIVE);
         return hotel;
@@ -162,7 +162,7 @@ public class EntityBuilder {
 
     public static Room buildRoom(Hotel hotel, RoomType roomType, int roomNumber, TreeMap<Long, Long> bookedDates) {
         Room room = new Room();
-        room.setRoomHotel(hotel);
+        room.setHotel(hotel);
         room.setRoomType(roomType);
         room.setRoomNumber(roomNumber);
         room.setBookedDates(bookedDates);
@@ -209,23 +209,7 @@ public class EntityBuilder {
 //        return bill;
 //    }
 
-    public static Bill buildBill(Bill bill, List<Room> roomList) {
-        bill.setBookedRoomList(roomList);
-        return bill;
-    }
 
-    public static Bill buildNewBill(User user, int totalPersons, long checkInDate, long checkOutDate,
-                                    List<Room> roomList, double paymentAmount) {
-        Bill bill = new Bill();
-        bill.setClient(user);
-        bill.setTotalPersons(totalPersons);
-        bill.setCheckInDate(checkInDate);
-        bill.setCheckOutDate(checkOutDate);
-        bill.setBookedRoomList(roomList);
-        bill.setPaymentAmount(paymentAmount);
-        bill.setBillStatus(FieldValue.STATUS_NOT_PAID);
-        return bill;
-    }
 
 
 }

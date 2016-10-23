@@ -8,7 +8,7 @@ import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IUserService;
 import by.kanarski.booking.utils.BookingSystemLogger;
-import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.ConnectionUtil;
 import by.kanarski.booking.utils.DtoToEntityConverter;
 import by.kanarski.booking.utils.ExceptionHandler;
 

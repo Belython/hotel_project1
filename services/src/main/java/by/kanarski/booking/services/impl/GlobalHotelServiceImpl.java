@@ -11,8 +11,10 @@ import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.exceptions.LocalisationException;
 import by.kanarski.booking.exceptions.ServiceException;
 import by.kanarski.booking.services.interfaces.IGlobalHotelService;
-import by.kanarski.booking.utils.*;
-import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.BookingSystemLogger;
+import by.kanarski.booking.utils.ConnectionUtil;
+import by.kanarski.booking.utils.DtoToEntityConverter;
+import by.kanarski.booking.utils.ExceptionHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -48,6 +50,7 @@ public class GlobalHotelServiceImpl implements IGlobalHotelService {
         try {
             connection.setAutoCommit(false);
             Hotel hotel = hotelDao.getById(id);
+
             globalHotelDto = toGlobalHotelDto(hotel);
             connection.commit();
             BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
@@ -163,17 +166,17 @@ public class GlobalHotelServiceImpl implements IGlobalHotelService {
             int separator = 0;
             for (int i = 0; i < availableRoomList.size(); i++) {
                 if (i < (availableRoomList.size() - 1)) {
-                    String curHotelName = availableRoomList.get(i).getRoomHotel().getHotelName();
-                    String nextHotelName = availableRoomList.get(i + 1).getRoomHotel().getHotelName();
+                    String curHotelName = availableRoomList.get(i).getHotel().getHotelName();
+                    String nextHotelName = availableRoomList.get(i + 1).getHotel().getHotelName();
                     if (!curHotelName.equals(nextHotelName)) {
-                        Hotel hotel = availableRoomList.get(i).getRoomHotel();
+                        Hotel hotel = availableRoomList.get(i).getHotel();
                         List<Room> roomList = availableRoomList.subList(separator, i + 1);
                         GlobalHotelDto globalHotelDto = DtoToEntityConverter.toGlobalHotelDto(hotel, roomList);
                         globalHotelDtoList.add(globalHotelDto);
                         separator = i + 1;
                     }
                 } else {
-                    Hotel hotel = availableRoomList.get(i).getRoomHotel();
+                    Hotel hotel = availableRoomList.get(i).getHotel();
                     List<Room> roomList = availableRoomList.subList(separator, i + 1);
                     GlobalHotelDto globalHotelDto = DtoToEntityConverter.toGlobalHotelDto(hotel, roomList);
                     globalHotelDtoList.add(globalHotelDto);
@@ -186,6 +189,22 @@ public class GlobalHotelServiceImpl implements IGlobalHotelService {
             ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
         }
         return globalHotelDtoList;
+    }
+
+    public GlobalHotelDto getByOrder1(OrderDto orderDto) throws ServiceException {
+        Connection connection = ConnectionUtil.getConnection();
+        GlobalHotelDto globalHotelDto = null;
+        try {
+            connection.setAutoCommit(false);
+            Hotel hotel = HotelDao.getInstance().getById(orderDto.getHotel().getHotelId());
+            List<Room> availableRoomList = roomDao.getAvailableRooms(orderDto);
+            globalHotelDto = DtoToEntityConverter.toGlobalHotelDto(hotel, availableRoomList);
+            connection.commit();
+            BookingSystemLogger.getInstance().logInfo(getClass(), ServiceMessage.TRANSACTION_SUCCEEDED);
+        } catch (SQLException | LocalisationException | DaoException e) {
+            ExceptionHandler.handleSQLOrDaoException(connection, e, getClass());
+        }
+        return globalHotelDto;
     }
 
     private GlobalHotelDto toGlobalHotelDto(Hotel hotel)

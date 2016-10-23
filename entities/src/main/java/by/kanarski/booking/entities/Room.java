@@ -1,12 +1,11 @@
 package by.kanarski.booking.entities;
 
-import java.util.Map;
 import java.util.TreeMap;
 
 public class Room {
 
     private long roomId;
-    private Hotel roomHotel;
+    private Hotel hotel;
     private RoomType roomType;
     private int roomNumber;
     private TreeMap<Long, Long> bookedDates;
@@ -20,12 +19,12 @@ public class Room {
         this.roomId = roomId;
     }
 
-    public Hotel getRoomHotel() {
-        return roomHotel;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setRoomHotel(Hotel roomHotel) {
-        this.roomHotel = roomHotel;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     public RoomType getRoomType() {
@@ -69,7 +68,7 @@ public class Room {
 
         if (roomId != room.roomId) return false;
         if (roomNumber != room.roomNumber) return false;
-        if (!roomHotel.equals(room.roomHotel)) return false;
+        if (!hotel.equals(room.hotel)) return false;
         if (!roomType.equals(room.roomType)) return false;
         if (!bookedDates.equals(room.bookedDates)) return false;
         return roomStatus.equals(room.roomStatus);
@@ -79,7 +78,7 @@ public class Room {
     @Override
     public int hashCode() {
         int result = (int) (roomId ^ (roomId >>> 32));
-        result = 31 * result + roomHotel.hashCode();
+        result = 31 * result + hotel.hashCode();
         result = 31 * result + roomType.hashCode();
         result = 31 * result + roomNumber;
         result = 31 * result + bookedDates.hashCode();

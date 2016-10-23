@@ -5,7 +5,7 @@ import by.kanarski.booking.dao.interfaces.IBillDao;
 import by.kanarski.booking.entities.Bill;
 import by.kanarski.booking.exceptions.DaoException;
 import by.kanarski.booking.utils.*;
-import by.kanarski.booking.utils.threadLocal.ConnectionUtil;
+import by.kanarski.booking.utils.ConnectionUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

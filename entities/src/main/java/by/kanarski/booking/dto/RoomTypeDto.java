@@ -66,4 +66,35 @@ public class RoomTypeDto {
     public void setRoomTypeStatus(String roomTypeStatus) {
         this.roomTypeStatus = roomTypeStatus;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RoomTypeDto that = (RoomTypeDto) o;
+
+        if (roomTypeId != that.roomTypeId) return false;
+        if (maxPersons != that.maxPersons) return false;
+        if (Double.compare(that.pricePerNight, pricePerNight) != 0) return false;
+        if (!roomTypeName.equals(that.roomTypeName)) return false;
+        if (!facilities.equals(that.facilities)) return false;
+        return roomTypeStatus.equals(that.roomTypeStatus);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = (int) (roomTypeId ^ (roomTypeId >>> 32));
+        result = 31 * result + roomTypeName.hashCode();
+        result = 31 * result + maxPersons;
+        temp = Double.doubleToLongBits(pricePerNight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + facilities.hashCode();
+        result = 31 * result + roomTypeStatus.hashCode();
+        return result;
+    }
 }
