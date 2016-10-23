@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/calendar/tcal.css"/>
 
+<%--TASK 10 TASK 10 TASK 10 TASK 10--%>
+
 <html>
 <head>
     <title>${index_booking}</title>
