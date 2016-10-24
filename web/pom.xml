@@ -67,7 +67,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
-                        <version>2.10</version>
                         <executions>
                             <execution>
                                 <id>copy-dependencies</id>
@@ -82,32 +81,11 @@
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>by.kanarski.booking</groupId>
-                                            <artifactId>dao</artifactId>
-                                            <version>1.0</version>
-                                            <type>jar</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                                            <destFileName>dao</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
                         </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.3</version>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.tomcat.maven</groupId>
@@ -135,6 +113,38 @@
                             <update>true</update>
                         </configuration>
                     </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>org.jfrog.buildinfo</groupId>-->
+                        <!--<artifactId>artifactory-maven-plugin</artifactId>-->
+                        <!--<inherited>false</inherited>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>build-info</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>publish</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<publisher>-->
+                                        <!--<contextUrl>http://localhost:8081/artifactory/libs-release-local</contextUrl>-->
+                                        <!--<username>admin</username>-->
+                                        <!--<password>password</password>-->
+                                    <!--</publisher>-->
+                                    <!--<buildInfo>-->
+                                        <!--<agentName> .. </agentName>-->
+                                        <!--<agentVersion> .. </agentVersion>-->
+                                        <!--<buildName> .. </buildName>-->
+                                        <!--<buildNumber> .. </buildNumber>-->
+                                        <!--<buildNumbersNotToDelete> .. </buildNumbersNotToDelete>-->
+                                        <!--<buildRetentionMaxDays>N</buildRetentionMaxDays>-->
+                                        <!--<buildRetentionCount>N</buildRetentionCount>-->
+                                        <!--<buildUrl> .. </buildUrl>-->
+                                        <!--<principal> .. </principal>-->
+                                        <!--<vcsRevision> .. </vcsRevision>-->
+                                    <!--</buildInfo>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
                 </plugins>
             </build>
         </profile>
