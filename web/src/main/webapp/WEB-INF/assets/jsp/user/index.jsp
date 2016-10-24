@@ -1,8 +1,6 @@
-
-
 <!-- comment from Pustoshilo 3  -->
 
-
+<%--Patch--%>
 <!DOCTYPE html>
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
