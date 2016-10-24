@@ -277,11 +277,6 @@ public class DtoToEntityConverter {
         return billDto;
     }
 
-//    public static List<BillDto> billDtoList(List<Bill> billList) throws LocalisationException {
-//        List<BillDto> billDtoList = toBillDtoList(billList, defaultLocale, defaultCurrency);
-//        return billDtoList;
-//    }
-
     public static GlobalHotelDto toGlobalHotelDto(Hotel hotel, List<Room> roomList) throws LocalisationException {
         HotelDto hotelDto = toHotelDto(hotel);
         List<RoomDto> roomDtoList = toRoomDtoList(roomList);

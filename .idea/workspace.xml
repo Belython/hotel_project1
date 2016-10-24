@@ -11,167 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e110ccad-4aba-4360-82d5-c851003833f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__backport_util_concurrent_backport_util_concurrent_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__classworlds_classworlds_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_38.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_chain_commons_chain_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_httpclient_commons_httpclient_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_0_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_validator_commons_validator_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nekohtml_nekohtml_1_9_6_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nekohtml_xercesMinimal_1_9_6_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_commons_1_5_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_webdav_1_5_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_core_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_decoration_model_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_logging_api_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_module_fml_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_module_xhtml_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_sink_api_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_site_renderer_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_manager_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_core_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_error_diagnostics_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_monitor_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_descriptor_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_parameter_documenter_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_registry_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_profile_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_repository_metadata_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugins_maven_dependency_plugin_2_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_reporting_maven_reporting_api_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_reporting_maven_reporting_impl_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_file_management_1_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_common_artifact_filters_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_dependency_analyzer_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_dependency_tree_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_invoker_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_shared_io_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_file_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_http_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_http_lightweight_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_http_shared_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_ssh_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_ssh_common_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_ssh_external_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_webdav_jackrabbit_1_0_beta_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_core_1_3_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_taglib_1_3_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_tiles_1_3_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_tools_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_archiver_2_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_container_default_1_0_alpha_9_stable_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_i18n_1_0_beta_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_interactivity_api_1_0_alpha_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_interpolation_1_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_io_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_0_20.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_velocity_1_1_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_aether_aether_util_0_9_0_M2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_jdk14_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_nop_1_5_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_cipher_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_sec_dispatcher_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__oro_oro_2_0_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sslext_sslext_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_9_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_3_04.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/test/resources/database.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_Server.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_Server.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/booking.iml" afterPath="$PROJECT_DIR$/booking.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/dao.iml" afterPath="$PROJECT_DIR$/dao/dao.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/BillDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/BillDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/HotelDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/LocationDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/LocationDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomTypeDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/RoomTypeDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java" afterPath="$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/entities.iml" afterPath="$PROJECT_DIR$/entities/entities.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/pom.xml" afterPath="$PROJECT_DIR$/entities/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/BillDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/BillDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/GlobalHotelDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/GlobalHotelDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/HotelDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/OrderDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/OrderDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomTypeDto.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/RoomTypeDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Bill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Hotel.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Hotel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Room.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/entities/Room.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/Counter.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/Counter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/EntityBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/i18n.iml" afterPath="$PROJECT_DIR$/i18n/i18n.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/pom.xml" afterPath="$PROJECT_DIR$/i18n/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/constants/Parameter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/i18n/l10n/filler/Filler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mail/mail.iml" afterPath="$PROJECT_DIR$/mail/mail.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/services.iml" afterPath="$PROJECT_DIR$/services/services.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/BillServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/BillServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/GlobalHotelServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/GlobalHotelServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/HotelServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomTypeServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/RoomTypeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pom.xml" afterPath="$PROJECT_DIR$/web/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/AbstractCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/AbstractCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/GoToAdminPageCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/ConstrainRowCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/ConstrainRowCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/room/AlterRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/room/AlterRoomsCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/room/GoToRoomsRedactorCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/room/GoToRoomsRedactorCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/roomType/GoToRoomTypesRedactorCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/admin/database/roomType/GoToRoomTypesRedactorCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/PayBillCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/PayBillCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RefuseBillCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/RefuseBillCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectHotelCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectRoomsCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/GoToSelectRoomsCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/LoginUserCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegisterCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/RegisterCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetCurrencyCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetCurrencyCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/InitializationFilter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/InitializationFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/LocalizationFilter.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/filters/LocalizationFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/listeners/request/ThreadLocalListener.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/listeners/request/ThreadLocalListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/AdminLogic.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/AdminLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/BillUtil.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/BillUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ConstrainUtil.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/ConstrainUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" afterPath="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/account.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/client/account.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectHotel.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRooms.jsp" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/assets/jsp/user/selectRooms.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/web.iml" afterPath="$PROJECT_DIR$/web/web.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/threadLocal/ConnectionUtil.java" afterPath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/threadLocal/ThreadLocalUtil.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/threadLocal/ThreadLocalUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/threadLocal/ThreadVariables.java" afterPath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/threadLocal/ThreadVariables.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/threadLocal/UserPreferences.java" afterPath="$PROJECT_DIR$/i18n/src/main/java/by/kanarski/booking/utils/UserPreferences.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" afterPath="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
     </list>
     <ignored path="hotel_project-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -211,129 +52,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/pom.xml">
+      <file leaf-file-name="DtoToEntityConverter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1354">
-              <caret line="121" column="47" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
+            <state relative-caret-position="291">
+              <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.m2/settings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.xml" pinned="false" current-in-tab="false">
-        <entry file="file://E:/Tomcat 8.0/conf/server.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
-              <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dao.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/dao.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
-              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/ConnectionUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tomcat-users.xml" pinned="false" current-in-tab="false">
-        <entry file="file://E:/Tomcat 8.0/conf/tomcat-users.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDaoTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/test/java/UserDaoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/dao/impl/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <marker date="1477152350260" expanded="true" signature="734:863" ph="INSERT INTO USERS... " />
-                <marker date="1477152350260" expanded="true" signature="910:947" ph="SELECT * FRO... USERS" />
-                <marker date="1477152350260" expanded="true" signature="997:1032" ph="SELECT * FRO... USERS" />
-                <marker date="1477152350260" expanded="true" signature="1082:1117" ph="SELECT * FRO... USERS" />
-                <marker date="1477152350260" expanded="true" signature="1162:1210" ph="SELECT * FRO... USERS" />
-                <marker date="1477152350260" expanded="true" signature="1254:1388" ph="UPDATE USERS... " />
-                <marker date="1477152350260" expanded="true" signature="1432:1467" ph="DELETE FROM " />
-                <marker date="1477152350260" expanded="true" signature="1524:1590" ph="SELECT LOGIN... USERS" />
-                <marker date="1477152350260" expanded="true" signature="1639:1678" ph="SELECT LOGIN... USERS" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/by/kanarski/booking/utils/DataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -364,7 +88,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="branchOne" />
+        <entry key="$PROJECT_DIR$" value="release" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -415,7 +139,6 @@
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/listeners/request/ThreadLocalListener.java" />
         <option value="$PROJECT_DIR$/entities/src/main/java/by/kanarski/booking/dto/BillDto.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/RequestParser.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/AbstractCommand.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/client/MakeBillCommand.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/services/impl/BillServiceImpl.java" />
@@ -428,8 +151,9 @@
         <option value="E:/Tomcat 8.0/conf/tomcat-users.xml" />
         <option value="E:/Maven/conf/settings.xml" />
         <option value="$USER_HOME$/.m2/settings.xml" />
-        <option value="$PROJECT_DIR$/web/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/web/pom.xml" />
+        <option value="$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java" />
       </list>
     </option>
   </component>
@@ -765,6 +489,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -794,6 +528,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotel_project1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1954,10 +1706,6 @@
               <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2529,18 +2277,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Problems">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2549,8 +2287,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.36419752" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="project.structure.side.proportion" value="0.18004115" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.28846154" />
     <property name="js-jscs-nodeInterpreter" value="F:\Program Files (x86)\nodejs\node.exe" />
     <property name="prop_add_unversioned_files" value="true" />
@@ -3460,21 +3198,9 @@
       <workItem from="1477175831598" duration="6673000" />
       <workItem from="1477219751399" duration="9316000" />
       <workItem from="1477229407605" duration="2859000" />
-      <workItem from="1477238709914" duration="6870000" />
-    </task>
-    <task id="LOCAL-00016" summary="First">
-      <created>1473369336656</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1473369336656</updated>
-    </task>
-    <task id="LOCAL-00017" summary="First">
-      <created>1473411299413</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1473411299413</updated>
+      <workItem from="1477238709914" duration="9583000" />
+      <workItem from="1477255490029" duration="5476000" />
+      <workItem from="1477266792136" duration="1040000" />
     </task>
     <task id="LOCAL-00018" summary="First">
       <created>1473423399169</created>
@@ -3805,7 +3531,21 @@
       <option name="project" value="LOCAL" />
       <updated>1477149498216</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Рабочая версия 1.5">
+      <created>1477248069471</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1477248069475</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Rel 1">
+      <created>1477267675880</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1477267675882</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3841,7 +3581,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1117167000" />
+    <option name="totallyTimeSpent" value="1126396000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -3864,31 +3604,32 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37527838" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3429844" sideWeight="0.49253732" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2951002" sideWeight="0.49520257" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27878466" sideWeight="0.7093541" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23081024" sideWeight="0.29064587" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24093817" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23081024" sideWeight="0.29064587" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39309576" sideWeight="0.48940998" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39309576" sideWeight="0.48940998" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405347" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2951002" sideWeight="0.49520257" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
+    <option name="BEK_SORT_TYPE" value="1" />
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
@@ -3911,7 +3652,8 @@
     <MESSAGE value="Рабочая версия 1.3" />
     <MESSAGE value="Рабочая версия 1.4" />
     <MESSAGE value="Рабочая версия 1.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рабочая версия 1.5" />
+    <MESSAGE value="Rel 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rel 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4262,13 +4004,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/utils/BillUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/by/kanarski/booking/commands/impl/user/SetLocaleCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -4330,14 +4065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4522,14 +4249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -4549,7 +4268,6 @@
         <state relative-caret-position="697">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1477152350260" expanded="true" signature="734:863" ph="INSERT INTO USERS... " />
             <marker date="1477152350260" expanded="true" signature="910:947" ph="SELECT * FRO... USERS" />
             <marker date="1477152350260" expanded="true" signature="997:1032" ph="SELECT * FRO... USERS" />
@@ -4567,9 +4285,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4577,16 +4293,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/dao.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -4595,9 +4309,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4629,38 +4341,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="117" column="6" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.m2/settings.xml">
+    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        <state relative-caret-position="255">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://E:/Tomcat 8.0/conf/server.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
+        <state relative-caret-position="867">
           <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$USER_HOME$/.m2/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+        <state relative-caret-position="850">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1354">
-          <caret line="121" column="47" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
+        <state relative-caret-position="2295">
+          <caret line="135" column="59" selection-start-line="135" selection-start-column="59" selection-end-line="135" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="78" column="69" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/git">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/by/kanarski/booking/utils/DtoToEntityConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -4675,7 +4410,8 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.36419752" />
+                <option value="0.18004115" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
